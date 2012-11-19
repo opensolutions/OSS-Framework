@@ -1,0 +1,449 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>OSS » \OSS_Message_Pop_Up</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">OSS</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Packages</a></li>
+<li><a href="../packages/OSS.html"><i class="icon-folder-open"></i> OSS</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">193</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul>
+<li>todo 
+                <span class="label label-info">2</span>
+</li>
+<li>fixme 
+                <span class="label label-info">10</span>
+</li>
+</ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods
+                    <ul>
+<li class="method public "><a href="#method___construct" title="__construct :: Constructor"><span class="description">Constructor</span><pre>__construct()</pre></a></li>
+<li class="method public "><a href="#method_addAction" title="addAction :: Adding message box"><span class="description">Adding message box</span><pre>addAction()</pre></a></li>
+<li class="method public "><a href="#method_getActions" title="getActions :: Getting messages"><span class="description">Getting messages</span><pre>getActions()</pre></a></li>
+<li class="method public inherited"><a href="#method_getClass" title="getClass :: Get the class"><span class="description">Get the class</span><pre>getClass()</pre></a></li>
+<li class="method public inherited"><a href="#method_getMessage" title="getMessage :: Get the message"><span class="description">Get the message</span><pre>getMessage()</pre></a></li>
+<li class="method public inherited"><a href="#method_getPlaintext" title="getPlaintext :: Get the message as plaintext - essentially strips the tags from the
+message if it is an HTML message"><span class="description">Get the message as plaintext - essentially strips the tags from the
+message if it is an HTML message</span><pre>getPlaintext()</pre></a></li>
+<li class="method public inherited"><a href="#method_getType" title="getType :: Get the message type"><span class="description">Get the message type</span><pre>getType()</pre></a></li>
+<li class="method public inherited"><a href="#method_setClass" title="setClass :: Set the class"><span class="description">Set the class</span><pre>setClass()</pre></a></li>
+<li class="method public inherited"><a href="#method_setType" title="setType :: Set the message type"><span class="description">Set the message type</span><pre>setType()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties
+                    <ul></ul>
+</li>
+<li class="nav-header protected">» Protected
+                    <ul>
+<li class="property protected inherited"><a href="#property_class" title="$class :: A variable to hold the appropriate HTML class (e.g."><span class="description">A variable to hold the appropriate HTML class (e.g.</span><pre>$class</pre></a></li>
+<li class="property protected inherited"><a href="#property_isHTML" title="$isHTML :: A variable to indicate whether the message is HTML or not"><span class="description">A variable to indicate whether the message is HTML or not</span><pre>$isHTML</pre></a></li>
+<li class="property protected inherited"><a href="#property_message" title="$message :: A variable to hold the message (either scalar string or array of strings )"><span class="description">A variable to hold the message (either scalar string or array of strings )</span><pre>$message</pre></a></li>
+<li class="property protected inherited"><a href="#property_type" title="$type :: The type of OSS_Message"><span class="description">The type of OSS_Message</span><pre>$type</pre></a></li>
+</ul>
+</li>
+<li class="nav-header private">» Private
+                    <ul><li class="property private "><a href="#property_actions" title="$actions :: Elements for the action area"><span class="description">Elements for the action area</span><pre>$actions</pre></a></li></ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-constant"></i> Constants
+                    <ul>
+<li class="constant  inherited"><a href="#constant_ALERT" title="ALERT :: "><span class="description">ALERT</span><pre>ALERT</pre></a></li>
+<li class="constant  inherited"><a href="#constant_ERROR" title="ERROR :: "><span class="description">ERROR</span><pre>ERROR</pre></a></li>
+<li class="constant  inherited"><a href="#constant_INFO" title="INFO :: "><span class="description">INFO</span><pre>INFO</pre></a></li>
+<li class="constant  inherited"><a href="#constant_SUCCESS" title="SUCCESS :: "><span class="description">SUCCESS</span><pre>SUCCESS</pre></a></li>
+<li class="constant  inherited"><a href="#constant_TYPE_BLOCK" title="TYPE_BLOCK :: "><span class="description">TYPE_BLOCK</span><pre>TYPE_BLOCK</pre></a></li>
+<li class="constant  inherited"><a href="#constant_TYPE_MESSAGE" title="TYPE_MESSAGE :: "><span class="description">TYPE_MESSAGE</span><pre>TYPE_MESSAGE</pre></a></li>
+<li class="constant  inherited"><a href="#constant_TYPE_POP_UP" title="TYPE_POP_UP :: "><span class="description">TYPE_POP_UP</span><pre>TYPE_POP_UP</pre></a></li>
+<li class="constant  inherited"><a href="#constant_WARNING" title="WARNING :: "><span class="description">WARNING</span><pre>WARNING</pre></a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="span8">
+<a id="\OSS_Message_Pop_Up"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/global.html">global</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/OSS_Message_Pop_Up.html">OSS_Message_Pop_Up</a>
+</li>
+</ul>
+<div class="element class">
+<p class="short_description">OSS_Message pop up type class for displaying messages for users.</p>
+<div class="details">
+<div class="long_description"></div>
+<table class="table table-bordered">
+<tr>
+<th>category</th>
+<td>OSS</td>
+</tr>
+<tr>
+<th>package</th>
+<td><a href="../packages/OSS.Message.html">OSS_Message</a></td>
+</tr>
+<tr>
+<th>copyright</th>
+<td>Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland</td>
+</tr>
+<tr>
+<th>license</th>
+<td><a href="http://www.opensolutions.ie/licenses/new-bsd">New BSD License</a></td>
+</tr>
+<tr>
+<th>author</th>
+<td><a href="mailto:barry@opensolutions.ie">Barry O'Donovan</a></td>
+</tr>
+<tr>
+<th>author</th>
+<td><a href="mailto:roland@opensolutions.ie">Roland Huszti</a></td>
+</tr>
+<tr>
+<th>author</th>
+<td><a href="mailto:nerijus@opensolutions.ie">Nerijus Barauskas</a></td>
+</tr>
+</table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a id="method___construct"></a><div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
+<h2>Constructor</h2>
+<pre>__construct(string $message, string $class, bool $isHTML) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$message</h4>
+<code>string</code><p>Message to display</p></div>
+<div class="subelement argument">
+<h4>$class</h4>
+<code>string</code><p>Message class</p></div>
+<div class="subelement argument">
+<h4>$isHTML</h4>
+<code>bool</code><p>Htmk flag</p></div>
+</div></div>
+</div>
+<a id="method_addAction"></a><div class="element clickable method public method_addAction" data-toggle="collapse" data-target=".method_addAction .collapse">
+<h2>Adding message box</h2>
+<pre>addAction(string $str) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$str</h4>
+<code>string</code><p>Action description</p></div>
+</div></div>
+</div>
+<a id="method_getActions"></a><div class="element clickable method public method_getActions" data-toggle="collapse" data-target=".method_getActions .collapse">
+<h2>Getting messages</h2>
+<pre>getActions() : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
+</div></div>
+</div>
+<a id="method_getClass"></a><div class="element clickable method public method_getClass" data-toggle="collapse" data-target=".method_getClass .collapse">
+<h2>Get the class</h2>
+<pre>getClass() : string</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\OSS_Message::getClass()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>the class</div>
+</div></div>
+</div>
+<a id="method_getMessage"></a><div class="element clickable method public method_getMessage" data-toggle="collapse" data-target=".method_getMessage .collapse">
+<h2>Get the message</h2>
+<pre>getMessage() : string</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\OSS_Message::getMessage()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_getPlaintext"></a><div class="element clickable method public method_getPlaintext" data-toggle="collapse" data-target=".method_getPlaintext .collapse">
+<h2>Get the message as plaintext - essentially strips the tags from the
+message if it is an HTML message</h2>
+<pre>getPlaintext() : string</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\OSS_Message::getPlaintext()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_getType"></a><div class="element clickable method public method_getType" data-toggle="collapse" data-target=".method_getType .collapse">
+<h2>Get the message type</h2>
+<pre>getType() : int</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\OSS_Message::getType()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>int</code></div>
+</div></div>
+</div>
+<a id="method_setClass"></a><div class="element clickable method public method_setClass" data-toggle="collapse" data-target=".method_setClass .collapse">
+<h2>Set the class</h2>
+<pre>setClass(string $class) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\OSS_Message::setClass()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$class</h4>
+<code>string</code><p>the class</p></div>
+</div></div>
+</div>
+<a id="method_setType"></a><div class="element clickable method public method_setType" data-toggle="collapse" data-target=".method_setType .collapse">
+<h2>Set the message type</h2>
+<pre>setType(int $type) : void</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\OSS_Message::setType()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$type</h4>
+<code>int</code><p>Message type</p></div>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a id="property_class"> </a><div class="element clickable property protected property_class" data-toggle="collapse" data-target=".property_class .collapse">
+<h2>A variable to hold the appropriate HTML class (e.g.</h2>
+<pre>$class : string</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>error, success, info)</p></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\OSS_Message::$$class</td>
+</tr></table>
+</div></div>
+</div>
+<a id="property_isHTML"> </a><div class="element clickable property protected property_isHTML" data-toggle="collapse" data-target=".property_isHTML .collapse">
+<h2>A variable to indicate whether the message is HTML or not</h2>
+<pre>$isHTML : bool</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\OSS_Message::$$isHTML</td>
+</tr></table>
+</div></div>
+</div>
+<a id="property_message"> </a><div class="element clickable property protected property_message" data-toggle="collapse" data-target=".property_message .collapse">
+<h2>A variable to hold the message (either scalar string or array of strings )</h2>
+<pre>$message : mixed</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\OSS_Message::$$message</td>
+</tr></table>
+</div></div>
+</div>
+<a id="property_type"> </a><div class="element clickable property protected property_type" data-toggle="collapse" data-target=".property_type .collapse">
+<h2>The type of OSS_Message</h2>
+<pre>$type : int</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\OSS_Message::$$type</td>
+</tr></table>
+</div></div>
+</div>
+<a id="property_actions"> </a><div class="element clickable property private property_actions" data-toggle="collapse" data-target=".property_actions .collapse">
+<h2>Elements for the action area</h2>
+<pre>$actions : null | array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<h3>
+<i class="icon-custom icon-constant"></i> Constants</h3>
+<a id="constant_ALERT"> </a><div class="element clickable constant  constant_ALERT" data-toggle="collapse" data-target=".constant_ALERT .collapse">
+<h2>ALERT</h2>
+<pre>ALERT </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\OSS_Message::ALERT</td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_ERROR"> </a><div class="element clickable constant  constant_ERROR" data-toggle="collapse" data-target=".constant_ERROR .collapse">
+<h2>ERROR</h2>
+<pre>ERROR </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\OSS_Message::ERROR</td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_INFO"> </a><div class="element clickable constant  constant_INFO" data-toggle="collapse" data-target=".constant_INFO .collapse">
+<h2>INFO</h2>
+<pre>INFO </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\OSS_Message::INFO</td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_SUCCESS"> </a><div class="element clickable constant  constant_SUCCESS" data-toggle="collapse" data-target=".constant_SUCCESS .collapse">
+<h2>SUCCESS</h2>
+<pre>SUCCESS </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\OSS_Message::SUCCESS</td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_TYPE_BLOCK"> </a><div class="element clickable constant  constant_TYPE_BLOCK" data-toggle="collapse" data-target=".constant_TYPE_BLOCK .collapse">
+<h2>TYPE_BLOCK</h2>
+<pre>TYPE_BLOCK </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\OSS_Message::TYPE_BLOCK</td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_TYPE_MESSAGE"> </a><div class="element clickable constant  constant_TYPE_MESSAGE" data-toggle="collapse" data-target=".constant_TYPE_MESSAGE .collapse">
+<h2>TYPE_MESSAGE</h2>
+<pre>TYPE_MESSAGE </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\OSS_Message::TYPE_MESSAGE</td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_TYPE_POP_UP"> </a><div class="element clickable constant  constant_TYPE_POP_UP" data-toggle="collapse" data-target=".constant_TYPE_POP_UP .collapse">
+<h2>TYPE_POP_UP</h2>
+<pre>TYPE_POP_UP </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\OSS_Message::TYPE_POP_UP</td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_WARNING"> </a><div class="element clickable constant  constant_WARNING" data-toggle="collapse" data-target=".constant_WARNING .collapse">
+<h2>WARNING</h2>
+<pre>WARNING </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\OSS_Message::WARNING</td>
+</tr></table>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
+            generated on 2012-11-16T11:34:40Z.<br></footer></div>
+</div>
+</body>
+</html>

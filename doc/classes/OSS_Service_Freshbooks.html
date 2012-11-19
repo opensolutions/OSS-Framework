@@ -1,0 +1,1022 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>OSS » \OSS_Service_Freshbooks</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">OSS</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Packages</a></li>
+<li><a href="../packages/OSS.html"><i class="icon-folder-open"></i> OSS</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">193</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul>
+<li>todo 
+                <span class="label label-info">2</span>
+</li>
+<li>fixme 
+                <span class="label label-info">10</span>
+</li>
+</ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods
+                    <ul>
+<li class="method public "><a href="#method___call" title="__call :: Method overloading"><span class="description">Method overloading</span><pre>__call()</pre></a></li>
+<li class="method public "><a href="#method___construct" title="__construct :: Constructor"><span class="description">Constructor</span><pre>__construct()</pre></a></li>
+<li class="method public "><a href="#method___get" title="__get :: Proxy service methods"><span class="description">Proxy service methods</span><pre>__get()</pre></a></li>
+<li class="method public "><a href="#method_clientCreate" title="clientCreate :: Public client create"><span class="description">Public client create</span><pre>clientCreate()</pre></a></li>
+<li class="method public "><a href="#method_clientDelete" title="clientDelete :: Public client delete"><span class="description">Public client delete</span><pre>clientDelete()</pre></a></li>
+<li class="method public "><a href="#method_clientGet" title="clientGet :: Public client get"><span class="description">Public client get</span><pre>clientGet()</pre></a></li>
+<li class="method public "><a href="#method_clientList" title="clientList :: Public client list"><span class="description">Public client list</span><pre>clientList()</pre></a></li>
+<li class="method public "><a href="#method_clientUpdate" title="clientUpdate :: Public client create"><span class="description">Public client create</span><pre>clientUpdate()</pre></a></li>
+<li class="method public "><a href="#method_getLocalHttpClient" title="getLocalHttpClient :: Get the local HTTP client as distinct from the static HTTP client
+inherited from Zend_Rest_Client"><span class="description">Get the local HTTP client as distinct from the static HTTP client
+inherited from Zend_Rest_Client</span><pre>getLocalHttpClient()</pre></a></li>
+<li class="method public "><a href="#method_getSubdomain" title="getSubdomain :: Retrieve username"><span class="description">Retrieve username</span><pre>getSubdomain()</pre></a></li>
+<li class="method public "><a href="#method_invoiceCreate" title="invoiceCreate :: Public invoice create"><span class="description">Public invoice create</span><pre>invoiceCreate()</pre></a></li>
+<li class="method public "><a href="#method_invoiceDelete" title="invoiceDelete :: Public invoice delete"><span class="description">Public invoice delete</span><pre>invoiceDelete()</pre></a></li>
+<li class="method public "><a href="#method_invoiceGet" title="invoiceGet :: Public invoice get"><span class="description">Public invoice get</span><pre>invoiceGet()</pre></a></li>
+<li class="method public "><a href="#method_invoiceLinesAdd" title="invoiceLinesAdd :: Public invoice lines add"><span class="description">Public invoice lines add</span><pre>invoiceLinesAdd()</pre></a></li>
+<li class="method public "><a href="#method_invoiceLinesDelete" title="invoiceLinesDelete :: Public invoice line delete"><span class="description">Public invoice line delete</span><pre>invoiceLinesDelete()</pre></a></li>
+<li class="method public "><a href="#method_invoiceLinesUpdate" title="invoiceLinesUpdate :: Public invoice lines update"><span class="description">Public invoice lines update</span><pre>invoiceLinesUpdate()</pre></a></li>
+<li class="method public "><a href="#method_invoiceList" title="invoiceList :: Public invoice list"><span class="description">Public invoice list</span><pre>invoiceList()</pre></a></li>
+<li class="method public "><a href="#method_invoiceSendByEmail" title="invoiceSendByEmail :: Public invoice send by email"><span class="description">Public invoice send by email</span><pre>invoiceSendByEmail()</pre></a></li>
+<li class="method public "><a href="#method_invoiceUpdate" title="invoiceUpdate :: Public invoice update"><span class="description">Public invoice update</span><pre>invoiceUpdate()</pre></a></li>
+<li class="method public "><a href="#method_isAuthorised" title="isAuthorised :: Checks for an authorised state"><span class="description">Checks for an authorised state</span><pre>isAuthorised()</pre></a></li>
+<li class="method public "><a href="#method_recurringCreate" title="recurringCreate :: Public recurring create"><span class="description">Public recurring create</span><pre>recurringCreate()</pre></a></li>
+<li class="method public "><a href="#method_recurringDelete" title="recurringDelete :: Public recurring delete"><span class="description">Public recurring delete</span><pre>recurringDelete()</pre></a></li>
+<li class="method public "><a href="#method_recurringGet" title="recurringGet :: Public recurring get"><span class="description">Public recurring get</span><pre>recurringGet()</pre></a></li>
+<li class="method public "><a href="#method_recurringLinesAdd" title="recurringLinesAdd :: Public recurring lines add"><span class="description">Public recurring lines add</span><pre>recurringLinesAdd()</pre></a></li>
+<li class="method public "><a href="#method_recurringLinesDelete" title="recurringLinesDelete :: Public recurring line delete"><span class="description">Public recurring line delete</span><pre>recurringLinesDelete()</pre></a></li>
+<li class="method public "><a href="#method_recurringLinesUpdate" title="recurringLinesUpdate :: Public recurring lines update"><span class="description">Public recurring lines update</span><pre>recurringLinesUpdate()</pre></a></li>
+<li class="method public "><a href="#method_recurringList" title="recurringList :: Public recurring list"><span class="description">Public recurring list</span><pre>recurringList()</pre></a></li>
+<li class="method public "><a href="#method_recurringUpdate" title="recurringUpdate :: Public recurring update"><span class="description">Public recurring update</span><pre>recurringUpdate()</pre></a></li>
+<li class="method public "><a href="#method_setLocalHttpClient" title="setLocalHttpClient :: Set local HTTP client as distinct from the static HTTP client
+as inherited from Zend_Rest_Client."><span class="description">Set local HTTP client as distinct from the static HTTP client
+as inherited from Zend_Rest_Client.</span><pre>setLocalHttpClient()</pre></a></li>
+<li class="method public "><a href="#method_setSubdomain" title="setSubdomain :: Set username"><span class="description">Set username</span><pre>setSubdomain()</pre></a></li>
+<li class="method public "><a href="#method_systemCurrent" title="systemCurrent :: Public system current"><span class="description">Public system current</span><pre>systemCurrent()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header protected">» Protected
+                    <ul>
+<li class="method protected "><a href="#method__get" title="_get :: Performs an HTTP GET request to the $path."><span class="description">Performs an HTTP GET request to the $path.</span><pre>_get()</pre></a></li>
+<li class="method protected "><a href="#method__init" title="_init :: Initialize HTTP authentication"><span class="description">Initialize HTTP authentication</span><pre>_init()</pre></a></li>
+<li class="method protected "><a href="#method__makeAddressXml" title="_makeAddressXml :: Makes addres string xml from address array"><span class="description">Makes addres string xml from address array</span><pre>_makeAddressXml()</pre></a></li>
+<li class="method protected "><a href="#method__makeClientXml" title="_makeClientXml :: Makes client string xml from params"><span class="description">Makes client string xml from params</span><pre>_makeClientXml()</pre></a></li>
+<li class="method protected "><a href="#method__makeContactsXml" title="_makeContactsXml :: Makes contacts string xml from contacts array"><span class="description">Makes contacts string xml from contacts array</span><pre>_makeContactsXml()</pre></a></li>
+<li class="method protected "><a href="#method__makeInvoiceXml" title="_makeInvoiceXml :: Makes invoice string xml from params"><span class="description">Makes invoice string xml from params</span><pre>_makeInvoiceXml()</pre></a></li>
+<li class="method protected "><a href="#method__makeLinesXml" title="_makeLinesXml :: Makes lines string xml from lines array"><span class="description">Makes lines string xml from lines array</span><pre>_makeLinesXml()</pre></a></li>
+<li class="method protected "><a href="#method__makeRecurringXml" title="_makeRecurringXml :: Makes recurring string xml from params"><span class="description">Makes recurring string xml from params</span><pre>_makeRecurringXml()</pre></a></li>
+<li class="method protected "><a href="#method__performPost" title="_performPost :: Perform a POST or PUT"><span class="description">Perform a POST or PUT</span><pre>_performPost()</pre></a></li>
+<li class="method protected "><a href="#method__post" title="_post :: Performs an HTTP POST request to $path."><span class="description">Performs an HTTP POST request to $path.</span><pre>_post()</pre></a></li>
+<li class="method protected "><a href="#method__prepare" title="_prepare :: Call a remote REST web service URI and return the Zend_Http_Response object"><span class="description">Call a remote REST web service URI and return the Zend_Http_Response object</span><pre>_prepare()</pre></a></li>
+<li class="method protected "><a href="#method__setDate" title="_setDate :: Set date header"><span class="description">Set date header</span><pre>_setDate()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties
+                    <ul></ul>
+</li>
+<li class="nav-header protected">» Protected
+                    <ul>
+<li class="property protected "><a href="#property__cookieJar" title="$_cookieJar :: Cookie jar"><span class="description">Cookie jar</span><pre>$_cookieJar</pre></a></li>
+<li class="property protected "><a href="#property__dateFormat" title="$_dateFormat :: Date format for 'since' strings"><span class="description">Date format for 'since' strings</span><pre>$_dateFormat</pre></a></li>
+<li class="property protected "><a href="#property__localHttpClient" title="$_localHttpClient :: Local HTTP Client cloned from statically set client"><span class="description">Local HTTP Client cloned from statically set client</span><pre>$_localHttpClient</pre></a></li>
+<li class="property protected "><a href="#property__methodType" title="$_methodType :: Current method type (for method proxying)"><span class="description">Current method type (for method proxying)</span><pre>$_methodType</pre></a></li>
+<li class="property protected "><a href="#property__methodTypes" title="$_methodTypes :: Types of API methods"><span class="description">Types of API methods</span><pre>$_methodTypes</pre></a></li>
+<li class="property protected "><a href="#property__oauthConsumer" title="$_oauthConsumer :: Zend_Oauth Consumer"><span class="description">Zend_Oauth Consumer</span><pre>$_oauthConsumer</pre></a></li>
+<li class="property protected "><a href="#property__options" title="$_options :: Options passed to constructor"><span class="description">Options passed to constructor</span><pre>$_options</pre></a></li>
+<li class="property protected "><a href="#property__subdomain" title="$_subdomain :: Subomain"><span class="description">Subomain</span><pre>$_subdomain</pre></a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="span8">
+<a id="\OSS_Service_Freshbooks"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/global.html">global</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/OSS_Service_Freshbooks.html">OSS_Service_Freshbooks</a>
+</li>
+</ul>
+<div class="element class">
+<p class="short_description"></p>
+<div class="details">
+<div class="long_description"></div>
+<table class="table table-bordered">
+<tr>
+<th>category</th>
+<td>OSS</td>
+</tr>
+<tr>
+<th>package</th>
+<td><a href="../packages/OSS.Service.html">OSS_Service</a></td>
+</tr>
+<tr>
+<th>copyright</th>
+<td>Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland</td>
+</tr>
+<tr>
+<th>license</th>
+<td><a href="http://www.opensolutions.ie/licenses/new-bsd">New BSD License</a></td>
+</tr>
+</table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a id="method___call"></a><div class="element clickable method public method___call" data-toggle="collapse" data-target=".method___call .collapse">
+<h2>Method overloading</h2>
+<pre>__call(string $method, array $params) : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$method</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$params</h4>
+<code>array</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code>\Zend_Service_Exception</code></th>
+<td>if unable to find method</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
+</div></div>
+</div>
+<a id="method___construct"></a><div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
+<h2>Constructor</h2>
+<pre>__construct(array $options, \Zend_Oauth_Consumer $consumer) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$options</h4>
+<code>array</code><p>Options array</p></div>
+<div class="subelement argument">
+<h4>$consumer</h4>
+<code>null</code><code>\Zend_Oauth_Consumer</code><p>Optional consumer</p></div>
+</div></div>
+</div>
+<a id="method___get"></a><div class="element clickable method public method___get" data-toggle="collapse" data-target=".method___get .collapse">
+<h2>Proxy service methods</h2>
+<pre>__get(string $type) : <a href="../classes/OSS_Service_Freshbooks.html">\OSS_Service_Freshbooks</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$type</h4>
+<code>string</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code>\Zend_Service_Exception</code></th>
+<td>If method not in method types list</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code><a href="../classes/OSS_Service_Freshbooks.html">\OSS_Service_Freshbooks</a></code></div>
+</div></div>
+</div>
+<a id="method_clientCreate"></a><div class="element clickable method public method_clientCreate" data-toggle="collapse" data-target=".method_clientCreate .collapse">
+<h2>Public client create</h2>
+<pre>clientCreate($params) : \Zend_Rest_Client_Result</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>params</th>
+<td>araray $params Params of request</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$params</h4></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code>\Zend_Http_Client_Exception</code></th>
+<td>if HTTP request fails or times out</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>\Zend_Rest_Client_Result</code></div>
+</div></div>
+</div>
+<a id="method_clientDelete"></a><div class="element clickable method public method_clientDelete" data-toggle="collapse" data-target=".method_clientDelete .collapse">
+<h2>Public client delete</h2>
+<pre>clientDelete(int $client_id) : \Zend_Rest_Client_Result</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$client_id</h4>
+<code>int</code><p>Id of the client</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code>\Zend_Http_Client_Exception</code></th>
+<td>if HTTP request fails or times out</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>\Zend_Rest_Client_Result</code></div>
+</div></div>
+</div>
+<a id="method_clientGet"></a><div class="element clickable method public method_clientGet" data-toggle="collapse" data-target=".method_clientGet .collapse">
+<h2>Public client get</h2>
+<pre>clientGet(int $client_id) : \Zend_Rest_Client_Result</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$client_id</h4>
+<code>int</code><p>Id of the client</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code>\Zend_Http_Client_Exception</code></th>
+<td>if HTTP request fails or times out</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>\Zend_Rest_Client_Result</code></div>
+</div></div>
+</div>
+<a id="method_clientList"></a><div class="element clickable method public method_clientList" data-toggle="collapse" data-target=".method_clientList .collapse">
+<h2>Public client list</h2>
+<pre>clientList($params) : \Zend_Rest_Client_Result</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>params</th>
+<td>araray $params Params of request</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$params</h4></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code>\Zend_Http_Client_Exception</code></th>
+<td>if HTTP request fails or times out</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>\Zend_Rest_Client_Result</code></div>
+</div></div>
+</div>
+<a id="method_clientUpdate"></a><div class="element clickable method public method_clientUpdate" data-toggle="collapse" data-target=".method_clientUpdate .collapse">
+<h2>Public client create</h2>
+<pre>clientUpdate($params) : \Zend_Rest_Client_Result</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>params</th>
+<td>araray $params Params of request</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$params</h4></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code>\Zend_Http_Client_Exception</code></th>
+<td>if HTTP request fails or times out</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>\Zend_Rest_Client_Result</code></div>
+</div></div>
+</div>
+<a id="method_getLocalHttpClient"></a><div class="element clickable method public method_getLocalHttpClient" data-toggle="collapse" data-target=".method_getLocalHttpClient .collapse">
+<h2>Get the local HTTP client as distinct from the static HTTP client
+inherited from Zend_Rest_Client</h2>
+<pre>getLocalHttpClient() : \Zend_Http_Client</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>\Zend_Http_Client</code></div>
+</div></div>
+</div>
+<a id="method_getSubdomain"></a><div class="element clickable method public method_getSubdomain" data-toggle="collapse" data-target=".method_getSubdomain .collapse">
+<h2>Retrieve username</h2>
+<pre>getSubdomain() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_invoiceCreate"></a><div class="element clickable method public method_invoiceCreate" data-toggle="collapse" data-target=".method_invoiceCreate .collapse">
+<h2>Public invoice create</h2>
+<pre>invoiceCreate($params) : \Zend_Rest_Client_Result</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>params</th>
+<td>araray $params Params of request</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$params</h4></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code>\Zend_Http_Client_Exception</code></th>
+<td>if HTTP request fails or times out</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>\Zend_Rest_Client_Result</code></div>
+</div></div>
+</div>
+<a id="method_invoiceDelete"></a><div class="element clickable method public method_invoiceDelete" data-toggle="collapse" data-target=".method_invoiceDelete .collapse">
+<h2>Public invoice delete</h2>
+<pre>invoiceDelete(int $invoice_id) : \Zend_Rest_Client_Result</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$invoice_id</h4>
+<code>int</code><p>Id of the invoice</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code>\Zend_Http_Client_Exception</code></th>
+<td>if HTTP request fails or times out</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>\Zend_Rest_Client_Result</code></div>
+</div></div>
+</div>
+<a id="method_invoiceGet"></a><div class="element clickable method public method_invoiceGet" data-toggle="collapse" data-target=".method_invoiceGet .collapse">
+<h2>Public invoice get</h2>
+<pre>invoiceGet(int $invoice_id) : \Zend_Rest_Client_Result</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$invoice_id</h4>
+<code>int</code><p>Id of the invoice</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code>\Zend_Http_Client_Exception</code></th>
+<td>if HTTP request fails or times out</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>\Zend_Rest_Client_Result</code></div>
+</div></div>
+</div>
+<a id="method_invoiceLinesAdd"></a><div class="element clickable method public method_invoiceLinesAdd" data-toggle="collapse" data-target=".method_invoiceLinesAdd .collapse">
+<h2>Public invoice lines add</h2>
+<pre>invoiceLinesAdd($params) : \Zend_Rest_Client_Result</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>params</th>
+<td>araray $params Params of request</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$params</h4></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code>\Zend_Http_Client_Exception</code></th>
+<td>if HTTP request fails or times out</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>\Zend_Rest_Client_Result</code></div>
+</div></div>
+</div>
+<a id="method_invoiceLinesDelete"></a><div class="element clickable method public method_invoiceLinesDelete" data-toggle="collapse" data-target=".method_invoiceLinesDelete .collapse">
+<h2>Public invoice line delete</h2>
+<pre>invoiceLinesDelete(int $invoice_id, int $line_id) : \Zend_Rest_Client_Result</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$invoice_id</h4>
+<code>int</code><p>Id of the invoice</p></div>
+<div class="subelement argument">
+<h4>$line_id</h4>
+<code>int</code><p>Id of the line to delete</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code>\Zend_Http_Client_Exception</code></th>
+<td>if HTTP request fails or times out</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>\Zend_Rest_Client_Result</code></div>
+</div></div>
+</div>
+<a id="method_invoiceLinesUpdate"></a><div class="element clickable method public method_invoiceLinesUpdate" data-toggle="collapse" data-target=".method_invoiceLinesUpdate .collapse">
+<h2>Public invoice lines update</h2>
+<pre>invoiceLinesUpdate($params) : \Zend_Rest_Client_Result</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>params</th>
+<td>araray $params Params of request</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$params</h4></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code>\Zend_Http_Client_Exception</code></th>
+<td>if HTTP request fails or times out</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>\Zend_Rest_Client_Result</code></div>
+</div></div>
+</div>
+<a id="method_invoiceList"></a><div class="element clickable method public method_invoiceList" data-toggle="collapse" data-target=".method_invoiceList .collapse">
+<h2>Public invoice list</h2>
+<pre>invoiceList($params) : \Zend_Rest_Client_Result</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>params</th>
+<td>araray $params Params of request</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$params</h4></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code>\Zend_Http_Client_Exception</code></th>
+<td>if HTTP request fails or times out</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>\Zend_Rest_Client_Result</code></div>
+</div></div>
+</div>
+<a id="method_invoiceSendByEmail"></a><div class="element clickable method public method_invoiceSendByEmail" data-toggle="collapse" data-target=".method_invoiceSendByEmail .collapse">
+<h2>Public invoice send by email</h2>
+<pre>invoiceSendByEmail(int $invoice_id, string $subject, string $message) : \Zend_Rest_Client_Result</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$invoice_id</h4>
+<code>int</code><p>Id of the invoice</p></div>
+<div class="subelement argument">
+<h4>$subject</h4>
+<code>string</code><p>Email subject</p></div>
+<div class="subelement argument">
+<h4>$message</h4>
+<code>string</code><p>Email body to add invoice link write '::invoice link::'.</p>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code>\Zend_Http_Client_Exception</code></th>
+<td>if HTTP request fails or times out</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>\Zend_Rest_Client_Result</code></div>
+</div></div>
+</div>
+<a id="method_invoiceUpdate"></a><div class="element clickable method public method_invoiceUpdate" data-toggle="collapse" data-target=".method_invoiceUpdate .collapse">
+<h2>Public invoice update</h2>
+<pre>invoiceUpdate($params) : \Zend_Rest_Client_Result</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>params</th>
+<td>araray $params Params of request</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$params</h4></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code>\Zend_Http_Client_Exception</code></th>
+<td>if HTTP request fails or times out</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>\Zend_Rest_Client_Result</code></div>
+</div></div>
+</div>
+<a id="method_isAuthorised"></a><div class="element clickable method public method_isAuthorised" data-toggle="collapse" data-target=".method_isAuthorised .collapse">
+<h2>Checks for an authorised state</h2>
+<pre>isAuthorised() : bool</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>bool</code></div>
+</div></div>
+</div>
+<a id="method_recurringCreate"></a><div class="element clickable method public method_recurringCreate" data-toggle="collapse" data-target=".method_recurringCreate .collapse">
+<h2>Public recurring create</h2>
+<pre>recurringCreate($params) : \Zend_Rest_Client_Result</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>params</th>
+<td>araray $params Params of request</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$params</h4></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code>\Zend_Http_Client_Exception</code></th>
+<td>if HTTP request fails or times out</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>\Zend_Rest_Client_Result</code></div>
+</div></div>
+</div>
+<a id="method_recurringDelete"></a><div class="element clickable method public method_recurringDelete" data-toggle="collapse" data-target=".method_recurringDelete .collapse">
+<h2>Public recurring delete</h2>
+<pre>recurringDelete(int $recurring_id) : \Zend_Rest_Client_Result</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$recurring_id</h4>
+<code>int</code><p>Id of the recurring</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code>\Zend_Http_Client_Exception</code></th>
+<td>if HTTP request fails or times out</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>\Zend_Rest_Client_Result</code></div>
+</div></div>
+</div>
+<a id="method_recurringGet"></a><div class="element clickable method public method_recurringGet" data-toggle="collapse" data-target=".method_recurringGet .collapse">
+<h2>Public recurring get</h2>
+<pre>recurringGet(int $recurring_id) : \Zend_Rest_Client_Result</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$recurring_id</h4>
+<code>int</code><p>Id of the recurring</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code>\Zend_Http_Client_Exception</code></th>
+<td>if HTTP request fails or times out</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>\Zend_Rest_Client_Result</code></div>
+</div></div>
+</div>
+<a id="method_recurringLinesAdd"></a><div class="element clickable method public method_recurringLinesAdd" data-toggle="collapse" data-target=".method_recurringLinesAdd .collapse">
+<h2>Public recurring lines add</h2>
+<pre>recurringLinesAdd($params) : \Zend_Rest_Client_Result</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>params</th>
+<td>araray $params Params of request</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$params</h4></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code>\Zend_Http_Client_Exception</code></th>
+<td>if HTTP request fails or times out</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>\Zend_Rest_Client_Result</code></div>
+</div></div>
+</div>
+<a id="method_recurringLinesDelete"></a><div class="element clickable method public method_recurringLinesDelete" data-toggle="collapse" data-target=".method_recurringLinesDelete .collapse">
+<h2>Public recurring line delete</h2>
+<pre>recurringLinesDelete(int $recurring_id, int $line_id) : \Zend_Rest_Client_Result</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$recurring_id</h4>
+<code>int</code><p>Id of the recurring</p></div>
+<div class="subelement argument">
+<h4>$line_id</h4>
+<code>int</code><p>Id of the line to delete</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code>\Zend_Http_Client_Exception</code></th>
+<td>if HTTP request fails or times out</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>\Zend_Rest_Client_Result</code></div>
+</div></div>
+</div>
+<a id="method_recurringLinesUpdate"></a><div class="element clickable method public method_recurringLinesUpdate" data-toggle="collapse" data-target=".method_recurringLinesUpdate .collapse">
+<h2>Public recurring lines update</h2>
+<pre>recurringLinesUpdate($params) : \Zend_Rest_Client_Result</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>params</th>
+<td>araray $params Params of request</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$params</h4></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code>\Zend_Http_Client_Exception</code></th>
+<td>if HTTP request fails or times out</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>\Zend_Rest_Client_Result</code></div>
+</div></div>
+</div>
+<a id="method_recurringList"></a><div class="element clickable method public method_recurringList" data-toggle="collapse" data-target=".method_recurringList .collapse">
+<h2>Public recurring list</h2>
+<pre>recurringList($params) : \Zend_Rest_Client_Result</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>params</th>
+<td>araray $params Params of request</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$params</h4></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code>\Zend_Http_Client_Exception</code></th>
+<td>if HTTP request fails or times out</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>\Zend_Rest_Client_Result</code></div>
+</div></div>
+</div>
+<a id="method_recurringUpdate"></a><div class="element clickable method public method_recurringUpdate" data-toggle="collapse" data-target=".method_recurringUpdate .collapse">
+<h2>Public recurring update</h2>
+<pre>recurringUpdate($params) : \Zend_Rest_Client_Result</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>params</th>
+<td>araray $params Params of request</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$params</h4></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code>\Zend_Http_Client_Exception</code></th>
+<td>if HTTP request fails or times out</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>\Zend_Rest_Client_Result</code></div>
+</div></div>
+</div>
+<a id="method_setLocalHttpClient"></a><div class="element clickable method public method_setLocalHttpClient" data-toggle="collapse" data-target=".method_setLocalHttpClient .collapse">
+<h2>Set local HTTP client as distinct from the static HTTP client
+as inherited from Zend_Rest_Client.</h2>
+<pre>setLocalHttpClient(\Zend_Http_Client $client) : <a href="../classes/OSS_Service_Freshbooks.html">\OSS_Service_Freshbooks</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$client</h4>
+<code>\Zend_Http_Client</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code><a href="../classes/OSS_Service_Freshbooks.html">\OSS_Service_Freshbooks</a></code></div>
+</div></div>
+</div>
+<a id="method_setSubdomain"></a><div class="element clickable method public method_setSubdomain" data-toggle="collapse" data-target=".method_setSubdomain .collapse">
+<h2>Set username</h2>
+<pre>setSubdomain(string $value) : <a href="../classes/OSS_Service_Freshbooks.html">\OSS_Service_Freshbooks</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$value</h4>
+<code>string</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code><a href="../classes/OSS_Service_Freshbooks.html">\OSS_Service_Freshbooks</a></code></div>
+</div></div>
+</div>
+<a id="method_systemCurrent"></a><div class="element clickable method public method_systemCurrent" data-toggle="collapse" data-target=".method_systemCurrent .collapse">
+<h2>Public system current</h2>
+<pre>systemCurrent() : \Zend_Rest_Client_Result</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code>\Zend_Http_Client_Exception</code></th>
+<td>if HTTP request fails or times out</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>\Zend_Rest_Client_Result</code></div>
+</div></div>
+</div>
+<a id="method__get"></a><div class="element clickable method protected method__get" data-toggle="collapse" data-target=".method__get .collapse">
+<h2>Performs an HTTP GET request to the $path.</h2>
+<pre>_get(string $path, array $query) : \Zend_Http_Response</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$path</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$query</h4>
+<code>array</code><p>Array of GET parameters</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code>\Zend_Http_Client_Exception</code></th>
+<td></td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>\Zend_Http_Response</code></div>
+</div></div>
+</div>
+<a id="method__init"></a><div class="element clickable method protected method__init" data-toggle="collapse" data-target=".method__init .collapse">
+<h2>Initialize HTTP authentication</h2>
+<pre>_init() : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code>\Zend_Service_Exception</code></th>
+<td>if not authorised</td>
+</tr></table>
+</div></div>
+</div>
+<a id="method__makeAddressXml"></a><div class="element clickable method protected method__makeAddressXml" data-toggle="collapse" data-target=".method__makeAddressXml .collapse">
+<h2>Makes addres string xml from address array</h2>
+<pre>_makeAddressXml(array $address, string $type) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$address</h4>
+<code>array</code><p>The address data.</p></div>
+<div class="subelement argument">
+<h4>$type</h4>
+<code>string</code><p>The type of address( primary(p | secondary (s) )</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method__makeClientXml"></a><div class="element clickable method protected method__makeClientXml" data-toggle="collapse" data-target=".method__makeClientXml .collapse">
+<h2>Makes client string xml from params</h2>
+<pre>_makeClientXml(array $params) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$params</h4>
+<code>array</code><p>The client params.</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method__makeContactsXml"></a><div class="element clickable method protected method__makeContactsXml" data-toggle="collapse" data-target=".method__makeContactsXml .collapse">
+<h2>Makes contacts string xml from contacts array</h2>
+<pre>_makeContactsXml(array $contacts) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$contacts</h4>
+<code>array</code><p>The contacts data.</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method__makeInvoiceXml"></a><div class="element clickable method protected method__makeInvoiceXml" data-toggle="collapse" data-target=".method__makeInvoiceXml .collapse">
+<h2>Makes invoice string xml from params</h2>
+<pre>_makeInvoiceXml(array $params) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$params</h4>
+<code>array</code><p>The invoice params.</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method__makeLinesXml"></a><div class="element clickable method protected method__makeLinesXml" data-toggle="collapse" data-target=".method__makeLinesXml .collapse">
+<h2>Makes lines string xml from lines array</h2>
+<pre>_makeLinesXml(array $lines) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$lines</h4>
+<code>array</code><p>The lines data.</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method__makeRecurringXml"></a><div class="element clickable method protected method__makeRecurringXml" data-toggle="collapse" data-target=".method__makeRecurringXml .collapse">
+<h2>Makes recurring string xml from params</h2>
+<pre>_makeRecurringXml(array $params) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$params</h4>
+<code>array</code><p>The recurring params.</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method__performPost"></a><div class="element clickable method protected method__performPost" data-toggle="collapse" data-target=".method__performPost .collapse">
+<h2>Perform a POST or PUT</h2>
+<pre>_performPost(mixed $method, mixed $data) : \Zend_Http_Response</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Performs a POST or PUT request. Any data provided is set in the HTTP
+client. String data is pushed in as raw POST data; array or object data
+is pushed in as POST parameters.</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$method</h4>
+<code>mixed</code>
+</div>
+<div class="subelement argument">
+<h4>$data</h4>
+<code>mixed</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>\Zend_Http_Response</code></div>
+</div></div>
+</div>
+<a id="method__post"></a><div class="element clickable method protected method__post" data-toggle="collapse" data-target=".method__post .collapse">
+<h2>Performs an HTTP POST request to $path.</h2>
+<pre>_post(string $path, mixed $data) : \Zend_Http_Response</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$path</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$data</h4>
+<code>mixed</code><p>Raw data to send</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code>\Zend_Http_Client_Exception</code></th>
+<td></td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>\Zend_Http_Response</code></div>
+</div></div>
+</div>
+<a id="method__prepare"></a><div class="element clickable method protected method__prepare" data-toggle="collapse" data-target=".method__prepare .collapse">
+<h2>Call a remote REST web service URI and return the Zend_Http_Response object</h2>
+<pre>_prepare(string $path) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$path</h4>
+<code>string</code><p>The path to append to the URI</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code>\Zend_Rest_Client_Exception</code></th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="method__setDate"></a><div class="element clickable method protected method__setDate" data-toggle="collapse" data-target=".method__setDate .collapse">
+<h2>Set date header</h2>
+<pre>_setDate(int | string $value) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$value</h4>
+<code>int</code><code>string</code>
+</div>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a id="property__cookieJar"> </a><div class="element clickable property protected property__cookieJar" data-toggle="collapse" data-target=".property__cookieJar .collapse">
+<h2>Cookie jar</h2>
+<pre>$_cookieJar : \Zend_Http_CookieJar</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property__dateFormat"> </a><div class="element clickable property protected property__dateFormat" data-toggle="collapse" data-target=".property__dateFormat .collapse">
+<h2>Date format for 'since' strings</h2>
+<pre>$_dateFormat : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property__localHttpClient"> </a><div class="element clickable property protected property__localHttpClient" data-toggle="collapse" data-target=".property__localHttpClient .collapse">
+<h2>Local HTTP Client cloned from statically set client</h2>
+<pre>$_localHttpClient : \Zend_Http_Client</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property__methodType"> </a><div class="element clickable property protected property__methodType" data-toggle="collapse" data-target=".property__methodType .collapse">
+<h2>Current method type (for method proxying)</h2>
+<pre>$_methodType : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property__methodTypes"> </a><div class="element clickable property protected property__methodTypes" data-toggle="collapse" data-target=".property__methodTypes .collapse">
+<h2>Types of API methods</h2>
+<pre>$_methodTypes : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property__oauthConsumer"> </a><div class="element clickable property protected property__oauthConsumer" data-toggle="collapse" data-target=".property__oauthConsumer .collapse">
+<h2>Zend_Oauth Consumer</h2>
+<pre>$_oauthConsumer : \Zend_Oauth_Consumer</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property__options"> </a><div class="element clickable property protected property__options" data-toggle="collapse" data-target=".property__options .collapse">
+<h2>Options passed to constructor</h2>
+<pre>$_options : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property__subdomain"> </a><div class="element clickable property protected property__subdomain" data-toggle="collapse" data-target=".property__subdomain .collapse">
+<h2>Subomain</h2>
+<pre>$_subdomain : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
+            generated on 2012-11-16T11:34:39Z.<br></footer></div>
+</div>
+</body>
+</html>

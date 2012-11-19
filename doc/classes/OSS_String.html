@@ -1,0 +1,351 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>OSS » \OSS_String</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">OSS</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Packages</a></li>
+<li><a href="../packages/OSS.html"><i class="icon-folder-open"></i> OSS</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">193</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul>
+<li>todo 
+                <span class="label label-info">2</span>
+</li>
+<li>fixme 
+                <span class="label label-info">10</span>
+</li>
+</ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list"><li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods
+                    <ul>
+<li class="method public "><a href="#method_htmlEntityDecode" title="htmlEntityDecode :: If the parameter is an array, then runs html_entity_decode() on every item of it, recursively."><span class="description">If the parameter is an array, then runs html_entity_decode() on every item of it, recursively.</span><pre>htmlEntityDecode()</pre></a></li>
+<li class="method public "><a href="#method_mb_str_replace" title="mb_str_replace :: The Unicode version of str_replace()."><span class="description">The Unicode version of str_replace().</span><pre>mb_str_replace()</pre></a></li>
+<li class="method public "><a href="#method_mb_ucfirst" title="mb_ucfirst :: The Unicode version of ucfirst()."><span class="description">The Unicode version of ucfirst().</span><pre>mb_ucfirst()</pre></a></li>
+<li class="method public "><a href="#method_mb_ucwords" title="mb_ucwords :: The Unicode version of ucwords()."><span class="description">The Unicode version of ucwords().</span><pre>mb_ucwords()</pre></a></li>
+<li class="method public "><a href="#method_normalise" title="normalise :: Removes any diacritic, accent and combining characters from the string."><span class="description">Removes any diacritic, accent and combining characters from the string.</span><pre>normalise()</pre></a></li>
+<li class="method public "><a href="#method_random" title="random :: Generates a random string."><span class="description">Generates a random string.</span><pre>random()</pre></a></li>
+<li class="method public "><a href="#method_randomFromSet" title="randomFromSet :: Returns with a random string using the characters found in $charSet only."><span class="description">Returns with a random string using the characters found in $charSet only.</span><pre>randomFromSet()</pre></a></li>
+<li class="method public "><a href="#method_randomMacAddress" title="randomMacAddress :: Generates a random MAC address."><span class="description">Generates a random MAC address.</span><pre>randomMacAddress()</pre></a></li>
+<li class="method public "><a href="#method_randomPassword" title="randomPassword :: Creates a random password string of a given length."><span class="description">Creates a random password string of a given length.</span><pre>randomPassword()</pre></a></li>
+<li class="method public "><a href="#method_salt" title="salt :: Generates a random salt."><span class="description">Generates a random salt.</span><pre>salt()</pre></a></li>
+<li class="method public "><a href="#method_stripSlashes" title="stripSlashes :: If the parameter is an array, then runs stripslashes() on every item of it, recursively."><span class="description">If the parameter is an array, then runs stripslashes() on every item of it, recursively.</span><pre>stripSlashes()</pre></a></li>
+<li class="method public "><a href="#method_toValidFieldName" title="toValidFieldName :: Takes a string, converts it to lowercase and creates a valid file name from it by replacing any
+character by an underscore which is not [0-9a-z] (so only the standard neolatin (english) alphabet is
+supported), then replaces any consecutive underscores with only one underscore."><span class="description">Takes a string, converts it to lowercase and creates a valid file name from it by replacing any
+character by an underscore which is not [0-9a-z] (so only the standard neolatin (english) alphabet is
+supported), then replaces any consecutive underscores with only one underscore.</span><pre>toValidFieldName()</pre></a></li>
+</ul>
+</li></ul>
+</div>
+<div class="span8">
+<a id="\OSS_String"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/global.html">global</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/OSS_String.html">OSS_String</a>
+</li>
+</ul>
+<div class="element class">
+<p class="short_description">Class for string actions</p>
+<div class="details">
+<div class="long_description"></div>
+<table class="table table-bordered">
+<tr>
+<th>category</th>
+<td>OSS</td>
+</tr>
+<tr>
+<th>package</th>
+<td><a href="../packages/OSS.String.html">OSS_String</a></td>
+</tr>
+<tr>
+<th>copyright</th>
+<td>Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland</td>
+</tr>
+<tr>
+<th>license</th>
+<td><a href="http://www.opensolutions.ie/licenses/new-bsd">New BSD License</a></td>
+</tr>
+</table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a id="method_htmlEntityDecode"></a><div class="element clickable method public method_htmlEntityDecode" data-toggle="collapse" data-target=".method_htmlEntityDecode .collapse">
+<h2>If the parameter is an array, then runs html_entity_decode() on every item of it, recursively.</h2>
+<pre>htmlEntityDecode(mixed $input) : array | string</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Otherwise treats the input as a string, and runs html_entity_decode() on it. If the input is an
+object, then the return value will be an array of the public object properties.
+The return value is either a string or an array.</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$input</h4>
+<code>mixed</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code><code>string</code>
+</div>
+</div></div>
+</div>
+<a id="method_mb_str_replace"></a><div class="element clickable method public method_mb_str_replace" data-toggle="collapse" data-target=".method_mb_str_replace .collapse">
+<h2>The Unicode version of str_replace().</h2>
+<pre>mb_str_replace(string $needle, string $replacement, string $haystack) : string</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$needle</h4>
+<code>string</code><p>The string portion to replace in the haystack</p></div>
+<div class="subelement argument">
+<h4>$replacement</h4>
+<code>string</code><p>The replacement for the string portion</p></div>
+<div class="subelement argument">
+<h4>$haystack</h4>
+<code>string</code><p>The haystack</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_mb_ucfirst"></a><div class="element clickable method public method_mb_ucfirst" data-toggle="collapse" data-target=".method_mb_ucfirst .collapse">
+<h2>The Unicode version of ucfirst().</h2>
+<pre>mb_ucfirst(string $string, string $encoding) : string</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$string</h4>
+<code>string</code><p>the input string</p></div>
+<div class="subelement argument">
+<h4>$encoding</h4>
+<code>string</code><p>default null the character encoding, if omitted the the PHP internal encoding is used</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_mb_ucwords"></a><div class="element clickable method public method_mb_ucwords" data-toggle="collapse" data-target=".method_mb_ucwords .collapse">
+<h2>The Unicode version of ucwords().</h2>
+<pre>mb_ucwords(string $string, string $encoding) : string</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$string</h4>
+<code>string</code><p>the input string</p></div>
+<div class="subelement argument">
+<h4>$encoding</h4>
+<code>string</code><p>default null the character encoding, if omitted the the PHP internal encoding is used</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_normalise"></a><div class="element clickable method public method_normalise" data-toggle="collapse" data-target=".method_normalise .collapse">
+<h2>Removes any diacritic, accent and combining characters from the string.</h2>
+<pre>normalise(string $input) : string</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>These settings should be set for working results:
+mb_language('uni');
+mb_internal_encoding('UTF-8');
+setlocale(LC_ALL, "en_IE.utf8"); //or any other locale, as long as it's utf8</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$input</h4>
+<code>string</code><p>the original input string</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_random"></a><div class="element clickable method public method_random" data-toggle="collapse" data-target=".method_random .collapse">
+<h2>Generates a random string.</h2>
+<pre>random(int $length, bool $lowerCase, bool $upperCase, bool $numbers, string $additional, string $exclude) : string</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$length</h4>
+<code>int</code><p>The length of the random string we want to generate. Default: 16</p></div>
+<div class="subelement argument">
+<h4>$lowerCase</h4>
+<code>bool</code><p>If true then lowercase characters will be used. Default: true</p></div>
+<div class="subelement argument">
+<h4>$upperCase</h4>
+<code>bool</code><p>If true then uppercase characters will be used. Default: true</p></div>
+<div class="subelement argument">
+<h4>$numbers</h4>
+<code>bool</code><p>If true then numbers will be used. Default: true</p></div>
+<div class="subelement argument">
+<h4>$additional</h4>
+<code>string</code><p>These characters also will be used. Default: ''</p>
+</div>
+<div class="subelement argument">
+<h4>$exclude</h4>
+<code>string</code><p>These characters will be excluded. Default: '1iIl0O'</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_randomFromSet"></a><div class="element clickable method public method_randomFromSet" data-toggle="collapse" data-target=".method_randomFromSet .collapse">
+<h2>Returns with a random string using the characters found in $charSet only.</h2>
+<pre>randomFromSet(string $charSet, int $length) : string</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$charSet</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$length</h4>
+<code>int</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_randomMacAddress"></a><div class="element clickable method public method_randomMacAddress" data-toggle="collapse" data-target=".method_randomMacAddress .collapse">
+<h2>Generates a random MAC address.</h2>
+<pre>randomMacAddress(bool $upperCase) : string</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$upperCase</h4>
+<code>bool</code><p>default false</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_randomPassword"></a><div class="element clickable method public method_randomPassword" data-toggle="collapse" data-target=".method_randomPassword .collapse">
+<h2>Creates a random password string of a given length.</h2>
+<pre>randomPassword(int $length) : string</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Not the fastest way of generating random passwords, but ensures that it contains
+both lowercase and uppercase letters and digits, so complies with our password strength "policy".</p>
+
+<p>Some letters are excluded from the character set: 1, 0, O, I, l</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$length</h4>
+<code>int</code><p>The length of the password to be generated.</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>The password string.</div>
+</div></div>
+</div>
+<a id="method_salt"></a><div class="element clickable method public method_salt" data-toggle="collapse" data-target=".method_salt .collapse">
+<h2>Generates a random salt.</h2>
+<pre>salt(int $len) : string</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$len</h4>
+<code>int</code><p>Length of return salt.</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_stripSlashes"></a><div class="element clickable method public method_stripSlashes" data-toggle="collapse" data-target=".method_stripSlashes .collapse">
+<h2>If the parameter is an array, then runs stripslashes() on every item of it, recursively.</h2>
+<pre>stripSlashes(mixed $input) : array | string</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Otherwise treats the input as a string, and runs stripslashes() on it. If the input is an
+object, then the return value will be an array of the public object properties.
+The return value is either a string or an array.</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$input</h4>
+<code>mixed</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code><code>string</code>
+</div>
+</div></div>
+</div>
+<a id="method_toValidFieldName"></a><div class="element clickable method public method_toValidFieldName" data-toggle="collapse" data-target=".method_toValidFieldName .collapse">
+<h2>Takes a string, converts it to lowercase and creates a valid file name from it by replacing any
+character by an underscore which is not [0-9a-z] (so only the standard neolatin (english) alphabet is
+supported), then replaces any consecutive underscores with only one underscore.</h2>
+<pre>toValidFieldName(string $string) : string</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Leading and trailing
+underscores are also removed.</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$string</h4>
+<code>string</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
+            generated on 2012-11-16T11:34:40Z.<br></footer></div>
+</div>
+</body>
+</html>

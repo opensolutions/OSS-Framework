@@ -1,0 +1,439 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>OSS » \OSS_Curl</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">OSS</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Packages</a></li>
+<li><a href="../packages/OSS.html"><i class="icon-folder-open"></i> OSS</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">193</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul>
+<li>todo 
+                <span class="label label-info">2</span>
+</li>
+<li>fixme 
+                <span class="label label-info">10</span>
+</li>
+</ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods
+                    <ul>
+<li class="method public "><a href="#method___construct" title="__construct :: Constructor"><span class="description">Constructor</span><pre>__construct()</pre></a></li>
+<li class="method public "><a href="#method_close" title="close :: Closing curl object"><span class="description">Closing curl object</span><pre>close()</pre></a></li>
+<li class="method public "><a href="#method_execute" title="execute :: Sends a request to the the specified URL and returns with the response."><span class="description">Sends a request to the the specified URL and returns with the response.</span><pre>execute()</pre></a></li>
+<li class="method public "><a href="#method_getError" title="getError :: Gets error message"><span class="description">Gets error message</span><pre>getError()</pre></a></li>
+<li class="method public "><a href="#method_getErrorCode" title="getErrorCode :: Gets response"><span class="description">Gets response</span><pre>getErrorCode()</pre></a></li>
+<li class="method public "><a href="#method_getErrorMsg" title="getErrorMsg :: Gets error message"><span class="description">Gets error message</span><pre>getErrorMsg()</pre></a></li>
+<li class="method public "><a href="#method_getMethod" title="getMethod :: Gets method"><span class="description">Gets method</span><pre>getMethod()</pre></a></li>
+<li class="method public "><a href="#method_getResponse" title="getResponse :: Gets response"><span class="description">Gets response</span><pre>getResponse()</pre></a></li>
+<li class="method public "><a href="#method_getUrl" title="getUrl :: Gets URL"><span class="description">Gets URL</span><pre>getUrl()</pre></a></li>
+<li class="method public "><a href="#method_httpBuildQuery" title="httpBuildQuery :: Represents an associative array ('key' =&gt; 'value', 'key' =&gt; 'value', ."><span class="description">Represents an associative array ('key' =&gt; 'value', 'key' =&gt; 'value', .</span><pre>httpBuildQuery()</pre></a></li>
+<li class="method public "><a href="#method_init" title="init :: Initialize cURL object"><span class="description">Initialize cURL object</span><pre>init()</pre></a></li>
+<li class="method public "><a href="#method_login" title="login :: Set login parameters to cURL."><span class="description">Set login parameters to cURL.</span><pre>login()</pre></a></li>
+<li class="method public "><a href="#method_setData" title="setData :: Set data"><span class="description">Set data</span><pre>setData()</pre></a></li>
+<li class="method public "><a href="#method_setMethod" title="setMethod :: Sets method"><span class="description">Sets method</span><pre>setMethod()</pre></a></li>
+<li class="method public "><a href="#method_setOption" title="setOption :: Set additional options for curl"><span class="description">Set additional options for curl</span><pre>setOption()</pre></a></li>
+<li class="method public "><a href="#method_setUrl" title="setUrl :: Sets URL"><span class="description">Sets URL</span><pre>setUrl()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties
+                    <ul></ul>
+</li>
+<li class="nav-header private">» Private
+                    <ul>
+<li class="property private "><a href="#property__curlHandler" title="$_curlHandler :: The cURL handler."><span class="description">The cURL handler.</span><pre>$_curlHandler</pre></a></li>
+<li class="property private "><a href="#property__method" title="$_method :: Curl method POST or GET"><span class="description">Curl method POST or GET</span><pre>$_method</pre></a></li>
+<li class="property private "><a href="#property__response" title="$_response :: cURl response"><span class="description">cURl response</span><pre>$_response</pre></a></li>
+<li class="property private "><a href="#property__url" title="$_url :: URL for cURL"><span class="description">URL for cURL</span><pre>$_url</pre></a></li>
+</ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-constant"></i> Constants
+                    <ul>
+<li class="constant  "><a href="#constant_HTTP_DELETE" title="HTTP_DELETE :: "><span class="description">HTTP_DELETE</span><pre>HTTP_DELETE</pre></a></li>
+<li class="constant  "><a href="#constant_HTTP_GET" title="HTTP_GET :: "><span class="description">HTTP_GET</span><pre>HTTP_GET</pre></a></li>
+<li class="constant  "><a href="#constant_HTTP_POST" title="HTTP_POST :: "><span class="description">HTTP_POST</span><pre>HTTP_POST</pre></a></li>
+<li class="constant  "><a href="#constant_RFC_1738" title="RFC_1738 :: "><span class="description">RFC_1738</span><pre>RFC_1738</pre></a></li>
+<li class="constant  "><a href="#constant_RFC_3986" title="RFC_3986 :: "><span class="description">RFC_3986</span><pre>RFC_3986</pre></a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="span8">
+<a id="\OSS_Curl"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/global.html">global</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/OSS_Curl.html">OSS_Curl</a>
+</li>
+</ul>
+<div class="element class">
+<p class="short_description"></p>
+<div class="details">
+<div class="long_description"></div>
+<table class="table table-bordered">
+<tr>
+<th>category</th>
+<td>OSS</td>
+</tr>
+<tr>
+<th>package</th>
+<td><a href="../packages/OSS.Countries.html">OSS_Countries</a></td>
+</tr>
+<tr>
+<th>copyright</th>
+<td>Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland</td>
+</tr>
+<tr>
+<th>license</th>
+<td><a href="http://www.opensolutions.ie/licenses/new-bsd">New BSD License</a></td>
+</tr>
+</table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a id="method___construct"></a><div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
+<h2>Constructor</h2>
+<pre>__construct(int $connectTimeOut, int $requestTimeOut, bool $returnTransfer, string $userName, string $password) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$connectTimeOut</h4>
+<code>int</code><p>Connection time out, default is 3 seconds.</p></div>
+<div class="subelement argument">
+<h4>$requestTimeOut</h4>
+<code>int</code><p>Request time out, default is 5 seconds,</p></div>
+<div class="subelement argument">
+<h4>$returnTransfer</h4>
+<code>bool</code>
+</div>
+<div class="subelement argument">
+<h4>$userName</h4>
+<code>string</code><p>User name if page url requires authorization</p></div>
+<div class="subelement argument">
+<h4>$password</h4>
+<code>string</code><p>Password if page url requires authorization</p></div>
+</div></div>
+</div>
+<a id="method_close"></a><div class="element clickable method public method_close" data-toggle="collapse" data-target=".method_close .collapse">
+<h2>Closing curl object</h2>
+<pre>close() : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_execute"></a><div class="element clickable method public method_execute" data-toggle="collapse" data-target=".method_execute .collapse">
+<h2>Sends a request to the the specified URL and returns with the response.</h2>
+<pre>execute(string $pUrl, string | array | object | null $pData, string $pMethod, int $pResponseCode) : string | boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>If $pData is not empty in a GET request, then it will be appended to the URL. In this case arrays are passed through http_build_query() first
+(so the values are urlencode()-ed), strings just simply appended to the URL. Append means the function will add the leading '?', too.</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$pUrl</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$pData</h4>
+<code>string</code><code>array</code><code>object</code><code>null</code><p>arrays values and object properties are automatically urlencode()-ed, otherwise you have to do it yourself if you pass a string</p>
+</div>
+<div class="subelement argument">
+<h4>$pMethod</h4>
+<code>string</code><p>default self::HTTP_POST it can be HTTP_GET, HTTP_POST or HTTP_DELETE, any other value will be replaced by HTTP_POST; case insensitive</p></div>
+<div class="subelement argument">
+<h4>$pResponseCode</h4>
+<code>int</code><p>the HTTP response code is placed in this parameter</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code><code>boolean</code>a response string if $pReturnTransfer was true in init(), otherwise true on success or false on error</div>
+</div></div>
+</div>
+<a id="method_getError"></a><div class="element clickable method public method_getError" data-toggle="collapse" data-target=".method_getError .collapse">
+<h2>Gets error message</h2>
+<pre>getError() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_getErrorCode"></a><div class="element clickable method public method_getErrorCode" data-toggle="collapse" data-target=".method_getErrorCode .collapse">
+<h2>Gets response</h2>
+<pre>getErrorCode() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_getErrorMsg"></a><div class="element clickable method public method_getErrorMsg" data-toggle="collapse" data-target=".method_getErrorMsg .collapse">
+<h2>Gets error message</h2>
+<pre>getErrorMsg() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_getMethod"></a><div class="element clickable method public method_getMethod" data-toggle="collapse" data-target=".method_getMethod .collapse">
+<h2>Gets method</h2>
+<pre>getMethod() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_getResponse"></a><div class="element clickable method public method_getResponse" data-toggle="collapse" data-target=".method_getResponse .collapse">
+<h2>Gets response</h2>
+<pre>getResponse() : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
+</div></div>
+</div>
+<a id="method_getUrl"></a><div class="element clickable method public method_getUrl" data-toggle="collapse" data-target=".method_getUrl .collapse">
+<h2>Gets URL</h2>
+<pre>getUrl() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_httpBuildQuery"></a><div class="element clickable method public method_httpBuildQuery" data-toggle="collapse" data-target=".method_httpBuildQuery .collapse">
+<h2>Represents an associative array ('key' =&gt; 'value', 'key' =&gt; 'value', .</h2>
+<pre>httpBuildQuery(array $pArray, $pMode) : string</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>..) in an RFC 1738 or 3986 format. It does what http_build_query() does, but
+http_build_query() only supports the older RFC 1738 format. New versions of PHP will support RFC 3986 natively, probably as of version
+5.3.6 and 5.2.11. Check the online PHP documentation and your PHP version. By default this method is also using http_build_query() in
+RFC 1738 mode.</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$pArray</h4>
+<code>array</code>
+</div>
+<div class="subelement argument"><h4>$pMode</h4></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_init"></a><div class="element clickable method public method_init" data-toggle="collapse" data-target=".method_init .collapse">
+<h2>Initialize cURL object</h2>
+<pre>init(int $connectTimeOut, int $requestTimeOut, bool $returnTransfer, string $userName, string $password) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$connectTimeOut</h4>
+<code>int</code><p>Connection time out, default is 3 seconds.</p></div>
+<div class="subelement argument">
+<h4>$requestTimeOut</h4>
+<code>int</code><p>Request time out, default is 5 seconds,</p></div>
+<div class="subelement argument">
+<h4>$returnTransfer</h4>
+<code>bool</code>
+</div>
+<div class="subelement argument">
+<h4>$userName</h4>
+<code>string</code><p>User name if page url requires authorization</p></div>
+<div class="subelement argument">
+<h4>$password</h4>
+<code>string</code><p>Password if page url requires authorization</p></div>
+</div></div>
+</div>
+<a id="method_login"></a><div class="element clickable method public method_login" data-toggle="collapse" data-target=".method_login .collapse">
+<h2>Set login parameters to cURL.</h2>
+<pre>login(string $userName, string $password) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>If url requires authorization</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$userName</h4>
+<code>string</code><p>User name if page url requires authorization</p></div>
+<div class="subelement argument">
+<h4>$password</h4>
+<code>string</code><p>Password if page url requires authorization</p></div>
+</div></div>
+</div>
+<a id="method_setData"></a><div class="element clickable method public method_setData" data-toggle="collapse" data-target=".method_setData .collapse">
+<h2>Set data</h2>
+<pre>setData(array $data) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Please note that it overwrites (extends with data) the URL in GET requests.</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$data</h4>
+<code>array</code>
+</div>
+</div></div>
+</div>
+<a id="method_setMethod"></a><div class="element clickable method public method_setMethod" data-toggle="collapse" data-target=".method_setMethod .collapse">
+<h2>Sets method</h2>
+<pre>setMethod(string $method) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$method</h4>
+<code>string</code><p>One of methods POST, GET, DELETE.</p></div>
+</div></div>
+</div>
+<a id="method_setOption"></a><div class="element clickable method public method_setOption" data-toggle="collapse" data-target=".method_setOption .collapse">
+<h2>Set additional options for curl</h2>
+<pre>setOption(string $option, mixed $value) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$option</h4>
+<code>string</code><p>Option name</p></div>
+<div class="subelement argument">
+<h4>$value</h4>
+<code>mixed</code><p>Parameter value</p></div>
+</div></div>
+</div>
+<a id="method_setUrl"></a><div class="element clickable method public method_setUrl" data-toggle="collapse" data-target=".method_setUrl .collapse">
+<h2>Sets URL</h2>
+<pre>setUrl(string $url) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$url</h4>
+<code>string</code><p>Requests URL</p></div>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a id="property__curlHandler"> </a><div class="element clickable property private property__curlHandler" data-toggle="collapse" data-target=".property__curlHandler .collapse">
+<h2>The cURL handler.</h2>
+<pre>$_curlHandler : resource</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"><p>We need a global variable to store the handle between cURL operations, so we can use persistent connections.</p></div></div></div>
+</div>
+<a id="property__method"> </a><div class="element clickable property private property__method" data-toggle="collapse" data-target=".property__method .collapse">
+<h2>Curl method POST or GET</h2>
+<pre>$_method : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property__response"> </a><div class="element clickable property private property__response" data-toggle="collapse" data-target=".property__response .collapse">
+<h2>cURl response</h2>
+<pre>$_response : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property__url"> </a><div class="element clickable property private property__url" data-toggle="collapse" data-target=".property__url .collapse">
+<h2>URL for cURL</h2>
+<pre>$_url : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<h3>
+<i class="icon-custom icon-constant"></i> Constants</h3>
+<a id="constant_HTTP_DELETE"> </a><div class="element clickable constant  constant_HTTP_DELETE" data-toggle="collapse" data-target=".constant_HTTP_DELETE .collapse">
+<h2>HTTP_DELETE</h2>
+<pre>HTTP_DELETE </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_HTTP_GET"> </a><div class="element clickable constant  constant_HTTP_GET" data-toggle="collapse" data-target=".constant_HTTP_GET .collapse">
+<h2>HTTP_GET</h2>
+<pre>HTTP_GET </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_HTTP_POST"> </a><div class="element clickable constant  constant_HTTP_POST" data-toggle="collapse" data-target=".constant_HTTP_POST .collapse">
+<h2>HTTP_POST</h2>
+<pre>HTTP_POST </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_RFC_1738"> </a><div class="element clickable constant  constant_RFC_1738" data-toggle="collapse" data-target=".constant_RFC_1738 .collapse">
+<h2>RFC_1738</h2>
+<pre>RFC_1738 </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_RFC_3986"> </a><div class="element clickable constant  constant_RFC_3986" data-toggle="collapse" data-target=".constant_RFC_3986 .collapse">
+<h2>RFC_3986</h2>
+<pre>RFC_3986 </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
+            generated on 2012-11-16T11:34:39Z.<br></footer></div>
+</div>
+</body>
+</html>

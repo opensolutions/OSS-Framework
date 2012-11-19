@@ -1,0 +1,947 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>OSS » \OSS_PaymentProcessor_Realex</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">OSS</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Packages</a></li>
+<li><a href="../packages/OSS.html"><i class="icon-folder-open"></i> OSS</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">193</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul>
+<li>todo 
+                <span class="label label-info">2</span>
+</li>
+<li>fixme 
+                <span class="label label-info">10</span>
+</li>
+</ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods
+                    <ul>
+<li class="method public "><a href="#method___construct" title="__construct :: Realex Payment gateway processor"><span class="description">Realex Payment gateway processor</span><pre>__construct()</pre></a></li>
+<li class="method public "><a href="#method_cancelCard" title="cancelCard :: Removes a &quot;card&quot; from Realex's systems."><span class="description">Removes a "card" from Realex's systems.</span><pre>cancelCard()</pre></a></li>
+<li class="method public "><a href="#method_createCardRef" title="createCardRef :: Created a unique Relaex credit card reference ID"><span class="description">Created a unique Relaex credit card reference ID</span><pre>createCardRef()</pre></a></li>
+<li class="method public "><a href="#method_createOrderId" title="createOrderId :: Create a unique Realex order id."><span class="description">Create a unique Realex order id.</span><pre>createOrderId()</pre></a></li>
+<li class="method public "><a href="#method_createPayerRef" title="createPayerRef :: Creates a unique Realex payer reference ID"><span class="description">Creates a unique Realex payer reference ID</span><pre>createPayerRef()</pre></a></li>
+<li class="method public "><a href="#method_editPayer" title="editPayer :: Updates a &quot;payer&quot; in Realex's systems."><span class="description">Updates a "payer" in Realex's systems.</span><pre>editPayer()</pre></a></li>
+<li class="method public "><a href="#method_getCardType" title="getCardType :: Returns with the realEx code for credit card type."><span class="description">Returns with the realEx code for credit card type.</span><pre>getCardType()</pre></a></li>
+<li class="method public "><a href="#method_getMoneyFromCustomer" title="getMoneyFromCustomer :: Takes money from &quot;payer&quot; in Realex's systems."><span class="description">Takes money from "payer" in Realex's systems.</span><pre>getMoneyFromCustomer()</pre></a></li>
+<li class="method public "><a href="#method_getTimeStamp" title="getTimeStamp :: Returns with a YYYYmmddhhmmss format timestamp used in Realex transactions."><span class="description">Returns with a YYYYmmddhhmmss format timestamp used in Realex transactions.</span><pre>getTimeStamp()</pre></a></li>
+<li class="method public "><a href="#method_giveMoneyToCustomer" title="giveMoneyToCustomer :: Gives money from &quot;payer&quot; in Realex's systems."><span class="description">Gives money from "payer" in Realex's systems.</span><pre>giveMoneyToCustomer()</pre></a></li>
+<li class="method public "><a href="#method_newCard" title="newCard :: Creates a new &quot;credit card&quot; in Realex's systems."><span class="description">Creates a new "credit card" in Realex's systems.</span><pre>newCard()</pre></a></li>
+<li class="method public "><a href="#method_newPayer" title="newPayer :: Creates a new &quot;payer&quot; in Realex's systems."><span class="description">Creates a new "payer" in Realex's systems.</span><pre>newPayer()</pre></a></li>
+<li class="method public "><a href="#method_paymentOut" title="paymentOut :: Creates a new &quot;refund&quot; in Realex's systems."><span class="description">Creates a new "refund" in Realex's systems.</span><pre>paymentOut()</pre></a></li>
+<li class="method public "><a href="#method_receiptIn" title="receiptIn :: Creates a new &quot;payment&quot; in Realex's systems."><span class="description">Creates a new "payment" in Realex's systems.</span><pre>receiptIn()</pre></a></li>
+<li class="method public "><a href="#method_updateCard" title="updateCard :: Updates a &quot;credit card&quot; in Realex's systems."><span class="description">Updates a "credit card" in Realex's systems.</span><pre>updateCard()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header protected">» Protected
+                    <ul>
+<li class="method protected "><a href="#method_getD2EM" title="getD2EM :: Access method for the merchant ID"><span class="description">Access method for the merchant ID</span><pre>getD2EM()</pre></a></li>
+<li class="method protected "><a href="#method_getMerchantId" title="getMerchantId :: Access method for the merchant ID"><span class="description">Access method for the merchant ID</span><pre>getMerchantId()</pre></a></li>
+<li class="method protected "><a href="#method_getMerchantSecret" title="getMerchantSecret :: Access method for the merchant secret"><span class="description">Access method for the merchant secret</span><pre>getMerchantSecret()</pre></a></li>
+<li class="method protected "><a href="#method_getRefundPassword" title="getRefundPassword :: Access method for the refund password"><span class="description">Access method for the refund password</span><pre>getRefundPassword()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header private">» Private
+                    <ul>
+<li class="method private "><a href="#method__checkResponse" title="_checkResponse :: Takes a Realex response and returns with its response code after additional checks"><span class="description">Takes a Realex response and returns with its response code after additional checks</span><pre>_checkResponse()</pre></a></li>
+<li class="method private "><a href="#method__completeFakeTransation" title="_completeFakeTransation :: Set fake CreditcardTransactions entries for a complete fake transaction"><span class="description">Set fake CreditcardTransactions entries for a complete fake transaction</span><pre>_completeFakeTransation()</pre></a></li>
+<li class="method private "><a href="#method__log" title="_log :: Log a message if we have an instance of a logger"><span class="description">Log a message if we have an instance of a logger</span><pre>_log()</pre></a></li>
+<li class="method private "><a href="#method__parseResponse" title="_parseResponse :: Parse the XML response from Realex and update the transaction object"><span class="description">Parse the XML response from Realex and update the transaction object</span><pre>_parseResponse()</pre></a></li>
+<li class="method private "><a href="#method__sendRequest" title="_sendRequest :: Sends an XML formatted request to Realex using cURL"><span class="description">Sends an XML formatted request to Realex using cURL</span><pre>_sendRequest()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties
+                    <ul>
+<li class="property public "><a href="#property_CARD_TYPES" title="$CARD_TYPES :: Valid credit/debit card types"><span class="description">Valid credit/debit card types</span><pre>$CARD_TYPES</pre></a></li>
+<li class="property public "><a href="#property_ERR_TEXT" title="$ERR_TEXT :: An array of error strings for the ERR_RESPONSE."><span class="description">An array of error strings for the ERR_RESPONSE.</span><pre>$ERR_TEXT</pre></a></li>
+<li class="property public "><a href="#property_OPTIONAL_PARAMS" title="$OPTIONAL_PARAMS :: An array of the optional application.ini parameters (defaults set with their definitions)."><span class="description">An array of the optional application.ini parameters (defaults set with their definitions).</span><pre>$OPTIONAL_PARAMS</pre></a></li>
+<li class="property public "><a href="#property_REQUIRED_PARAMS" title="$REQUIRED_PARAMS :: An array of the mandatory application.ini parameters."><span class="description">An array of the mandatory application.ini parameters.</span><pre>$REQUIRED_PARAMS</pre></a></li>
+</ul>
+</li>
+<li class="nav-header private">» Private
+                    <ul>
+<li class="property private "><a href="#property__account" title="$_account :: "><span class="description">&lt;p&gt;The account to use for receipt-in / receipt-out&lt;/p&gt;
+</span><pre>$_account</pre></a></li>
+<li class="property private "><a href="#property__cgi_timeout" title="$_cgi_timeout :: "><span class="description">&lt;p&gt;The maximum number of seconds for the cURL operation&lt;/p&gt;</span><pre>$_cgi_timeout</pre></a></li>
+<li class="property private "><a href="#property__cgi_url" title="$_cgi_url :: The CGI Url"><span class="description">The CGI Url</span><pre>$_cgi_url</pre></a></li>
+<li class="property private "><a href="#property__d2em" title="$_d2em :: The Doctrine2 entity manager"><span class="description">The Doctrine2 entity manager</span><pre>$_d2em</pre></a></li>
+<li class="property private "><a href="#property__fake_transactions" title="$_fake_transactions :: Fake transactions allows all operations to appear to succeed including
+updates to local database tables but it never contacts Realex and fakes
+all operations."><span class="description">Fake transactions allows all operations to appear to succeed including
+updates to local database tables but it never contacts Realex and fakes
+all operations.</span><pre>$_fake_transactions</pre></a></li>
+<li class="property private "><a href="#property__keep_request_data" title="$_keep_request_data :: For security reasons, we clear the request data from the database after a sucessful
+Realex API/CGI call."><span class="description">For security reasons, we clear the request data from the database after a sucessful
+Realex API/CGI call.</span><pre>$_keep_request_data</pre></a></li>
+<li class="property private "><a href="#property__logger" title="$_logger :: An instance of OSS_Log for logging."><span class="description">An instance of OSS_Log for logging.</span><pre>$_logger</pre></a></li>
+<li class="property private "><a href="#property__merchant_id" title="$_merchant_id :: "><span class="description">&lt;p&gt;Our assigned merchant ID&lt;/p&gt;</span><pre>$_merchant_id</pre></a></li>
+<li class="property private "><a href="#property__merchant_secret" title="$_merchant_secret :: "><span class="description">&lt;p&gt;Our assigned shared secret&lt;/p&gt;</span><pre>$_merchant_secret</pre></a></li>
+<li class="property private "><a href="#property__refund_password" title="$_refund_password :: "><span class="description">&lt;p&gt;Our assigned refund password&lt;/p&gt;</span><pre>$_refund_password</pre></a></li>
+<li class="property private "><a href="#property__user_agent" title="$_user_agent :: "><span class="description">&lt;p&gt;The user agent to report to the CGI&lt;/p&gt;</span><pre>$_user_agent</pre></a></li>
+</ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-constant"></i> Constants
+                    <ul>
+<li class="constant  "><a href="#constant_CARD_TYPE_LASER" title="CARD_TYPE_LASER :: "><span class="description">CARD_TYPE_LASER</span><pre>CARD_TYPE_LASER</pre></a></li>
+<li class="constant  "><a href="#constant_CARD_TYPE_MASTERCARD" title="CARD_TYPE_MASTERCARD :: "><span class="description">CARD_TYPE_MASTERCARD</span><pre>CARD_TYPE_MASTERCARD</pre></a></li>
+<li class="constant  "><a href="#constant_CARD_TYPE_VISA" title="CARD_TYPE_VISA :: "><span class="description">CARD_TYPE_VISA</span><pre>CARD_TYPE_VISA</pre></a></li>
+<li class="constant  "><a href="#constant_ERR_RESPONSE_INVALID_HASH" title="ERR_RESPONSE_INVALID_HASH :: An error code to indicate if the response hash is invalid"><span class="description">An error code to indicate if the response hash is invalid</span><pre>ERR_RESPONSE_INVALID_HASH</pre></a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="span8">
+<a id="\OSS_PaymentProcessor_Realex"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/global.html">global</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/OSS_PaymentProcessor_Realex.html">OSS_PaymentProcessor_Realex</a>
+</li>
+</ul>
+<div class="element class">
+<p class="short_description"></p>
+<div class="details">
+<div class="long_description"></div>
+<table class="table table-bordered">
+<tr>
+<th>category</th>
+<td>OSS</td>
+</tr>
+<tr>
+<th>package</th>
+<td><a href="../packages/OSS.PaymentProcessor.html">OSS_PaymentProcessor</a></td>
+</tr>
+<tr>
+<th>copyright</th>
+<td>Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland</td>
+</tr>
+<tr>
+<th>license</th>
+<td><a href="http://www.opensolutions.ie/licenses/new-bsd">New BSD License</a></td>
+</tr>
+</table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a id="method___construct"></a><div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
+<h2>Realex Payment gateway processor</h2>
+<pre>__construct(array $config, \OSS_Log $logger) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$config</h4>
+<code>array</code><p>An associated array of realex.* parameters from application.ini</p>
+</div>
+<div class="subelement argument">
+<h4>$logger</h4>
+<code><a href="../classes/OSS_Log.html">\OSS_Log</a></code><p>An optional instance of an OSS_Log object if you want logging</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/OSS_PaymentProcessor_Realex_Exception.html">\OSS_PaymentProcessor_Realex_Exception</a></code></th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="method_cancelCard"></a><div class="element clickable method public method_cancelCard" data-toggle="collapse" data-target=".method_cancelCard .collapse">
+<h2>Removes a "card" from Realex's systems.</h2>
+<pre>cancelCard(\Entities\RealexCard $card) : \CreditcardTrasaction</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Sends a 'card-cancel-card' request to Realex which remove credit card from Realex.</p>
+
+<p>This also logs the transaction into the \Entities\RealexTransaction table,
+and returns that object which can be queried for the request and transaction
+state.</p>
+
+<p>If $this->_fake_transactions is true then it skips the Realex request and returns with
+success after performing all normal database operations as if the request was sent.</p></div>
+<table class="table table-bordered"><tr>
+<th>see</th>
+<td><a href="">\global\$_fake_transactions</a></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$card</h4>
+<code>\Entities\RealexCard</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>\CreditcardTrasaction</code>$rtrans</div>
+</div></div>
+</div>
+<a id="method_createCardRef"></a><div class="element clickable method public method_createCardRef" data-toggle="collapse" data-target=".method_createCardRef .collapse">
+<h2>Created a unique Relaex credit card reference ID</h2>
+<pre>createCardRef(\Entities\RealexCard $card) : string</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>All cards added to the Realex store (linked to a payer) must be
+uniquely identifiable with a unique key. We use the integer primary
+key from the \Entities\RealexCard table.</p>
+
+<p>These cards are added to payers in the Realex system.</p></div>
+<table class="table table-bordered"><tr>
+<th>see</th>
+<td><a href="">\global\OSS_PaymentProcessor_Realex::createCreditCardRef()</a></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$card</h4>
+<code>\Entities\RealexCard</code><p>The instance of the \Entities\RelaexCard object</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>The unqiue card ID</div>
+</div></div>
+</div>
+<a id="method_createOrderId"></a><div class="element clickable method public method_createOrderId" data-toggle="collapse" data-target=".method_createOrderId .collapse">
+<h2>Create a unique Realex order id.</h2>
+<pre>createOrderId(\Entities\RealexTrasaction $rtrans) : string</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Every Realex transaction must have a unique order id. We use the integer primary
+key of the \Entities\RealexTransaction table (which records all Realex transactions)
+for this.</p></div>
+<table class="table table-bordered"><tr>
+<th>see</th>
+<td><a href="">\Entities\RealexTransaction</a></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$rtrans</h4>
+<code>\Entities\RealexTrasaction</code><p>An instance of a save()'d object</p>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/OSS_PaymentProcessor_Realex_Exception.html">\OSS_PaymentProcessor_Realex_Exception</a></code></th>
+<td></td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>The unique transaction ID</div>
+</div></div>
+</div>
+<a id="method_createPayerRef"></a><div class="element clickable method public method_createPayerRef" data-toggle="collapse" data-target=".method_createPayerRef .collapse">
+<h2>Creates a unique Realex payer reference ID</h2>
+<pre>createPayerRef(\Entities\Customer $customer) : string</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>All payers that we create must be identifiable by us with a unique ID. For this we
+use the integer primary key from the \Etnities\Customer object.</p>
+
+<p>Later this ID can be used in RealEFT transactions for recurring payments, etc.</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$customer</h4>
+<code>\Entities\Customer</code><p>The instance of the payer's \Entities\Customer object</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>The unique payer ID</div>
+</div></div>
+</div>
+<a id="method_editPayer"></a><div class="element clickable method public method_editPayer" data-toggle="collapse" data-target=".method_editPayer .collapse">
+<h2>Updates a "payer" in Realex's systems.</h2>
+<pre>editPayer(\Entities\RealexPayer $payer) : boolean | int</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Sends a 'edit-payer' request to Realex which updates payer data in Realex.</p>
+
+<p>This also logs the transaction into the \Entities\ReaelxTransaction table,
+and returns that object which can be queried for the request and transaction
+state.</p>
+
+<p>If $this->_fake_transactions is true then it skips the Realex request and returns with
+success after performing all normal database operations as if the request was sent.</p></div>
+<table class="table table-bordered"><tr>
+<th>see</th>
+<td><a href="">\global\$_fake_transactions</a></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$payer</h4>
+<code>\Entities\RealexPayer</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code><code>int</code>the result (true on success, otherwise integer on error)</div>
+</div></div>
+</div>
+<a id="method_getCardType"></a><div class="element clickable method public method_getCardType" data-toggle="collapse" data-target=".method_getCardType .collapse">
+<h2>Returns with the realEx code for credit card type.</h2>
+<pre>getCardType($cardType) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$cardType</h4></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_getMoneyFromCustomer"></a><div class="element clickable method public method_getMoneyFromCustomer" data-toggle="collapse" data-target=".method_getMoneyFromCustomer .collapse">
+<h2>Takes money from "payer" in Realex's systems.</h2>
+<pre>getMoneyFromCustomer(\Entities\RealexPayer $payer, $amount, mixed $rtrans) : bool</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>It's wrapper function for receiptIn function. It takes three parameters. Payer from ho
+it will take money, the amount of money and arrow to transaction object which will be
+created in receiptIn function.</p>
+
+<p>function will return true or false, depends on transaction status.</p>
+
+<p>An example usage is:</p>
+
+<pre><code>    $rtrans = null;
+    $payer = $this->getD2Em()->getRepostory( '\\Entities\\RealexPayer' )->find( $id );
+    ...
+
+    if( $this->getPaygate()->getMoneyFromCustomer( $payer, 100, $rtrans ) )
+        // do something
+    else
+         $result = $rtrans->getResult(); //for other actions.
+</code></pre></div>
+<table class="table table-bordered"><tr>
+<th>see</th>
+<td><a href="">\global\self::receiptIn()</a></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$payer</h4>
+<code>\Entities\RealexPayer</code><p>The payer to take money</p></div>
+<div class="subelement argument"><h4>$amount</h4></div>
+<div class="subelement argument">
+<h4>$rtrans</h4>
+<code>mixed</code><p>&$rtrans Arrow to new \Entities\RealexTransaction</p>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/OSS_PaymentProcessor_Exception.html">\OSS_PaymentProcessor_Exception</a></code></th>
+<td></td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>bool</code></div>
+</div></div>
+</div>
+<a id="method_getTimeStamp"></a><div class="element clickable method public method_getTimeStamp" data-toggle="collapse" data-target=".method_getTimeStamp .collapse">
+<h2>Returns with a YYYYmmddhhmmss format timestamp used in Realex transactions.</h2>
+<pre>getTimeStamp() : string</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>YYYYmmddhhmmss formated timestamp</div>
+</div></div>
+</div>
+<a id="method_giveMoneyToCustomer"></a><div class="element clickable method public method_giveMoneyToCustomer" data-toggle="collapse" data-target=".method_giveMoneyToCustomer .collapse">
+<h2>Gives money from "payer" in Realex's systems.</h2>
+<pre>giveMoneyToCustomer(\Entities\RealexPayer $payer, $amount, mixed $rtrans) : bool</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>It's wrapper function for paymentOut function. It takes three parameters. Payer for ho
+it will give money, the amount of money and arrow to transaction object which will be
+created in receiptIn function.</p>
+
+<p>function will return true or false, depends on transaction status.</p>
+
+<p>An example usage is:</p>
+
+<pre><code>    $rtrans = null;
+    $payer = $this->getD2Em()->getRepostory( '\\Entities\\RealexPayer' )->find( $id );
+    ...
+
+    if( $this->getPaygate()->getMoneyFromCustomer( $payer, 100, $rtrans ) )
+        // do something
+    else
+         $result = $rtrans->getResult(); //for other actions.
+</code></pre></div>
+<table class="table table-bordered"><tr>
+<th>see</th>
+<td><a href="">\global\self::paymentOut()</a></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$payer</h4>
+<code>\Entities\RealexPayer</code><p>The payer to give money</p></div>
+<div class="subelement argument"><h4>$amount</h4></div>
+<div class="subelement argument">
+<h4>$rtrans</h4>
+<code>mixed</code><p>&$rtrans Arrow to new \Entities\RealexTransaction</p>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/OSS_PaymentProcessor_Exception.html">\OSS_PaymentProcessor_Exception</a></code></th>
+<td></td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>bool</code></div>
+</div></div>
+</div>
+<a id="method_newCard"></a><div class="element clickable method public method_newCard" data-toggle="collapse" data-target=".method_newCard .collapse">
+<h2>Creates a new "credit card" in Realex's systems.</h2>
+<pre>newCard(\Entities\RealexCard $card) : \Entities\RealexTransaction</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Sends a 'card-new' request to Realex which creates a new credit card at Realex
+which later can be used by RealEFT for recurring payments ('receipt-in').</p>
+
+<p>This also logs the transaction into the \Entities\RealexTransaction table,
+and returns that object which can be queried for the request and transaction
+state.</p>
+
+<p>If $this->_fake_transactions is true then it skips the Realex request and returns with
+success after performing all normal database operations as if the request was sent.</p></div>
+<table class="table table-bordered"><tr>
+<th>see</th>
+<td><a href="">\global\$_fake_transactions</a></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$card</h4>
+<code>\Entities\RealexCard</code><p>The credit card object to add to Realex</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/OSS_PaymentProcessor_Exception.html">\OSS_PaymentProcessor_Exception</a></code></th>
+<td></td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>\Entities\RealexTransaction</code>The resultant \Entities\RealexTransaction object</div>
+</div></div>
+</div>
+<a id="method_newPayer"></a><div class="element clickable method public method_newPayer" data-toggle="collapse" data-target=".method_newPayer .collapse">
+<h2>Creates a new "payer" in Realex's systems.</h2>
+<pre>newPayer(\Entities\Realex $payer) : \Entities\RealexTransaction</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Sends a 'payer-new' request to Realex which creates a new payer at Realex
+which later can be used by RealEFT for recurring payments ('receipt-in').</p>
+
+<p>This also logs the transaction into the \Entities\RealexTransaction table,
+and returns that object which can be queried for the request and transaction
+state.</p>
+
+<p>If $this->_fake_transactions is true then it skips the Realex request and returns with
+success after performing all normal database operations as if the request was sent.</p></div>
+<table class="table table-bordered"><tr>
+<th>see</th>
+<td><a href="">\global\$_fake_transactions</a></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$payer</h4>
+<code>\Entities\Realex</code><p>The payer who will be associated as payer in Realex</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/OSS_PaymentProcessor_Exception.html">\OSS_PaymentProcessor_Exception</a></code></th>
+<td></td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>\Entities\RealexTransaction</code>The resultant \Entities\RealexTransaction object</div>
+</div></div>
+</div>
+<a id="method_paymentOut"></a><div class="element clickable method public method_paymentOut" data-toggle="collapse" data-target=".method_paymentOut .collapse">
+<h2>Creates a new "refund" in Realex's systems.</h2>
+<pre>paymentOut(\Entities\RealexCard $card, int | float $amount) : \CreditcardTransaction</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Sends a 'receipt-out' request to Realex which creates a new payment at Realex.</p>
+
+<p>This also logs the transaction into the \Entities\RealexTransaction table,
+and returns that object which can be queried for the request and transaction
+state.</p>
+
+<p>If $this->_fake_transactions is true then it skips the Realex request and returns with
+success after performing all normal database operations as if the request was sent.</p></div>
+<table class="table table-bordered"><tr>
+<th>see</th>
+<td><a href="">\global\$_fake_transactions</a></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$card</h4>
+<code>\Entities\RealexCard</code>
+</div>
+<div class="subelement argument">
+<h4>$amount</h4>
+<code>int</code><code>float</code><p>the amount to be withdrawn from the card, in the biggest unit of the currency, e.g. in euro or dollar and not in cent, then conversion is made inside the method</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/OSS_PaymentProcessor_Exception.html">\OSS_PaymentProcessor_Exception</a></code></th>
+<td></td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>\CreditcardTransaction</code>The resultant CreditcardTransaction object</div>
+</div></div>
+</div>
+<a id="method_receiptIn"></a><div class="element clickable method public method_receiptIn" data-toggle="collapse" data-target=".method_receiptIn .collapse">
+<h2>Creates a new "payment" in Realex's systems.</h2>
+<pre>receiptIn(\Entities\RealexCard $card, int | float $amount) : \Entities\RealexTransaction</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Sends a 'receipt-in' request to Realex which creates a new payment at Realex.</p>
+
+<p>This also logs the transaction into the \Entities\RealexTransaction table,
+and returns that object which can be queried for the request and transaction
+state.</p>
+
+<p>If $this->_fake_transactions is true then it skips the Realex request and returns with
+success after performing all normal database operations as if the request was sent.</p></div>
+<table class="table table-bordered"><tr>
+<th>see</th>
+<td><a href="">\global\$_fake_transactions</a></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$card</h4>
+<code>\Entities\RealexCard</code>
+</div>
+<div class="subelement argument">
+<h4>$amount</h4>
+<code>int</code><code>float</code><p>the amount to be withdrawn from the card, in the biggest unit of the currency, e.g. in euro or dollar and not in cent, then conversion is made inside the method</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/OSS_PaymentProcessor_Exception.html">\OSS_PaymentProcessor_Exception</a></code></th>
+<td></td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>\Entities\RealexTransaction</code>The resultant \Entities\RealexTransaction object</div>
+</div></div>
+</div>
+<a id="method_updateCard"></a><div class="element clickable method public method_updateCard" data-toggle="collapse" data-target=".method_updateCard .collapse">
+<h2>Updates a "credit card" in Realex's systems.</h2>
+<pre>updateCard(\Entities\RealexCard $card) : boolean | int</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Sends a 'update-card' request to Realex which updates credit card data in Realex.</p>
+
+<p>This also logs the transaction into the \Entities\RealexTransaction table,
+and returns that object which can be queried for the request and transaction
+state.</p>
+
+<p>If $this->_fake_transactions is true then it skips the Realex request and returns with
+success after performing all normal database operations as if the request was sent.</p></div>
+<table class="table table-bordered"><tr>
+<th>see</th>
+<td><a href="">\global\$_fake_transactions</a></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$card</h4>
+<code>\Entities\RealexCard</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code><code>int</code>true on success, otherwise an error code</div>
+</div></div>
+</div>
+<a id="method_getD2EM"></a><div class="element clickable method protected method_getD2EM" data-toggle="collapse" data-target=".method_getD2EM .collapse">
+<h2>Access method for the merchant ID</h2>
+<pre>getD2EM() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>see</th>
+<td><a href="">\global\$_merchant_id</a></td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>The merchant ID</div>
+</div></div>
+</div>
+<a id="method_getMerchantId"></a><div class="element clickable method protected method_getMerchantId" data-toggle="collapse" data-target=".method_getMerchantId .collapse">
+<h2>Access method for the merchant ID</h2>
+<pre>getMerchantId() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>see</th>
+<td><a href="">\global\$_merchant_id</a></td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>The merchant ID</div>
+</div></div>
+</div>
+<a id="method_getMerchantSecret"></a><div class="element clickable method protected method_getMerchantSecret" data-toggle="collapse" data-target=".method_getMerchantSecret .collapse">
+<h2>Access method for the merchant secret</h2>
+<pre>getMerchantSecret() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>see</th>
+<td><a href="">\global\$_merchant_secret</a></td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>The merchant secret</div>
+</div></div>
+</div>
+<a id="method_getRefundPassword"></a><div class="element clickable method protected method_getRefundPassword" data-toggle="collapse" data-target=".method_getRefundPassword .collapse">
+<h2>Access method for the refund password</h2>
+<pre>getRefundPassword() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>see</th>
+<td><a href="">\global\$_refund_password</a></td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>The refund password</div>
+</div></div>
+</div>
+<a id="method__checkResponse"></a><div class="element clickable method private method__checkResponse" data-toggle="collapse" data-target=".method__checkResponse .collapse">
+<h2>Takes a Realex response and returns with its response code after additional checks</h2>
+<pre>_checkResponse(string $resp) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Outside of the possible checks that Realex performs, we need to allow for one more: an invalid
+hash of the received XML response indicated a bad transmission / man in the middle attack.</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$resp</h4>
+<code>string</code><p>The parsed Realex XML response as an array</p></div>
+</div></div>
+</div>
+<a id="method__completeFakeTransation"></a><div class="element clickable method private method__completeFakeTransation" data-toggle="collapse" data-target=".method__completeFakeTransation .collapse">
+<h2>Set fake CreditcardTransactions entries for a complete fake transaction</h2>
+<pre>_completeFakeTransation(\Entities\RealexTransaction $rtrans) : \Entities\RealexTransaction</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>If <var>$this->_fake_transactions</var> is set to true, the system will
+not perform any Realex requests but <em>fake</em> the transactions in
+the database meaning we:</p>
+
+<ul>
+<li>set <var>is_fake</var> to true</li>
+<li>set <var>state</var> to STATE_COMPLETE</li>
+<li>set <var>pasref</var> and <var>authcode</var> to </li>
+</ul>
+
+<p>&lt;</p>
+
+<p>pre><code>FAKETRANS</var></p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$rtrans</h4>
+<code>\Entities\RealexTransaction</code><p>The transaction object to create the fake entries in</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>\Entities\RealexTransaction</code>The modified (and save()'d) transaction object</div>
+</div></div>
+</div>
+<a id="method__log"></a><div class="element clickable method private method__log" data-toggle="collapse" data-target=".method__log .collapse">
+<h2>Log a message if we have an instance of a logger</h2>
+<pre>_log(string $msg, int $pri) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$msg</h4>
+<code>string</code><p>The log message</p></div>
+<div class="subelement argument">
+<h4>$pri</h4>
+<code>int</code><p>The priority of the message (defaults: OSS_Log::DEBUG)</p>
+</div>
+</div></div>
+</div>
+<a id="method__parseResponse"></a><div class="element clickable method private method__parseResponse" data-toggle="collapse" data-target=".method__parseResponse .collapse">
+<h2>Parse the XML response from Realex and update the transaction object</h2>
+<pre>_parseResponse(string $xml, \Entities\RealexTransaction $rtrans) : \Entities\ReleaxTransaction</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>This function:</p>
+
+<ul>
+<li>transforms the XML response to an array</li>
+<li>validates the response hash</li>
+<li>updates the authcode, pasref, state and response fields of the \Entities\RealexTransaction object</li>
+</ul></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$xml</h4>
+<code>string</code><p>The XML response from Realex for processing</p></div>
+<div class="subelement argument">
+<h4>$rtrans</h4>
+<code>\Entities\RealexTransaction</code><p>An instance of the \Entities\RealexTransaciton object</p>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code>\OSS_PaymentProcessor_Realex_Receipt_Exception</code></th>
+<td></td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>\Entities\ReleaxTransaction</code>The updated $rtrans object for fluent interface</div>
+</div></div>
+</div>
+<a id="method__sendRequest"></a><div class="element clickable method private method__sendRequest" data-toggle="collapse" data-target=".method__sendRequest .collapse">
+<h2>Sends an XML formatted request to Realex using cURL</h2>
+<pre>_sendRequest(\Entities\RealexTransaction $rtrans, string $reqXML) : bool</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>This function does the heavy lifting for sending a request to
+Realex and parsing and processing the reponse. Specifically:</p>
+
+<ul>
+<li>creates the cURL object (and throws an exception if it cannot)</li>
+<li><p>sends the request to Realex</p>
+
+<p>If the request fails:</p>
+
+<ul>
+<li>updates the $rtrans object as STATE_FAILED or STATE_TIMEOUT</li>
+<li>returns false</li>
+</ul>
+
+<p>If the request succeeds:</p>
+
+<ul>
+<li>parses and processes the response (@see _parseResponse())</li>
+<li>returns true</li>
+</ul></li>
+</ul></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$rtrans</h4>
+<code>\Entities\RealexTransaction</code><p>The instance of \Entities\RealexTransaction to send to Realex</p>
+</div>
+<div class="subelement argument">
+<h4>$reqXML</h4>
+<code>string</code><p>The XML request package to send to Realex</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/OSS_PaymentProcessor_Realex_Exception.html">\OSS_PaymentProcessor_Realex_Exception</a></code></th>
+<td></td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>bool</code>True if the API/CGI request succeeded (IT DOES NOT MEAN THE REALEX TRANSACTION SUCCEEDED!)</div>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a id="property_CARD_TYPES"> </a><div class="element clickable property public property_CARD_TYPES" data-toggle="collapse" data-target=".property_CARD_TYPES .collapse">
+<h2>Valid credit/debit card types</h2>
+<pre>$CARD_TYPES : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_ERR_TEXT"> </a><div class="element clickable property public property_ERR_TEXT" data-toggle="collapse" data-target=".property_ERR_TEXT .collapse">
+<h2>An array of error strings for the ERR_RESPONSE.</h2>
+<pre>$ERR_TEXT : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"><p>.. codes</p></div></div></div>
+</div>
+<a id="property_OPTIONAL_PARAMS"> </a><div class="element clickable property public property_OPTIONAL_PARAMS" data-toggle="collapse" data-target=".property_OPTIONAL_PARAMS .collapse">
+<h2>An array of the optional application.ini parameters (defaults set with their definitions).</h2>
+<pre>$OPTIONAL_PARAMS : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td><a href="">\global\$_cgi_timeout</a></td>
+</tr>
+<tr>
+<th>see</th>
+<td><a href="">\global\$_fake_transactions</a></td>
+</tr>
+<tr>
+<th>see</th>
+<td><a href="">\global\$_keep_request_xml</a></td>
+</tr>
+</table>
+</div></div>
+</div>
+<a id="property_REQUIRED_PARAMS"> </a><div class="element clickable property public property_REQUIRED_PARAMS" data-toggle="collapse" data-target=".property_REQUIRED_PARAMS .collapse">
+<h2>An array of the mandatory application.ini parameters.</h2>
+<pre>$REQUIRED_PARAMS : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property__account"> </a><div class="element clickable property private property__account" data-toggle="collapse" data-target=".property__account .collapse">
+<h2>&lt;p&gt;The account to use for receipt-in / receipt-out&lt;/p&gt;
+</h2>
+<pre>$_account : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property__cgi_timeout"> </a><div class="element clickable property private property__cgi_timeout" data-toggle="collapse" data-target=".property__cgi_timeout .collapse">
+<h2>&lt;p&gt;The maximum number of seconds for the cURL operation&lt;/p&gt;</h2>
+<pre>$_cgi_timeout : int</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property__cgi_url"> </a><div class="element clickable property private property__cgi_url" data-toggle="collapse" data-target=".property__cgi_url .collapse">
+<h2>The CGI Url</h2>
+<pre>$_cgi_url : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property__d2em"> </a><div class="element clickable property private property__d2em" data-toggle="collapse" data-target=".property__d2em .collapse">
+<h2>The Doctrine2 entity manager</h2>
+<pre>$_d2em : \EntityManager</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property__fake_transactions"> </a><div class="element clickable property private property__fake_transactions" data-toggle="collapse" data-target=".property__fake_transactions .collapse">
+<h2>Fake transactions allows all operations to appear to succeed including
+updates to local database tables but it never contacts Realex and fakes
+all operations.</h2>
+<pre>$_fake_transactions : bool</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>see</th>
+<td><a href="">\global\_completeFakeTransaction()</a></td>
+</tr></table>
+</div></div>
+</div>
+<a id="property__keep_request_data"> </a><div class="element clickable property private property__keep_request_data" data-toggle="collapse" data-target=".property__keep_request_data .collapse">
+<h2>For security reasons, we clear the request data from the database after a sucessful
+Realex API/CGI call.</h2>
+<pre>$_keep_request_data : bool</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"><p>Some transactions require non-stored data (e.g. credit card number) to replay a failed
+transaction (such as createCreditCard()) which we will store and delete when we
+successfully replay the transaction. Setting this to true means we don't remove it.</p>
+
+<p><strong>WARNING:</strong> Set to true only for testing!</p></div></div></div>
+</div>
+<a id="property__logger"> </a><div class="element clickable property private property__logger" data-toggle="collapse" data-target=".property__logger .collapse">
+<h2>An instance of OSS_Log for logging.</h2>
+<pre>$_logger : <a href="../classes/OSS_Log.html">\OSS_Log</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property__merchant_id"> </a><div class="element clickable property private property__merchant_id" data-toggle="collapse" data-target=".property__merchant_id .collapse">
+<h2>&lt;p&gt;Our assigned merchant ID&lt;/p&gt;</h2>
+<pre>$_merchant_id : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>see</th>
+<td><a href="">\global\getMerchantId()</a></td>
+</tr></table>
+</div></div>
+</div>
+<a id="property__merchant_secret"> </a><div class="element clickable property private property__merchant_secret" data-toggle="collapse" data-target=".property__merchant_secret .collapse">
+<h2>&lt;p&gt;Our assigned shared secret&lt;/p&gt;</h2>
+<pre>$_merchant_secret : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property__refund_password"> </a><div class="element clickable property private property__refund_password" data-toggle="collapse" data-target=".property__refund_password .collapse">
+<h2>&lt;p&gt;Our assigned refund password&lt;/p&gt;</h2>
+<pre>$_refund_password : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property__user_agent"> </a><div class="element clickable property private property__user_agent" data-toggle="collapse" data-target=".property__user_agent .collapse">
+<h2>&lt;p&gt;The user agent to report to the CGI&lt;/p&gt;</h2>
+<pre>$_user_agent : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<h3>
+<i class="icon-custom icon-constant"></i> Constants</h3>
+<a id="constant_CARD_TYPE_LASER"> </a><div class="element clickable constant  constant_CARD_TYPE_LASER" data-toggle="collapse" data-target=".constant_CARD_TYPE_LASER .collapse">
+<h2>CARD_TYPE_LASER</h2>
+<pre>CARD_TYPE_LASER </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_CARD_TYPE_MASTERCARD"> </a><div class="element clickable constant  constant_CARD_TYPE_MASTERCARD" data-toggle="collapse" data-target=".constant_CARD_TYPE_MASTERCARD .collapse">
+<h2>CARD_TYPE_MASTERCARD</h2>
+<pre>CARD_TYPE_MASTERCARD </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_CARD_TYPE_VISA"> </a><div class="element clickable constant  constant_CARD_TYPE_VISA" data-toggle="collapse" data-target=".constant_CARD_TYPE_VISA .collapse">
+<h2>CARD_TYPE_VISA</h2>
+<pre>CARD_TYPE_VISA </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_ERR_RESPONSE_INVALID_HASH"> </a><div class="element clickable constant  constant_ERR_RESPONSE_INVALID_HASH" data-toggle="collapse" data-target=".constant_ERR_RESPONSE_INVALID_HASH .collapse">
+<h2>An error code to indicate if the response hash is invalid</h2>
+<pre>ERR_RESPONSE_INVALID_HASH : integer</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
+            generated on 2012-11-16T11:34:40Z.<br></footer></div>
+</div>
+</body>
+</html>

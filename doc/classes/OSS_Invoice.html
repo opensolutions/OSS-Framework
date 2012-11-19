@@ -1,0 +1,276 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>OSS » \OSS_Invoice</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">OSS</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Packages</a></li>
+<li><a href="../packages/OSS.html"><i class="icon-folder-open"></i> OSS</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">193</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul>
+<li>todo 
+                <span class="label label-info">2</span>
+</li>
+<li>fixme 
+                <span class="label label-info">10</span>
+</li>
+</ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods
+                    <ul>
+<li class="method public "><a href="#method_getCurrentInvoice" title="getCurrentInvoice :: Returns with this month's invoice to add new invoice items to."><span class="description">Returns with this month's invoice to add new invoice items to.</span><pre>getCurrentInvoice()</pre></a></li>
+<li class="method public "><a href="#method_getInvoicesBetweenStartEnd" title="getInvoicesBetweenStartEnd :: Returns with a Doctrine_Collection object of all the invoices of which the
+start_date and end_date falls between $minDate and $maxDate respectively, ordered by start_date asc."><span class="description">Returns with a Doctrine_Collection object of all the invoices of which the
+start_date and end_date falls between $minDate and $maxDate respectively, ordered by start_date asc.</span><pre>getInvoicesBetweenStartEnd()</pre></a></li>
+<li class="method public "><a href="#method_getInvoicesFromThisMonth" title="getInvoicesFromThisMonth :: Returns with a Doctrine_Collection object of all the invoices for which the start_date and end_date are in this month,
+ordered by start_date asc."><span class="description">Returns with a Doctrine_Collection object of all the invoices for which the start_date and end_date are in this month,
+ordered by start_date asc.</span><pre>getInvoicesFromThisMonth()</pre></a></li>
+<li class="method public "><a href="#method_getOutstanding" title="getOutstanding :: Returns with the non- and partially paid invoices as a Doctrine collection object."><span class="description">Returns with the non- and partially paid invoices as a Doctrine collection object.</span><pre>getOutstanding()</pre></a></li>
+<li class="method public "><a href="#method_getOutstandingStat" title="getOutstandingStat :: Returns with a simple statistics about non- and partially paid invoices as an associative array in which the key
+'sum_total' contains the sum of the total to be paid, 'sum_received' the sum of the already received money and 'howmany'
+the number of invoices."><span class="description">Returns with a simple statistics about non- and partially paid invoices as an associative array in which the key
+'sum_total' contains the sum of the total to be paid, 'sum_received' the sum of the already received money and 'howmany'
+the number of invoices.</span><pre>getOutstandingStat()</pre></a></li>
+<li class="method public "><a href="#method_getReceivedSumValue" title="getReceivedSumValue :: Returns with the sum of received amount from all invoices."><span class="description">Returns with the sum of received amount from all invoices.</span><pre>getReceivedSumValue()</pre></a></li>
+<li class="method public "><a href="#method_getUnpaidInvoices" title="getUnpaidInvoices :: Returns unpaid invoices."><span class="description">Returns unpaid invoices.</span><pre>getUnpaidInvoices()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header private">» Private
+                    <ul><li class="method private "><a href="#method_getStaticD2EM" title="getStaticD2EM :: Getting Doctrine2 entity manager"><span class="description">Getting Doctrine2 entity manager</span><pre>getStaticD2EM()</pre></a></li></ul>
+</li>
+</ul>
+</div>
+<div class="span8">
+<a id="\OSS_Invoice"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/global.html">global</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/OSS_Invoice.html">OSS_Invoice</a>
+</li>
+</ul>
+<div class="element class">
+<p class="short_description">Invoice class.</p>
+<div class="details">
+<div class="long_description"><p>NOTICE: Supports only Doctrine2 database engine.</p></div>
+<table class="table table-bordered">
+<tr>
+<th>category</th>
+<td>OSS</td>
+</tr>
+<tr>
+<th>package</th>
+<td><a href="../packages/OSS.Invoice.html">OSS_Invoice</a></td>
+</tr>
+<tr>
+<th>copyright</th>
+<td>Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland</td>
+</tr>
+<tr>
+<th>license</th>
+<td><a href="http://www.opensolutions.ie/licenses/new-bsd">New BSD License</a></td>
+</tr>
+</table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a id="method_getCurrentInvoice"></a><div class="element clickable method public method_getCurrentInvoice" data-toggle="collapse" data-target=".method_getCurrentInvoice .collapse">
+<h2>Returns with this month's invoice to add new invoice items to.</h2>
+<pre>getCurrentInvoice(\Entities\Customer $customer) : object</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>If it does not exist then creates one.
+Returns with an Invoice model object.</p></div>
+<table class="table table-bordered"><tr>
+<th>see</th>
+<td><a href="">\global\self::getInvoicesFromThisMonth</a></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$customer</h4>
+<code>\Entities\Customer</code><p>Invoice for customer</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>object</code>Invoice model</div>
+</div></div>
+</div>
+<a id="method_getInvoicesBetweenStartEnd"></a><div class="element clickable method public method_getInvoicesBetweenStartEnd" data-toggle="collapse" data-target=".method_getInvoicesBetweenStartEnd .collapse">
+<h2>Returns with a Doctrine_Collection object of all the invoices of which the
+start_date and end_date falls between $minDate and $maxDate respectively, ordered by start_date asc.</h2>
+<pre>getInvoicesBetweenStartEnd(string $minDate, string $maxDate, \Entities\Customer | null $customer) : object</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$minDate</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$maxDate</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$customer</h4>
+<code>\Entities\Customer</code><code>null</code><p>Customer for filtering invoices.</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>object</code>Doctrine_Collection</div>
+</div></div>
+</div>
+<a id="method_getInvoicesFromThisMonth"></a><div class="element clickable method public method_getInvoicesFromThisMonth" data-toggle="collapse" data-target=".method_getInvoicesFromThisMonth .collapse">
+<h2>Returns with a Doctrine_Collection object of all the invoices for which the start_date and end_date are in this month,
+ordered by start_date asc.</h2>
+<pre>getInvoicesFromThisMonth(\Entities\Customer | null $customer) : object</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Calls getInvoicesBetweenStartEnd() .</p></div>
+<table class="table table-bordered"><tr>
+<th>see</th>
+<td><a href="">\global\self::getInvoicesBetweenStartEnd</a></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$customer</h4>
+<code>\Entities\Customer</code><code>null</code><p>Customer for filtering invoices.</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>object</code>Doctrine_Collection</div>
+</div></div>
+</div>
+<a id="method_getOutstanding"></a><div class="element clickable method public method_getOutstanding" data-toggle="collapse" data-target=".method_getOutstanding .collapse">
+<h2>Returns with the non- and partially paid invoices as a Doctrine collection object.</h2>
+<pre>getOutstanding(\Entities\Customer $customer, string $maxDate, string $orderBy, string $orderByDir) : object</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>The Item objects in the collection
+are sorted by the due date, ascending.</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$customer</h4>
+<code>\Entities\Customer</code><p>default null if not null then will limit the serach to invoices for a given user</p></div>
+<div class="subelement argument">
+<h4>$maxDate</h4>
+<code>string</code><p>default null if not null then will limit the serach to invoices having tax_date <= $pMaxDate, must be in "YYYY-MM-DD" format</p>
+</div>
+<div class="subelement argument">
+<h4>$orderBy</h4>
+<code>string</code><p>Order by field</p></div>
+<div class="subelement argument">
+<h4>$orderByDir</h4>
+<code>string</code><p>Order by direction e.g. ASC, DESC</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>object</code></div>
+</div></div>
+</div>
+<a id="method_getOutstandingStat"></a><div class="element clickable method public method_getOutstandingStat" data-toggle="collapse" data-target=".method_getOutstandingStat .collapse">
+<h2>Returns with a simple statistics about non- and partially paid invoices as an associative array in which the key
+'sum_total' contains the sum of the total to be paid, 'sum_received' the sum of the already received money and 'howmany'
+the number of invoices.</h2>
+<pre>getOutstandingStat(\Entities\Customer $customer) : array</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$customer</h4>
+<code>\Entities\Customer</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
+</div></div>
+</div>
+<a id="method_getReceivedSumValue"></a><div class="element clickable method public method_getReceivedSumValue" data-toggle="collapse" data-target=".method_getReceivedSumValue .collapse">
+<h2>Returns with the sum of received amount from all invoices.</h2>
+<pre>getReceivedSumValue(\Entities\Customer | null $customer) : float</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$customer</h4>
+<code>\Entities\Customer</code><code>null</code><p>Customer for filtering invoice</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>float</code></div>
+</div></div>
+</div>
+<a id="method_getUnpaidInvoices"></a><div class="element clickable method public method_getUnpaidInvoices" data-toggle="collapse" data-target=".method_getUnpaidInvoices .collapse">
+<h2>Returns unpaid invoices.</h2>
+<pre>getUnpaidInvoices(\Entites\Customer | null $customer) : array</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>If $customer not null it will filter unpaid invoices for customer.</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$customer</h4>
+<code>\Entites\Customer</code><code>null</code><p>Customer for invoice filtering.</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
+</div></div>
+</div>
+<a id="method_getStaticD2EM"></a><div class="element clickable method private method_getStaticD2EM" data-toggle="collapse" data-target=".method_getStaticD2EM .collapse">
+<h2>Getting Doctrine2 entity manager</h2>
+<pre>getStaticD2EM() : \EntityManager</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>\EntityManager</code></div>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
+            generated on 2012-11-16T11:34:39Z.<br></footer></div>
+</div>
+</body>
+</html>
