@@ -1,0 +1,278 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>OSS » \OSS_Form_Auth</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">OSS</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Packages</a></li>
+<li><a href="../packages/OSS.html"><i class="icon-folder-open"></i> OSS</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">193</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul>
+<li>todo 
+                <span class="label label-info">2</span>
+</li>
+<li>fixme 
+                <span class="label label-info">10</span>
+</li>
+</ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods
+                    <ul>
+<li class="method public "><a href="#method_createLostPasswordElement" title="createLostPasswordElement :: A utility function for creating a standard 'lost password' button link."><span class="description">A utility function for creating a standard 'lost password' button link.</span><pre>createLostPasswordElement()</pre></a></li>
+<li class="method public "><a href="#method_createLostUsernameElement" title="createLostUsernameElement :: A utility function for creating a standard 'lost username' button link."><span class="description">A utility function for creating a standard 'lost username' button link.</span><pre>createLostUsernameElement()</pre></a></li>
+<li class="method public "><a href="#method_createPasswordConfirmElement" title="createPasswordConfirmElement :: A utility function for creating a standard password confirmation element"><span class="description">A utility function for creating a standard password confirmation element</span><pre>createPasswordConfirmElement()</pre></a></li>
+<li class="method public "><a href="#method_createPasswordElement" title="createPasswordElement :: A utility function for creating a standard password element for login forms."><span class="description">A utility function for creating a standard password element for login forms.</span><pre>createPasswordElement()</pre></a></li>
+<li class="method public "><a href="#method_createPasswordResetTokenElement" title="createPasswordResetTokenElement :: A utility function for creating a standard password reset token element"><span class="description">A utility function for creating a standard password reset token element</span><pre>createPasswordResetTokenElement()</pre></a></li>
+<li class="method public "><a href="#method_createRememberMeElement" title="createRememberMeElement :: A utility function for creating a standard 'remember me' element for login forms."><span class="description">A utility function for creating a standard 'remember me' element for login forms.</span><pre>createRememberMeElement()</pre></a></li>
+<li class="method public "><a href="#method_createReturnToLoginElement" title="createReturnToLoginElement :: A utility function for creating a standard 'return to login' button link."><span class="description">A utility function for creating a standard 'return to login' button link.</span><pre>createReturnToLoginElement()</pre></a></li>
+<li class="method public "><a href="#method_createUsernameElement" title="createUsernameElement :: A utility function for creating a standard username element for login forms."><span class="description">A utility function for creating a standard username element for login forms.</span><pre>createUsernameElement()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-constant"></i> Constants
+                    <ul>
+<li class="constant  "><a href="#constant_USERNAME_TYPE_EMAIL" title="USERNAME_TYPE_EMAIL :: "><span class="description">USERNAME_TYPE_EMAIL</span><pre>USERNAME_TYPE_EMAIL</pre></a></li>
+<li class="constant  "><a href="#constant_USERNAME_TYPE_NONEMAIL" title="USERNAME_TYPE_NONEMAIL :: "><span class="description">USERNAME_TYPE_NONEMAIL</span><pre>USERNAME_TYPE_NONEMAIL</pre></a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="span8">
+<a id="\OSS_Form_Auth"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/global.html">global</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/OSS_Form_Auth.html">OSS_Form_Auth</a>
+</li>
+</ul>
+<div class="element class">
+<p class="short_description">Untility methods to add common Auth/Login elements to an authentication form</p>
+<div class="details">
+<div class="long_description"></div>
+<table class="table table-bordered">
+<tr>
+<th>author</th>
+<td><a href="mailto:barry@opensolutions.ie">Barry O'Donovan</a></td>
+</tr>
+<tr>
+<th>author</th>
+<td><a href="mailto:info@opensolutions.ie">The Skilled Team of PHP Developers at Open Solutions</a></td>
+</tr>
+<tr>
+<th>category</th>
+<td>OSS</td>
+</tr>
+<tr>
+<th>package</th>
+<td><a href="../packages/OSS.Form.html">OSS_Form</a></td>
+</tr>
+<tr>
+<th>copyright</th>
+<td>Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland</td>
+</tr>
+<tr>
+<th>license</th>
+<td><a href="http://www.opensolutions.ie/licenses/new-bsd">New BSD License</a></td>
+</tr>
+</table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a id="method_createLostPasswordElement"></a><div class="element clickable method public method_createLostPasswordElement" data-toggle="collapse" data-target=".method_createLostPasswordElement .collapse">
+<h2>A utility function for creating a standard 'lost password' button link.</h2>
+<pre>createLostPasswordElement(string $name) : <a href="../classes/OSS_Form_Element_Buttonlink.html">\OSS_Form_Element_Buttonlink</a></pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$name</h4>
+<code>string</code><p>The element name</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code><a href="../classes/OSS_Form_Element_Buttonlink.html">\OSS_Form_Element_Buttonlink</a></code>- The button link element</div>
+</div></div>
+</div>
+<a id="method_createLostUsernameElement"></a><div class="element clickable method public method_createLostUsernameElement" data-toggle="collapse" data-target=".method_createLostUsernameElement .collapse">
+<h2>A utility function for creating a standard 'lost username' button link.</h2>
+<pre>createLostUsernameElement(string $name) : <a href="../classes/OSS_Form_Element_Buttonlink.html">\OSS_Form_Element_Buttonlink</a></pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$name</h4>
+<code>string</code><p>The element name</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code><a href="../classes/OSS_Form_Element_Buttonlink.html">\OSS_Form_Element_Buttonlink</a></code>- The button link element</div>
+</div></div>
+</div>
+<a id="method_createPasswordConfirmElement"></a><div class="element clickable method public method_createPasswordConfirmElement" data-toggle="collapse" data-target=".method_createPasswordConfirmElement .collapse">
+<h2>A utility function for creating a standard password confirmation element</h2>
+<pre>createPasswordConfirmElement(string $name, string $pwname) : \Zend_Form_Element_Password</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Also adds a validator to match it to the password field</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$name</h4>
+<code>string</code><p>The element name</p></div>
+<div class="subelement argument">
+<h4>$pwname</h4>
+<code>string</code><p>The matching password element name</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>\Zend_Form_Element_Password</code>The password element</div>
+</div></div>
+</div>
+<a id="method_createPasswordElement"></a><div class="element clickable method public method_createPasswordElement" data-toggle="collapse" data-target=".method_createPasswordElement .collapse">
+<h2>A utility function for creating a standard password element for login forms.</h2>
+<pre>createPasswordElement(string $name) : \Zend_Form_Element_Password</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$name</h4>
+<code>string</code><p>The element name</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>\Zend_Form_Element_Password</code>The password element</div>
+</div></div>
+</div>
+<a id="method_createPasswordResetTokenElement"></a><div class="element clickable method public method_createPasswordResetTokenElement" data-toggle="collapse" data-target=".method_createPasswordResetTokenElement .collapse">
+<h2>A utility function for creating a standard password reset token element</h2>
+<pre>createPasswordResetTokenElement(string $name) : \Zend_Form_Element_Text</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$name</h4>
+<code>string</code><p>The element name</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>\Zend_Form_Element_Text</code>The password reset token element</div>
+</div></div>
+</div>
+<a id="method_createRememberMeElement"></a><div class="element clickable method public method_createRememberMeElement" data-toggle="collapse" data-target=".method_createRememberMeElement .collapse">
+<h2>A utility function for creating a standard 'remember me' element for login forms.</h2>
+<pre>createRememberMeElement(string $name) : \Zend_Form_Element_Checkbox</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$name</h4>
+<code>string</code><p>The element name</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>\Zend_Form_Element_Checkbox</code>The remember me element</div>
+</div></div>
+</div>
+<a id="method_createReturnToLoginElement"></a><div class="element clickable method public method_createReturnToLoginElement" data-toggle="collapse" data-target=".method_createReturnToLoginElement .collapse">
+<h2>A utility function for creating a standard 'return to login' button link.</h2>
+<pre>createReturnToLoginElement(string $name) : <a href="../classes/OSS_Form_Element_Buttonlink.html">\OSS_Form_Element_Buttonlink</a></pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$name</h4>
+<code>string</code><p>The element name</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code><a href="../classes/OSS_Form_Element_Buttonlink.html">\OSS_Form_Element_Buttonlink</a></code>- The button link element</div>
+</div></div>
+</div>
+<a id="method_createUsernameElement"></a><div class="element clickable method public method_createUsernameElement" data-toggle="collapse" data-target=".method_createUsernameElement .collapse">
+<h2>A utility function for creating a standard username element for login forms.</h2>
+<pre>createUsernameElement(string $type, string $name) : \Zend_Form_Element_Text</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>You must specify the type (<code>USERNAME_TYPE_EMAIL</code> or <code>USERNAME_TYPE_NONEMAIL</code> and
+this will add additional validators, etc.</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$type</h4>
+<code>string</code><p>The type of username expected</p></div>
+<div class="subelement argument">
+<h4>$name</h4>
+<code>string</code><p>The element name</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>\Zend_Form_Element_Text</code>The username element</div>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-constant"></i> Constants</h3>
+<a id="constant_USERNAME_TYPE_EMAIL"> </a><div class="element clickable constant  constant_USERNAME_TYPE_EMAIL" data-toggle="collapse" data-target=".constant_USERNAME_TYPE_EMAIL .collapse">
+<h2>USERNAME_TYPE_EMAIL</h2>
+<pre>USERNAME_TYPE_EMAIL </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_USERNAME_TYPE_NONEMAIL"> </a><div class="element clickable constant  constant_USERNAME_TYPE_NONEMAIL" data-toggle="collapse" data-target=".constant_USERNAME_TYPE_NONEMAIL .collapse">
+<h2>USERNAME_TYPE_NONEMAIL</h2>
+<pre>USERNAME_TYPE_NONEMAIL </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
+            generated on 2012-11-16T11:34:39Z.<br></footer></div>
+</div>
+</body>
+</html>

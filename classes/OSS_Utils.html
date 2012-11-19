@@ -1,0 +1,297 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>OSS » \OSS_Utils</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">OSS</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Packages</a></li>
+<li><a href="../packages/OSS.html"><i class="icon-folder-open"></i> OSS</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">193</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul>
+<li>todo 
+                <span class="label label-info">2</span>
+</li>
+<li>fixme 
+                <span class="label label-info">10</span>
+</li>
+</ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list"><li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods
+                    <ul>
+<li class="method public "><a href="#method_HtmlToPdf" title="HtmlToPdf :: Converts a HTML file to PDF using htmldoc."><span class="description">Converts a HTML file to PDF using htmldoc.</span><pre>HtmlToPdf()</pre></a></li>
+<li class="method public "><a href="#method_genUrl" title="genUrl :: A function to generate a URL with the given parameters."><span class="description">A function to generate a URL with the given parameters.</span><pre>genUrl()</pre></a></li>
+<li class="method public "><a href="#method_getIniOption" title="getIniOption :: A generally available function to retrieve options from the application.ini, anywhere in the program."><span class="description">A generally available function to retrieve options from the application.ini, anywhere in the program.</span><pre>getIniOption()</pre></a></li>
+<li class="method public "><a href="#method_getResource" title="getResource :: Returns with the resource object."><span class="description">Returns with the resource object.</span><pre>getResource()</pre></a></li>
+<li class="method public "><a href="#method_getTempDir" title="getTempDir :: Returns with the temporary directory set in the application.ini, or if it is not set, then with the result of sys_get_temp_dir()."><span class="description">Returns with the temporary directory set in the application.ini, or if it is not set, then with the result of sys_get_temp_dir().</span><pre>getTempDir()</pre></a></li>
+<li class="method public "><a href="#method_ordinal" title="ordinal :: Returns number with ordinal postfix."><span class="description">Returns number with ordinal postfix.</span><pre>ordinal()</pre></a></li>
+<li class="method public "><a href="#method_parseXML" title="parseXML :: Parses an XML using SimpleXML and returns with the result object, or false on error."><span class="description">Parses an XML using SimpleXML and returns with the result object, or false on error.</span><pre>parseXML()</pre></a></li>
+<li class="method public "><a href="#method_uniformDistHash" title="uniformDistHash :: Creates a uniformly distributed directory path from given numeric id."><span class="description">Creates a uniformly distributed directory path from given numeric id.</span><pre>uniformDistHash()</pre></a></li>
+<li class="method public "><a href="#method_wkhtmltopdf" title="wkhtmltopdf :: Converts a HTML file to PDF using wkhtmltopdf"><span class="description">Converts a HTML file to PDF using wkhtmltopdf</span><pre>wkhtmltopdf()</pre></a></li>
+</ul>
+</li></ul>
+</div>
+<div class="span8">
+<a id="\OSS_Utils"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/global.html">global</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/OSS_Utils.html">OSS_Utils</a>
+</li>
+</ul>
+<div class="element class">
+<p class="short_description"></p>
+<div class="details">
+<div class="long_description"></div>
+<table class="table table-bordered">
+<tr>
+<th>category</th>
+<td>OSS</td>
+</tr>
+<tr>
+<th>package</th>
+<td><a href="../packages/OSS.Utils.html">OSS_Utils</a></td>
+</tr>
+<tr>
+<th>copyright</th>
+<td>Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland</td>
+</tr>
+<tr>
+<th>license</th>
+<td><a href="http://www.opensolutions.ie/licenses/new-bsd">New BSD License</a></td>
+</tr>
+</table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a id="method_HtmlToPdf"></a><div class="element clickable method public method_HtmlToPdf" data-toggle="collapse" data-target=".method_HtmlToPdf .collapse">
+<h2>Converts a HTML file to PDF using htmldoc.</h2>
+<pre>HtmlToPdf(string $html, string $pdf, bool $embedFonts) : bool</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Please note that the current stable version of htmldoc (v1.8.27) does not support CSS. Make sure PHP has write permission in the
+output directory. Also don't forget that relative paths are relative to the currently executing PHP script (include() and require() doesn't count in that).
+Using command line OpenOffice might be a better solution (a necessary macro and a tiny, one line shell script are available on the internet), as it supports everything in the HTML,
+CSS, images, etc, while the htmldoc 1.9.x is still in "developer snapshot" state.</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$html</h4>
+<code>string</code><p>the input HTML file name</p></div>
+<div class="subelement argument">
+<h4>$pdf</h4>
+<code>string</code><p>the output PDF file name</p></div>
+<div class="subelement argument">
+<h4>$embedFonts</h4>
+<code>bool</code><p>default false embed the used fonts to the genereated PDF or not - can save 100's of kBytes even in a plain PDF (think of email sending)</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>bool</code></div>
+</div></div>
+</div>
+<a id="method_genUrl"></a><div class="element clickable method public method_genUrl" data-toggle="collapse" data-target=".method_genUrl .collapse">
+<h2>A function to generate a URL with the given parameters.</h2>
+<pre>genUrl(string | bool $controller, string | bool $action, string | bool $module, array $params, string $host) : string</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>This is a useful function as no knowledge of the application's path is required.
+Uses Zend_Controller_Front.</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$controller</h4>
+<code>string</code><code>bool</code><p>default false The controller to call.</p></div>
+<div class="subelement argument">
+<h4>$action</h4>
+<code>string</code><code>bool</code><p>default false The action to call (controller must be set if setting action)</p>
+</div>
+<div class="subelement argument">
+<h4>$module</h4>
+<code>string</code><code>bool</code><p>default false The module to use. Set to false to ignore.</p></div>
+<div class="subelement argument">
+<h4>$params</h4>
+<code>array</code><p>default array() An array of key value pairs to add to the URL.</p>
+</div>
+<div class="subelement argument">
+<h4>$host</h4>
+<code>string</code><p>Defaults to null. Hostname (including http[s]://) to override url with</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_getIniOption"></a><div class="element clickable method public method_getIniOption" data-toggle="collapse" data-target=".method_getIniOption .collapse">
+<h2>A generally available function to retrieve options from the application.ini, anywhere in the program.</h2>
+<pre>getIniOption(string $option) : mixed</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Don't need to use this
+in the controllers, the $this->_options array is available there, this is useful in models, forms and other places.</p></div>
+<table class="table table-bordered"><tr>
+<th>todo</th>
+<td>: this method is rarely called, but a way to speed it up is to store the key and value in session, and then look for it when called</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$option</h4>
+<code>string</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
+</div></div>
+</div>
+<a id="method_getResource"></a><div class="element clickable method public method_getResource" data-toggle="collapse" data-target=".method_getResource .collapse">
+<h2>Returns with the resource object.</h2>
+<pre>getResource(string $resource) : object</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Use if Zend_Registry::get() doesn't work. (And in the OSS framework it doesn't.)</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$resource</h4>
+<code>string</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>object</code></div>
+</div></div>
+</div>
+<a id="method_getTempDir"></a><div class="element clickable method public method_getTempDir" data-toggle="collapse" data-target=".method_getTempDir .collapse">
+<h2>Returns with the temporary directory set in the application.ini, or if it is not set, then with the result of sys_get_temp_dir().</h2>
+<pre>getTempDir() : string</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>todo</th>
+<td>: this method is rarely called, but a way to speed it up is to store the path in session, and then look for it when called</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_ordinal"></a><div class="element clickable method public method_ordinal" data-toggle="collapse" data-target=".method_ordinal .collapse">
+<h2>Returns number with ordinal postfix.</h2>
+<pre>ordinal(int $number) : string</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$number</h4>
+<code>int</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_parseXML"></a><div class="element clickable method public method_parseXML" data-toggle="collapse" data-target=".method_parseXML .collapse">
+<h2>Parses an XML using SimpleXML and returns with the result object, or false on error.</h2>
+<pre>parseXML(string $XML) : array | bool</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$XML</h4>
+<code>string</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code><code>bool</code>
+</div>
+</div></div>
+</div>
+<a id="method_uniformDistHash"></a><div class="element clickable method public method_uniformDistHash" data-toggle="collapse" data-target=".method_uniformDistHash .collapse">
+<h2>Creates a uniformly distributed directory path from given numeric id.</h2>
+<pre>uniformDistHash(int $id, int $length) : string</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>First it turn given id to hex. Then it appends new hex with leading
+zeros to reach given length ( 3 by default ) if necessary. And then
+new string is reversed. From reversed string function takes as many
+characters as defined in length.</p>
+
+<p>e.g. <code>uniformDistHash( 216 )</code> returns <code>8/d/0/216/</code>
+     <code>uniformDistHash( 7 )</code> returns <code>7/0/0/7/</code>
+     <code>uniformDistHash( 5057 )</code> returns <code>1/c/3/5057/</code></p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$id</h4>
+<code>int</code><p>Id for making file structure</p></div>
+<div class="subelement argument">
+<h4>$length</h4>
+<code>int</code><p>How many levels should be created</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_wkhtmltopdf"></a><div class="element clickable method public method_wkhtmltopdf" data-toggle="collapse" data-target=".method_wkhtmltopdf .collapse">
+<h2>Converts a HTML file to PDF using wkhtmltopdf</h2>
+<pre>wkhtmltopdf(string $html, string $pdf) : bool</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$html</h4>
+<code>string</code><p>the input HTML file name</p></div>
+<div class="subelement argument">
+<h4>$pdf</h4>
+<code>string</code><p>the output PDF file name</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>bool</code></div>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
+            generated on 2012-11-16T11:34:39Z.<br></footer></div>
+</div>
+</body>
+</html>

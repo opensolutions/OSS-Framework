@@ -1,0 +1,1505 @@
+<!DOCTYPE html><html xmlns:date="http://exslt.org/dates-and-times" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>OSS » </title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">OSS</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Packages</a></li>
+<li><a href="../packages/OSS.html"><i class="icon-folder-open"></i> OSS</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">280</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul>
+<li>todo 
+                <span class="label label-info">2</span>
+</li>
+<li>fixme 
+                <span class="label label-info">2</span>
+</li>
+</ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-map-marker"></i> Namespaces</li>
+<li>
+<a href="../namespaces/.html" title=""><i class="icon-th"></i></a><ul class="nav nav-list nav-namespaces"></ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-function"></i> Functions</li>
+<li class="function  "><a href="#__vimbadmin_getFormElements" title="__vimbadmin_getFormElements :: Get form elements"><span class="description">Get form elements</span><pre>__vimbadmin_getFormElements</pre></a></li>
+<li class="function  "><a href="#smarty_function_LoginForm" title="smarty_function_LoginForm :: Function to generate a login form based on a ZendForm object."><span class="description">Function to generate a login form based on a ZendForm object.</span><pre>smarty_function_LoginForm</pre></a></li>
+<li class="function  "><a href="#smarty_function_OSS_Message" title="smarty_function_OSS_Message :: Function to display OSS_Message for user"><span class="description">Function to display OSS_Message for user</span><pre>smarty_function_OSS_Message</pre></a></li>
+<li class="function  "><a href="#smarty_function_addJSValidator" title="smarty_function_addJSValidator :: Function to add the JQuery form validator to a form."><span class="description">Function to add the JQuery form validator to a form.</span><pre>smarty_function_addJSValidator</pre></a></li>
+<li class="function  "><a href="#smarty_function_currency" title="smarty_function_currency :: Function to generate a currency string from a string, int or float"><span class="description">Function to generate a currency string from a string, int or float</span><pre>smarty_function_currency</pre></a></li>
+<li class="function  "><a href="#smarty_function_customdate" title="smarty_function_customdate :: Function to generate a custom date string using date( 'format', strtotime( 'offset', now ) )"><span class="description">Function to generate a custom date string using date( 'format', strtotime( 'offset', now ) )</span><pre>smarty_function_customdate</pre></a></li>
+<li class="function  "><a href="#smarty_function_dateDiffDays" title="smarty_function_dateDiffDays :: Function to to calculate diffrence between two days"><span class="description">Function to to calculate diffrence between two days</span><pre>smarty_function_dateDiffDays</pre></a></li>
+<li class="function  "><a href="#smarty_function_dynamicContent" title="smarty_function_dynamicContent :: Function to load and display dynamic content from the database."><span class="description">Function to load and display dynamic content from the database.</span><pre>smarty_function_dynamicContent</pre></a></li>
+<li class="function  "><a href="#smarty_function_genUrl" title="smarty_function_genUrl :: Function to generate a Zend Controller URL from Smarty templates."><span class="description">Function to generate a Zend Controller URL from Smarty templates.</span><pre>smarty_function_genUrl</pre></a></li>
+<li class="function  "><a href="#smarty_function_modelOperation" title="smarty_function_modelOperation :: Function to execute a model method with (optional) parameters"><span class="description">Function to execute a model method with (optional) parameters</span><pre>smarty_function_modelOperation</pre></a></li>
+<li class="function  "><a href="#smarty_modifier_alnum" title="smarty_modifier_alnum :: Alnum modifier"><span class="description">Alnum modifier</span><pre>smarty_modifier_alnum</pre></a></li>
+<li class="function  "><a href="#smarty_modifier_debug_print_var" title="smarty_modifier_debug_print_var :: Smarty debug_print_var modifier plugin"><span class="description">Smarty debug_print_var modifier plugin</span><pre>smarty_modifier_debug_print_var</pre></a></li>
+<li class="function  "><a href="#smarty_modifier_escape" title="smarty_modifier_escape :: Smarty escape modifier plugin"><span class="description">Smarty escape modifier plugin</span><pre>smarty_modifier_escape</pre></a></li>
+<li class="function  "><a href="#smarty_modifier_intlmobile" title="smarty_modifier_intlmobile :: International mobile number modifier"><span class="description">International mobile number modifier</span><pre>smarty_modifier_intlmobile</pre></a></li>
+<li class="function  "><a href="#smarty_modifier_mobile" title="smarty_modifier_mobile :: Mobile number modifier"><span class="description">Mobile number modifier</span><pre>smarty_modifier_mobile</pre></a></li>
+<li class="function  "><a href="#smarty_modifier_ossDate" title="smarty_modifier_ossDate :: OSS_Date modifier"><span class="description">OSS_Date modifier</span><pre>smarty_modifier_ossDate</pre></a></li>
+<li class="function  "><a href="#smarty_modifier_preg_replace" title="smarty_modifier_preg_replace :: Replace by regular expresion modifier"><span class="description">Replace by regular expresion modifier</span><pre>smarty_modifier_preg_replace</pre></a></li>
+<li class="function  "><a href="#smarty_modifier_shorten" title="smarty_modifier_shorten :: Shorten modifier"><span class="description">Shorten modifier</span><pre>smarty_modifier_shorten</pre></a></li>
+<li class="function  "><a href="#smarty_modifier_sizeof" title="smarty_modifier_sizeof :: Size of modifier
+Counts all elements in an array, or something in an object."><span class="description">Size of modifier
+Counts all elements in an array, or something in an object.</span><pre>smarty_modifier_sizeof</pre></a></li>
+<li class="function  "><a href="#smarty_modifier_string_format" title="smarty_modifier_string_format :: Smarty string_format modifier plugin"><span class="description">Smarty string_format modifier plugin</span><pre>smarty_modifier_string_format</pre></a></li>
+<li class="function  "><a href="#smarty_modifier_toInt" title="smarty_modifier_toInt :: To int modifier
+Multicasting given string to int"><span class="description">To int modifier
+Multicasting given string to int</span><pre>smarty_modifier_toInt</pre></a></li>
+<li class="function  "><a href="#smarty_modifier_toValidId" title="smarty_modifier_toValidId :: To valid id"><span class="description">To valid id</span><pre>smarty_modifier_toValidId</pre></a></li>
+<li class="nav-header">
+<i class="icon-custom icon-class"></i> Classes</li>
+<li><a href="#OSS_PHPUnit_Extensions_SeleniumTestCase" title="">OSS_PHPUnit_Extensions_SeleniumTestCase</a></li>
+<li><a href="#OSS_View_Helper_DateForm" title="">OSS_View_Helper_DateForm</a></li>
+<li><a href="#OSS_View_Smarty" title="">OSS_View_Smarty</a></li>
+<li><a href="#OSS_Form" title="">OSS_Form</a></li>
+<li><a href="#OSS_Yubico" title="">OSS_Yubico</a></li>
+<li><a href="#OSS_Validate_OSSIdenticalField" title="">OSS_Validate_OSSIdenticalField</a></li>
+<li><a href="#OSS_Validate_OSSUrlValidate" title="">OSS_Validate_OSSUrlValidate</a></li>
+<li><a href="#OSS_Validate_OSSNumericBetween" title="">OSS_Validate_OSSNumericBetween</a></li>
+<li><a href="#OSS_Validate_OSSIrishTaxNumber" title="">OSS_Validate_OSSIrishTaxNumber</a></li>
+<li><a href="#OSS_Validate_OSSFloat" title="">OSS_Validate_OSSFloat</a></li>
+<li><a href="#OSS_Validate_OSSDateValidate" title="">OSS_Validate_OSSDateValidate</a></li>
+<li><a href="#OSS_Validate_OSSDoctrineUniqueness" title="">OSS_Validate_OSSDoctrineUniqueness</a></li>
+<li><a href="#OSS_Validate_OSSNotRegex" title="">OSS_Validate_OSSNotRegex</a></li>
+<li><a href="#OSS_Validate_OSSMobileNumber" title="">OSS_Validate_OSSMobileNumber</a></li>
+<li><a href="#OSS_Validate_OSSPassword" title="">OSS_Validate_OSSPassword</a></li>
+<li><a href="#OSS_Validate_OSSMACAddress" title="">OSS_Validate_OSSMACAddress</a></li>
+<li><a href="#OSS_Validate_OSSDoctrine2Uniqueness" title="">OSS_Validate_OSSDoctrine2Uniqueness</a></li>
+<li><a href="#OSS_Validate_OSSRequiredIf" title="Validates with special condition.">OSS_Validate_OSSRequiredIf</a></li>
+<li><a href="#OSS_Validate_OSSPSN" title="">OSS_Validate_OSSPSN</a></li>
+<li><a href="#OSS_Validate_OSSDateTimeValidate" title="">OSS_Validate_OSSDateTimeValidate</a></li>
+<li><a href="#OSS_Validate_OSSTimeValidate" title="">OSS_Validate_OSSTimeValidate</a></li>
+<li><a href="#OSS_Validate_Exception" title="">OSS_Validate_Exception</a></li>
+<li><a href="#OSS_Captcha_Image" title="">OSS_Captcha_Image</a></li>
+<li><a href="#OSS_Service_Freshbooks" title="">OSS_Service_Freshbooks</a></li>
+<li><a href="#OSS_Service_Clickatell_Http" title="">OSS_Service_Clickatell_Http</a></li>
+<li><a href="#OSS_Service_Clickatell_Abstract" title="">OSS_Service_Clickatell_Abstract</a></li>
+<li><a href="#OSS_Service_Clickatell_Exception" title="">OSS_Service_Clickatell_Exception</a></li>
+<li><a href="#OSS_Curl" title="">OSS_Curl</a></li>
+<li><a href="#OSS_Utils" title="">OSS_Utils</a></li>
+<li><a href="#OSS_Debug" title="">OSS_Debug</a></li>
+<li><a href="#OSS_Countries" title="">OSS_Countries</a></li>
+<li><a href="#OSS_Resource_Clickatell" title="">OSS_Resource_Clickatell</a></li>
+<li><a href="#OSS_Resource_Freshbooks" title="">OSS_Resource_Freshbooks</a></li>
+<li><a href="#OSS_Resource_Doctrine" title="">OSS_Resource_Doctrine</a></li>
+<li><a href="#OSS_Resource_Auth" title="">OSS_Resource_Auth</a></li>
+<li><a href="#OSS_Resource_Zfdebug" title="">OSS_Resource_Zfdebug</a></li>
+<li><a href="#OSS_Resource_Doctrine2" title="">OSS_Resource_Doctrine2</a></li>
+<li><a href="#OSS_Resource_Moduleconfig" title="">OSS_Resource_Moduleconfig</a></li>
+<li><a href="#OSS_Resource_Namespace" title="">OSS_Resource_Namespace</a></li>
+<li><a href="#OSS_Resource_Logger" title="">OSS_Resource_Logger</a></li>
+<li><a href="#OSS_Resource_News" title="">OSS_Resource_News</a></li>
+<li><a href="#OSS_Resource_View" title="">OSS_Resource_View</a></li>
+<li><a href="#OSS_Resource_Smarty" title="">OSS_Resource_Smarty</a></li>
+<li><a href="#OSS_Resource_Mailer" title="">OSS_Resource_Mailer</a></li>
+<li><a href="#OSS_Phone" title="">OSS_Phone</a></li>
+<li><a href="#OSS_DateTime" title="">OSS_DateTime</a></li>
+<li><a href="#OSS_Doctrine2_Utils" title="">OSS_Doctrine2_Utils</a></li>
+<li><a href="#OSS_Doctrine2_FirebugProfiler" title="">OSS_Doctrine2_FirebugProfiler</a></li>
+<li><a href="#OSS_Doctrine2_Exception" title="">OSS_Doctrine2_Exception</a></li>
+<li><a href="#OSS_Doctrine_Record" title="">OSS_Doctrine_Record</a></li>
+<li><a href="#OSS_Doctrine_Record_WithPreferences" title="">OSS_Doctrine_Record_WithPreferences</a></li>
+<li><a href="#OSS_Doctrine_Record_WithPreferencesTable" title="">OSS_Doctrine_Record_WithPreferencesTable</a></li>
+<li><a href="#OSS_Doctrine_Exception" title="">OSS_Doctrine_Exception</a></li>
+<li><a href="#OSS_Doctrine_Table" title="">OSS_Doctrine_Table</a></li>
+<li><a href="#OSS_Filter_FixCompanyname" title="">OSS_Filter_FixCompanyname</a></li>
+<li><a href="#OSS_Filter_StripSlashes" title="">OSS_Filter_StripSlashes</a></li>
+<li><a href="#OSS_Filter_Float" title="">OSS_Filter_Float</a></li>
+<li><a href="#OSS_Filter_HtmlEntitiesDecode" title="">OSS_Filter_HtmlEntitiesDecode</a></li>
+<li><a href="#OSS_Filter_FixAddressline" title="">OSS_Filter_FixAddressline</a></li>
+<li><a href="#OSS_Filter_FixLastname" title="">OSS_Filter_FixLastname</a></li>
+<li><a href="#OSS_Filter_FixFirstname" title="">OSS_Filter_FixFirstname</a></li>
+<li><a href="#OSS_Mail" title="">OSS_Mail</a></li>
+<li><a href="#OSS_Log" title="">OSS_Log</a></li>
+<li><a href="#OSS_Acl" title="">OSS_Acl</a></li>
+<li><a href="#OSS_Pdf_PdfLatex_Exception" title="">OSS_Pdf_PdfLatex_Exception</a></li>
+<li><a href="#OSS_Pdf_PdfLatex" title="">OSS_Pdf_PdfLatex</a></li>
+<li><a href="#OSS_StatsD" title="">OSS_StatsD</a></li>
+<li><a href="#OSS_Message_Pop_Up" title="OSS_Message pop up type class for displaying messages for users.">OSS_Message_Pop_Up</a></li>
+<li><a href="#OSS_Message_Block" title="OSS_Message block type class for displaying messages for users.">OSS_Message_Block</a></li>
+<li><a href="#OSS_Message" title="OSS: Message">OSS_Message</a></li>
+<li><a href="#OSS_Date" title="">OSS_Date</a></li>
+<li><a href="#OSS_ZFDebug_Controller_Plugin_Debug_Plugin_Doctrine" title="">OSS_ZFDebug_Controller_Plugin_Debug_Plugin_Doctrine</a></li>
+<li><a href="#OSS_Controller_Auth" title="">OSS_Controller_Auth</a></li>
+<li><a href="#OSS_Controller_Action" title="Controller: Action">OSS_Controller_Action</a></li>
+<li><a href="#OSS_Controller_AuthRequiredAction" title="">OSS_Controller_AuthRequiredAction</a></li>
+<li><a href="#OSS_Controller_Router_Cli" title="">OSS_Controller_Router_Cli</a></li>
+<li><a href="#OSS_Auth_DoctrineAdapter" title="">OSS_Auth_DoctrineAdapter</a></li>
+<li><a href="#OSS_Auth_Doctrine2Adapter" title="">OSS_Auth_Doctrine2Adapter</a></li>
+<li><a href="#OSS_String" title="">OSS_String</a></li>
+<li><a href="#OSS_Exception" title="">OSS_Exception</a></li>
+<li><a href="#OSS_Array" title="">OSS_Array</a></li>
+</ul>
+</div>
+<div class="span8 namespace-contents">
+<ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-th"></i></a><span class="divider">\</span>
+</li>
+<li class="active"><a href="../namespaces/.html"></a></li>
+</ul>
+<div class="namespace-indent">
+<h3>
+<i class="icon-custom icon-function"></i> Functions</h3>
+<a name="__vimbadmin_getFormElements" id="__vimbadmin_getFormElements"></a><div class="element clickable function  __vimbadmin_getFormElements" data-toggle="collapse" data-target=".__vimbadmin_getFormElements .collapse">
+<h2>Get form elements</h2>
+<pre>__vimbadmin_getFormElements(<a href="../classes/OSS_Form.html">\OSS_Form</a> $formObj, array $validationRules) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>category</th>
+<td>OSS</td>
+</tr>
+<tr>
+<th>package</th>
+<td><a href="../packages/OSS.Smarty.Functions.html">OSS_Smarty</a></td>
+</tr>
+<tr>
+<th>subpackage</th>
+<td>Functions</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$formObj</h4>
+<code><a href="../classes/OSS_Form.html">\OSS_Form</a></code><p>Form to get elements</p></div>
+<div class="subelement argument">
+<h4>$validationRules</h4>
+<code>array</code><p>&$validationRules Array of rules for validate elements</p>
+</div>
+</div></div>
+</div>
+<a name="smarty_function_LoginForm" id="smarty_function_LoginForm"></a><div class="element clickable function  smarty_function_LoginForm" data-toggle="collapse" data-target=".smarty_function_LoginForm .collapse">
+<h2>Function to generate a login form based on a ZendForm object.</h2>
+<pre>smarty_function_LoginForm(array $params, \Smarty $smarty) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>category</th>
+<td>OSS</td>
+</tr>
+<tr>
+<th>package</th>
+<td><a href="../packages/OSS.Smarty.Functions.html">OSS_Smarty</a></td>
+</tr>
+<tr>
+<th>subpackage</th>
+<td>Functions</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$params</h4>
+<code>array</code>
+</div>
+<div class="subelement argument">
+<h4>$smarty</h4>
+<code>\Smarty</code><p>A reference to the Smarty template object</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a name="smarty_function_OSS_Message" id="smarty_function_OSS_Message"></a><div class="element clickable function  smarty_function_OSS_Message" data-toggle="collapse" data-target=".smarty_function_OSS_Message .collapse">
+<h2>Function to display OSS_Message for user</h2>
+<pre>smarty_function_OSS_Message(array $params, \Smarty $smarty) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>category</th>
+<td>OSS</td>
+</tr>
+<tr>
+<th>package</th>
+<td><a href="../packages/OSS.Smarty.Functions.html">OSS_Smarty</a></td>
+</tr>
+<tr>
+<th>subpackage</th>
+<td>Functions</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$params</h4>
+<code>array</code>
+</div>
+<div class="subelement argument">
+<h4>$smarty</h4>
+<code>\Smarty</code><p>A reference to the Smarty template object</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a name="smarty_function_addJSValidator" id="smarty_function_addJSValidator"></a><div class="element clickable function  smarty_function_addJSValidator" data-toggle="collapse" data-target=".smarty_function_addJSValidator .collapse">
+<h2>Function to add the JQuery form validator to a form.</h2>
+<pre>smarty_function_addJSValidator(array $params, \Smarty $smarty) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>the parameters in $params are:</p>
+
+<p>'form' - the form object, must be a Zend_Form or an inherited class of that</p></p>
+<table class="table table-bordered">
+<tr>
+<th>category</th>
+<td>OSS</td>
+</tr>
+<tr>
+<th>package</th>
+<td><a href="../packages/OSS.Smarty.Functions.html">OSS_Smarty</a></td>
+</tr>
+<tr>
+<th>subpackage</th>
+<td>Functions</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$params</h4>
+<code>array</code><p>An array of the parameters to make up the URL</p></div>
+<div class="subelement argument">
+<h4>$smarty</h4>
+<code>\Smarty</code><p>A reference to the Smarty template object</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a name="smarty_function_currency" id="smarty_function_currency"></a><div class="element clickable function  smarty_function_currency" data-toggle="collapse" data-target=".smarty_function_currency .collapse">
+<h2>Function to generate a currency string from a string, int or float</h2>
+<pre>smarty_function_currency(array $params, \Smarty $smarty) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>parameters:
+'value' string, int, float, default 0.00
+'currency' string, default '&euro;'</p></p>
+<table class="table table-bordered">
+<tr>
+<th>category</th>
+<td>OSS</td>
+</tr>
+<tr>
+<th>package</th>
+<td><a href="../packages/OSS.Smarty.Functions.html">OSS_Smarty</a></td>
+</tr>
+<tr>
+<th>subpackage</th>
+<td>Functions</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$params</h4>
+<code>array</code>
+</div>
+<div class="subelement argument">
+<h4>$smarty</h4>
+<code>\Smarty</code><p>A reference to the Smarty template object</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a name="smarty_function_customdate" id="smarty_function_customdate"></a><div class="element clickable function  smarty_function_customdate" data-toggle="collapse" data-target=".smarty_function_customdate .collapse">
+<h2>Function to generate a custom date string using date( 'format', strtotime( 'offset', now ) )</h2>
+<pre>smarty_function_customdate(array $params, \Smarty $smarty) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>parameters:
+'format' string, default 'Y-m-d'
+'offset' string, default 'now'
+'now' string, default time()</p></p>
+<table class="table table-bordered">
+<tr>
+<th>category</th>
+<td>OSS</td>
+</tr>
+<tr>
+<th>package</th>
+<td><a href="../packages/OSS.Smarty.Functions.html">OSS_Smarty</a></td>
+</tr>
+<tr>
+<th>subpackage</th>
+<td>Functions</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$params</h4>
+<code>array</code>
+</div>
+<div class="subelement argument">
+<h4>$smarty</h4>
+<code>\Smarty</code><p>A reference to the Smarty template object</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a name="smarty_function_dateDiffDays" id="smarty_function_dateDiffDays"></a><div class="element clickable function  smarty_function_dateDiffDays" data-toggle="collapse" data-target=".smarty_function_dateDiffDays .collapse">
+<h2>Function to to calculate diffrence between two days</h2>
+<pre>smarty_function_dateDiffDays(array $params, \Smarty $smarty) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>parameters:
+'date1' string, default 'Y-m-d'
+'date2' string, default 'Y-m-d'</p></p>
+<table class="table table-bordered">
+<tr>
+<th>category</th>
+<td>OSS</td>
+</tr>
+<tr>
+<th>package</th>
+<td><a href="../packages/OSS.Smarty.Functions.html">OSS_Smarty</a></td>
+</tr>
+<tr>
+<th>subpackage</th>
+<td>Functions</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$params</h4>
+<code>array</code>
+</div>
+<div class="subelement argument">
+<h4>$smarty</h4>
+<code>\Smarty</code><p>A reference to the Smarty template object</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a name="smarty_function_dynamicContent" id="smarty_function_dynamicContent"></a><div class="element clickable function  smarty_function_dynamicContent" data-toggle="collapse" data-target=".smarty_function_dynamicContent .collapse">
+<h2>Function to load and display dynamic content from the database.</h2>
+<pre>smarty_function_dynamicContent(array $params, \Smarty $smarty) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>The URL is made up of parameters as supplied in the $params associative array.
+'controller' and 'action' are special parameters which indicate the controller
+and action to call. Any other parameters are added as additional name / value
+pairs.</p>
+
+<p>NOTICE: Works with Doctrine1</p></p>
+<table class="table table-bordered">
+<tr>
+<th>category</th>
+<td>OSS</td>
+</tr>
+<tr>
+<th>package</th>
+<td><a href="../packages/OSS.Smarty.Functions.html">OSS_Smarty</a></td>
+</tr>
+<tr>
+<th>subpackage</th>
+<td>Functions</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$params</h4>
+<code>array</code><p>An array of the parameters to make up the URL</p></div>
+<div class="subelement argument">
+<h4>$smarty</h4>
+<code>\Smarty</code><p>A reference to the Smarty template object</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a name="smarty_function_genUrl" id="smarty_function_genUrl"></a><div class="element clickable function  smarty_function_genUrl" data-toggle="collapse" data-target=".smarty_function_genUrl .collapse">
+<h2>Function to generate a Zend Controller URL from Smarty templates.</h2>
+<pre>smarty_function_genUrl(array $params, \Smarty $smarty) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>The URL is made up of parameters as supplied in the $params associative array.
+'module', 'controller' and 'action' are special parameters which indicate the module,
+controller and action to call. Any other parameters are added as additional name / value
+pairs.</p>
+
+<p>Calls OSS_Utils::genUrl()</p></p>
+<table class="table table-bordered">
+<tr>
+<th>category</th>
+<td>OSS</td>
+</tr>
+<tr>
+<th>package</th>
+<td><a href="../packages/OSS.Smarty.Functions.html">OSS_Smarty</a></td>
+</tr>
+<tr>
+<th>subpackage</th>
+<td>Functions</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$params</h4>
+<code>array</code><p>An array of the parameters to make up the URL</p></div>
+<div class="subelement argument">
+<h4>$smarty</h4>
+<code>\Smarty</code><p>A reference to the Smarty object</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a name="smarty_function_modelOperation" id="smarty_function_modelOperation"></a><div class="element clickable function  smarty_function_modelOperation" data-toggle="collapse" data-target=".smarty_function_modelOperation .collapse">
+<h2>Function to execute a model method with (optional) parameters</h2>
+<pre>smarty_function_modelOperation(array $params, \Smarty $smarty) : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>NOTICE: Works only with Doctrine1</p></p>
+<table class="table table-bordered">
+<tr>
+<th>category</th>
+<td>OSS</td>
+</tr>
+<tr>
+<th>package</th>
+<td><a href="../packages/OSS.Smarty.Functions.html">OSS_Smarty</a></td>
+</tr>
+<tr>
+<th>subpackage</th>
+<td>Functions</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$params</h4>
+<code>array</code><p>(model, id, method, params)</p>
+</div>
+<div class="subelement argument">
+<h4>$smarty</h4>
+<code>\Smarty</code><p>A reference to the Smarty template object</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
+</div></div>
+</div>
+<a name="smarty_modifier_alnum" id="smarty_modifier_alnum"></a><div class="element clickable function  smarty_modifier_alnum" data-toggle="collapse" data-target=".smarty_modifier_alnum .collapse">
+<h2>Alnum modifier</h2>
+<pre>smarty_modifier_alnum(string $string) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>category</th>
+<td>OSS</td>
+</tr>
+<tr>
+<th>package</th>
+<td><a href="../packages/OSS.Smarty.Modifier.html">OSS_Smarty</a></td>
+</tr>
+<tr>
+<th>subpackage</th>
+<td>Modifier</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$string</h4>
+<code>string</code><p>Strint to modify</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a name="smarty_modifier_debug_print_var" id="smarty_modifier_debug_print_var"></a><div class="element clickable function  smarty_modifier_debug_print_var" data-toggle="collapse" data-target=".smarty_modifier_debug_print_var .collapse">
+<h2>Smarty debug_print_var modifier plugin</h2>
+<pre>smarty_modifier_debug_print_var($var, $depth, $length) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Type:     modifier<br>
+Name:     debug_print_var<br>
+Purpose:  formats variable contents for display in the console</p></p>
+<table class="table table-bordered">
+<tr>
+<th>link</th>
+<td><a href="http://smarty.php.net/manual/en/language.modifier.debug.print.var.php%0Adebug_print_var">(Smarty online manual)</a></td>
+</tr>
+<tr>
+<th>author</th>
+<td><a href="mailto:monte@ohrt.com">Monte Ohrt</a></td>
+</tr>
+<tr>
+<th>category</th>
+<td>OSS</td>
+</tr>
+<tr>
+<th>package</th>
+<td><a href="../packages/OSS.Smarty.Modifier.html">OSS_Smarty</a></td>
+</tr>
+<tr>
+<th>subpackage</th>
+<td>Modifier</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$var</h4>
+<code></code><p>array|object</p></div>
+<div class="subelement argument">
+<h4>$depth</h4>
+<code></code><p>integer</p></div>
+<div class="subelement argument">
+<h4>$length</h4>
+<code></code><p>integer</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a name="smarty_modifier_escape" id="smarty_modifier_escape"></a><div class="element clickable function  smarty_modifier_escape" data-toggle="collapse" data-target=".smarty_modifier_escape .collapse">
+<h2>Smarty escape modifier plugin</h2>
+<pre>smarty_modifier_escape(string $string, \html | \htmlall | \url | \quotes | \hex | \hexentity | \javascript $esc_type, string $char_set) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Type:     modifier<br>
+Name:     escape<br>
+Purpose:  Escape the string according to escapement type</p></p>
+<table class="table table-bordered">
+<tr>
+<th>link</th>
+<td><a href="http://smarty.php.net/manual/en/language.modifier.escape.php%0Aescape">(Smarty online manual)</a></td>
+</tr>
+<tr>
+<th>author</th>
+<td><a href="mailto:monte@ohrt.com">Monte Ohrt</a></td>
+</tr>
+<tr>
+<th>category</th>
+<td>OSS</td>
+</tr>
+<tr>
+<th>package</th>
+<td><a href="../packages/OSS.Smarty.Modifier.html">OSS_Smarty</a></td>
+</tr>
+<tr>
+<th>subpackage</th>
+<td>Modifier</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$string</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$esc_type</h4>
+<code>\html\htmlall\url\quotes\hex\hexentity\javascript</code>
+</div>
+<div class="subelement argument">
+<h4>$char_set</h4>
+<code>string</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a name="smarty_modifier_intlmobile" id="smarty_modifier_intlmobile"></a><div class="element clickable function  smarty_modifier_intlmobile" data-toggle="collapse" data-target=".smarty_modifier_intlmobile .collapse">
+<h2>International mobile number modifier</h2>
+<pre>smarty_modifier_intlmobile(string $string) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>category</th>
+<td>OSS</td>
+</tr>
+<tr>
+<th>package</th>
+<td><a href="../packages/OSS.Smarty.Modifier.html">OSS_Smarty</a></td>
+</tr>
+<tr>
+<th>subpackage</th>
+<td>Modifier</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$string</h4>
+<code>string</code><p>Strint to modify</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a name="smarty_modifier_mobile" id="smarty_modifier_mobile"></a><div class="element clickable function  smarty_modifier_mobile" data-toggle="collapse" data-target=".smarty_modifier_mobile .collapse">
+<h2>Mobile number modifier</h2>
+<pre>smarty_modifier_mobile(string $string) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>category</th>
+<td>OSS</td>
+</tr>
+<tr>
+<th>package</th>
+<td><a href="../packages/OSS.Smarty.Modifier.html">OSS_Smarty</a></td>
+</tr>
+<tr>
+<th>subpackage</th>
+<td>Modifier</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$string</h4>
+<code>string</code><p>Strint to modify</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a name="smarty_modifier_ossDate" id="smarty_modifier_ossDate"></a><div class="element clickable function  smarty_modifier_ossDate" data-toggle="collapse" data-target=".smarty_modifier_ossDate .collapse">
+<h2>OSS_Date modifier</h2>
+<pre>smarty_modifier_ossDate(string $string, string $format) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>category</th>
+<td>OSS</td>
+</tr>
+<tr>
+<th>package</th>
+<td><a href="../packages/OSS.Smarty.Modifier.html">OSS_Smarty</a></td>
+</tr>
+<tr>
+<th>subpackage</th>
+<td>Modifier</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$string</h4>
+<code>string</code><p>Strint to modify</p></div>
+<div class="subelement argument">
+<h4>$format</h4>
+<code>string</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a name="smarty_modifier_preg_replace" id="smarty_modifier_preg_replace"></a><div class="element clickable function  smarty_modifier_preg_replace" data-toggle="collapse" data-target=".smarty_modifier_preg_replace .collapse">
+<h2>Replace by regular expresion modifier</h2>
+<pre>smarty_modifier_preg_replace(string $string, string $search, string $replace) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>category</th>
+<td>OSS</td>
+</tr>
+<tr>
+<th>package</th>
+<td><a href="../packages/OSS.Smarty.Modifier.html">OSS_Smarty</a></td>
+</tr>
+<tr>
+<th>subpackage</th>
+<td>Modifier</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$string</h4>
+<code>string</code><p>Strint to modify</p></div>
+<div class="subelement argument">
+<h4>$search</h4>
+<code>string</code><p>Pattern to search</p></div>
+<div class="subelement argument">
+<h4>$replace</h4>
+<code>string</code><p>Replacement string</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a name="smarty_modifier_shorten" id="smarty_modifier_shorten"></a><div class="element clickable function  smarty_modifier_shorten" data-toggle="collapse" data-target=".smarty_modifier_shorten .collapse">
+<h2>Shorten modifier</h2>
+<pre>smarty_modifier_shorten(string $string, int $length) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>category</th>
+<td>OSS</td>
+</tr>
+<tr>
+<th>package</th>
+<td><a href="../packages/OSS.Smarty.Modifier.html">OSS_Smarty</a></td>
+</tr>
+<tr>
+<th>subpackage</th>
+<td>Modifier</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$string</h4>
+<code>string</code><p>Strint to modify</p></div>
+<div class="subelement argument">
+<h4>$length</h4>
+<code>int</code><p>Wanted max string length</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a name="smarty_modifier_sizeof" id="smarty_modifier_sizeof"></a><div class="element clickable function  smarty_modifier_sizeof" data-toggle="collapse" data-target=".smarty_modifier_sizeof .collapse">
+<h2>Size of modifier
+Counts all elements in an array, or something in an object.</h2>
+<pre>smarty_modifier_sizeof(mixed $input) : int</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>category</th>
+<td>OSS</td>
+</tr>
+<tr>
+<th>package</th>
+<td><a href="../packages/OSS.Smarty.Modifier.html">OSS_Smarty</a></td>
+</tr>
+<tr>
+<th>subpackage</th>
+<td>Modifier</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$input</h4>
+<code>mixed</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>int</code></div>
+</div></div>
+</div>
+<a name="smarty_modifier_string_format" id="smarty_modifier_string_format"></a><div class="element clickable function  smarty_modifier_string_format" data-toggle="collapse" data-target=".smarty_modifier_string_format .collapse">
+<h2>Smarty string_format modifier plugin</h2>
+<pre>smarty_modifier_string_format($string, $format) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"><p>Type:     modifier<br>
+Name:     string_format<br>
+Purpose:  format strings via sprintf</p></p>
+<table class="table table-bordered">
+<tr>
+<th>link</th>
+<td><a href="http://smarty.php.net/manual/en/language.modifier.string.format.php%0Astring_format">(Smarty online manual)</a></td>
+</tr>
+<tr>
+<th>author</th>
+<td><a href="mailto:monte@ohrt.com">Monte Ohrt</a></td>
+</tr>
+<tr>
+<th>category</th>
+<td>OSS</td>
+</tr>
+<tr>
+<th>package</th>
+<td><a href="../packages/OSS.Smarty.Modifier.html">OSS_Smarty</a></td>
+</tr>
+<tr>
+<th>subpackage</th>
+<td>Modifier</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$string</h4>
+<code></code><p>string</p></div>
+<div class="subelement argument">
+<h4>$format</h4>
+<code></code><p>string</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a name="smarty_modifier_toInt" id="smarty_modifier_toInt"></a><div class="element clickable function  smarty_modifier_toInt" data-toggle="collapse" data-target=".smarty_modifier_toInt .collapse">
+<h2>To int modifier
+Multicasting given string to int</h2>
+<pre>smarty_modifier_toInt(string $string) : int</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>category</th>
+<td>OSS</td>
+</tr>
+<tr>
+<th>package</th>
+<td><a href="../packages/OSS.Smarty.Modifier.html">OSS_Smarty</a></td>
+</tr>
+<tr>
+<th>subpackage</th>
+<td>Modifier</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$string</h4>
+<code>string</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>int</code></div>
+</div></div>
+</div>
+<a name="smarty_modifier_toValidId" id="smarty_modifier_toValidId"></a><div class="element clickable function  smarty_modifier_toValidId" data-toggle="collapse" data-target=".smarty_modifier_toValidId .collapse">
+<h2>To valid id</h2>
+<pre>smarty_modifier_toValidId(string $string) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>category</th>
+<td>OSS</td>
+</tr>
+<tr>
+<th>package</th>
+<td><a href="../packages/OSS.Smarty.Modifier.html">OSS_Smarty</a></td>
+</tr>
+<tr>
+<th>subpackage</th>
+<td>Modifier</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$string</h4>
+<code>string</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-class"></i> Classes and interfaces</h3>
+<a name="OSS_Acl" id="OSS_Acl"></a><div class="element ajax clickable class" href="../classes/OSS_Acl.html">
+<h1>OSS_Acl<a href="../classes/OSS_Acl.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Acl.html" class="more">« More »</a>
+</div>
+<a name="OSS_Array" id="OSS_Array"></a><div class="element ajax clickable class" href="../classes/OSS_Array.html">
+<h1>OSS_Array<a href="../classes/OSS_Array.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Array.html" class="more">« More »</a>
+</div>
+<a name="OSS_Auth_Doctrine2Adapter" id="OSS_Auth_Doctrine2Adapter"></a><div class="element ajax clickable class" href="../classes/OSS_Auth_Doctrine2Adapter.html">
+<h1>OSS_Auth_Doctrine2Adapter<a href="../classes/OSS_Auth_Doctrine2Adapter.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Auth_Doctrine2Adapter.html" class="more">« More »</a>
+</div>
+<a name="OSS_Auth_DoctrineAdapter" id="OSS_Auth_DoctrineAdapter"></a><div class="element ajax clickable class" href="../classes/OSS_Auth_DoctrineAdapter.html">
+<h1>OSS_Auth_DoctrineAdapter<a href="../classes/OSS_Auth_DoctrineAdapter.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Auth_DoctrineAdapter.html" class="more">« More »</a>
+</div>
+<a name="OSS_Captcha_Image" id="OSS_Captcha_Image"></a><div class="element ajax clickable class" href="../classes/OSS_Captcha_Image.html">
+<h1>OSS_Captcha_Image<a href="../classes/OSS_Captcha_Image.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Captcha_Image.html" class="more">« More »</a>
+</div>
+<a name="OSS_Controller_Action" id="OSS_Controller_Action"></a><div class="element ajax clickable class" href="../classes/OSS_Controller_Action.html">
+<h1>OSS_Controller_Action<a href="../classes/OSS_Controller_Action.html">¶</a>
+</h1>
+<p class="short_description">Controller: Action</p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Controller_Action.html" class="more">« More »</a>
+</div>
+<a name="OSS_Controller_Auth" id="OSS_Controller_Auth"></a><div class="element ajax clickable class" href="../classes/OSS_Controller_Auth.html">
+<h1>OSS_Controller_Auth<a href="../classes/OSS_Controller_Auth.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Controller_Auth.html" class="more">« More »</a>
+</div>
+<a name="OSS_Controller_AuthRequiredAction" id="OSS_Controller_AuthRequiredAction"></a><div class="element ajax clickable class" href="../classes/OSS_Controller_AuthRequiredAction.html">
+<h1>OSS_Controller_AuthRequiredAction<a href="../classes/OSS_Controller_AuthRequiredAction.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Controller_AuthRequiredAction.html" class="more">« More »</a>
+</div>
+<a name="OSS_Controller_Router_Cli" id="OSS_Controller_Router_Cli"></a><div class="element ajax clickable class" href="../classes/OSS_Controller_Router_Cli.html">
+<h1>OSS_Controller_Router_Cli<a href="../classes/OSS_Controller_Router_Cli.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Controller_Router_Cli.html" class="more">« More »</a>
+</div>
+<a name="OSS_Countries" id="OSS_Countries"></a><div class="element ajax clickable class" href="../classes/OSS_Countries.html">
+<h1>OSS_Countries<a href="../classes/OSS_Countries.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Countries.html" class="more">« More »</a>
+</div>
+<a name="OSS_Curl" id="OSS_Curl"></a><div class="element ajax clickable class" href="../classes/OSS_Curl.html">
+<h1>OSS_Curl<a href="../classes/OSS_Curl.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Curl.html" class="more">« More »</a>
+</div>
+<a name="OSS_Date" id="OSS_Date"></a><div class="element ajax clickable class" href="../classes/OSS_Date.html">
+<h1>OSS_Date<a href="../classes/OSS_Date.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Date.html" class="more">« More »</a>
+</div>
+<a name="OSS_DateTime" id="OSS_DateTime"></a><div class="element ajax clickable class" href="../classes/OSS_DateTime.html">
+<h1>OSS_DateTime<a href="../classes/OSS_DateTime.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_DateTime.html" class="more">« More »</a>
+</div>
+<a name="OSS_Debug" id="OSS_Debug"></a><div class="element ajax clickable class" href="../classes/OSS_Debug.html">
+<h1>OSS_Debug<a href="../classes/OSS_Debug.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Debug.html" class="more">« More »</a>
+</div>
+<a name="OSS_Doctrine2_Exception" id="OSS_Doctrine2_Exception"></a><div class="element ajax clickable class" href="../classes/OSS_Doctrine2_Exception.html">
+<h1>OSS_Doctrine2_Exception<a href="../classes/OSS_Doctrine2_Exception.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Doctrine2_Exception.html" class="more">« More »</a>
+</div>
+<a name="OSS_Doctrine2_FirebugProfiler" id="OSS_Doctrine2_FirebugProfiler"></a><div class="element ajax clickable class" href="../classes/OSS_Doctrine2_FirebugProfiler.html">
+<h1>OSS_Doctrine2_FirebugProfiler<a href="../classes/OSS_Doctrine2_FirebugProfiler.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Doctrine2_FirebugProfiler.html" class="more">« More »</a>
+</div>
+<a name="OSS_Doctrine2_Utils" id="OSS_Doctrine2_Utils"></a><div class="element ajax clickable class" href="../classes/OSS_Doctrine2_Utils.html">
+<h1>OSS_Doctrine2_Utils<a href="../classes/OSS_Doctrine2_Utils.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Doctrine2_Utils.html" class="more">« More »</a>
+</div>
+<a name="OSS_Doctrine_Exception" id="OSS_Doctrine_Exception"></a><div class="element ajax clickable class" href="../classes/OSS_Doctrine_Exception.html">
+<h1>OSS_Doctrine_Exception<a href="../classes/OSS_Doctrine_Exception.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Doctrine_Exception.html" class="more">« More »</a>
+</div>
+<a name="OSS_Doctrine_Record" id="OSS_Doctrine_Record"></a><div class="element ajax clickable class" href="../classes/OSS_Doctrine_Record.html">
+<h1>OSS_Doctrine_Record<a href="../classes/OSS_Doctrine_Record.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Doctrine_Record.html" class="more">« More »</a>
+</div>
+<a name="OSS_Doctrine_Record_WithPreferences" id="OSS_Doctrine_Record_WithPreferences"></a><div class="element ajax clickable class" href="../classes/OSS_Doctrine_Record_WithPreferences.html">
+<h1>OSS_Doctrine_Record_WithPreferences<a href="../classes/OSS_Doctrine_Record_WithPreferences.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Doctrine_Record_WithPreferences.html" class="more">« More »</a>
+</div>
+<a name="OSS_Doctrine_Record_WithPreferencesTable" id="OSS_Doctrine_Record_WithPreferencesTable"></a><div class="element ajax clickable class" href="../classes/OSS_Doctrine_Record_WithPreferencesTable.html">
+<h1>OSS_Doctrine_Record_WithPreferencesTable<a href="../classes/OSS_Doctrine_Record_WithPreferencesTable.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Doctrine_Record_WithPreferencesTable.html" class="more">« More »</a>
+</div>
+<a name="OSS_Doctrine_Table" id="OSS_Doctrine_Table"></a><div class="element ajax clickable class" href="../classes/OSS_Doctrine_Table.html">
+<h1>OSS_Doctrine_Table<a href="../classes/OSS_Doctrine_Table.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Doctrine_Table.html" class="more">« More »</a>
+</div>
+<a name="OSS_Exception" id="OSS_Exception"></a><div class="element ajax clickable class" href="../classes/OSS_Exception.html">
+<h1>OSS_Exception<a href="../classes/OSS_Exception.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Exception.html" class="more">« More »</a>
+</div>
+<a name="OSS_Filter_FixAddressline" id="OSS_Filter_FixAddressline"></a><div class="element ajax clickable class" href="../classes/OSS_Filter_FixAddressline.html">
+<h1>OSS_Filter_FixAddressline<a href="../classes/OSS_Filter_FixAddressline.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Filter_FixAddressline.html" class="more">« More »</a>
+</div>
+<a name="OSS_Filter_FixCompanyname" id="OSS_Filter_FixCompanyname"></a><div class="element ajax clickable class" href="../classes/OSS_Filter_FixCompanyname.html">
+<h1>OSS_Filter_FixCompanyname<a href="../classes/OSS_Filter_FixCompanyname.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Filter_FixCompanyname.html" class="more">« More »</a>
+</div>
+<a name="OSS_Filter_FixFirstname" id="OSS_Filter_FixFirstname"></a><div class="element ajax clickable class" href="../classes/OSS_Filter_FixFirstname.html">
+<h1>OSS_Filter_FixFirstname<a href="../classes/OSS_Filter_FixFirstname.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Filter_FixFirstname.html" class="more">« More »</a>
+</div>
+<a name="OSS_Filter_FixLastname" id="OSS_Filter_FixLastname"></a><div class="element ajax clickable class" href="../classes/OSS_Filter_FixLastname.html">
+<h1>OSS_Filter_FixLastname<a href="../classes/OSS_Filter_FixLastname.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Filter_FixLastname.html" class="more">« More »</a>
+</div>
+<a name="OSS_Filter_Float" id="OSS_Filter_Float"></a><div class="element ajax clickable class" href="../classes/OSS_Filter_Float.html">
+<h1>OSS_Filter_Float<a href="../classes/OSS_Filter_Float.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Filter_Float.html" class="more">« More »</a>
+</div>
+<a name="OSS_Filter_HtmlEntitiesDecode" id="OSS_Filter_HtmlEntitiesDecode"></a><div class="element ajax clickable class" href="../classes/OSS_Filter_HtmlEntitiesDecode.html">
+<h1>OSS_Filter_HtmlEntitiesDecode<a href="../classes/OSS_Filter_HtmlEntitiesDecode.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Filter_HtmlEntitiesDecode.html" class="more">« More »</a>
+</div>
+<a name="OSS_Filter_StripSlashes" id="OSS_Filter_StripSlashes"></a><div class="element ajax clickable class" href="../classes/OSS_Filter_StripSlashes.html">
+<h1>OSS_Filter_StripSlashes<a href="../classes/OSS_Filter_StripSlashes.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Filter_StripSlashes.html" class="more">« More »</a>
+</div>
+<a name="OSS_Form" id="OSS_Form"></a><div class="element ajax clickable class" href="../classes/OSS_Form.html">
+<h1>OSS_Form<a href="../classes/OSS_Form.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Form.html" class="more">« More »</a>
+</div>
+<a name="OSS_Log" id="OSS_Log"></a><div class="element ajax clickable class" href="../classes/OSS_Log.html">
+<h1>OSS_Log<a href="../classes/OSS_Log.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Log.html" class="more">« More »</a>
+</div>
+<a name="OSS_Mail" id="OSS_Mail"></a><div class="element ajax clickable class" href="../classes/OSS_Mail.html">
+<h1>OSS_Mail<a href="../classes/OSS_Mail.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Mail.html" class="more">« More »</a>
+</div>
+<a name="OSS_Message" id="OSS_Message"></a><div class="element ajax clickable class" href="../classes/OSS_Message.html">
+<h1>OSS_Message<a href="../classes/OSS_Message.html">¶</a>
+</h1>
+<p class="short_description">OSS: Message</p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Message.html" class="more">« More »</a>
+</div>
+<a name="OSS_Message_Block" id="OSS_Message_Block"></a><div class="element ajax clickable class" href="../classes/OSS_Message_Block.html">
+<h1>OSS_Message_Block<a href="../classes/OSS_Message_Block.html">¶</a>
+</h1>
+<p class="short_description">OSS_Message block type class for displaying messages for users.</p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Message_Block.html" class="more">« More »</a>
+</div>
+<a name="OSS_Message_Pop_Up" id="OSS_Message_Pop_Up"></a><div class="element ajax clickable class" href="../classes/OSS_Message_Pop_Up.html">
+<h1>OSS_Message_Pop_Up<a href="../classes/OSS_Message_Pop_Up.html">¶</a>
+</h1>
+<p class="short_description">OSS_Message pop up type class for displaying messages for users.</p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Message_Pop_Up.html" class="more">« More »</a>
+</div>
+<a name="OSS_PHPUnit_Extensions_SeleniumTestCase" id="OSS_PHPUnit_Extensions_SeleniumTestCase"></a><div class="element ajax clickable class" href="../classes/OSS_PHPUnit_Extensions_SeleniumTestCase.html">
+<h1>OSS_PHPUnit_Extensions_SeleniumTestCase<a href="../classes/OSS_PHPUnit_Extensions_SeleniumTestCase.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_PHPUnit_Extensions_SeleniumTestCase.html" class="more">« More »</a>
+</div>
+<a name="OSS_Pdf_PdfLatex" id="OSS_Pdf_PdfLatex"></a><div class="element ajax clickable class" href="../classes/OSS_Pdf_PdfLatex.html">
+<h1>OSS_Pdf_PdfLatex<a href="../classes/OSS_Pdf_PdfLatex.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Pdf_PdfLatex.html" class="more">« More »</a>
+</div>
+<a name="OSS_Pdf_PdfLatex_Exception" id="OSS_Pdf_PdfLatex_Exception"></a><div class="element ajax clickable class" href="../classes/OSS_Pdf_PdfLatex_Exception.html">
+<h1>OSS_Pdf_PdfLatex_Exception<a href="../classes/OSS_Pdf_PdfLatex_Exception.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Pdf_PdfLatex_Exception.html" class="more">« More »</a>
+</div>
+<a name="OSS_Phone" id="OSS_Phone"></a><div class="element ajax clickable class" href="../classes/OSS_Phone.html">
+<h1>OSS_Phone<a href="../classes/OSS_Phone.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Phone.html" class="more">« More »</a>
+</div>
+<a name="OSS_Resource_Auth" id="OSS_Resource_Auth"></a><div class="element ajax clickable class" href="../classes/OSS_Resource_Auth.html">
+<h1>OSS_Resource_Auth<a href="../classes/OSS_Resource_Auth.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Resource_Auth.html" class="more">« More »</a>
+</div>
+<a name="OSS_Resource_Clickatell" id="OSS_Resource_Clickatell"></a><div class="element ajax clickable class" href="../classes/OSS_Resource_Clickatell.html">
+<h1>OSS_Resource_Clickatell<a href="../classes/OSS_Resource_Clickatell.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Resource_Clickatell.html" class="more">« More »</a>
+</div>
+<a name="OSS_Resource_Doctrine" id="OSS_Resource_Doctrine"></a><div class="element ajax clickable class" href="../classes/OSS_Resource_Doctrine.html">
+<h1>OSS_Resource_Doctrine<a href="../classes/OSS_Resource_Doctrine.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Resource_Doctrine.html" class="more">« More »</a>
+</div>
+<a name="OSS_Resource_Doctrine2" id="OSS_Resource_Doctrine2"></a><div class="element ajax clickable class" href="../classes/OSS_Resource_Doctrine2.html">
+<h1>OSS_Resource_Doctrine2<a href="../classes/OSS_Resource_Doctrine2.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Resource_Doctrine2.html" class="more">« More »</a>
+</div>
+<a name="OSS_Resource_Freshbooks" id="OSS_Resource_Freshbooks"></a><div class="element ajax clickable class" href="../classes/OSS_Resource_Freshbooks.html">
+<h1>OSS_Resource_Freshbooks<a href="../classes/OSS_Resource_Freshbooks.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Resource_Freshbooks.html" class="more">« More »</a>
+</div>
+<a name="OSS_Resource_Logger" id="OSS_Resource_Logger"></a><div class="element ajax clickable class" href="../classes/OSS_Resource_Logger.html">
+<h1>OSS_Resource_Logger<a href="../classes/OSS_Resource_Logger.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Resource_Logger.html" class="more">« More »</a>
+</div>
+<a name="OSS_Resource_Mailer" id="OSS_Resource_Mailer"></a><div class="element ajax clickable class" href="../classes/OSS_Resource_Mailer.html">
+<h1>OSS_Resource_Mailer<a href="../classes/OSS_Resource_Mailer.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Resource_Mailer.html" class="more">« More »</a>
+</div>
+<a name="OSS_Resource_Moduleconfig" id="OSS_Resource_Moduleconfig"></a><div class="element ajax clickable class" href="../classes/OSS_Resource_Moduleconfig.html">
+<h1>OSS_Resource_Moduleconfig<a href="../classes/OSS_Resource_Moduleconfig.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Resource_Moduleconfig.html" class="more">« More »</a>
+</div>
+<a name="OSS_Resource_Namespace" id="OSS_Resource_Namespace"></a><div class="element ajax clickable class" href="../classes/OSS_Resource_Namespace.html">
+<h1>OSS_Resource_Namespace<a href="../classes/OSS_Resource_Namespace.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Resource_Namespace.html" class="more">« More »</a>
+</div>
+<a name="OSS_Resource_News" id="OSS_Resource_News"></a><div class="element ajax clickable class" href="../classes/OSS_Resource_News.html">
+<h1>OSS_Resource_News<a href="../classes/OSS_Resource_News.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Resource_News.html" class="more">« More »</a>
+</div>
+<a name="OSS_Resource_Smarty" id="OSS_Resource_Smarty"></a><div class="element ajax clickable class" href="../classes/OSS_Resource_Smarty.html">
+<h1>OSS_Resource_Smarty<a href="../classes/OSS_Resource_Smarty.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Resource_Smarty.html" class="more">« More »</a>
+</div>
+<a name="OSS_Resource_View" id="OSS_Resource_View"></a><div class="element ajax clickable class" href="../classes/OSS_Resource_View.html">
+<h1>OSS_Resource_View<a href="../classes/OSS_Resource_View.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Resource_View.html" class="more">« More »</a>
+</div>
+<a name="OSS_Resource_Zfdebug" id="OSS_Resource_Zfdebug"></a><div class="element ajax clickable class" href="../classes/OSS_Resource_Zfdebug.html">
+<h1>OSS_Resource_Zfdebug<a href="../classes/OSS_Resource_Zfdebug.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Resource_Zfdebug.html" class="more">« More »</a>
+</div>
+<a name="OSS_Service_Clickatell_Abstract" id="OSS_Service_Clickatell_Abstract"></a><div class="element ajax clickable class" href="../classes/OSS_Service_Clickatell_Abstract.html">
+<h1>OSS_Service_Clickatell_Abstract<a href="../classes/OSS_Service_Clickatell_Abstract.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Service_Clickatell_Abstract.html" class="more">« More »</a>
+</div>
+<a name="OSS_Service_Clickatell_Exception" id="OSS_Service_Clickatell_Exception"></a><div class="element ajax clickable class" href="../classes/OSS_Service_Clickatell_Exception.html">
+<h1>OSS_Service_Clickatell_Exception<a href="../classes/OSS_Service_Clickatell_Exception.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Service_Clickatell_Exception.html" class="more">« More »</a>
+</div>
+<a name="OSS_Service_Clickatell_Http" id="OSS_Service_Clickatell_Http"></a><div class="element ajax clickable class" href="../classes/OSS_Service_Clickatell_Http.html">
+<h1>OSS_Service_Clickatell_Http<a href="../classes/OSS_Service_Clickatell_Http.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Service_Clickatell_Http.html" class="more">« More »</a>
+</div>
+<a name="OSS_Service_Freshbooks" id="OSS_Service_Freshbooks"></a><div class="element ajax clickable class" href="../classes/OSS_Service_Freshbooks.html">
+<h1>OSS_Service_Freshbooks<a href="../classes/OSS_Service_Freshbooks.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Service_Freshbooks.html" class="more">« More »</a>
+</div>
+<a name="OSS_StatsD" id="OSS_StatsD"></a><div class="element ajax clickable class" href="../classes/OSS_StatsD.html">
+<h1>OSS_StatsD<a href="../classes/OSS_StatsD.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_StatsD.html" class="more">« More »</a>
+</div>
+<a name="OSS_String" id="OSS_String"></a><div class="element ajax clickable class" href="../classes/OSS_String.html">
+<h1>OSS_String<a href="../classes/OSS_String.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_String.html" class="more">« More »</a>
+</div>
+<a name="OSS_Utils" id="OSS_Utils"></a><div class="element ajax clickable class" href="../classes/OSS_Utils.html">
+<h1>OSS_Utils<a href="../classes/OSS_Utils.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Utils.html" class="more">« More »</a>
+</div>
+<a name="OSS_Validate_Exception" id="OSS_Validate_Exception"></a><div class="element ajax clickable class" href="../classes/OSS_Validate_Exception.html">
+<h1>OSS_Validate_Exception<a href="../classes/OSS_Validate_Exception.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Validate_Exception.html" class="more">« More »</a>
+</div>
+<a name="OSS_Validate_OSSDateTimeValidate" id="OSS_Validate_OSSDateTimeValidate"></a><div class="element ajax clickable class" href="../classes/OSS_Validate_OSSDateTimeValidate.html">
+<h1>OSS_Validate_OSSDateTimeValidate<a href="../classes/OSS_Validate_OSSDateTimeValidate.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Validate_OSSDateTimeValidate.html" class="more">« More »</a>
+</div>
+<a name="OSS_Validate_OSSDateValidate" id="OSS_Validate_OSSDateValidate"></a><div class="element ajax clickable class" href="../classes/OSS_Validate_OSSDateValidate.html">
+<h1>OSS_Validate_OSSDateValidate<a href="../classes/OSS_Validate_OSSDateValidate.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Validate_OSSDateValidate.html" class="more">« More »</a>
+</div>
+<a name="OSS_Validate_OSSDoctrine2Uniqueness" id="OSS_Validate_OSSDoctrine2Uniqueness"></a><div class="element ajax clickable class" href="../classes/OSS_Validate_OSSDoctrine2Uniqueness.html">
+<h1>OSS_Validate_OSSDoctrine2Uniqueness<a href="../classes/OSS_Validate_OSSDoctrine2Uniqueness.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Validate_OSSDoctrine2Uniqueness.html" class="more">« More »</a>
+</div>
+<a name="OSS_Validate_OSSDoctrineUniqueness" id="OSS_Validate_OSSDoctrineUniqueness"></a><div class="element ajax clickable class" href="../classes/OSS_Validate_OSSDoctrineUniqueness.html">
+<h1>OSS_Validate_OSSDoctrineUniqueness<a href="../classes/OSS_Validate_OSSDoctrineUniqueness.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Validate_OSSDoctrineUniqueness.html" class="more">« More »</a>
+</div>
+<a name="OSS_Validate_OSSFloat" id="OSS_Validate_OSSFloat"></a><div class="element ajax clickable class" href="../classes/OSS_Validate_OSSFloat.html">
+<h1>OSS_Validate_OSSFloat<a href="../classes/OSS_Validate_OSSFloat.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Validate_OSSFloat.html" class="more">« More »</a>
+</div>
+<a name="OSS_Validate_OSSIdenticalField" id="OSS_Validate_OSSIdenticalField"></a><div class="element ajax clickable class" href="../classes/OSS_Validate_OSSIdenticalField.html">
+<h1>OSS_Validate_OSSIdenticalField<a href="../classes/OSS_Validate_OSSIdenticalField.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Validate_OSSIdenticalField.html" class="more">« More »</a>
+</div>
+<a name="OSS_Validate_OSSIrishTaxNumber" id="OSS_Validate_OSSIrishTaxNumber"></a><div class="element ajax clickable class" href="../classes/OSS_Validate_OSSIrishTaxNumber.html">
+<h1>OSS_Validate_OSSIrishTaxNumber<a href="../classes/OSS_Validate_OSSIrishTaxNumber.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Validate_OSSIrishTaxNumber.html" class="more">« More »</a>
+</div>
+<a name="OSS_Validate_OSSMACAddress" id="OSS_Validate_OSSMACAddress"></a><div class="element ajax clickable class" href="../classes/OSS_Validate_OSSMACAddress.html">
+<h1>OSS_Validate_OSSMACAddress<a href="../classes/OSS_Validate_OSSMACAddress.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Validate_OSSMACAddress.html" class="more">« More »</a>
+</div>
+<a name="OSS_Validate_OSSMobileNumber" id="OSS_Validate_OSSMobileNumber"></a><div class="element ajax clickable class" href="../classes/OSS_Validate_OSSMobileNumber.html">
+<h1>OSS_Validate_OSSMobileNumber<a href="../classes/OSS_Validate_OSSMobileNumber.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Validate_OSSMobileNumber.html" class="more">« More »</a>
+</div>
+<a name="OSS_Validate_OSSNotRegex" id="OSS_Validate_OSSNotRegex"></a><div class="element ajax clickable class" href="../classes/OSS_Validate_OSSNotRegex.html">
+<h1>OSS_Validate_OSSNotRegex<a href="../classes/OSS_Validate_OSSNotRegex.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Validate_OSSNotRegex.html" class="more">« More »</a>
+</div>
+<a name="OSS_Validate_OSSNumericBetween" id="OSS_Validate_OSSNumericBetween"></a><div class="element ajax clickable class" href="../classes/OSS_Validate_OSSNumericBetween.html">
+<h1>OSS_Validate_OSSNumericBetween<a href="../classes/OSS_Validate_OSSNumericBetween.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Validate_OSSNumericBetween.html" class="more">« More »</a>
+</div>
+<a name="OSS_Validate_OSSPSN" id="OSS_Validate_OSSPSN"></a><div class="element ajax clickable class" href="../classes/OSS_Validate_OSSPSN.html">
+<h1>OSS_Validate_OSSPSN<a href="../classes/OSS_Validate_OSSPSN.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Validate_OSSPSN.html" class="more">« More »</a>
+</div>
+<a name="OSS_Validate_OSSPassword" id="OSS_Validate_OSSPassword"></a><div class="element ajax clickable class" href="../classes/OSS_Validate_OSSPassword.html">
+<h1>OSS_Validate_OSSPassword<a href="../classes/OSS_Validate_OSSPassword.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Validate_OSSPassword.html" class="more">« More »</a>
+</div>
+<a name="OSS_Validate_OSSRequiredIf" id="OSS_Validate_OSSRequiredIf"></a><div class="element ajax clickable class" href="../classes/OSS_Validate_OSSRequiredIf.html">
+<h1>OSS_Validate_OSSRequiredIf<a href="../classes/OSS_Validate_OSSRequiredIf.html">¶</a>
+</h1>
+<p class="short_description">Validates with special condition.</p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Validate_OSSRequiredIf.html" class="more">« More »</a>
+</div>
+<a name="OSS_Validate_OSSTimeValidate" id="OSS_Validate_OSSTimeValidate"></a><div class="element ajax clickable class" href="../classes/OSS_Validate_OSSTimeValidate.html">
+<h1>OSS_Validate_OSSTimeValidate<a href="../classes/OSS_Validate_OSSTimeValidate.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Validate_OSSTimeValidate.html" class="more">« More »</a>
+</div>
+<a name="OSS_Validate_OSSUrlValidate" id="OSS_Validate_OSSUrlValidate"></a><div class="element ajax clickable class" href="../classes/OSS_Validate_OSSUrlValidate.html">
+<h1>OSS_Validate_OSSUrlValidate<a href="../classes/OSS_Validate_OSSUrlValidate.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Validate_OSSUrlValidate.html" class="more">« More »</a>
+</div>
+<a name="OSS_View_Helper_DateForm" id="OSS_View_Helper_DateForm"></a><div class="element ajax clickable class" href="../classes/OSS_View_Helper_DateForm.html">
+<h1>OSS_View_Helper_DateForm<a href="../classes/OSS_View_Helper_DateForm.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_View_Helper_DateForm.html" class="more">« More »</a>
+</div>
+<a name="OSS_View_Smarty" id="OSS_View_Smarty"></a><div class="element ajax clickable class" href="../classes/OSS_View_Smarty.html">
+<h1>OSS_View_Smarty<a href="../classes/OSS_View_Smarty.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_View_Smarty.html" class="more">« More »</a>
+</div>
+<a name="OSS_Yubico" id="OSS_Yubico"></a><div class="element ajax clickable class" href="../classes/OSS_Yubico.html">
+<h1>OSS_Yubico<a href="../classes/OSS_Yubico.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Yubico.html" class="more">« More »</a>
+</div>
+<a name="OSS_ZFDebug_Controller_Plugin_Debug_Plugin_Doctrine" id="OSS_ZFDebug_Controller_Plugin_Debug_Plugin_Doctrine"></a><div class="element ajax clickable class" href="../classes/OSS_ZFDebug_Controller_Plugin_Debug_Plugin_Doctrine.html">
+<h1>OSS_ZFDebug_Controller_Plugin_Debug_Plugin_Doctrine<a href="../classes/OSS_ZFDebug_Controller_Plugin_Debug_Plugin_Doctrine.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_ZFDebug_Controller_Plugin_Debug_Plugin_Doctrine.html" class="more">« More »</a>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a5</a> and<br>
+            generated on 2012-07-02T19:36:56+01:00.<br></footer></div>
+</div>
+</body>
+</html>

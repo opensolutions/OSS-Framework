@@ -1,0 +1,324 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>OSS » \OSS_Array</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">OSS</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Packages</a></li>
+<li><a href="../packages/OSS.html"><i class="icon-folder-open"></i> OSS</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">193</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul>
+<li>todo 
+                <span class="label label-info">2</span>
+</li>
+<li>fixme 
+                <span class="label label-info">10</span>
+</li>
+</ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list"><li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods
+                    <ul>
+<li class="method public "><a href="#method_cavCallback" title="cavCallback :: Callback function for changeValues()"><span class="description">Callback function for changeValues()</span><pre>cavCallback()</pre></a></li>
+<li class="method public "><a href="#method_changeValues" title="changeValues :: Changes values in an array."><span class="description">Changes values in an array.</span><pre>changeValues()</pre></a></li>
+<li class="method public "><a href="#method_filterField" title="filterField :: Takes a nested array - typically a result set from a query - and filters out a
+specific field from it."><span class="description">Takes a nested array - typically a result set from a query - and filters out a
+specific field from it.</span><pre>filterField()</pre></a></li>
+<li class="method public "><a href="#method_filterKeyValuePairs" title="filterKeyValuePairs :: Filters out key-value pairs from nested arrays, typically from Doctrine result sets."><span class="description">Filters out key-value pairs from nested arrays, typically from Doctrine result sets.</span><pre>filterKeyValuePairs()</pre></a></li>
+<li class="method public "><a href="#method_flatten" title="flatten :: Returns with an one-dimensional array of values from any kind of nested array."><span class="description">Returns with an one-dimensional array of values from any kind of nested array.</span><pre>flatten()</pre></a></li>
+<li class="method public "><a href="#method_objectToArray" title="objectToArray :: Recursively converts an object into an array."><span class="description">Recursively converts an object into an array.</span><pre>objectToArray()</pre></a></li>
+<li class="method public "><a href="#method_removeEmptyElements" title="removeEmptyElements :: Removes array elements where the value is empty()."><span class="description">Removes array elements where the value is empty().</span><pre>removeEmptyElements()</pre></a></li>
+<li class="method public "><a href="#method_removeFields" title="removeFields :: Removes entries from an array based on the matches of the passed regular
+expression."><span class="description">Removes entries from an array based on the matches of the passed regular
+expression.</span><pre>removeFields()</pre></a></li>
+<li class="method public "><a href="#method_shuffleAssoc" title="shuffleAssoc :: Works exactly like shuffle(), but this works on associative arrays, too."><span class="description">Works exactly like shuffle(), but this works on associative arrays, too.</span><pre>shuffleAssoc()</pre></a></li>
+<li class="method public "><a href="#method_toHtmlTable" title="toHtmlTable :: Represents an array as a HTML table and returns with it as a string."><span class="description">Represents an array as a HTML table and returns with it as a string.</span><pre>toHtmlTable()</pre></a></li>
+</ul>
+</li></ul>
+</div>
+<div class="span8">
+<a id="\OSS_Array"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/global.html">global</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/OSS_Array.html">OSS_Array</a>
+</li>
+</ul>
+<div class="element class">
+<p class="short_description"></p>
+<div class="details">
+<div class="long_description"></div>
+<table class="table table-bordered">
+<tr>
+<th>category</th>
+<td>OSS</td>
+</tr>
+<tr>
+<th>package</th>
+<td><a href="../packages/OSS.Array.html">OSS_Array</a></td>
+</tr>
+<tr>
+<th>copyright</th>
+<td>Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland</td>
+</tr>
+<tr>
+<th>license</th>
+<td><a href="http://www.opensolutions.ie/licenses/new-bsd">New BSD License</a></td>
+</tr>
+</table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a id="method_cavCallback"></a><div class="element clickable method public method_cavCallback" data-toggle="collapse" data-target=".method_cavCallback .collapse">
+<h2>Callback function for changeValues()</h2>
+<pre>cavCallback(mixed $item, mixed $key, array $params) : void</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$item</h4>
+<code>mixed</code><p>/p></div>
+<div class="subelement argument">
+<h4>$key</h4>
+<code>mixed</code><p>&param array $params</p>
+</div>
+<div class="subelement argument"><h4>$params</h4></div>
+</div></div>
+</div>
+<a id="method_changeValues"></a><div class="element clickable method public method_changeValues" data-toggle="collapse" data-target=".method_changeValues .collapse">
+<h2>Changes values in an array.</h2>
+<pre>changeValues(array $array, array $fromToArray) : void</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Handles nested arrays.</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$array</h4>
+<code>array</code><p>&$array</p>
+</div>
+<div class="subelement argument">
+<h4>$fromToArray</h4>
+<code>array</code><p>array('from1' => 'to1', 'from2' => 'to2', 'from3' => 'to3', ...)</p>
+</div>
+</div></div>
+</div>
+<a id="method_filterField"></a><div class="element clickable method public method_filterField" data-toggle="collapse" data-target=".method_filterField .collapse">
+<h2>Takes a nested array - typically a result set from a query - and filters out a
+specific field from it.</h2>
+<pre>filterField(array $array, string $fieldName, boolean $unique, boolean $removeNull) : array</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>It does not preserve the array keys.</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$array</h4>
+<code>array</code><p>the input array</p></div>
+<div class="subelement argument">
+<h4>$fieldName</h4>
+<code>string</code><p>the field to filter out</p></div>
+<div class="subelement argument">
+<h4>$unique</h4>
+<code>boolean</code><p>default true it can filter out multiple occurences of the same value</p></div>
+<div class="subelement argument">
+<h4>$removeNull</h4>
+<code>boolean</code><p>default false if true then removes null values from the result set</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
+</div></div>
+</div>
+<a id="method_filterKeyValuePairs"></a><div class="element clickable method public method_filterKeyValuePairs" data-toggle="collapse" data-target=".method_filterKeyValuePairs .collapse">
+<h2>Filters out key-value pairs from nested arrays, typically from Doctrine result sets.</h2>
+<pre>filterKeyValuePairs(array $array, string $key, string $value, boolean $unique) : array</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Both the $pKey and $pValue parameters are array keys in the $pArray.</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$array</h4>
+<code>array</code><p>the input array</p></div>
+<div class="subelement argument">
+<h4>$key</h4>
+<code>string</code><p>key filtering</p></div>
+<div class="subelement argument">
+<h4>$value</h4>
+<code>string</code><p>value filtering</p></div>
+<div class="subelement argument">
+<h4>$unique</h4>
+<code>boolean</code><p>default true return with unique values only or not</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
+</div></div>
+</div>
+<a id="method_flatten"></a><div class="element clickable method public method_flatten" data-toggle="collapse" data-target=".method_flatten .collapse">
+<h2>Returns with an one-dimensional array of values from any kind of nested array.</h2>
+<pre>flatten(array $array) : array</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Try to avoid recursive arrays to not to go into an infinite loop.</p>
+
+<p>Returns with the values in an associative array by keeping the original key => value pairs.
+As it keeps the original keys, if a key exists more than once in the structure, it will be
+overwritten and will appear in the result only once, having the value of the last key-value pair.</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$array</h4>
+<code>array</code><p>The array to flatten</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
+</div></div>
+</div>
+<a id="method_objectToArray"></a><div class="element clickable method public method_objectToArray" data-toggle="collapse" data-target=".method_objectToArray .collapse">
+<h2>Recursively converts an object into an array.</h2>
+<pre>objectToArray(object $object) : array</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Empty objects become empty arrays.</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$object</h4>
+<code>object</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
+</div></div>
+</div>
+<a id="method_removeEmptyElements"></a><div class="element clickable method public method_removeEmptyElements" data-toggle="collapse" data-target=".method_removeEmptyElements .collapse">
+<h2>Removes array elements where the value is empty().</h2>
+<pre>removeEmptyElements(array $array, boolean $keepKeys) : array</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$array</h4>
+<code>array</code><p>The array to clean</p></div>
+<div class="subelement argument">
+<h4>$keepKeys</h4>
+<code>boolean</code><p>default true keep the original keys or assign new (numeric) ones</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
+</div></div>
+</div>
+<a id="method_removeFields"></a><div class="element clickable method public method_removeFields" data-toggle="collapse" data-target=".method_removeFields .collapse">
+<h2>Removes entries from an array based on the matches of the passed regular
+expression.</h2>
+<pre>removeFields(array $array, string $pattern) : array</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>It handles multi-dimensional arrays.</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$array</h4>
+<code>array</code><p>the input array</p></div>
+<div class="subelement argument">
+<h4>$pattern</h4>
+<code>string</code><p>pattern for filter</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
+</div></div>
+</div>
+<a id="method_shuffleAssoc"></a><div class="element clickable method public method_shuffleAssoc" data-toggle="collapse" data-target=".method_shuffleAssoc .collapse">
+<h2>Works exactly like shuffle(), but this works on associative arrays, too.</h2>
+<pre>shuffleAssoc(array $array) : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$array</h4>
+<code>array</code><p>the array to shuffle, reference-type parameter, it contains the result, too</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>boolean</code></div>
+</div></div>
+</div>
+<a id="method_toHtmlTable"></a><div class="element clickable method public method_toHtmlTable" data-toggle="collapse" data-target=".method_toHtmlTable .collapse">
+<h2>Represents an array as a HTML table and returns with it as a string.</h2>
+<pre>toHtmlTable(array $pArray, string $pTitle, string $pWidth, string $pHeaderBgColour, string $pBorderColour) : string</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>It handles multi-dimensional arrays,
+those are represented as nested tables. If $pArray is not an array or an empty array, then it returns with
+an empty string.</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$pArray</h4>
+<code>array</code>
+</div>
+<div class="subelement argument">
+<h4>$pTitle</h4>
+<code>string</code><p>default '' the name of the variable or any other string, it will appear as a heading</p>
+</div>
+<div class="subelement argument">
+<h4>$pWidth</h4>
+<code>string</code><p>default '' a valid CSS width, like '100px', '10%', '13em', etc.</p>
+</div>
+<div class="subelement argument">
+<h4>$pHeaderBgColour</h4>
+<code>string</code><p>default '#404040'</p>
+</div>
+<div class="subelement argument">
+<h4>$pBorderColour</h4>
+<code>string</code><p>default '#404040'</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
+            generated on 2012-11-16T11:34:40Z.<br></footer></div>
+</div>
+</body>
+</html>

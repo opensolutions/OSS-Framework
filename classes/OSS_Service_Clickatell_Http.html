@@ -1,0 +1,812 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>OSS » \OSS_Service_Clickatell_Http</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">OSS</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Packages</a></li>
+<li><a href="../packages/OSS.html"><i class="icon-folder-open"></i> OSS</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">193</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul>
+<li>todo 
+                <span class="label label-info">2</span>
+</li>
+<li>fixme 
+                <span class="label label-info">10</span>
+</li>
+</ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods
+                    <ul>
+<li class="method public "><a href="#method___construct" title="__construct :: Constructor"><span class="description">Constructor</span><pre>__construct()</pre></a></li>
+<li class="method public inherited"><a href="#method_getApiId" title="getApiId :: Get the API ID"><span class="description">Get the API ID</span><pre>getApiId()</pre></a></li>
+<li class="method public "><a href="#method_getApiUrl" title="getApiUrl :: Get the API URL"><span class="description">Get the API URL</span><pre>getApiUrl()</pre></a></li>
+<li class="method public "><a href="#method_getBalance" title="getBalance :: Get the Clickatell account balance."><span class="description">Get the Clickatell account balance.</span><pre>getBalance()</pre></a></li>
+<li class="method public inherited"><a href="#method_getMessageStateDescription" title="getMessageStateDescription :: Get the text description for a given state"><span class="description">Get the text description for a given state</span><pre>getMessageStateDescription()</pre></a></li>
+<li class="method public inherited"><a href="#method_getPassword" title="getPassword :: Get the password"><span class="description">Get the password</span><pre>getPassword()</pre></a></li>
+<li class="method public inherited"><a href="#method_getSSL" title="getSSL :: Is SSL enabled?
+Returns a boolean indicating whether SSL is enabled or not"><span class="description">Is SSL enabled?
+Returns a boolean indicating whether SSL is enabled or not</span><pre>getSSL()</pre></a></li>
+<li class="method public inherited"><a href="#method_getSendErrors" title="getSendErrors :: Get the last batch of send errors"><span class="description">Get the last batch of send errors</span><pre>getSendErrors()</pre></a></li>
+<li class="method public inherited"><a href="#method_getSendIds" title="getSendIds :: Get the last batch of send IDs"><span class="description">Get the last batch of send IDs</span><pre>getSendIds()</pre></a></li>
+<li class="method public "><a href="#method_getUseSession" title="getUseSession :: Should we use sessions?
+Returns true if we will use sessions"><span class="description">Should we use sessions?
+Returns true if we will use sessions</span><pre>getUseSession()</pre></a></li>
+<li class="method public inherited"><a href="#method_getUsername" title="getUsername :: Get the username"><span class="description">Get the username</span><pre>getUsername()</pre></a></li>
+<li class="method public "><a href="#method_queryMessage" title="queryMessage :: Query the status of a message previously sent."><span class="description">Query the status of a message previously sent.</span><pre>queryMessage()</pre></a></li>
+<li class="method public "><a href="#method_sendSms" title="sendSms :: Send a one off SMS to a single or multiple users"><span class="description">Send a one off SMS to a single or multiple users</span><pre>sendSms()</pre></a></li>
+<li class="method public inherited"><a href="#method_setApiId" title="setApiId :: Set the API ID"><span class="description">Set the API ID</span><pre>setApiId()</pre></a></li>
+<li class="method public "><a href="#method_setApiUrl" title="setApiUrl :: Set the API URL"><span class="description">Set the API URL</span><pre>setApiUrl()</pre></a></li>
+<li class="method public "><a href="#method_setAuthParams" title="setAuthParams :: Sets the authentication params for the URI on the HTTP client object"><span class="description">Sets the authentication params for the URI on the HTTP client object</span><pre>setAuthParams()</pre></a></li>
+<li class="method public inherited"><a href="#method_setLogLevel" title="setLogLevel :: Set the log level"><span class="description">Set the log level</span><pre>setLogLevel()</pre></a></li>
+<li class="method public inherited"><a href="#method_setLogger" title="setLogger :: Set the logger object"><span class="description">Set the logger object</span><pre>setLogger()</pre></a></li>
+<li class="method public inherited"><a href="#method_setPassword" title="setPassword :: Set the API password"><span class="description">Set the API password</span><pre>setPassword()</pre></a></li>
+<li class="method public inherited"><a href="#method_setSSL" title="setSSL :: Set SSL enabled"><span class="description">Set SSL enabled</span><pre>setSSL()</pre></a></li>
+<li class="method public "><a href="#method_setUseSession" title="setUseSession :: Should we use sessions?"><span class="description">Should we use sessions?</span><pre>setUseSession()</pre></a></li>
+<li class="method public inherited"><a href="#method_setUsername" title="setUsername :: Set the username parameter"><span class="description">Set the username parameter</span><pre>setUsername()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header protected">» Protected
+                    <ul>
+<li class="method protected "><a href="#method_call" title="call :: A generic function to place API calls and catch common errors early (e.g."><span class="description">A generic function to place API calls and catch common errors early (e.g.</span><pre>call()</pre></a></li>
+<li class="method protected inherited"><a href="#method_getLogLevel" title="getLogLevel :: Get the log level"><span class="description">Get the log level</span><pre>getLogLevel()</pre></a></li>
+<li class="method protected inherited"><a href="#method_getLogger" title="getLogger :: Get the logger object"><span class="description">Get the logger object</span><pre>getLogger()</pre></a></li>
+<li class="method protected inherited"><a href="#method_log" title="log :: Add an entry to the log"><span class="description">Add an entry to the log</span><pre>log()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties
+                    <ul><li class="property public inherited"><a href="#property_MESSAGE_STATES" title="$MESSAGE_STATES :: An array of Clickatell delivery states (e.g."><span class="description">An array of Clickatell delivery states (e.g.</span><pre>$MESSAGE_STATES</pre></a></li></ul>
+</li>
+<li class="nav-header protected">» Protected
+                    <ul>
+<li class="property protected inherited"><a href="#property__api_id" title="$_api_id :: API access ID"><span class="description">API access ID</span><pre>$_api_id</pre></a></li>
+<li class="property protected "><a href="#property__api_url" title="$_api_url :: The API URL for Clickatell"><span class="description">The API URL for Clickatell</span><pre>$_api_url</pre></a></li>
+<li class="property protected inherited"><a href="#property__logger" title="$_logger :: A logger object"><span class="description">A logger object</span><pre>$_logger</pre></a></li>
+<li class="property protected inherited"><a href="#property__loglevel" title="$_loglevel :: The log level"><span class="description">The log level</span><pre>$_loglevel</pre></a></li>
+<li class="property protected inherited"><a href="#property__password" title="$_password :: API access password"><span class="description">API access password</span><pre>$_password</pre></a></li>
+<li class="property protected "><a href="#property__response" title="$_response :: HTTP reponse object"><span class="description">HTTP reponse object</span><pre>$_response</pre></a></li>
+<li class="property protected inherited"><a href="#property__send_errors" title="$_send_errors :: An array of errors per phone number from the last send
+Keys are the numbers and values are the error messages"><span class="description">An array of errors per phone number from the last send
+Keys are the numbers and values are the error messages</span><pre>$_send_errors</pre></a></li>
+<li class="property protected inherited"><a href="#property__send_ids" title="$_send_ids :: Send IDs of the last batch of messages sent
+Keys are the numbers and values are the IDs"><span class="description">Send IDs of the last batch of messages sent
+Keys are the numbers and values are the IDs</span><pre>$_send_ids</pre></a></li>
+<li class="property protected "><a href="#property__sender_id" title="$_sender_id :: A string containing the Sender ID, which is a short ( &lt;= 11 characters) string"><span class="description">A string containing the Sender ID, which is a short ( &lt;= 11 characters) string</span><pre>$_sender_id</pre></a></li>
+<li class="property protected inherited"><a href="#property__ssl" title="$_ssl :: Use an SSL connection?"><span class="description">Use an SSL connection?</span><pre>$_ssl</pre></a></li>
+<li class="property protected "><a href="#property__use_session" title="$_use_session :: Use sessions or authenticate for each request"><span class="description">Use sessions or authenticate for each request</span><pre>$_use_session</pre></a></li>
+<li class="property protected inherited"><a href="#property__username" title="$_username :: API access username"><span class="description">API access username</span><pre>$_username</pre></a></li>
+</ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-constant"></i> Constants
+                    <ul>
+<li class="constant  "><a href="#constant_API_METHOD_BALANCE" title="API_METHOD_BALANCE :: API identifiers for different tasks"><span class="description">API identifiers for different tasks</span><pre>API_METHOD_BALANCE</pre></a></li>
+<li class="constant  "><a href="#constant_API_METHOD_QUERY" title="API_METHOD_QUERY :: "><span class="description">API_METHOD_QUERY</span><pre>API_METHOD_QUERY</pre></a></li>
+<li class="constant  "><a href="#constant_API_METHOD_SENDSMS" title="API_METHOD_SENDSMS :: "><span class="description">API_METHOD_SENDSMS</span><pre>API_METHOD_SENDSMS</pre></a></li>
+<li class="constant  "><a href="#constant_FEAT_8BIT" title="FEAT_8BIT :: Features."><span class="description">Features.</span><pre>FEAT_8BIT</pre></a></li>
+<li class="constant  "><a href="#constant_FEAT_ALPHA" title="FEAT_ALPHA :: "><span class="description">FEAT_ALPHA</span><pre>FEAT_ALPHA</pre></a></li>
+<li class="constant  "><a href="#constant_FEAT_CONCAT" title="FEAT_CONCAT :: "><span class="description">FEAT_CONCAT</span><pre>FEAT_CONCAT</pre></a></li>
+<li class="constant  "><a href="#constant_FEAT_DELIVACK" title="FEAT_DELIVACK :: "><span class="description">FEAT_DELIVACK</span><pre>FEAT_DELIVACK</pre></a></li>
+<li class="constant  "><a href="#constant_FEAT_FLASH" title="FEAT_FLASH :: "><span class="description">FEAT_FLASH</span><pre>FEAT_FLASH</pre></a></li>
+<li class="constant  "><a href="#constant_FEAT_NUMER" title="FEAT_NUMER :: "><span class="description">FEAT_NUMER</span><pre>FEAT_NUMER</pre></a></li>
+<li class="constant  "><a href="#constant_FEAT_TEXT" title="FEAT_TEXT :: "><span class="description">FEAT_TEXT</span><pre>FEAT_TEXT</pre></a></li>
+<li class="constant  "><a href="#constant_FEAT_UCS2" title="FEAT_UCS2 :: "><span class="description">FEAT_UCS2</span><pre>FEAT_UCS2</pre></a></li>
+<li class="constant  "><a href="#constant_FEAT_UDH" title="FEAT_UDH :: "><span class="description">FEAT_UDH</span><pre>FEAT_UDH</pre></a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="span8">
+<a id="\OSS_Service_Clickatell_Http"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/global.html">global</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/OSS_Service_Clickatell_Http.html">OSS_Service_Clickatell_Http</a>
+</li>
+</ul>
+<div class="element class">
+<p class="short_description"></p>
+<div class="details">
+<div class="long_description"></div>
+<table class="table table-bordered">
+<tr>
+<th>category</th>
+<td>OSS</td>
+</tr>
+<tr>
+<th>package</th>
+<td><a href="../packages/OSS.Service.Clickatell.html">OSS_Service</a></td>
+</tr>
+<tr>
+<th>subpackage</th>
+<td>Clickatell</td>
+</tr>
+<tr>
+<th>copyright</th>
+<td>Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland</td>
+</tr>
+<tr>
+<th>license</th>
+<td><a href="http://www.opensolutions.ie/licenses/new-bsd">New BSD License</a></td>
+</tr>
+</table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a id="method___construct"></a><div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
+<h2>Constructor</h2>
+<pre>__construct(\$options $options) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Accepted associated array parameters:
+ api_url use_ession
+Also see parent constructor for additional options.</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$options</h4>
+<code>\$options</code><p>array An associated array of options (see above for accepted keys).</p>
+</div>
+</div></div>
+</div>
+<a id="method_getApiId"></a><div class="element clickable method public method_getApiId" data-toggle="collapse" data-target=".method_getApiId .collapse">
+<h2>Get the API ID</h2>
+<pre>getApiId() : string</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\OSS_Service_Clickatell_Abstract::getApiId()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_getApiUrl"></a><div class="element clickable method public method_getApiUrl" data-toggle="collapse" data-target=".method_getApiUrl .collapse">
+<h2>Get the API URL</h2>
+<pre>getApiUrl() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_getBalance"></a><div class="element clickable method public method_getBalance" data-toggle="collapse" data-target=".method_getBalance .collapse">
+<h2>Get the Clickatell account balance.</h2>
+<pre>getBalance() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>This returns the number of credits remaining.</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/OSS_Service_Clickatell_Exception.html">\OSS_Service_Clickatell_Exception</a></code></th>
+<td></td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_getMessageStateDescription"></a><div class="element clickable method public method_getMessageStateDescription" data-toggle="collapse" data-target=".method_getMessageStateDescription .collapse">
+<h2>Get the text description for a given state</h2>
+<pre>getMessageStateDescription(string $state) : void</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td><a href="">\global\OSS_Service_Clickatell_Abstract::$MESSAGE_STATES</a></td>
+</tr>
+<tr>
+<th>see</th>
+<td><a href="">\global\OSS_Service_Clickatell_Http::queryMessage()</a></td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\OSS_Service_Clickatell_Abstract::getMessageStateDescription()</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$state</h4>
+<code>string</code><p>The state to query</p></div>
+</div></div>
+</div>
+<a id="method_getPassword"></a><div class="element clickable method public method_getPassword" data-toggle="collapse" data-target=".method_getPassword .collapse">
+<h2>Get the password</h2>
+<pre>getPassword() : string</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\OSS_Service_Clickatell_Abstract::getPassword()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_getSSL"></a><div class="element clickable method public method_getSSL" data-toggle="collapse" data-target=".method_getSSL .collapse">
+<h2>Is SSL enabled?
+Returns a boolean indicating whether SSL is enabled or not</h2>
+<pre>getSSL() : bool</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\OSS_Service_Clickatell_Abstract::getSSL()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>bool</code></div>
+</div></div>
+</div>
+<a id="method_getSendErrors"></a><div class="element clickable method public method_getSendErrors" data-toggle="collapse" data-target=".method_getSendErrors .collapse">
+<h2>Get the last batch of send errors</h2>
+<pre>getSendErrors() : array</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Returns an associated array of number => error_message where number is the destination SMS
+number and error is that as returned from the Clickatell API.</p></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\OSS_Service_Clickatell_Abstract::getSendErrors()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
+</div></div>
+</div>
+<a id="method_getSendIds"></a><div class="element clickable method public method_getSendIds" data-toggle="collapse" data-target=".method_getSendIds .collapse">
+<h2>Get the last batch of send IDs</h2>
+<pre>getSendIds() : array</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Returns an associated array of number => ID where number is the destination SMS
+number and ID is the send ID from the Clickatell API.</p></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\OSS_Service_Clickatell_Abstract::getSendIds()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
+</div></div>
+</div>
+<a id="method_getUseSession"></a><div class="element clickable method public method_getUseSession" data-toggle="collapse" data-target=".method_getUseSession .collapse">
+<h2>Should we use sessions?
+Returns true if we will use sessions</h2>
+<pre>getUseSession() : bool</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>bool</code></div>
+</div></div>
+</div>
+<a id="method_getUsername"></a><div class="element clickable method public method_getUsername" data-toggle="collapse" data-target=".method_getUsername .collapse">
+<h2>Get the username</h2>
+<pre>getUsername() : string</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\OSS_Service_Clickatell_Abstract::getUsername()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_queryMessage"></a><div class="element clickable method public method_queryMessage" data-toggle="collapse" data-target=".method_queryMessage .collapse">
+<h2>Query the status of a message previously sent.</h2>
+<pre>queryMessage(\$msgid $msgid) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Use OSS_Service_Clickatll_Abstract::$MESSAGE_STATES and OSS_Service_Clickatll_Abstract::getMessageStateDescription()
+to interpret the state.</p></div>
+<table class="table table-bordered"><tr>
+<th>returns</th>
+<td>string</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$msgid</h4>
+<code>\$msgid</code><p>string The message ID to query</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/OSS_Service_Clickatell_Exception.html">\OSS_Service_Clickatell_Exception</a></code></th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="method_sendSms"></a><div class="element clickable method public method_sendSms" data-toggle="collapse" data-target=".method_sendSms .collapse">
+<h2>Send a one off SMS to a single or multiple users</h2>
+<pre>sendSms(string | array $number, string $message, string $senderid) : bool</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>If $number is an array, then the SMS will be sent to multple users.</p>
+
+<p>The success IDs or send errors will be found referenced by the destination number
+via getSendIds() and getSendErrors().</p>
+
+<p>You cannot just use any sender id you like, first you have to register and approve it by Clickatell.</p>
+
+<p>Return true if all messages sent successfully, false if there were errors (@see OSS_Service_Clickatell_Abstract::$_send_errors)</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$number</h4>
+<code>string</code><code>array</code><p>The full international version of the number to send the SMS to (or an array of multiple numnbers)</p>
+</div>
+<div class="subelement argument">
+<h4>$message</h4>
+<code>string</code><p>The message to send</p></div>
+<div class="subelement argument">
+<h4>$senderid</h4>
+<code>string</code><p>NULL to use the default from application.ini, false to not to use any, a valid international format number between 1 and 16 characters long, or an 11 character alphanumeric string</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>bool</code></div>
+</div></div>
+</div>
+<a id="method_setApiId"></a><div class="element clickable method public method_setApiId" data-toggle="collapse" data-target=".method_setApiId .collapse">
+<h2>Set the API ID</h2>
+<pre>setApiId(\$api_id $api_id) : void</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\OSS_Service_Clickatell_Abstract::setApiId()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$api_id</h4>
+<code>\$api_id</code><p>the API ID to set</p></div>
+</div></div>
+</div>
+<a id="method_setApiUrl"></a><div class="element clickable method public method_setApiUrl" data-toggle="collapse" data-target=".method_setApiUrl .collapse">
+<h2>Set the API URL</h2>
+<pre>setApiUrl(\$api_url $api_url) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$api_url</h4>
+<code>\$api_url</code><p>the API ID to set</p></div>
+</div></div>
+</div>
+<a id="method_setAuthParams"></a><div class="element clickable method public method_setAuthParams" data-toggle="collapse" data-target=".method_setAuthParams .collapse">
+<h2>Sets the authentication params for the URI on the HTTP client object</h2>
+<pre>setAuthParams() : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"><p>Specifically, if we are using sessions, then a session ID parameter will
+be set, otherwise we'll set a username, password and API ID.</p></div></div></div>
+</div>
+<a id="method_setLogLevel"></a><div class="element clickable method public method_setLogLevel" data-toggle="collapse" data-target=".method_setLogLevel .collapse">
+<h2>Set the log level</h2>
+<pre>setLogLevel(int $loglevel) : void</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\OSS_Service_Clickatell_Abstract::setLogLevel()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$loglevel</h4>
+<code>int</code><p>The log level</p></div>
+</div></div>
+</div>
+<a id="method_setLogger"></a><div class="element clickable method public method_setLogger" data-toggle="collapse" data-target=".method_setLogger .collapse">
+<h2>Set the logger object</h2>
+<pre>setLogger(\Zend_Logger $logger) : void</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\OSS_Service_Clickatell_Abstract::setLogger()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$logger</h4>
+<code>\Zend_Logger</code><p>The Zend_Logger object</p></div>
+</div></div>
+</div>
+<a id="method_setPassword"></a><div class="element clickable method public method_setPassword" data-toggle="collapse" data-target=".method_setPassword .collapse">
+<h2>Set the API password</h2>
+<pre>setPassword(\$password $password) : void</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\OSS_Service_Clickatell_Abstract::setPassword()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$password</h4>
+<code>\$password</code><p>the password to set</p></div>
+</div></div>
+</div>
+<a id="method_setSSL"></a><div class="element clickable method public method_setSSL" data-toggle="collapse" data-target=".method_setSSL .collapse">
+<h2>Set SSL enabled</h2>
+<pre>setSSL(\$ssl $ssl) : void</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\OSS_Service_Clickatell_Abstract::setSSL()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$ssl</h4>
+<code>\$ssl</code><p>Pass boolean true to set SSL enabled</p></div>
+</div></div>
+</div>
+<a id="method_setUseSession"></a><div class="element clickable method public method_setUseSession" data-toggle="collapse" data-target=".method_setUseSession .collapse">
+<h2>Should we use sessions?</h2>
+<pre>setUseSession(\$api_url $use_session) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$use_session</h4>
+<code>\$api_url</code><p>the API ID to set</p></div>
+</div></div>
+</div>
+<a id="method_setUsername"></a><div class="element clickable method public method_setUsername" data-toggle="collapse" data-target=".method_setUsername .collapse">
+<h2>Set the username parameter</h2>
+<pre>setUsername(\$username $username) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered">
+<tr>
+<th>retrn</th>
+<td>void</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\OSS_Service_Clickatell_Abstract::setUsername()</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$username</h4>
+<code>\$username</code><p>The username to set</p></div>
+</div></div>
+</div>
+<a id="method_call"></a><div class="element clickable method protected method_call" data-toggle="collapse" data-target=".method_call .collapse">
+<h2>A generic function to place API calls and catch common errors early (e.g.</h2>
+<pre>call(string $method) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>auth failure)</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$method</h4>
+<code>string</code><p>The method to call (see OSS_Service_Clickatell_Http::API_METHOD_XXX)</p>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/OSS_Service_Clickatell_Exception.html">\OSS_Service_Clickatell_Exception</a></code></th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="method_getLogLevel"></a><div class="element clickable method protected method_getLogLevel" data-toggle="collapse" data-target=".method_getLogLevel .collapse">
+<h2>Get the log level</h2>
+<pre>getLogLevel() : int</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\OSS_Service_Clickatell_Abstract::getLogLevel()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>int</code></div>
+</div></div>
+</div>
+<a id="method_getLogger"></a><div class="element clickable method protected method_getLogger" data-toggle="collapse" data-target=".method_getLogger .collapse">
+<h2>Get the logger object</h2>
+<pre>getLogger() : \Zend_Logger</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\OSS_Service_Clickatell_Abstract::getLogger()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>\Zend_Logger</code></div>
+</div></div>
+</div>
+<a id="method_log"></a><div class="element clickable method protected method_log" data-toggle="collapse" data-target=".method_log .collapse">
+<h2>Add an entry to the log</h2>
+<pre>log(string $log) : void</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\OSS_Service_Clickatell_Abstract::log()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$log</h4>
+<code>string</code><p>Log message</p></div>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a id="property_MESSAGE_STATES"> </a><div class="element clickable property public property_MESSAGE_STATES" data-toggle="collapse" data-target=".property_MESSAGE_STATES .collapse">
+<h2>An array of Clickatell delivery states (e.g.</h2>
+<pre>$MESSAGE_STATES : array</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>@see OSS_Service_Clickatell_Http::getQueryMessage() )</p></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\OSS_Service_Clickatell_Abstract::$$MESSAGE_STATES</td>
+</tr></table>
+</div></div>
+</div>
+<a id="property__api_id"> </a><div class="element clickable property protected property__api_id" data-toggle="collapse" data-target=".property__api_id .collapse">
+<h2>API access ID</h2>
+<pre>$_api_id : string</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\OSS_Service_Clickatell_Abstract::$$_api_id</td>
+</tr></table>
+</div></div>
+</div>
+<a id="property__api_url"> </a><div class="element clickable property protected property__api_url" data-toggle="collapse" data-target=".property__api_url .collapse">
+<h2>The API URL for Clickatell</h2>
+<pre>$_api_url : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property__logger"> </a><div class="element clickable property protected property__logger" data-toggle="collapse" data-target=".property__logger .collapse">
+<h2>A logger object</h2>
+<pre>$_logger : \Zend_Logger</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\OSS_Service_Clickatell_Abstract::$$_logger</td>
+</tr></table>
+</div></div>
+</div>
+<a id="property__loglevel"> </a><div class="element clickable property protected property__loglevel" data-toggle="collapse" data-target=".property__loglevel .collapse">
+<h2>The log level</h2>
+<pre>$_loglevel : integer</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\OSS_Service_Clickatell_Abstract::$$_loglevel</td>
+</tr></table>
+</div></div>
+</div>
+<a id="property__password"> </a><div class="element clickable property protected property__password" data-toggle="collapse" data-target=".property__password .collapse">
+<h2>API access password</h2>
+<pre>$_password : string</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\OSS_Service_Clickatell_Abstract::$$_password</td>
+</tr></table>
+</div></div>
+</div>
+<a id="property__response"> </a><div class="element clickable property protected property__response" data-toggle="collapse" data-target=".property__response .collapse">
+<h2>HTTP reponse object</h2>
+<pre>$_response : object</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property__send_errors"> </a><div class="element clickable property protected property__send_errors" data-toggle="collapse" data-target=".property__send_errors .collapse">
+<h2>An array of errors per phone number from the last send
+Keys are the numbers and values are the error messages</h2>
+<pre>$_send_errors : array</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\OSS_Service_Clickatell_Abstract::$$_send_errors</td>
+</tr></table>
+</div></div>
+</div>
+<a id="property__send_ids"> </a><div class="element clickable property protected property__send_ids" data-toggle="collapse" data-target=".property__send_ids .collapse">
+<h2>Send IDs of the last batch of messages sent
+Keys are the numbers and values are the IDs</h2>
+<pre>$_send_ids : array</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\OSS_Service_Clickatell_Abstract::$$_send_ids</td>
+</tr></table>
+</div></div>
+</div>
+<a id="property__sender_id"> </a><div class="element clickable property protected property__sender_id" data-toggle="collapse" data-target=".property__sender_id .collapse">
+<h2>A string containing the Sender ID, which is a short ( &lt;= 11 characters) string</h2>
+<pre>$_sender_id : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property__ssl"> </a><div class="element clickable property protected property__ssl" data-toggle="collapse" data-target=".property__ssl .collapse">
+<h2>Use an SSL connection?</h2>
+<pre>$_ssl : bool</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\OSS_Service_Clickatell_Abstract::$$_ssl</td>
+</tr></table>
+</div></div>
+</div>
+<a id="property__use_session"> </a><div class="element clickable property protected property__use_session" data-toggle="collapse" data-target=".property__use_session .collapse">
+<h2>Use sessions or authenticate for each request</h2>
+<pre>$_use_session : bool</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property__username"> </a><div class="element clickable property protected property__username" data-toggle="collapse" data-target=".property__username .collapse">
+<h2>API access username</h2>
+<pre>$_username : string</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\OSS_Service_Clickatell_Abstract::$$_username</td>
+</tr></table>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-constant"></i> Constants</h3>
+<a id="constant_API_METHOD_BALANCE"> </a><div class="element clickable constant  constant_API_METHOD_BALANCE" data-toggle="collapse" data-target=".constant_API_METHOD_BALANCE .collapse">
+<h2>API identifiers for different tasks</h2>
+<pre>API_METHOD_BALANCE </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_API_METHOD_QUERY"> </a><div class="element clickable constant  constant_API_METHOD_QUERY" data-toggle="collapse" data-target=".constant_API_METHOD_QUERY .collapse">
+<h2>API_METHOD_QUERY</h2>
+<pre>API_METHOD_QUERY </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_API_METHOD_SENDSMS"> </a><div class="element clickable constant  constant_API_METHOD_SENDSMS" data-toggle="collapse" data-target=".constant_API_METHOD_SENDSMS .collapse">
+<h2>API_METHOD_SENDSMS</h2>
+<pre>API_METHOD_SENDSMS </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_FEAT_8BIT"> </a><div class="element clickable constant  constant_FEAT_8BIT" data-toggle="collapse" data-target=".constant_FEAT_8BIT .collapse">
+<h2>Features.</h2>
+<pre>FEAT_8BIT </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"><p>for more than one feature request add the values up and pass the sum (FEAT_8BIT + FEAT_ALPHA + FEAT_CONCAT)</p></div></div></div>
+</div>
+<a id="constant_FEAT_ALPHA"> </a><div class="element clickable constant  constant_FEAT_ALPHA" data-toggle="collapse" data-target=".constant_FEAT_ALPHA .collapse">
+<h2>FEAT_ALPHA</h2>
+<pre>FEAT_ALPHA </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_FEAT_CONCAT"> </a><div class="element clickable constant  constant_FEAT_CONCAT" data-toggle="collapse" data-target=".constant_FEAT_CONCAT .collapse">
+<h2>FEAT_CONCAT</h2>
+<pre>FEAT_CONCAT </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_FEAT_DELIVACK"> </a><div class="element clickable constant  constant_FEAT_DELIVACK" data-toggle="collapse" data-target=".constant_FEAT_DELIVACK .collapse">
+<h2>FEAT_DELIVACK</h2>
+<pre>FEAT_DELIVACK </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_FEAT_FLASH"> </a><div class="element clickable constant  constant_FEAT_FLASH" data-toggle="collapse" data-target=".constant_FEAT_FLASH .collapse">
+<h2>FEAT_FLASH</h2>
+<pre>FEAT_FLASH </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_FEAT_NUMER"> </a><div class="element clickable constant  constant_FEAT_NUMER" data-toggle="collapse" data-target=".constant_FEAT_NUMER .collapse">
+<h2>FEAT_NUMER</h2>
+<pre>FEAT_NUMER </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_FEAT_TEXT"> </a><div class="element clickable constant  constant_FEAT_TEXT" data-toggle="collapse" data-target=".constant_FEAT_TEXT .collapse">
+<h2>FEAT_TEXT</h2>
+<pre>FEAT_TEXT </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_FEAT_UCS2"> </a><div class="element clickable constant  constant_FEAT_UCS2" data-toggle="collapse" data-target=".constant_FEAT_UCS2 .collapse">
+<h2>FEAT_UCS2</h2>
+<pre>FEAT_UCS2 </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_FEAT_UDH"> </a><div class="element clickable constant  constant_FEAT_UDH" data-toggle="collapse" data-target=".constant_FEAT_UDH .collapse">
+<h2>FEAT_UDH</h2>
+<pre>FEAT_UDH </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
+            generated on 2012-11-16T11:34:39Z.<br></footer></div>
+</div>
+</body>
+</html>
