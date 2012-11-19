@@ -6,7 +6,7 @@ t/a [Open Solutions](http://www.opensolutions.ie/) as useful library of
 extensions on top of / extending the [Zend Framework (V1.x)](http://framework.zend.com/).
 
 [Open Solutions](http://www.opensolutions.ie/) are making this library available under the terms of
-the [BSD New License](http://opensource.org/licenses/BSD-3-Clause) - see the `LICENSE.txt` file
+the [BSD New License](http://opensource.org/licenses/BSD-3-Clause) - see the `LICENSE` file
 included with this library.
 
 See:
