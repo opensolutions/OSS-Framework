@@ -1,5 +1,4 @@
 <?php
-
 /**
  * OSS Framework
  *
@@ -29,7 +28,7 @@
  * to info@opensolutions.ie so we can send you a copy immediately.
  *
  * @category   OSS_Tests
- * @package    OSS_Tests_License
+ * @package    OSS_Tests_Crypt
  * @copyright  Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland
  * @license    http://www.opensolutions.ie/licenses/new-bsd New BSD License
  * @link       http://www.opensolutions.ie/ Open Source Solutions Limited
@@ -40,16 +39,16 @@
 
 require_once( dirname( __FILE__ ) . '/../../bootstrap.php' );
 
-require 'MD5Test.php';
+require 'GibberishAESTest.php';
 
-class OSS_License_AllTests
+class OSS_Crypt_AllTests
 {
 
     public static function suite()
     {
-        $suite = new PHPUnit_Framework_TestSuite( 'OSS_License' );
+        $suite = new PHPUnit_Framework_TestSuite( 'OSS_Crypt' );
 
-        $suite->addTestSuite( 'OSS_License_MD5Test' );
+        $suite->addTestSuite( 'OSS_Crypt_GibberishAESTest' );
 
         return $suite;
     }
