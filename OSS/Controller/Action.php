@@ -98,20 +98,6 @@ class OSS_Controller_Action extends Zend_Controller_Action
      * Override the Zend_Controller_Action's constructor (which is called
      * at the very beginning of this function anyway).
      *
-     * This function does a number of things:
-     *
-     * * Set up the Smarty view if the OSS_Controller_Action_Trait_Smarty trait is detected
-     *     * set template variables `$session`, `$options`, `$module`, `$controller`, `$action`
-     *       `$basepath`
-     *     * if the action starts with `ajax` or `cli` then the viewRenderer helper is removed
-     * * verifies the license if that trait is detected
-     * * if the auth trait is detected:
-     *     * initialises the AUth object and sets the view `$auth` variable
-     *     * if the `OSS_Controller_Action_Trait_AuthRequired` trait is also detected, it will
-     *       ensure the user is logged in or redirect to `login` and further set the view variables
-     *       `$hasIdentity`, `$identity`, `$user`.
-     *
-     *
      *
      * @param object $request See Parent class constructor
      * @param object $response See Parent class constructor
