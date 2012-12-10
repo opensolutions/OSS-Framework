@@ -126,7 +126,7 @@ trait OSS_Controller_Trait_Auth
                     $user = $identity['user'];
                     
                     $message = null;
-                    if( !$this->_postLoginChecks( $auth, $user, $message ) )
+                    if( !$this->_postLoginChecks( $auth, $user, $message, $form->getValue( 'password' ) ) )
                     {
                         if( $haveCookie ) $this->_deleteRememberMeCookie( $user );
                         $auth->clearIdentity();
@@ -183,13 +183,22 @@ trait OSS_Controller_Trait_Auth
      *
      * @param Zend_Auth $auth The authentication object
      * @param \Entities\User $user The user logging in
-     * @param $message string A message to be displayed if returning false (cancelling the login)
+     * @param string $message A message to be displayed if returning false (cancelling the login)
+     * @param string $password Password for additional actions, such as data encryption.
      * @return bool False to prevent the user from logging in, else true
      */
-    protected function _postLoginChecks( $auth, $user, &$message )
+    protected function _postLoginChecks( $auth, $user, &$message, $password = null )
     {
         return true;
     }
+    
+    /**
+     * A pre-logout function allow and pre-logout processing / checks.
+     *
+     * Override if you need to add functionality.
+     */
+    protected function _preLogout()
+    {}
     
     /**
      * Logs the user out, clears the identity and the session.
@@ -201,15 +210,17 @@ trait OSS_Controller_Trait_Auth
         
         if( !$this->getAuth()->hasIdentity() )
             $this->_redirect( '' );
+            
+        // allow for a possible pre-logout hook
+        $this->_preLogout();
 
-        $this->getLogger()->info( "{$this->getUser()->getUsername()} logged out" );
-        
         if( $this->_rememberMeEnabled() )
             $this->_deleteRememberMeCookie( $this->getUser() );
         
         $this->getAuth()->clearIdentity();
         $this->getSessionNamespace()->unsetAll();
-
+        
+        $this->getLogger()->info( "{$this->getUser()->getUsername()} logged out" );
         $this->addMessage( '<strong>' . _( 'You have been logged out.' ) . '</strong>', OSS_Message::SUCCESS );
         $this->_redirect( '' );
     }
@@ -356,6 +367,8 @@ trait OSS_Controller_Trait_Auth
                     
                     $this->getD2EM()->flush();
                     
+                    $this->_postResetPassword( $user, $form->getValue( 'password' ) );
+                    
                     $this->view->user = $user;
 
                     $mailer = $this->getMailer();
@@ -381,6 +394,20 @@ trait OSS_Controller_Trait_Auth
             $form->getElement( 'username' )->setValue( $this->_getParam( 'username',    '' ) );
             $form->getElement( 'token'    )->setValue( $this->_getParam( 'token',       '' ) );
         }
+    }
+    
+    /**
+     * Overridable fucntion to perform custom post (successful) reset passwor.
+     *
+     * Override this function to add custom code.
+     *
+     * @param Zend_Auth $auth The authentication object
+     * @param \Entities\User $user The User entity
+     * @param string $password Password for additional actions, such as data encryption.
+     * @return bool False to prevent the user from logging in, else true
+     */
+    protected function _postResetPassword( $user, $password = null )
+    {
     }
 
     
