@@ -69,7 +69,7 @@ trait OSS_Form_Trait_InsertElementFns
         else
             $aename = $afterElement;
 
-        if( $element instanceof Zend_Form_Element)
+        if( $element instanceof Zend_Form_Element )
             $ename = $element->getName();
         else
             $ename = $element;
@@ -77,7 +77,6 @@ trait OSS_Form_Trait_InsertElementFns
         unset( $this->_order[$ename] );
 
         $newOrder = array();
-
         foreach( $this->_order as $iname => $item )
         {
             $newOrder[$iname] = $item;
