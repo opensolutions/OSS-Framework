@@ -214,7 +214,7 @@ class OSS_Controller_Action extends Zend_Controller_Action
      *
      * @return array The options array
      */
-    protected function getOptions()
+    public function getOptions()
     {
         return $this->_options;
     }
