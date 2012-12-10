@@ -52,7 +52,7 @@ trait OSS_Controller_Action_Trait_Doctrine2Cache
     /**
      * A variable to hold the Doctrine2 cache
      *
-     * @var \Doctrine\Common\Cache\AbstractCache An instance of the Doctrine2 entity manager
+     * @var \Doctrine\Common\Cache\AbstractCache An instance of the Doctrine2 cache
      */
     static private $_d2cache = null;
     
