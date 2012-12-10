@@ -50,7 +50,7 @@
 class OSS_Crypt_OpenSSL
 {
     /**
-     * A variable to soter a Passphrase to encrypt / decrypt the key pair
+     * A variable to store a Passphrase to encrypt / decrypt the key pair
      *
      * @var string Passphrase to encrypt / decrypt the key pair
      */

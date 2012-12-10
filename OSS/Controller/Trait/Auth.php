@@ -126,7 +126,7 @@ trait OSS_Controller_Trait_Auth
                     $user = $identity['user'];
                     
                     $message = null;
-                    if( !$this->_postLoginChecks( $auth, $user, $message, $form->getValue( 'password' ) ) )
+                    if( !$this->_postLoginChecks( $auth, $user, $message, $form ) )
                     {
                         if( $haveCookie ) $this->_deleteRememberMeCookie( $user );
                         $auth->clearIdentity();
@@ -184,10 +184,10 @@ trait OSS_Controller_Trait_Auth
      * @param Zend_Auth $auth The authentication object
      * @param \Entities\User $user The user logging in
      * @param string $message A message to be displayed if returning false (cancelling the login)
-     * @param string $password Password for additional actions, such as data encryption.
+     * @param Zend_Form $form Login for to get more information
      * @return bool False to prevent the user from logging in, else true
      */
-    protected function _postLoginChecks( $auth, $user, &$message, $password = null )
+    protected function _postLoginChecks( $auth, $user, &$message, $form = null )
     {
         return true;
     }
@@ -365,9 +365,8 @@ trait OSS_Controller_Trait_Auth
                     if( method_exists( $user, 'setFailedLogins' ) )
                         $user->setFailedLogins( 0 );
                     
-                    $this->getD2EM()->flush();
-                    
-                    $this->_postResetPassword( $user, $form->getValue( 'password' ) );
+                    if( $this->resetPasswordPreFlush( $user, $form ) )
+                        $this->getD2EM()->flush();
                     
                     $this->view->user = $user;
 
@@ -397,7 +396,7 @@ trait OSS_Controller_Trait_Auth
     }
     
     /**
-     * Overridable fucntion to perform custom post (successful) reset passwor.
+     * This is reset password before flush hook.
      *
      * Override this function to add custom code.
      *
@@ -406,8 +405,9 @@ trait OSS_Controller_Trait_Auth
      * @param string $password Password for additional actions, such as data encryption.
      * @return bool False to prevent the user from logging in, else true
      */
-    protected function _postResetPassword( $user, $password = null )
+    protected function resetPasswordPreFlush( $user, $form = null )
     {
+        return true;
     }
 
     
