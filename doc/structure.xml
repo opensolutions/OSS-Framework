@@ -192,7 +192,7 @@ to info@opensolutions.ie so we can send you a copy immediately.</p>]]></long-des
       </method>
     </class>
   </file>
-  <file path="View/Helper/DateForm.php" hash="4273d1f48028b8d30b8ca34f7e3bfebe" package="OSS\View\Helper">
+  <file path="View/Helper/DateForm.php" hash="f26c0aa6562ae4e65fc8944969fc9af3" package="OSS\View\Helper">
     <docblock line="2">
       <description><![CDATA[OSS Framework]]></description>
       <long-description><![CDATA[<p>This file is part of the "OSS Framework" - a library of tools, utilities and
@@ -1233,6 +1233,89 @@ Retruns with a negative integer on error.</p>
       <critical line="39" code="50005">No short description for class \OSS_Yubico</critical>
       <error line="94" code="50014">Name of argument $modHex does not match with the DocBlock's name $pModHex in modhex2hex()</error>
       <notice line="94" code="50013">Parameter $pModHex could not be found in modhex2hex()</notice>
+    </parse_markers>
+  </file>
+  <file path="API/Jabber2d.php" hash="f2652935683be0215996f71c22b90098" package="OSS\API">
+    <docblock line="2">
+      <description><![CDATA[OSS Framework]]></description>
+      <long-description><![CDATA[<p>This file is part of the "OSS Framework" - a library of tools, utilities and
+extensions to the Zend Framework V1.x used for PHP application development.</p>
+
+<p>Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland
+All rights reserved.</p>
+
+<p>Open Source Solutions Limited is a company registered in Dublin,
+Ireland with the Companies Registration Office (#438231). We
+trade as Open Solutions with registered business name (#329120).</p>
+
+<p>Contact: Barry O'Donovan - info (at) opensolutions (dot) ie
+         http://www.opensolutions.ie/</p>
+
+<p>LICENSE</p>
+
+<p>This source file is subject to the new BSD license that is bundled
+with this package in the file LICENSE.txt.</p>
+
+<p>It is also available through the world-wide-web at this URL:
+    http://www.opensolutions.ie/licenses/new-bsd</p>
+
+<p>If you did not receive a copy of the license and are unable to
+obtain it through the world-wide-web, please send an email
+to info@opensolutions.ie so we can send you a copy immediately.</p>]]></long-description>
+      <tag line="2" name="category" description="OSS"/>
+      <tag line="2" name="package" description="OSS_API"/>
+      <tag line="2" name="copyright" description="Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland"/>
+      <tag line="2" name="license" description="http://www.opensolutions.ie/licenses/new-bsd New BSD License"/>
+      <tag line="2" name="link" description="Open Source Solutions Limited" link="http://www.opensolutions.ie/"/>
+      <tag line="2" name="author" description="Barry O'Donovan &lt;barry@opensolutions.ie&gt;"/>
+      <tag line="2" name="author" description="The Skilled Team of PHP Developers at Open Solutions &lt;info@opensolutions.ie&gt;"/>
+    </docblock>
+    <class final="false" abstract="false" namespace="global" line="50" package="OSS\API">
+      <extends/>
+      <name>OSS_API_Jabber2d</name>
+      <full_name>\OSS_API_Jabber2d</full_name>
+      <docblock line="40">
+        <description><![CDATA[A Jabber2d API via direct database manipulation.]]></description>
+        <long-description><![CDATA[]]></long-description>
+        <tag line="40" name="see" description="\global\http://jabberd2.org/" refers="\global\http://jabberd2.org/"/>
+        <tag line="40" name="category" description="OSS"/>
+        <tag line="40" name="package" description="OSS_API"/>
+        <tag line="40" name="copyright" description="Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland"/>
+        <tag line="40" name="license" description="http://www.opensolutions.ie/licenses/new-bsd New BSD License"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="56" package="OSS\API">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <argument line="56">
+          <name>$dbparams</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="78" package="OSS\API">
+        <name>getAllUsers</name>
+        <full_name>getAllUsers</full_name>
+        <docblock line="62">
+          <description><![CDATA[Get all users registered in the database as an array.]]></description>
+          <long-description><![CDATA[<p>Returns:</p>
+
+<pre><code>array (size=n)
+    0 =&gt;
+        array (size=3)
+            'username' =&gt; string 'johndoe' (length=5)
+            'realm' =&gt; string 'example.com' (length=16)
+            'password' =&gt; string 'soopersecret' (length=9)
+    1 =&gt;
+        ...
+</code></pre>]]></long-description>
+          <tag line="62" name="return" description="All users registered in the database" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="56" code="50010">No DocBlock was found for method __construct()</error>
     </parse_markers>
   </file>
   <file path="Html.php" hash="e9ec109cd96a4129be9175ef08036841" package="OSS\HTML">
@@ -5808,7 +5891,7 @@ to info@opensolutions.ie so we can send you a copy immediately.</p>]]></long-des
       <tag line="3" name="author" description="The Skilled Team of PHP Developers at Open Solutions &lt;info@opensolutions.ie&gt;"/>
     </docblock>
   </file>
-  <file path="Form/Trait/InsertElementFns.php" hash="26950f759593740d65a0dd37adee567c" package="OSS\Form">
+  <file path="Form/Trait/InsertElementFns.php" hash="68a3d4cf43b434cc02f8cb917c0c115f" package="OSS\Form">
     <docblock line="3">
       <description><![CDATA[OSS Framework]]></description>
       <long-description><![CDATA[<p>This file is part of the "OSS Framework" - a library of tools, utilities and
@@ -10392,6 +10475,175 @@ to info@opensolutions.ie so we can send you a copy immediately.</p>]]></long-des
       </method>
     </class>
   </file>
+  <file path="Plugin/Observer.php" hash="53fa93399da70cdee7e5af3979ef605e" package="OSS\Plugin">
+    <docblock line="2">
+      <description><![CDATA[OSS Framework]]></description>
+      <long-description><![CDATA[<p>This file is part of the "OSS Framework" - a library of tools, utilities and
+extensions to the Zend Framework V1.x used for PHP application development.</p>
+
+<p>Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland
+All rights reserved.</p>
+
+<p>Open Source Solutions Limited is a company registered in Dublin,
+Ireland with the Companies Registration Office (#438231). We
+trade as Open Solutions with registered business name (#329120).</p>
+
+<p>Contact: Barry O'Donovan - info (at) opensolutions (dot) ie
+         http://www.opensolutions.ie/</p>
+
+<p>LICENSE</p>
+
+<p>This source file is subject to the new BSD license that is bundled
+with this package in the file LICENSE.txt.</p>
+
+<p>It is also available through the world-wide-web at this URL:
+    http://www.opensolutions.ie/licenses/new-bsd</p>
+
+<p>If you did not receive a copy of the license and are unable to
+obtain it through the world-wide-web, please send an email
+to info@opensolutions.ie so we can send you a copy immediately.</p>]]></long-description>
+      <tag line="2" name="category" description="OSS"/>
+      <tag line="2" name="package" description="OSS_Plugin"/>
+      <tag line="2" name="copyright" description="Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland"/>
+      <tag line="2" name="license" description="http://www.opensolutions.ie/licenses/new-bsd New BSD License"/>
+      <tag line="2" name="link" description="Open Source Solutions Limited" link="http://www.opensolutions.ie/"/>
+      <tag line="2" name="author" description="Barry O'Donovan &lt;barry@opensolutions.ie&gt;"/>
+    </docblock>
+    <interface namespace="global" line="46" package="OSS\Plugin">
+      <name>OSS_Plugin_Observer</name>
+      <full_name>\OSS_Plugin_Observer</full_name>
+      <docblock line="38">
+        <description><![CDATA[An interface to be implemented by classes which "observe" - i.e.]]></description>
+        <long-description><![CDATA[<p>plugins</p>]]></long-description>
+        <tag line="38" name="category" description="OSS"/>
+        <tag line="38" name="package" description="OSS_Plugin"/>
+        <tag line="38" name="copyright" description="Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland"/>
+        <tag line="38" name="license" description="http://www.opensolutions.ie/licenses/new-bsd New BSD License"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="48" package="OSS\Plugin">
+        <name>update</name>
+        <full_name>update</full_name>
+        <argument line="48">
+          <name>$controller</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="48">
+          <name>$action</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="48">
+          <name>$hook</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="48">
+          <name>$controllerObject</name>
+          <default><![CDATA[]]></default>
+          <type>\OSS_Controller_Action</type>
+        </argument>
+      </method>
+    </interface>
+    <parse_markers>
+      <error line="48" code="50010">No DocBlock was found for method update()</error>
+    </parse_markers>
+  </file>
+  <file path="Plugin/Observable.php" hash="83b4551d84d23dd1c421f37639ae52ec" package="OSS\Plugin">
+    <docblock line="2">
+      <description><![CDATA[OSS Framework]]></description>
+      <long-description><![CDATA[<p>This file is part of the "OSS Framework" - a library of tools, utilities and
+extensions to the Zend Framework V1.x used for PHP application development.</p>
+
+<p>Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland
+All rights reserved.</p>
+
+<p>Open Source Solutions Limited is a company registered in Dublin,
+Ireland with the Companies Registration Office (#438231). We
+trade as Open Solutions with registered business name (#329120).</p>
+
+<p>Contact: Barry O'Donovan - info (at) opensolutions (dot) ie
+         http://www.opensolutions.ie/</p>
+
+<p>LICENSE</p>
+
+<p>This source file is subject to the new BSD license that is bundled
+with this package in the file LICENSE.txt.</p>
+
+<p>It is also available through the world-wide-web at this URL:
+    http://www.opensolutions.ie/licenses/new-bsd</p>
+
+<p>If you did not receive a copy of the license and are unable to
+obtain it through the world-wide-web, please send an email
+to info@opensolutions.ie so we can send you a copy immediately.</p>]]></long-description>
+      <tag line="2" name="category" description="OSS"/>
+      <tag line="2" name="package" description="OSS_Plugin"/>
+      <tag line="2" name="copyright" description="Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland"/>
+      <tag line="2" name="license" description="http://www.opensolutions.ie/licenses/new-bsd New BSD License"/>
+      <tag line="2" name="link" description="Open Source Solutions Limited" link="http://www.opensolutions.ie/"/>
+      <tag line="2" name="author" description="Barry O'Donovan &lt;barry@opensolutions.ie&gt;"/>
+    </docblock>
+    <interface namespace="global" line="47" package="OSS\Plugin">
+      <name>OSS_Plugin_Observable</name>
+      <full_name>\OSS_Plugin_Observable</full_name>
+      <docblock line="38">
+        <description><![CDATA[An interface to be implemented by classes which can be "observed" - i.e.]]></description>
+        <long-description><![CDATA[<p>classes
+which for which plugins can be developed.</p>]]></long-description>
+        <tag line="38" name="category" description="OSS"/>
+        <tag line="38" name="package" description="OSS_Plugin"/>
+        <tag line="38" name="copyright" description="Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland"/>
+        <tag line="38" name="license" description="http://www.opensolutions.ie/licenses/new-bsd New BSD License"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="50" package="OSS\Plugin">
+        <name>attach</name>
+        <full_name>attach</full_name>
+        <argument line="50">
+          <name>$observer</name>
+          <default><![CDATA[]]></default>
+          <type>\OSS_Plugin_Observer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="51" package="OSS\Plugin">
+        <name>detach</name>
+        <full_name>detach</full_name>
+        <argument line="51">
+          <name>$observer</name>
+          <default><![CDATA[]]></default>
+          <type>\OSS_Plugin_Observer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="52" package="OSS\Plugin">
+        <name>notify</name>
+        <full_name>notify</full_name>
+        <argument line="52">
+          <name>$controller</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="52">
+          <name>$action</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="52">
+          <name>$hook</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="52">
+          <name>$controllerObject</name>
+          <default><![CDATA[]]></default>
+          <type>\OSS_Controller_Action</type>
+        </argument>
+      </method>
+    </interface>
+    <parse_markers>
+      <error line="50" code="50010">No DocBlock was found for method attach()</error>
+      <error line="51" code="50010">No DocBlock was found for method detach()</error>
+      <error line="52" code="50010">No DocBlock was found for method notify()</error>
+    </parse_markers>
+  </file>
   <file path="DateTime.php" hash="a27ff4d9c469303386f974e0e6322f2b" package="OSS\Date">
     <docblock line="2">
       <description><![CDATA[OSS Framework]]></description>
@@ -11175,6 +11427,42 @@ to info@opensolutions.ie so we can send you a copy immediately.</p>]]></long-des
       <error line="90" code="50016">The type hint of the argument is incorrect for the type definition of the @param tag with argument $types in startQuery()</error>
       <notice line="90" code="50013">Parameter $executionMS could not be found in startQuery()</notice>
     </parse_markers>
+  </file>
+  <file path="Doctrine2/DBAL/Connection.php" hash="eddfebfefe3cb745c05fd962ed891cab" package="OSS\Doctrine2">
+    <docblock line="2">
+      <description><![CDATA[OSS Framework]]></description>
+      <long-description><![CDATA[<p>This file is part of the "OSS Framework" - a library of tools, utilities and
+extensions to the Zend Framework V1.x used for PHP application development.</p>
+
+<p>Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland
+All rights reserved.</p>
+
+<p>Open Source Solutions Limited is a company registered in Dublin,
+Ireland with the Companies Registration Office (#438231). We
+trade as Open Solutions with registered business name (#329120).</p>
+
+<p>Contact: Barry O'Donovan - info (at) opensolutions (dot) ie
+         http://www.opensolutions.ie/</p>
+
+<p>LICENSE</p>
+
+<p>This source file is subject to the new BSD license that is bundled
+with this package in the file LICENSE.txt.</p>
+
+<p>It is also available through the world-wide-web at this URL:
+    http://www.opensolutions.ie/licenses/new-bsd</p>
+
+<p>If you did not receive a copy of the license and are unable to
+obtain it through the world-wide-web, please send an email
+to info@opensolutions.ie so we can send you a copy immediately.</p>]]></long-description>
+      <tag line="2" name="category" description="OSS"/>
+      <tag line="2" name="package" description="OSS_Doctrine2"/>
+      <tag line="2" name="copyright" description="Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland"/>
+      <tag line="2" name="license" description="http://www.opensolutions.ie/licenses/new-bsd New BSD License"/>
+      <tag line="2" name="link" description="Open Source Solutions Limited" link="http://www.opensolutions.ie/"/>
+      <tag line="2" name="author" description="Barry O'Donovan &lt;barry@opensolutions.ie&gt;"/>
+      <tag line="2" name="author" description="The Skilled Team of PHP Developers at Open Solutions &lt;info@opensolutions.ie&gt;"/>
+    </docblock>
   </file>
   <file path="Doctrine2/Exception.php" hash="571db1b496ad23e2cd3232942c92ec1a" package="OSS\Doctrine2">
     <docblock line="2">
@@ -18891,7 +19179,7 @@ to info@opensolutions.ie so we can send you a copy immediately.</p>]]></long-des
       <tag line="2" name="author" description="The Skilled Team of PHP Developers at Open Solutions &lt;info@opensolutions.ie&gt;"/>
     </docblock>
   </file>
-  <file path="Controller/Action.php" hash="3a1d3f9e4dc5e89984eef9c796c02662" package="OSS\Controller">
+  <file path="Controller/Action.php" hash="890ecbcce6c0cb0444424766816b9fa6" package="OSS\Controller">
     <docblock line="3">
       <description><![CDATA[OSS Framework]]></description>
       <long-description><![CDATA[<p>This file is part of the "OSS Framework" - a library of tools, utilities and
@@ -18974,32 +19262,13 @@ to info@opensolutions.ie so we can send you a copy immediately.</p>]]></long-des
           </tag>
         </docblock>
       </property>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="120" package="OSS\Controller">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="106" package="OSS\Controller">
         <name>__construct</name>
         <full_name>__construct</full_name>
         <docblock line="97">
           <description><![CDATA[Override the Zend_Controller_Action's constructor (which is called
 at the very beginning of this function anyway).]]></description>
-          <long-description><![CDATA[<p>This function does a number of things:</p>
-
-<ul>
-<li>Set up the Smarty view if the OSS_Controller_Action_Trait_Smarty trait is detected
-
-<ul>
-<li>set template variables <code>$session</code>, <code>$options</code>, <code>$module</code>, <code>$controller</code>, <code>$action</code>
-<code>$basepath</code></li>
-<li>if the action starts with <code>ajax</code> or <code>cli</code> then the viewRenderer helper is removed</li>
-</ul></li>
-<li>verifies the license if that trait is detected</li>
-<li>if the auth trait is detected:
-
-<ul>
-<li>initialises the AUth object and sets the view <code>$auth</code> variable</li>
-<li>if the <code>OSS_Controller_Action_Trait_AuthRequired</code> trait is also detected, it will
-ensure the user is logged in or redirect to <code>login</code> and further set the view variables
-<code>$hasIdentity</code>, <code>$identity</code>, <code>$user</code>.</li>
-</ul></li>
-</ul>]]></long-description>
+          <long-description><![CDATA[]]></long-description>
           <tag line="97" name="param" description="See Parent class constructor" type="object" variable="$request">
             <type by_reference="false">object</type>
           </tag>
@@ -19010,26 +19279,26 @@ ensure the user is logged in or redirect to <code>login</code> and further set t
             <type by_reference="false">object</type>
           </tag>
         </docblock>
-        <argument line="121">
+        <argument line="107">
           <name>$request</name>
           <default><![CDATA[]]></default>
           <type>\Zend_Controller_Request_Abstract</type>
         </argument>
-        <argument line="122">
+        <argument line="108">
           <name>$response</name>
           <default><![CDATA[]]></default>
           <type>\Zend_Controller_Response_Abstract</type>
         </argument>
-        <argument line="123">
+        <argument line="109">
           <name>$invokeArgs</name>
           <default><![CDATA[null]]></default>
           <type>array</type>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="private" namespace="global" line="159" package="OSS\Controller">
+      <method final="false" abstract="false" static="false" visibility="private" namespace="global" line="145" package="OSS\Controller">
         <name>initialiseTraits</name>
         <full_name>initialiseTraits</full_name>
-        <docblock line="146">
+        <docblock line="132">
           <description><![CDATA[All declared traits can have their own initialisation method.]]></description>
           <long-description><![CDATA[<p>This function
 iterates over the declared traits and initialises them if necessary.</p>
@@ -19038,147 +19307,147 @@ iterates over the declared traits and initialises them if necessary.</p>
 
 <p>This function should be called from the contructor and it passes those
 same variables used for construction to the traits' init methods.</p>]]></long-description>
-          <tag line="146" name="param" description="See Parent class constructor" type="object" variable="$request">
+          <tag line="132" name="param" description="See Parent class constructor" type="object" variable="$request">
             <type by_reference="false">object</type>
           </tag>
-          <tag line="146" name="param" description="See Parent class constructor" type="object" variable="$response">
+          <tag line="132" name="param" description="See Parent class constructor" type="object" variable="$response">
             <type by_reference="false">object</type>
           </tag>
-          <tag line="146" name="param" description="See Parent class constructor" type="object" variable="$invokeArgs">
+          <tag line="132" name="param" description="See Parent class constructor" type="object" variable="$invokeArgs">
             <type by_reference="false">object</type>
           </tag>
         </docblock>
-        <argument line="159">
+        <argument line="145">
           <name>$request</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="159">
+        <argument line="145">
           <name>$response</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="159">
+        <argument line="145">
           <name>$invokeArgs</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="protected" namespace="global" line="175" package="OSS\Controller">
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="global" line="161" package="OSS\Controller">
         <name>traitIsInitialised</name>
         <full_name>traitIsInitialised</full_name>
-        <docblock line="169">
+        <docblock line="155">
           <description><![CDATA[If a named trait has been initialised, returns true, else false]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="169" name="param" description="The name of the trait to check for" type="string" variable="$trait">
+          <tag line="155" name="param" description="The name of the trait to check for" type="string" variable="$trait">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="169" name="return" description="Whether the trait has been initialised or not" type="bool">
+          <tag line="155" name="return" description="Whether the trait has been initialised or not" type="bool">
             <type by_reference="false">bool</type>
           </tag>
         </docblock>
-        <argument line="175">
+        <argument line="161">
           <name>$trait</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="protected" namespace="global" line="185" package="OSS\Controller">
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="global" line="171" package="OSS\Controller">
         <name>traitSetInitialised</name>
         <full_name>traitSetInitialised</full_name>
-        <docblock line="180">
+        <docblock line="166">
           <description><![CDATA[Mark a trait as initialised]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="180" name="param" description="The name of the trait to check for" type="string" variable="$trait">
+          <tag line="166" name="param" description="The name of the trait to check for" type="string" variable="$trait">
             <type by_reference="false">string</type>
           </tag>
         </docblock>
-        <argument line="185">
+        <argument line="171">
           <name>$trait</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="196" package="OSS\Controller">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="182" package="OSS\Controller">
         <name>getResource</name>
         <full_name>getResource</full_name>
-        <docblock line="190">
+        <docblock line="176">
           <description><![CDATA[A utility method to get a named resource.]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="190" name="param" description="" type="string" variable="$resource">
+          <tag line="176" name="param" description="" type="string" variable="$resource">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="190" name="return" description="" type="\Zend_Application_Resource_ResourceAbstract">
+          <tag line="176" name="return" description="" type="\Zend_Application_Resource_ResourceAbstract">
             <type by_reference="false">\Zend_Application_Resource_ResourceAbstract</type>
           </tag>
         </docblock>
-        <argument line="196">
+        <argument line="182">
           <name>$resource</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="protected" namespace="global" line="207" package="OSS\Controller">
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="global" line="193" package="OSS\Controller">
         <name>setBootstrap</name>
         <full_name>setBootstrap</full_name>
-        <docblock line="201">
+        <docblock line="187">
           <description><![CDATA[Set the Zend application bootstrap in this instance and in the
 global registry.]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="201" name="param" description="" type="\Zend_Application_Bootstrap_Bootstrap" variable="$bs">
+          <tag line="187" name="param" description="" type="\Zend_Application_Bootstrap_Bootstrap" variable="$bs">
             <type by_reference="false">\Zend_Application_Bootstrap_Bootstrap</type>
           </tag>
         </docblock>
-        <argument line="207">
+        <argument line="193">
           <name>$bs</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="protected" namespace="global" line="218" package="OSS\Controller">
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="global" line="204" package="OSS\Controller">
         <name>getBootstrap</name>
         <full_name>getBootstrap</full_name>
-        <docblock line="213">
+        <docblock line="199">
           <description><![CDATA[Get the Zend application bootstrap]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="213" name="return" description="" type="\Zend_Application_Bootstrap_Bootstrap">
+          <tag line="199" name="return" description="" type="\Zend_Application_Bootstrap_Bootstrap">
             <type by_reference="false">\Zend_Application_Bootstrap_Bootstrap</type>
           </tag>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="protected" namespace="global" line="231" package="OSS\Controller">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="217" package="OSS\Controller">
         <name>getOptions</name>
         <full_name>getOptions</full_name>
-        <docblock line="226">
+        <docblock line="212">
           <description><![CDATA[Get the application options associative array]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="226" name="return" description="The options array" type="array">
+          <tag line="212" name="return" description="The options array" type="array">
             <type by_reference="false">array</type>
           </tag>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="244" package="OSS\Controller">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="230" package="OSS\Controller">
         <name>redirectAndEnsureDie</name>
         <full_name>redirectAndEnsureDie</full_name>
-        <docblock line="237">
+        <docblock line="223">
           <description><![CDATA[Wrapper function for Zend's _redirect() to **ensure** we end execution after the redirection.]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="237" name="param" description="Defaults to '' - where to redirect to (e.g. controller/action/p1/v1/...)" type="string" variable="$where">
+          <tag line="223" name="param" description="Defaults to '' - where to redirect to (e.g. controller/action/p1/v1/...)" type="string" variable="$where">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="237" name="param" description="Where you redirected from for logging purposes. Defaults to requested controller/action." type="string" variable="$from">
+          <tag line="223" name="param" description="Where you redirected from for logging purposes. Defaults to requested controller/action." type="string" variable="$from">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="237" name="return" description="This ensures execution ends." type="void">
+          <tag line="223" name="return" description="This ensures execution ends." type="void">
             <type by_reference="false">void</type>
           </tag>
         </docblock>
-        <argument line="244">
+        <argument line="230">
           <name>$where</name>
           <default><![CDATA['']]></default>
           <type/>
         </argument>
-        <argument line="244">
+        <argument line="230">
           <name>$from</name>
           <default><![CDATA[null]]></default>
           <type/>
@@ -19600,6 +19869,113 @@ to info@opensolutions.ie so we can send you a copy immediately.</p>]]></long-des
       <error line="97" code="50010">No DocBlock was found for method verify()</error>
       <error line="102" code="50010">No DocBlock was found for method generateSalt()</error>
     </parse_markers>
+  </file>
+  <file path="Crypt/GibberishAES.php" hash="c07e1a1d8716f459970faa73814000bc" package="OSS\Crypt">
+    <docblock line="2">
+      <description><![CDATA[OSS Framework]]></description>
+      <long-description><![CDATA[<p>This file is part of the "OSS Framework" - a library of tools, utilities and
+extensions to the Zend Framework V1.x used for PHP application development.</p>
+
+<p>Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland
+All rights reserved.</p>
+
+<p>Open Source Solutions Limited is a company registered in Dublin,
+Ireland with the Companies Registration Office (#438231). We
+trade as Open Solutions with registered business name (#329120).</p>
+
+<p>Contact: Barry O'Donovan - info (at) opensolutions (dot) ie
+         http://www.opensolutions.ie/</p>
+
+<p>LICENSE</p>
+
+<p>This source file is subject to the new BSD license that is bundled
+with this package in the file LICENSE.txt.</p>
+
+<p>It is also available through the world-wide-web at this URL:
+    http://www.opensolutions.ie/licenses/new-bsd</p>
+
+<p>If you did not receive a copy of the license and are unable to
+obtain it through the world-wide-web, please send an email
+to info@opensolutions.ie so we can send you a copy immediately.</p>]]></long-description>
+      <tag line="2" name="category" description="OSS"/>
+      <tag line="2" name="package" description="OSS_Crypt"/>
+      <tag line="2" name="copyright" description="Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland"/>
+      <tag line="2" name="license" description="http://www.opensolutions.ie/licenses/new-bsd New BSD License"/>
+      <tag line="2" name="link" description="Open Source Solutions Limited" link="http://www.opensolutions.ie/"/>
+      <tag line="2" name="author" description="Barry O'Donovan &lt;barry@opensolutions.ie&gt;"/>
+      <tag line="2" name="author" description="The Skilled Team of PHP Developers at Open Solutions &lt;info@opensolutions.ie&gt;"/>
+    </docblock>
+    <class final="false" abstract="false" namespace="global" line="54" package="OSS\Crypt">
+      <extends/>
+      <name>OSS_Crypt_GibberishAES</name>
+      <full_name>\OSS_Crypt_GibberishAES</full_name>
+      <docblock line="40">
+        <description><![CDATA[Gibberish AES encryption tools.]]></description>
+        <long-description><![CDATA[<p>Based on https://github.com/mdp/gibberish-aes (MIT) and notes by
+nbari at dalmp dot com on 15-Jan-2012 07:52 at
+http://www.php.net/manual/en/function.openssl-decrypt.php</p>]]></long-description>
+        <tag line="40" name="link" description="https://github.com/mdp/gibberish-aes" link="https://github.com/mdp/gibberish-aes"/>
+        <tag line="40" name="link" description="http://www.php.net/manual/en/function.openssl-decrypt.php" link="http://www.php.net/manual/en/function.openssl-decrypt.php"/>
+        <tag line="40" name="category" description="OSS"/>
+        <tag line="40" name="package" description="OSS_Crypt"/>
+        <tag line="40" name="copyright" description="Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland"/>
+        <tag line="40" name="license" description="http://www.opensolutions.ie/licenses/new-bsd New BSD License"/>
+      </docblock>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="66" package="OSS\Crypt">
+        <name>encrypt</name>
+        <full_name>encrypt</full_name>
+        <docblock line="57">
+          <description><![CDATA[Encrypt the given `$data` using AES 256 symmetrical cipher]]></description>
+          <long-description><![CDATA[<p>See <code>tests/OSS/Crypt/GibberishAESTest.php</code> for examples</p>]]></long-description>
+          <tag line="57" name="param" description="The data to encrypt" type="string" variable="$data">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="57" name="param" description="The symmectrical password to use for the encryption" type="string" variable="$password">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="57" name="return" description="Base64 encrypted data with embedded (random) salt" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="66">
+          <name>$data</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="66">
+          <name>$password</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="97" package="OSS\Crypt">
+        <name>decrypt</name>
+        <full_name>decrypt</full_name>
+        <docblock line="88">
+          <description><![CDATA[Decrypt the given `$edata` using AES 256 symmetrical cipher]]></description>
+          <long-description><![CDATA[<p>See <code>tests/OSS/Crypt/GibberishAESTest.php</code> for examples</p>]]></long-description>
+          <tag line="88" name="param" description="The encrypted data to decrypt" type="string" variable="$edata">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="88" name="param" description="The symmectrical password used for the encryption" type="string" variable="$password">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="88" name="return" description="The original data decrypted (or false on failure)" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="97">
+          <name>$edata</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="97">
+          <name>$password</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+    </class>
   </file>
   <file path="Crypt/Exception.php" hash="ced1718f30dccdc51c64b1f415835839" package="OSS\Crypt">
     <docblock line="2">
@@ -21266,6 +21642,7 @@ an empty string.</p>]]></long-description>
   </file>
   <package name="Default" full_name="Default"/>
   <package name="OSS" full_name="OSS">
+    <package name="API" full_name="OSS\API"/>
     <package name="Acl" full_name="OSS\Acl"/>
     <package name="Array" full_name="OSS\Array"/>
     <package name="Asterisk" full_name="OSS\Asterisk"/>
@@ -21314,6 +21691,7 @@ an empty string.</p>]]></long-description>
       </package>
     </package>
     <package name="Pdf" full_name="OSS\Pdf"/>
+    <package name="Plugin" full_name="OSS\Plugin"/>
     <package name="Resource" full_name="OSS\Resource"/>
     <package name="Service" full_name="OSS\Service">
       <package name="Clickatell" full_name="OSS\Service\Clickatell"/>
