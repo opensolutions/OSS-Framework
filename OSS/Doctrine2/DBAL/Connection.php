@@ -28,7 +28,7 @@
  * to info@opensolutions.ie so we can send you a copy immediately.
  *
  * @category   OSS
- * @package    OSS_Controller_Action_Traits
+ * @package    OSS_Doctrine2
  * @copyright  Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland
  * @license    http://www.opensolutions.ie/licenses/new-bsd New BSD License
  * @link       http://www.opensolutions.ie/ Open Source Solutions Limited
@@ -36,64 +36,49 @@
  * @author     The Skilled Team of PHP Developers at Open Solutions <info@opensolutions.ie>
  */
 
-
 /**
- * Controller: Action - Trait for Doctine2Cache
+ * A trait for classes that want to use DBAL connections
  *
- * @author     Barry O'Donovan <barry@opensolutions.ie>
- * @author     The Skilled Team of PHP Developers at Open Solutions <info@opensolutions.ie>
  * @category   OSS
- * @package    OSS_Controller_Action_Traits
+ * @package    OSS_Doctrine2
  * @copyright  Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland
  * @license    http://www.opensolutions.ie/licenses/new-bsd New BSD License
  */
-trait OSS_Controller_Action_Trait_Doctrine2Cache
+trait OSS_Doctrine2_DBAL_Connection
 {
     /**
-     * A variable to hold the Doctrine2 cache
-     *
-     * @var \Doctrine\Common\Cache\AbstractCache An instance of the Doctrine2 cache
+     * Doctrine2 DBAL Connections
+     * @var \Doctrine\DBAL\Connection[]
      */
-    static private $_d2cache = null;
-    
-    
-    
+    private $_dbalConnections = [];
+
     /**
-     * The trait's initialisation method.
+     * Instantiates a new DBAL connection (or returns an existing one.
      *
-     * This function is called from the Action's contructor and it passes those
-     * same variables used for construction to the traits' init methods.
-     *
-     * @param object $request See Parent class constructor
-     * @param object $response See Parent class constructor
-     * @param object $invokeArgs See Parent class constructor
+     * @param array|Zend_Config $params The Doctrine2 DBAL params (@see http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/configuration.html)
+     * @param string $name The name of the connection (used especially when managing multiple connections). Default: ''default''
+     * @returns \Doctrine\DBAL\Connection
+     * @throws OSS_Doctrine2_Exception
      */
-    public function OSS_Controller_Action_Trait_Doctrine2Cache_Init( $request, $response, $invokeArgs )
+    protected function getDBAL( $params = null, $name = 'default' )
     {
-        $this->traitSetInitialised( 'OSS_Controller_Action_Trait_Doctrine2Cache' );
-    }
-    
-    
-    /**
-     * Returns the Doctrine2 cache object
-     *
-     * @return \Doctrine\Common\Cache\AbstractCache The Doctrine cache object
-     */
-    public function getD2Cache()
-    {
-        if( self::$_d2cache === null )
+        if( !isset( $this->_dbalConnections[ $name ] ) )
         {
-            if( Zend_Registry::isRegistered( 'd2cache' ) )
-                self::$_d2cache = Zend_Registry::get( 'd2cache' );
-            else
+            if( $params === null )
             {
-                self::$_d2cache = $this->getBootstrap()->getResource( 'doctrine2cache' );
-                Zend_Registry::set( 'd2cache', self::$_d2cache );
+                throw new OSS_Doctrine2_Exception( "No parameters for new DBAL connection" );
             }
+            
+            if( $params instanceof Zend_Config )
+                $params = $params->toArray();
+            
+            $config = new \Doctrine\DBAL\Configuration();
+            $this->_dbalConnections[ $name ] = \Doctrine\DBAL\DriverManager::getConnection( $params, $config );
         }
-    
-        return self::$_d2cache;
+            
+        return $this->_dbalConnections[ $name ];
     }
+    
     
 }
 
