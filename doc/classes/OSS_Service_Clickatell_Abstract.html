@@ -31,7 +31,7 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">193</span></a></li>
+                <span class="label label-info">200</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul>
 <li>todo 
@@ -90,22 +90,20 @@ Returns a boolean indicating whether SSL is enabled or not</span><pre>getSSL()</
 </li>
 <li class="nav-header">
 <i class="icon-custom icon-property"></i> Properties
-                    <ul><li class="property public "><a href="#property_MESSAGE_STATES" title="$MESSAGE_STATES :: An array of Clickatell delivery states (e.g."><span class="description">An array of Clickatell delivery states (e.g.</span><pre>$MESSAGE_STATES</pre></a></li></ul>
+                    <ul><li class="property public "><a href="#property_MESSAGE_STATES" title="$MESSAGE_STATES :: An array of Clickatell delivery states (e.g."><span class="description"></span><pre>$MESSAGE_STATES</pre></a></li></ul>
 </li>
 <li class="nav-header protected">» Protected
                     <ul>
-<li class="property protected "><a href="#property__api_id" title="$_api_id :: API access ID"><span class="description">API access ID</span><pre>$_api_id</pre></a></li>
-<li class="property protected "><a href="#property__logger" title="$_logger :: A logger object"><span class="description">A logger object</span><pre>$_logger</pre></a></li>
-<li class="property protected "><a href="#property__loglevel" title="$_loglevel :: The log level"><span class="description">The log level</span><pre>$_loglevel</pre></a></li>
-<li class="property protected "><a href="#property__password" title="$_password :: API access password"><span class="description">API access password</span><pre>$_password</pre></a></li>
+<li class="property protected "><a href="#property__api_id" title="$_api_id :: API access ID"><span class="description"></span><pre>$_api_id</pre></a></li>
+<li class="property protected "><a href="#property__logger" title="$_logger :: A logger object"><span class="description"></span><pre>$_logger</pre></a></li>
+<li class="property protected "><a href="#property__loglevel" title="$_loglevel :: The log level"><span class="description"></span><pre>$_loglevel</pre></a></li>
+<li class="property protected "><a href="#property__password" title="$_password :: API access password"><span class="description"></span><pre>$_password</pre></a></li>
 <li class="property protected "><a href="#property__send_errors" title="$_send_errors :: An array of errors per phone number from the last send
-Keys are the numbers and values are the error messages"><span class="description">An array of errors per phone number from the last send
-Keys are the numbers and values are the error messages</span><pre>$_send_errors</pre></a></li>
+Keys are the numbers and values are the error messages"><span class="description"></span><pre>$_send_errors</pre></a></li>
 <li class="property protected "><a href="#property__send_ids" title="$_send_ids :: Send IDs of the last batch of messages sent
-Keys are the numbers and values are the IDs"><span class="description">Send IDs of the last batch of messages sent
-Keys are the numbers and values are the IDs</span><pre>$_send_ids</pre></a></li>
-<li class="property protected "><a href="#property__ssl" title="$_ssl :: Use an SSL connection?"><span class="description">Use an SSL connection?</span><pre>$_ssl</pre></a></li>
-<li class="property protected "><a href="#property__username" title="$_username :: API access username"><span class="description">API access username</span><pre>$_username</pre></a></li>
+Keys are the numbers and values are the IDs"><span class="description"></span><pre>$_send_ids</pre></a></li>
+<li class="property protected "><a href="#property__ssl" title="$_ssl :: Use an SSL connection?"><span class="description"></span><pre>$_ssl</pre></a></li>
+<li class="property protected "><a href="#property__username" title="$_username :: API access username"><span class="description"></span><pre>$_username</pre></a></li>
 </ul>
 </li>
 </ul>
@@ -150,7 +148,7 @@ Keys are the numbers and values are the IDs</span><pre>$_send_ids</pre></a></li>
 <i class="icon-custom icon-method"></i> Methods</h3>
 <a id="method___construct"></a><div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
 <h2>Constructor</h2>
-<pre>__construct(\$options $options) </pre>
+<pre>__construct($options) </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"><p>Accepted associated array parameters:
@@ -161,8 +159,7 @@ Keys are the numbers and values are the IDs</span><pre>$_send_ids</pre></a></li>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
-<h4>$options</h4>
-<code>\$options</code><p>array An associated array of options (see above for accepted keys).</p>
+<h4>$options</h4><p>array An associated array of options (see above for accepted keys).</p>
 </div>
 </div></div>
 </div>
@@ -185,11 +182,11 @@ Keys are the numbers and values are the IDs</span><pre>$_send_ids</pre></a></li>
 <table class="table table-bordered">
 <tr>
 <th>see</th>
-<td><a href="">\global\OSS_Service_Clickatell_Abstract::$MESSAGE_STATES</a></td>
+<td><a href="Service.Clickatell.Abstract.html#%5COSS_Service_Clickatell_Abstract::%24MESSAGE_STATES">\OSS_Service_Clickatell_Abstract::$MESSAGE_STATES</a></td>
 </tr>
 <tr>
 <th>see</th>
-<td><a href="">\global\OSS_Service_Clickatell_Http::queryMessage()</a></td>
+<td><a href="Service.Clickatell.Http.html#%5COSS_Service_Clickatell_Http::queryMessage()">\OSS_Service_Clickatell_Http::queryMessage()</a></td>
 </tr>
 </table>
 <h3>Parameters</h3>
@@ -253,14 +250,13 @@ number and ID is the send ID from the Clickatell API.</p></div>
 </div>
 <a id="method_setApiId"></a><div class="element clickable method public method_setApiId" data-toggle="collapse" data-target=".method_setApiId .collapse">
 <h2>Set the API ID</h2>
-<pre>setApiId(\$api_id $api_id) : void</pre>
+<pre>setApiId($api_id) : void</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <h3>Parameters</h3>
 <div class="subelement argument">
-<h4>$api_id</h4>
-<code>\$api_id</code><p>the API ID to set</p></div>
+<h4>$api_id</h4><p>the API ID to set</p></div>
 </div></div>
 </div>
 <a id="method_setLogLevel"></a><div class="element clickable method public method_setLogLevel" data-toggle="collapse" data-target=".method_setLogLevel .collapse">
@@ -289,31 +285,29 @@ number and ID is the send ID from the Clickatell API.</p></div>
 </div>
 <a id="method_setPassword"></a><div class="element clickable method public method_setPassword" data-toggle="collapse" data-target=".method_setPassword .collapse">
 <h2>Set the API password</h2>
-<pre>setPassword(\$password $password) : void</pre>
+<pre>setPassword($password) : void</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <h3>Parameters</h3>
 <div class="subelement argument">
-<h4>$password</h4>
-<code>\$password</code><p>the password to set</p></div>
+<h4>$password</h4><p>the password to set</p></div>
 </div></div>
 </div>
 <a id="method_setSSL"></a><div class="element clickable method public method_setSSL" data-toggle="collapse" data-target=".method_setSSL .collapse">
 <h2>Set SSL enabled</h2>
-<pre>setSSL(\$ssl $ssl) : void</pre>
+<pre>setSSL($ssl) : void</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <h3>Parameters</h3>
 <div class="subelement argument">
-<h4>$ssl</h4>
-<code>\$ssl</code><p>Pass boolean true to set SSL enabled</p></div>
+<h4>$ssl</h4><p>Pass boolean true to set SSL enabled</p></div>
 </div></div>
 </div>
 <a id="method_setUsername"></a><div class="element clickable method public method_setUsername" data-toggle="collapse" data-target=".method_setUsername .collapse">
 <h2>Set the username parameter</h2>
-<pre>setUsername(\$username $username) </pre>
+<pre>setUsername($username) </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
@@ -323,8 +317,7 @@ number and ID is the send ID from the Clickatell API.</p></div>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
-<h4>$username</h4>
-<code>\$username</code><p>The username to set</p></div>
+<h4>$username</h4><p>The username to set</p></div>
 </div></div>
 </div>
 <a id="method_getLogLevel"></a><div class="element clickable method protected method_getLogLevel" data-toggle="collapse" data-target=".method_getLogLevel .collapse">
@@ -362,57 +355,55 @@ number and ID is the send ID from the Clickatell API.</p></div>
 <h3>
 <i class="icon-custom icon-property"></i> Properties</h3>
 <a id="property_MESSAGE_STATES"> </a><div class="element clickable property public property_MESSAGE_STATES" data-toggle="collapse" data-target=".property_MESSAGE_STATES .collapse">
-<h2>An array of Clickatell delivery states (e.g.</h2>
+<h2></h2>
 <pre>$MESSAGE_STATES : array</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"><p>@see OSS_Service_Clickatell_Http::getQueryMessage() )</p></div></div></div>
 </div>
 <a id="property__api_id"> </a><div class="element clickable property protected property__api_id" data-toggle="collapse" data-target=".property__api_id .collapse">
-<h2>API access ID</h2>
+<h2></h2>
 <pre>$_api_id : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <a id="property__logger"> </a><div class="element clickable property protected property__logger" data-toggle="collapse" data-target=".property__logger .collapse">
-<h2>A logger object</h2>
+<h2></h2>
 <pre>$_logger : \Zend_Logger</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <a id="property__loglevel"> </a><div class="element clickable property protected property__loglevel" data-toggle="collapse" data-target=".property__loglevel .collapse">
-<h2>The log level</h2>
+<h2></h2>
 <pre>$_loglevel : integer</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <a id="property__password"> </a><div class="element clickable property protected property__password" data-toggle="collapse" data-target=".property__password .collapse">
-<h2>API access password</h2>
+<h2></h2>
 <pre>$_password : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <a id="property__send_errors"> </a><div class="element clickable property protected property__send_errors" data-toggle="collapse" data-target=".property__send_errors .collapse">
-<h2>An array of errors per phone number from the last send
-Keys are the numbers and values are the error messages</h2>
+<h2></h2>
 <pre>$_send_errors : array</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <a id="property__send_ids"> </a><div class="element clickable property protected property__send_ids" data-toggle="collapse" data-target=".property__send_ids .collapse">
-<h2>Send IDs of the last batch of messages sent
-Keys are the numbers and values are the IDs</h2>
+<h2></h2>
 <pre>$_send_ids : array</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <a id="property__ssl"> </a><div class="element clickable property protected property__ssl" data-toggle="collapse" data-target=".property__ssl .collapse">
-<h2>Use an SSL connection?</h2>
+<h2></h2>
 <pre>$_ssl : bool</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <a id="property__username"> </a><div class="element clickable property protected property__username" data-toggle="collapse" data-target=".property__username .collapse">
-<h2>API access username</h2>
+<h2></h2>
 <pre>$_username : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
@@ -423,8 +414,8 @@ Keys are the numbers and values are the IDs</h2>
 </div>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
-            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
-            generated on 2012-11-16T11:34:39Z.<br></footer></div>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
+            generated on 2012-12-12T10:59:30Z.<br></footer></div>
 </div>
 </body>
 </html>
