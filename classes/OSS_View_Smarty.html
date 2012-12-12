@@ -31,7 +31,7 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">198</span></a></li>
+                <span class="label label-info">200</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul>
 <li>todo 
@@ -100,9 +100,9 @@ template file depending on whether we're using skins or not.</span><pre>resolveT
 </li>
 <li class="nav-header protected">» Protected
                     <ul>
-<li class="property protected "><a href="#property__isBeingCloned" title="$_isBeingCloned :: Is being cloned?"><span class="description">Is being cloned?</span><pre>$_isBeingCloned</pre></a></li>
-<li class="property protected "><a href="#property__skin" title="$_skin :: Should we use a custom skin?"><span class="description">Should we use a custom skin?</span><pre>$_skin</pre></a></li>
-<li class="property protected "><a href="#property__smarty" title="$_smarty :: Smarty object"><span class="description">Smarty object</span><pre>$_smarty</pre></a></li>
+<li class="property protected "><a href="#property__isBeingCloned" title="$_isBeingCloned :: Is being cloned?"><span class="description"></span><pre>$_isBeingCloned</pre></a></li>
+<li class="property protected "><a href="#property__skin" title="$_skin :: Should we use a custom skin?"><span class="description"></span><pre>$_skin</pre></a></li>
+<li class="property protected "><a href="#property__smarty" title="$_smarty :: Smarty object"><span class="description"></span><pre>$_smarty</pre></a></li>
 </ul>
 </li>
 </ul>
@@ -247,16 +247,18 @@ template file depending on whether we're using skins or not.</span><pre>resolveT
 an array of key => value pairs to set en masse.</p></div>
 <table class="table table-bordered"><tr>
 <th>see</th>
-<td><a href="">\global\__set()</a></td>
+<td><a href="">\__set()</a></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$spec</h4>
-<code>string</code><code>array</code><p>The assignment strategy to use (key or array of key => value pairs)</p>
+<code>string</code><code>array</code><p>The assignment strategy to use (key or
+array of key => value pairs)</p>
 </div>
 <div class="subelement argument">
 <h4>$value</h4>
-<code>mixed</code><p>(Optional) If assigning a named variable, use this as the value.</p>
+<code>mixed</code><p>(Optional) If assigning a named variable,
+use this as the value.</p>
 </div>
 </div></div>
 </div>
@@ -364,7 +366,7 @@ useful for classes outside the standard namespace.</p>
 </blockquote></div>
 <table class="table table-bordered"><tr>
 <th>see</th>
-<td><a href="">\global\http://www.smarty.net/forums/viewtopic.php?p=65279</a></td>
+<td><a href="">\http://www.smarty.net/forums/viewtopic.php?p=65279</a></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -416,10 +418,7 @@ useful for classes outside the standard namespace.</p>
 <h4>$path</h4>
 <code>string</code><p>The directory to set as the path.</p></div>
 <h3>Exceptions</h3>
-<table class="table table-bordered"><tr>
-<th><code><a href="http://php.net/manual/en/class.exception.php">\Exception</a></code></th>
-<td>If path is not readable</td>
-</tr></table>
+<table class="table table-bordered"></table>
 </div></div>
 </div>
 <a id="method_setSkin"></a><div class="element clickable method public method_setSkin" data-toggle="collapse" data-target=".method_setSkin .collapse">
@@ -493,25 +492,25 @@ it'll be used. Otherwise we'll use the default templates.</p></div>
 <h3>
 <i class="icon-custom icon-property"></i> Properties</h3>
 <a id="property__isBeingCloned"> </a><div class="element clickable property protected property__isBeingCloned" data-toggle="collapse" data-target=".property__isBeingCloned .collapse">
-<h2>Is being cloned?</h2>
+<h2></h2>
 <pre>$_isBeingCloned : bool</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
 <th>see</th>
-<td><a href="">\global\OSS_View_Smarty::clearVars()</a></td>
+<td><a href="View.Smarty.html#%5COSS_View_Smarty::clearVars()">\OSS_View_Smarty::clearVars()</a></td>
 </tr></table>
 </div></div>
 </div>
 <a id="property__skin"> </a><div class="element clickable property protected property__skin" data-toggle="collapse" data-target=".property__skin .collapse">
-<h2>Should we use a custom skin?</h2>
+<h2></h2>
 <pre>$_skin : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <a id="property__smarty"> </a><div class="element clickable property protected property__smarty" data-toggle="collapse" data-target=".property__smarty .collapse">
-<h2>Smarty object</h2>
+<h2></h2>
 <pre>$_smarty : \Smarty</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
@@ -522,8 +521,8 @@ it'll be used. Otherwise we'll use the default templates.</p></div>
 </div>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
-            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
-            generated on 2012-12-12T10:53:10Z.<br></footer></div>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
+            generated on 2012-12-12T10:59:29Z.<br></footer></div>
 </div>
 </body>
 </html>

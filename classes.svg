@@ -378,15 +378,16 @@
 </g>
 <!-- \\OSS_Service_Clickatell_Abstract -->
 <g id="node30" class="node"><title>\\OSS_Service_Clickatell_Abstract</title>
-<a xlink:href="Service.Clickatell.Abstract.html" xlink:title="OSS_Service_Clickatell_Abstract" target="_parent">
+<a xlink:href="Service.Clickatell.Abstract.html" xlink:title="«abstract»&lt;br/&gt;OSS_Service_Clickatell_Abstract" target="_parent">
 <polygon fill="none" stroke="black" points="1093,-6804.89 867,-6804.89 867,-6768.89 1093,-6768.89 1093,-6804.89"/>
-<text text-anchor="middle" x="980" y="-6783.99" font-family="Courier,monospace" font-size="11.00">OSS_Service_Clickatell_Abstract</text>
+<text text-anchor="start" x="946" y="-6792.33" font-family="Courier,monospace" font-size="11.00">«abstract»</text>
+<text text-anchor="start" x="875" y="-6779.13" font-family="Courier,monospace" font-size="11.00">OSS_Service_Clickatell_Abstract</text>
 </a>
 </g>
 <!-- \\OSS_Service_Clickatell_Http&#45;&gt;\\OSS_Service_Clickatell_Abstract -->
 <g id="edge51" class="edge"><title>\\OSS_Service_Clickatell_Http&#45;&gt;\\OSS_Service_Clickatell_Abstract</title>
-<path fill="none" stroke="black" d="M1407.26,-6803.11C1320.97,-6799.83 1195.87,-6795.08 1103.32,-6791.57"/>
-<polygon fill="none" stroke="black" points="1103.18,-6788.06 1093.05,-6791.18 1102.91,-6795.06 1103.18,-6788.06"/>
+<path fill="none" stroke="black" d="M1407.26,-6803.11C1321.11,-6799.84 1196.29,-6795.1 1103.78,-6791.59"/>
+<polygon fill="none" stroke="black" points="1103.64,-6788.08 1093.52,-6791.2 1103.38,-6795.08 1103.64,-6788.08"/>
 </g>
 <!-- \\Zend_Service_Abstract -->
 <g id="node154" class="node"><title>\\Zend_Service_Abstract</title>
@@ -395,7 +396,7 @@
 </g>
 <!-- \\OSS_Service_Clickatell_Abstract&#45;&gt;\\Zend_Service_Abstract -->
 <g id="edge53" class="edge"><title>\\OSS_Service_Clickatell_Abstract&#45;&gt;\\Zend_Service_Abstract</title>
-<path fill="none" stroke="black" d="M866.93,-6795.45C809.711,-6793.14 744.409,-6778.99 706,-6732.89 511.662,-6499.67 831.462,-1499.48 634,-1268.89 631.429,-1265.89 628.614,-1263.19 625.599,-1260.77"/>
+<path fill="none" stroke="black" d="M866.236,-6795.42C809.183,-6793.02 744.253,-6778.8 706,-6732.89 511.662,-6499.67 831.462,-1499.48 634,-1268.89 631.429,-1265.89 628.614,-1263.19 625.599,-1260.77"/>
 <polygon fill="none" stroke="black" points="627.407,-1257.77 617.182,-1255 623.447,-1263.54 627.407,-1257.77"/>
 </g>
 <!-- \\OSS_Service_Clickatell_Exception -->
@@ -1349,15 +1350,16 @@
 </g>
 <!-- \\OSS_License_Abstract -->
 <g id="node112" class="node"><title>\\OSS_License_Abstract</title>
-<a xlink:href="License.Abstract.html" xlink:title="OSS_License_Abstract" target="_parent">
+<a xlink:href="License.Abstract.html" xlink:title="«abstract»&lt;br/&gt;OSS_License_Abstract" target="_parent">
 <polygon fill="none" stroke="black" points="1056,-6230.89 904,-6230.89 904,-6194.89 1056,-6194.89 1056,-6230.89"/>
-<text text-anchor="middle" x="980" y="-6209.99" font-family="Courier,monospace" font-size="11.00">OSS_License_Abstract</text>
+<text text-anchor="start" x="946" y="-6218.33" font-family="Courier,monospace" font-size="11.00">«abstract»</text>
+<text text-anchor="start" x="912" y="-6205.13" font-family="Courier,monospace" font-size="11.00">OSS_License_Abstract</text>
 </a>
 </g>
 <!-- \\OSS_License_MD5&#45;&gt;\\OSS_License_Abstract -->
 <g id="edge147" class="edge"><title>\\OSS_License_MD5&#45;&gt;\\OSS_License_Abstract</title>
-<path fill="none" stroke="black" d="M1447.83,-6212.89C1354.83,-6212.89 1174.01,-6212.89 1066.45,-6212.89"/>
-<polygon fill="none" stroke="black" points="1066.27,-6209.39 1056.27,-6212.89 1066.27,-6216.39 1066.27,-6209.39"/>
+<path fill="none" stroke="black" d="M1447.83,-6212.89C1354.96,-6212.89 1174.52,-6212.89 1066.9,-6212.89"/>
+<polygon fill="none" stroke="black" points="1066.72,-6209.39 1056.72,-6212.89 1066.72,-6216.39 1066.72,-6209.39"/>
 </g>
 <!-- \\OSS_License_Exception -->
 <g id="node113" class="node"><title>\\OSS_License_Exception</title>
