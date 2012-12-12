@@ -97,11 +97,6 @@ class OSS_Resource_Namespace extends Zend_Application_Resource_ResourceAbstract
                 else if( $ApplicationNamespace->clientIP != $_SERVER['REMOTE_ADDR'] )
                 {
                     // security violation - client IP has changed indicating a possible hijacked session
-                    $this->getBootstrap()->bootstrap( 'Logger' );
-                    $this->getBootstrap()->getResource('logger')->warn(
-                        "IP address changed - possible session hijack attempt."
-                        . "OLD: {$ApplicationNamespace->clientIP} NEW: {$_SERVER['REMOTE_ADDR']}"
-                    );
                     Zend_Session::destroy( true, true );
                     die(
                         "Your IP address has changed indication a possible session hijack attempt. Your session has been destroyed for your own security."
