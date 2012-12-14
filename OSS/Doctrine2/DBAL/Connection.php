@@ -65,20 +65,16 @@ trait OSS_Doctrine2_DBAL_Connection
         if( !isset( $this->_dbalConnections[ $name ] ) )
         {
             if( $params === null )
-            {
                 throw new OSS_Doctrine2_Exception( "No parameters for new DBAL connection" );
-            }
-            
+
             if( $params instanceof Zend_Config )
                 $params = $params->toArray();
-            
+
             $config = new \Doctrine\DBAL\Configuration();
             $this->_dbalConnections[ $name ] = \Doctrine\DBAL\DriverManager::getConnection( $params, $config );
         }
-            
+
         return $this->_dbalConnections[ $name ];
     }
-    
-    
-}
 
+}
