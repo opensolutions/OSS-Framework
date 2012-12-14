@@ -52,13 +52,30 @@ class OSS_API_Jabber2d
     // use DBAL connections for database manipulation
     use OSS_Doctrine2_DBAL_Connection;
 
-    
+
+    /**
+     * Holds a Doctrine2 DBAL object. Because the plugin works on different databases other than ViMbAdmin's, we have to
+     * make sure we don't just switch the application's main DB connection to a Jabber2 database, and then leave it there.
+     * Luckily DBAL accepts a name for connections, which is 'default' for the application's main connection.
+     *
+     * @var object $_dbal
+     * @access private
+     */
+    private $_dbal = null;
+
+
+    /**
+     * The constructor. Creates a new DBAL connection, gives it a name ( I use the database name ), and stores the object in $this->_dbal.
+     *
+     * @param array $dbparams
+     * @return void
+     */
     public function __construct( $dbparams )
     {
-        $this->getDBAL( $dbparams );
+        $this->_dbal = $this->getDBAL( $dbparams, $dbparams['dbname'] );
     }
-    
-    
+
+
     /**
      * Get all users registered in the database as an array.
      *
@@ -73,11 +90,89 @@ class OSS_API_Jabber2d
      *         1 =>
      *             ...
      *
-     * @return array  All users registered in the database
+     * @param void
+     * @return array All users registered in the database
+     * @access public
      */
     public function getAllUsers()
     {
-        return $this->getDBAL()->fetchAll( "SELECT * FROM authreg" );
+        return $this->_dbal->fetchAll( 'select * from authreg' );
     }
-    
+
+
+    /**
+     * Returns with a user's authreg entry as an assciative array, or with false if it wasn't found.
+     *
+     * @param string $username
+     * @param string $realm
+     * @return array|boolean
+     * @access public
+     */
+    public function getAuthReg( $username, $realm )
+    {
+        return $this->_dbal->fetchAssoc( 'select * from authreg where username = ? and realm = ?', array( $username, $realm ) );
+    }
+
+
+    /**
+     * Adds an authreg entry.
+     *
+     * @param string $username
+     * @param string $realm
+     * @param string $password
+     * @return int
+     * @access public
+     */
+    public function addAuthReg( $username, $realm, $password )
+    {
+        return $this->_dbal->insert( 'authreg', array( 'username' => $username, 'realm' => $realm, 'password' => $password ) );
+    }
+
+
+    /**
+     * Updates an authreg entry.
+     *
+     * @param string $username
+     * @param string $realm
+     * @param string $password
+     * @return int
+     * @access public
+     */
+    public function updateAuthReg( $username, $realm, $password )
+    {
+        return $this->_dbal->update( 'authreg', array( 'password' => $password ), array( 'username' => $username, 'realm' => $realm ) );
+    }
+
+
+    /**
+     * Deletes a user's authreg entry, and all related entries. Encapsulates all the delete statements in one transaction.
+     *
+     * @param string $username
+     * @param string $realm
+     * @return void
+     * @access public
+     */
+    public function deleteAuthReg( $username, $realm )
+    {
+        $co = "{$username}@{$realm}";
+
+        $this->_dbal->beginTransaction();
+        $this->_dbal->delete( 'active', array( '`collection-owner`' => $co ) );
+        $this->_dbal->delete( '`disco-items`', array( '`collection-owner`' => $co ) );
+        $this->_dbal->delete( 'logout', array( '`collection-owner`' => $co ) );
+        $this->_dbal->delete( '`motd-message`', array( '`collection-owner`' => $co ) );
+        $this->_dbal->delete( '`motd-times`', array( '`collection-owner`' => $co ) );
+        $this->_dbal->delete( '`privacy-default`', array( '`collection-owner`' => $co ) );
+        $this->_dbal->delete( '`privacy-items`', array( '`collection-owner`' => $co ) );
+        $this->_dbal->delete( 'private', array( '`collection-owner`' => $co ) );
+        $this->_dbal->delete( 'queue', array( '`collection-owner`' => $co ) );
+        $this->_dbal->delete( '`roster-groups`', array( '`collection-owner`' => $co ) );
+        $this->_dbal->delete( '`roster-items`', array( '`collection-owner`' => $co ) );
+        $this->_dbal->delete( 'status', array( '`collection-owner`' => $co ) );
+        $this->_dbal->delete( '`vacation-settings`', array( '`collection-owner`' => $co ) );
+        $this->_dbal->delete( 'vcard', array( '`collection-owner`' => $co ) );
+        $this->_dbal->delete( 'authreg', array( 'username' => $username, 'realm' => $realm ) );
+        $this->_dbal->commit();
+    }
+
 }
