@@ -53,6 +53,12 @@ trait OSS_Doctrine2_DBAL_Connection
     private $_dbalConnections = [];
 
     /**
+     * DBAL uses named connections and we must try to avoid a clash with 'default'
+     * which is what the main application may already be using.
+     */
+    private $_dbalAltDefaultName = null;
+    
+    /**
      * Instantiates a new DBAL connection (or returns an existing one.
      *
      * @param array|Zend_Config $params The Doctrine2 DBAL params (@see http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/configuration.html)
@@ -60,8 +66,17 @@ trait OSS_Doctrine2_DBAL_Connection
      * @returns \Doctrine\DBAL\Connection
      * @throws OSS_Doctrine2_Exception
      */
-    protected function getDBAL( $params = null, $name = 'default' )
+    protected function getDBAL( $params = null, $name = null )
     {
+        // resolve name
+        if( $name === null )
+        {
+            if( $this->_dbalAltDefaultName === null )
+                $this->_dbalAltDefaultName = '__OSS_FW_' . OSS_String::random( 32, true, true, true, '', '' );
+            
+            $name = $this->_dbalAltDefaultName;
+        }
+        
         if( !isset( $this->_dbalConnections[ $name ] ) )
         {
             if( $params === null )
