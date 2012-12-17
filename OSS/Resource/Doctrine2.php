@@ -75,7 +75,7 @@ class OSS_Resource_Doctrine2 extends Zend_Application_Resource_ResourceAbstract
         {
             // Get Doctrine configuration options from the application.ini file
             $dconfig = $this->getOptions();
-            
+
             if( $db != 'default' )
                 $dconfig = $dconfig[ $db ];
 
@@ -86,10 +86,10 @@ class OSS_Resource_Doctrine2 extends Zend_Application_Resource_ResourceAbstract
                 else
                 {
                     $d2cacheOptions = $this->getBootstrap()->getApplication()->getOptions()['resources']['doctrine2cache'];
-                    
+
                     if( !$d2cacheOptions || !isset( $d2cacheOptions['type'] ) )
                         throw new Zend_Exception( 'force err' );
-                    
+
                     $plugin = new OSS_Resource_Doctrine2cache( $d2cacheOptions );
                     $this->getBootstrap()->registerPluginResource( $plugin );
                     $cache = $plugin->getDoctrine2cache();
@@ -99,7 +99,7 @@ class OSS_Resource_Doctrine2 extends Zend_Application_Resource_ResourceAbstract
             {
                 die( _( 'ERROR: Doctrine2 requires Doctrine2Cache to have been already bootstrapped' ) );
             }
-            
+
             $config = new Doctrine\ORM\Configuration();
             $config->setMetadataCacheImpl( $cache );
 
@@ -131,7 +131,7 @@ class OSS_Resource_Doctrine2 extends Zend_Application_Resource_ResourceAbstract
             $autoloader = Zend_Loader_Autoloader::getInstance();
             $autoloader->pushAutoloader( array( $modelAutoLoader,      'loadClass' ), $dconfig['models_namespace']       );
             $autoloader->pushAutoloader( array( $repositoryAutoLoader, 'loadClass' ), $dconfig['repositories_namespace'] );
-            
+
             // http://docs.doctrine-project.org/en/latest/reference/configuration.html#autoloading-proxies
             Doctrine\ORM\Proxy\Autoloader::register( $dconfig['proxies_path'], $dconfig['proxies_namespace'] );
         }
@@ -150,6 +150,5 @@ class OSS_Resource_Doctrine2 extends Zend_Application_Resource_ResourceAbstract
     {
         $this->_doctrine2[ $db ] = $doctrine2;
     }
-
 
 }

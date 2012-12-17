@@ -55,8 +55,8 @@ trait OSS_Controller_Action_Trait_Doctrine2
      * @var \Doctrine\ORM\EntityManager An instance of the Doctrine2 entity manager
      */
     static private $_d2em = null;
-    
-    
+
+
     /**
      * The trait's initialisation method.
      *
@@ -69,10 +69,9 @@ trait OSS_Controller_Action_Trait_Doctrine2
      */
     public function OSS_Controller_Action_Trait_Doctrine2_Init( $request, $response, $invokeArgs )
     {
-    
         $this->traitSetInitialised( 'OSS_Controller_Action_Trait_Doctrine2' );
     }
-    
+
     /**
      * Returns an instance of the Doctrine2 entity manager
      *
@@ -88,10 +87,10 @@ trait OSS_Controller_Action_Trait_Doctrine2
             self::$_d2em[ $db ] = $plugin->getDoctrine2( $db );
             Zend_Registry::set( 'd2em', self::$_d2em );
         }
-    
+
         return self::$_d2em[ $db ];
     }
-    
+
     /**
      * Alias for getEntityManager()
      *
@@ -103,7 +102,7 @@ trait OSS_Controller_Action_Trait_Doctrine2
     {
         return $this->getEntityManager( $db );
     }
-    
+
     /**
      * Returns an instance of the Doctrine2 entity manager
      *
@@ -115,17 +114,17 @@ trait OSS_Controller_Action_Trait_Doctrine2
         if( self::$_d2em === null || !isset( self::$_d2em[ $db ] ) )
         {
             $plugin = Zend_Registry::get( 'bootstrap' )->getPluginResource( 'doctrine2' );
-            
+
             if( $plugin == null )
             {
                 $plugin = new OSS_Resource_Doctrine2( Zend_Registry::get( 'options' )['resources']['doctrine2'] );
                 $this->getBootstrap()->registerPluginResource( $plugin );
             }
-            
+
             self::$_d2em[ $db ] = $plugin->getDoctrine2( $db );
             Zend_Registry::set( 'd2em', self::$_d2em );
         }
-    
+
         return self::$_d2em[ $db ];
     }
 
@@ -140,8 +139,8 @@ trait OSS_Controller_Action_Trait_Doctrine2
     {
         return self::getEntityManagerStatic( $db );
     }
-    
-    
+
+
     /**
      * Clear an entity manager instance from the local static property
      *
@@ -159,10 +158,10 @@ trait OSS_Controller_Action_Trait_Doctrine2
             self::$_d2em[ $db ] = null;
             unset( self::$_d2em[ $db ] );
         }
-        
+
         return $this;
     }
-    
+
     /**
      * Clear an entity manager instance from the local static property
      *
@@ -175,6 +174,6 @@ trait OSS_Controller_Action_Trait_Doctrine2
     {
         return self::clearEntityManagerPropertyStatic( $db );
     }
-    
+
 }
 

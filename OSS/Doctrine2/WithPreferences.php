@@ -391,7 +391,7 @@ trait OSS_Doctrine2_WithPreferences
     public function expungePreferences()
     {
         $em = \Zend_Registry::get( 'd2em' )[ 'default' ];
-        
+
         return $em->createQuery( "DELETE \\Entities\\UserPreference up WHERE up.User = ?1" )
             ->setParameter( 1, $this )
             ->execute();

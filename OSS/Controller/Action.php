@@ -68,7 +68,7 @@ class OSS_Controller_Action extends Zend_Controller_Action
     // use OSS_Controller_Action_Trait_Messages;
     // use OSS_Controller_Action_Trait_News;
     // use OSS_Controller_Action_Trait_PdfGenerator;
-    
+
 
     /**
      * A variable to hold an instance of the bootstrap object
@@ -82,7 +82,7 @@ class OSS_Controller_Action extends Zend_Controller_Action
      */
     protected $_options = null;
 
-    
+
     /**
      * An array to hold the names of traits that have been initialised
      *
@@ -91,9 +91,9 @@ class OSS_Controller_Action extends Zend_Controller_Action
      * @var array An array to hold the names of traits that have been initialised
      */
     protected $_initialisedTraits = [];
-    
-    
-    
+
+
+
     /**
      * Override the Zend_Controller_Action's constructor (which is called
      * at the very beginning of this function anyway).
@@ -110,7 +110,7 @@ class OSS_Controller_Action extends Zend_Controller_Action
     {
         // get the bootstrap object and set it in the registry
         $this->setBootstrap( $invokeArgs['bootstrap'] );
-        
+
         // get the options and set it in the registry
         $this->_options = $this->getBootstrap()->getOptions();
         Zend_Registry::set( 'options', $this->_options );
@@ -120,15 +120,15 @@ class OSS_Controller_Action extends Zend_Controller_Action
 
         // if we issue a redirect, we want it to exit immediatly
         $this->getHelper( 'Redirector' )->setExit( true );
-        
+
         // ensure CLI actions are only run from the CLI
         if( ( $request->getControllerName() == 'cli' || substr( $request->getActionName(), 0, 3 ) == 'cli' ) && php_sapi_name() != 'cli' )
             die( 'Invalid action - CLI only' );
-        
+
         $this->initialiseTraits( $request, $response, $invokeArgs );
     }
-    
-    
+
+
     /**
      * All declared traits can have their own initialisation method. This function
      * iterates over the declared traits and initialises them if necessary.
@@ -172,7 +172,7 @@ class OSS_Controller_Action extends Zend_Controller_Action
     {
         $this->_initialisedTraits[ $trait ] = true;
     }
-    
+
     /**
      * A utility method to get a named resource.
      *

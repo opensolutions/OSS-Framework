@@ -52,13 +52,18 @@ class OSS_API_Jabber2d
     // use DBAL connections for database manipulation
     use OSS_Doctrine2_DBAL_Connection;
 
-    
+    /**
+     * Constructor - creates a new DBAL connection.
+     *
+     * @param array $dbparams
+     * @return void
+     */
     public function __construct( $dbparams )
     {
         $this->getDBAL( $dbparams );
     }
-    
-    
+
+
     /**
      * Get all users registered in the database as an array.
      *
@@ -73,11 +78,98 @@ class OSS_API_Jabber2d
      *         1 =>
      *             ...
      *
-     * @return array  All users registered in the database
+     * @param void
+     * @return array All users registered in the database
+     * @access public
      */
     public function getAllUsers()
     {
-        return $this->getDBAL()->fetchAll( "SELECT * FROM authreg" );
+        return $this->getDBAL()->fetchAll( 'SELECT * FROM authreg' );
     }
-    
+
+
+    /**
+     * Returns with a user's authreg entry as an assciative array, or with false if it wasn't found.
+     *
+     * @param string $username
+     * @param string $realm
+     * @return array|boolean
+     * @access public
+     */
+    public function getAuthReg( $username, $realm )
+    {
+        return $this->getDBAL()->fetchAssoc( 'SELECT * FROM authreg WHERE username = ? AND realm = ?',
+            array( $username, $realm )
+        );
+    }
+
+
+    /**
+     * Adds an authreg entry.
+     *
+     * @param string $username
+     * @param string $realm
+     * @param string $password
+     * @return int
+     * @access public
+     */
+    public function addAuthReg( $username, $realm, $password )
+    {
+        return $this->getDBAL()->insert( 'authreg',
+            [ 'username' => $username, 'realm' => $realm, 'password' => $password ]
+        );
+    }
+
+
+    /**
+     * Updates an authreg entry.
+     *
+     * @param string $username
+     * @param string $realm
+     * @param string $password
+     * @return int
+     * @access public
+     */
+    public function updateAuthReg( $username, $realm, $password )
+    {
+        return $this->getDBAL()->update( 'authreg',
+            [ 'password' => $password ],
+            [ 'username' => $username, 'realm' => $realm ]
+        );
+    }
+
+
+    /**
+     * Deletes a user's authreg entry, and all related entries.
+     *
+     * Encapsulates all the delete statements in one transaction.
+     *
+     * @param string $username
+     * @param string $realm
+     * @return void
+     * @access public
+     */
+    public function deleteAuthReg( $username, $realm )
+    {
+        $co = "{$username}@{$realm}";
+
+        $this->getDBAL()->beginTransaction();
+        $this->getDBAL()->delete( 'active',              [ '`collection-owner`' => $co ] );
+        $this->getDBAL()->delete( '`disco-items`',       [ '`collection-owner`' => $co ] );
+        $this->getDBAL()->delete( 'logout',              [ '`collection-owner`' => $co ] );
+        $this->getDBAL()->delete( '`motd-message`',      [ '`collection-owner`' => $co ] );
+        $this->getDBAL()->delete( '`motd-times`',        [ '`collection-owner`' => $co ] );
+        $this->getDBAL()->delete( '`privacy-default`',   [ '`collection-owner`' => $co ] );
+        $this->getDBAL()->delete( '`privacy-items`',     [ '`collection-owner`' => $co ] );
+        $this->getDBAL()->delete( 'private',             [ '`collection-owner`' => $co ] );
+        $this->getDBAL()->delete( 'queue',               [ '`collection-owner`' => $co ] );
+        $this->getDBAL()->delete( '`roster-groups`',     [ '`collection-owner`' => $co ] );
+        $this->getDBAL()->delete( '`roster-items`',      [ '`collection-owner`' => $co ] );
+        $this->getDBAL()->delete( 'status',              [ '`collection-owner`' => $co ] );
+        $this->getDBAL()->delete( '`vacation-settings`', [ '`collection-owner`' => $co ] );
+        $this->getDBAL()->delete( 'vcard',               [ '`collection-owner`' => $co ] );
+        $this->getDBAL()->delete( 'authreg',             [ 'username' => $username, 'realm' => $realm ] );
+        $this->getDBAL()->commit();
+    }
+
 }

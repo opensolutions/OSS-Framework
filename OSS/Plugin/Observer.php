@@ -45,5 +45,5 @@
  */
 interface OSS_Plugin_Observer
 {
-    function update( $controller, $action, $hook, OSS_Controller_Action $controllerObject );
+    function update( $controller, $action, $hook, OSS_Controller_Action $controllerObject, $params = null );
 }
