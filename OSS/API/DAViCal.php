@@ -111,7 +111,7 @@ class OSS_API_DAViCal
      *            'updated' => string '2012-12-07 13:27:31.698669+00' (length=29)
      *            'last_used' => string '2012-12-11 10:01:29.831451+00' (length=29)
      *            'username' => string 'usrname' (length=7)
-     *            'password' => string 'encrypted' (length=9)
+     *            'password' => string 'hashed' (length=9)
      *            'fullname' => string 'Name susrname' (length=13)
      *            'email' => string 'example@example.ie' (length=18)
      *            'config_data' => null
@@ -168,6 +168,22 @@ class OSS_API_DAViCal
     {   
         $this->getDBAL()->insert( 'usr', $params );
         return $this->getDBAL()->fetchAssoc( "SELECT * FROM usr WHERE username = '{$params['username']}'" );
+    }
+    
+    /**
+     * Sets user password.
+     * 
+     * @param int $user_id User id ( user_no )
+     * @param string $hashed_password Hashed pasword.
+     * @return bool ture if success
+     */
+    public function setUserPassword( $user_id, $hashed_password )
+    {   
+        $values = [
+            'password' => $hashed_password,
+            'updated'  => 'now()'
+        ];
+        return $this->getDBAL()->update( 'usr', $values , [ 'user_no' => $user_id ] );
     }
     
     /**
