@@ -56,7 +56,7 @@ class OSS_API_DAViCal
      * Privileges constants which refelects DAViCal database scheme
      */
     const PRIVILEGES_RW   = '000000001111111011100111';
-    const PRIVILEGES_RO   = '000000001110110011000110';
+    const PRIVILEGES_RO   = '000000000001001000100001';
     const PRIVILEGES_NONE = '000000000000000000000000';
     
     /**
@@ -334,7 +334,7 @@ class OSS_API_DAViCal
             'publicly_readable'  => $publicly_readable ? 1 : 0,
             'default_privileges' => $privileges,
             'is_addressbook'     => !$calendar ? 1 : 0,
-            'resourcetypes'      => sprintf( "<DAV::collection/><urn:ietf:params:xml:ns:carddav:%s/>'", $calendar ? "calendar": "addressbook" ),
+            'resourcetypes'      => sprintf( "<DAV::collection/><urn:ietf:params:xml:ns:%s:%s/>", $calendar ? "caldav": "carddav", $calendar ? "calendar": "addressbook" ),
             'timezone'           => $timezone,
             'description'        => $description
         ];
