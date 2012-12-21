@@ -291,6 +291,8 @@
                                 wraper.addClass( 'error' );
                                 if( wraper.parent().hasClass( 'tab-pane' ) )
                                     $( 'a[href|=\"#' + wraper.parent().attr( 'id' ) + '\"]' ).addClass( 'text-error' );
+                                else if( wraper.parent().parent().hasClass( 'row' ) && wraper.parent().parent().parent().hasClass( 'tab-pane' ) )
+                                    $( 'a[href|=\"#' + wraper.parent().parent().parent().attr( 'id' ) + '\"]' ).addClass( 'text-error' );
                              }
         });
     });
