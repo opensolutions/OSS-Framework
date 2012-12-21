@@ -169,7 +169,7 @@
 
         $ruleStr = "
 
-<script type=\"text/javascript\"> /* <![CDATA[ */
+<script type=\"text/javascript\">
 
     $(document).ready(function() {
         $('#" . $formObj->getId() . "').validate({
@@ -283,15 +283,19 @@
 
         $ruleStr = mb_substr( trim( $ruleStr ), 0, -1 ) . "\n";
         $ruleStr .= "            },
-          errorElement: 'span',
+        errorElement: 'span',
         errorPlacement: function (error, element) {
-                                error.appendTo( '#help-' + element.attr('id') );
-                                $( '#div-form-' + element.attr('id') ).addClass( 'error' );
+                                var id = element.attr('id');
+                                error.appendTo( '#help-' + id );
+                                var wraper = $( '#' + id ).closest( '.control-group' );
+                                wraper.addClass( 'error' );
+                                if( wraper.parent().hasClass( 'tab-pane' ) )
+                                    $( 'a[href|=\"#' + wraper.parent().attr( 'id' ) + '\"]' ).addClass( 'text-error' );
                              }
         });
     });
 
-/* ]]> */ </script>
+</script>
 
 ";
 
