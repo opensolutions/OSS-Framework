@@ -822,8 +822,7 @@ trait OSS_Controller_Trait_Auth
     
         $rememberme->setExpires( new DateTime( "@{$expire}" ) );
         
-        if( method_exists( $rememberme, 'setLastUsed' ) )
-            $rememberme->setLastUsed( new DateTime() );
+        $rememberme->setLastUsed( new DateTime() );
         $rememberme->setCkey( OSS_String::random( 40, true, true, true, '', '' ) );
     
         $this->getD2EM()->flush();
@@ -857,7 +856,9 @@ trait OSS_Controller_Trait_Auth
         setcookie( 'aval', '', time() - 100000, '/', '', $this->_options['resources']['auth']['oss']['rememberme']['secure'], true );
         setcookie( 'bval', '', time() - 100000, '/', '', $this->_options['resources']['auth']['oss']['rememberme']['secure'], true );
         
-        return $this->getD2EM()->getRepository( '\\Entities\\RememberMe' )->deleteForUser( $user );
+        return $this->getD2EM()->createQuery( "DELETE \\Entities\\RememberMe me WHERE me.User = ?1" )
+                    ->setParameter( 1, $user )
+                    ->execute();
     }
     
     
