@@ -136,7 +136,7 @@ trait OSS_Controller_Trait_Auth
                         $this->redirectAndEnsureDie( 'auth/login' );
                     }
     
-                    if( !$haveCookie && $form->getValue( 'rememberme' ) )
+                    if( !$haveCookie && $form->getValue( 'rememberme' ) && $this->_rememberMeEnabled() )
                         $this->_setRememberMeCookie( $user );
                     
                     if( !$haveCookie )
@@ -821,7 +821,9 @@ trait OSS_Controller_Trait_Auth
         $expire = time() + $this->_options['resources']['auth']['oss']['rememberme']['timeout'];
     
         $rememberme->setExpires( new DateTime( "@{$expire}" ) );
-        $rememberme->setLastUsed( new DateTime() );
+        
+        if( method_exists( $rememberme, 'setLastUsed' ) )
+            $rememberme->setLastUsed( new DateTime() );
         $rememberme->setCkey( OSS_String::random( 40, true, true, true, '', '' ) );
     
         $this->getD2EM()->flush();
