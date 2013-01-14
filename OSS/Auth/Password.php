@@ -47,7 +47,9 @@
 class OSS_Auth_Password
 {
     const HASH_PLAINTEXT = 'plaintext';
+    const HASH_PLAIN     = 'plain';
     const HASH_BCRYPT    = 'bcrypt';
+    const HASH_UNKNOWN   = '*unknown*';
     
     
     /**
@@ -65,12 +67,22 @@ class OSS_Auth_Password
      */
     public static function hash( $pw, $config )
     {
-        if( !isset( $config['pwhash'] ) )
-            throw new OSS_Exception( 'Cannot hash password without a hash method' );
+        $hash = self::HASH_UNKNOWN;
         
-        switch( $config['pwhash'] )
+        if( is_array( $config ) )
+        {
+            if( !isset( $config['pwhash'] ) )
+                throw new OSS_Exception( 'Cannot hash password without a hash method' );
+            
+            $hash = $config['pwhash'];
+        }        
+        else 
+            $hash = $config;
+        
+        switch( $hash )
         {
             case self::HASH_PLAINTEXT:
+            case self::HASH_PLAIN:
                 return $pw;
                 break;
                 
@@ -101,12 +113,22 @@ class OSS_Auth_Password
      */
     public static function verify( $pwplain, $pwhash, $config )
     {
-        if( !isset( $config['pwhash'] ) )
-            throw new OSS_Exception( 'Cannot verify password without a hash method' );
+        $hash = self::HASH_UNKNOWN;
+        
+        if( is_array( $config ) )
+        {
+            if( !isset( $config['pwhash'] ) )
+                throw new OSS_Exception( 'Cannot verify password without a hash method' );
+            
+            $hash = $config['pwhash'];
+        }        
+        else 
+            $hash = $config;
         
         switch( $config['pwhash'] )
         {
             case self::HASH_PLAINTEXT:
+            case self::HASH_PLAIN:
                 return $pwplain === $pwhash;
                 break;
                 
@@ -119,6 +141,7 @@ class OSS_Auth_Password
                 
             // UPDATE PHPDOC ABOVE WHEN ADDING NEW METHODS!
                 
+            case self::HASH_UNKNOWN:
             default:
                 throw new OSS_Exception( 'Unknown password hashing method' );
         }
