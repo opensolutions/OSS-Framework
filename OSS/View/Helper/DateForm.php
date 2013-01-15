@@ -95,8 +95,18 @@ class OSS_View_Helper_DateForm extends Zend_View_Helper_FormElement
                     dateFormat: "' . $jqDateFormat . '",
                     constrainInput: true,
                     changeMonth: true,
-                    changeYear: true,
-                    yearRange: "2012:" + new Date().getYear()
+                    changeYear: true,';
+
+        if( isset( $attribs['data-mindate'] ) )
+            $html .= '
+                    minDate: "' . $attribs['data-mindate'] . '",';
+
+        if( isset( $attribs['data-maxdate'] ) )
+            $html .= '
+                    maxDate: "' . $attribs['data-maxdate'] . '",';
+
+        $html .= '
+                    yearRange: "2012:'. date( 'Y' ) . '"
                 });
 
                 $( "#' . $dateId . '_date_pick" ).bind( "click", function( e ){
