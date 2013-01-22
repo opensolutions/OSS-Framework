@@ -272,7 +272,7 @@ trait OSS_Doctrine2_WithPreferences
         // what's the current highest index and how many is there?
         $highest = -1; $count = 0;
 
-        foreach( $this->_getPreferences() as $pref )
+        foreach( $this->getPreferences() as $pref )
         {
             if( $pref->getAttribute() == $attribute && $pref->getOp() == $operator )
             {
@@ -423,7 +423,7 @@ trait OSS_Doctrine2_WithPreferences
     {
         $values = array();
 
-        foreach( $this->_getPreferences() as $pref )
+        foreach( $this->getPreferences() as $pref )
         {
             if( $pref->getAttribute() == $attribute )
             {
@@ -595,6 +595,7 @@ trait OSS_Doctrine2_WithPreferences
         {
             $setEntity = 'set' . $this->_getShortClassname();
             $pref->$setEntity( $owner );
+            $owner->addPreference( $pref );
         }
 
         return $pref;
