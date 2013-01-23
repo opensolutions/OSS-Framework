@@ -307,25 +307,25 @@ class OSS_API_DAViCal
         if( !$name ) 
             $name = $calendar ? $user[ "fullname" ] . " calendar" : $user[ "fullname" ] . " addressbook";
             
+        $url_name = preg_replace( "/[^a-z0-9]/", '-', strtolower( $name ) );
+        $dav_name = sprintf( "/%s/%s/", $user[ 'username' ], $url_name );
         if( $calendar )
-            $last = $this->getDBAL()->fetchColumn( "SELECT dav_name FROM collection WHERE user_no = {$user[ 'user_no' ]} AND is_calendar = TRUE ORDER BY collection_id DESC LIMIT 1" );
+            $last = $this->getDBAL()->fetchColumn( "SELECT dav_name FROM collection WHERE user_no = {$user[ 'user_no' ]} AND is_calendar = TRUE AND dav_name LIKE '{$dav_name}%' ORDER BY collection_id DESC LIMIT 1" );
         else       
-            $last = $this->getDBAL()->fetchColumn( "SELECT dav_name FROM collection WHERE user_no = {$user[ 'user_no' ]} AND is_addressbook = TRUE ORDER BY collection_id DESC LIMIT 1" );
+            $last = $this->getDBAL()->fetchColumn( "SELECT dav_name FROM collection WHERE user_no = {$user[ 'user_no' ]} AND is_addressbook = TRUE AND dav_name LIKE '{$dav_name}%' ORDER BY collection_id DESC LIMIT 1" );
             
         if( $last )
         {
             $last = explode( "/", $last );
             $last = (int) OSS_Filter_Float::filter( $last[2] ) + 1;
+            $dav_name = sprintf( "/%s/%s%s/", $user[ 'username' ], $url_name, $last );
         }
-        else
-            $last = "";
-        
-             
+           
         $params = [ 
             'user_no'            => $user[ 'user_no' ],
             'parent_container'   => "/{$user[ 'username' ]}/",
             'dav_etag'           => -1,
-            'dav_name'           => sprintf( "/%s/%s%s/", $user[ 'username' ], $calendar? "calendar" : "addressbook", $last ),
+            'dav_name'           => $dav_name,
             'dav_displayname'    => $name,
             'is_calendar'        => $calendar ? 1 : 0,
             'created'            => 'now()',
