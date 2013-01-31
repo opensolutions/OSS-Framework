@@ -226,7 +226,7 @@ class OSS_String
     * setlocale(LC_ALL, "en_IE.utf8"); //or any other locale, as long as it's utf8
     *
     * @param string $input the original input string
-    * @param bool $keepSpaces Default is false and by default it will remove spaces from string. Then its true it will keep spaces.
+    * @param bool $keepSpaces By default is false and it will remove spaces from string. Then it is set true it will keep spaces in string.
     * @return string
     */
     public static function normalise( $input, $keepSpaces = false )
@@ -256,7 +256,7 @@ class OSS_String
         if( !$keepSpaces )
             $retVal = preg_replace( "/[^a-z]/", '', mb_strtolower( $retVal ) );
         else
-            $retVal = preg_replace( "/[^a-z ]/", '', mb_strtolower( $retVal ) );
+            $retVal = preg_replace( "/[^a-z\s]/", '', mb_strtolower( $retVal ) );
 
         return $retVal;
     }
