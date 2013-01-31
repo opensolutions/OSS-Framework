@@ -226,9 +226,10 @@ class OSS_String
     * setlocale(LC_ALL, "en_IE.utf8"); //or any other locale, as long as it's utf8
     *
     * @param string $input the original input string
+    * @param bool $keepSpaces Default is false and by default it will remove spaces from string. Then its true it will keep spaces.
     * @return string
     */
-    public static function normalise( $input )
+    public static function normalise( $input, $keepSpaces = false )
     {
         iconv_set_encoding( 'internal_encoding', 'utf-8' );
         iconv_set_encoding( 'input_encoding', 'utf-8' );
@@ -252,7 +253,10 @@ class OSS_String
         $to = array(   'AE',       'ae',       'd',        'O',        'o',        'ss',       'Th',       'th',       'L',        'l',        "d",        "D",        "EUR" );
 
         $retVal = iconv( 'UTF-8', 'ASCII//TRANSLIT', str_replace( $from, $to, $input ) ); // TRANSLIT does the whole job
-        $retVal = preg_replace( "/[^a-z]/", '', mb_strtolower( $retVal ) );
+        if( !$keepSpaces )
+            $retVal = preg_replace( "/[^a-z]/", '', mb_strtolower( $retVal ) );
+        else
+            $retVal = preg_replace( "/[^a-z ]/", '', mb_strtolower( $retVal ) );
 
         return $retVal;
     }
