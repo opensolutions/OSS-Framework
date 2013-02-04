@@ -293,7 +293,24 @@
                                     $( 'a[href|=\"#' + wraper.parent().attr( 'id' ) + '\"]' ).addClass( 'text-error' );
                                 else if( wraper.parent().parent().hasClass( 'row' ) && wraper.parent().parent().parent().hasClass( 'tab-pane' ) )
                                     $( 'a[href|=\"#' + wraper.parent().parent().parent().attr( 'id' ) + '\"]' ).addClass( 'text-error' );
-                             }
+                             },
+        unhighlight: function(element, errorClass, validClass){
+                                var id = element['id'];
+                                var wraper = $( '#' + id ).closest( '.control-group' );
+                                wraper.removeClass( 'error' );
+                                if( wraper.parent().hasClass( 'tab-pane' ) )
+                                {
+                                    alert( $( '#' + pid + ' > .error' ).length );
+                                    //if( !wraper.parent().has( '.error' ).length )
+                                        $( 'a[href|=\"#' + wraper.parent().attr( 'id' ) + '\"]' ).removeClass( 'text-error' );
+                                }
+                                else if( wraper.parent().parent().hasClass( 'row' ) && wraper.parent().parent().parent().hasClass( 'tab-pane' ) )
+                                {
+                                    //if( !wraper.parent().parent().parent().has( '.error' ).length )
+                                        $( 'a[href|=\"#' + wraper.parent().parent().parent().attr( 'id' ) + '\"]' ).removeClass( 'text-error' );
+                                        
+                                }
+                            }                    
         });
     });
 
