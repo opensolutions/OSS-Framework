@@ -102,7 +102,12 @@ trait OSS_Controller_Action_Trait_Doctrine2User
             }
             catch( \Doctrine\ORM\NoResultException $e )
             {
-                die( 'User expected but none found...');
+                if( session_status() == PHP_SESSION_ACTIVE )
+                {
+                    session_unset();
+                    session_destroy();
+                }    
+                die( 'User expected but none found...  Please reload the page...' );
             }
         }
     
