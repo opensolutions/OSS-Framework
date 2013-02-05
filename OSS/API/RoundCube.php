@@ -122,11 +122,11 @@ class OSS_API_RoundCube
             'username' => $username, 
             'mail_host' => $mail_host,
             'language' => $this->_language,
-            'created'  => new \DateTime(),
+            'created'  => date( 'Y-m-d H:i:s' ),
             'preferences' => serialize( $preferences ) ]
         );
 
-        if( $identity && $reuslt )
+        if( $identity && $result )
         {
             $user = $this->getUser( $username );
             if( !isset( $identity['email'] ) )
@@ -162,10 +162,10 @@ class OSS_API_RoundCube
     {
         return $this->getDBAL()->insert( 'identities', [
                     'user_id' => $user['user_id'], 
-                    'changed' => new \DateTime(),
+                    'changed' => date( 'Y-m-d H:i:s' ),
                     'del' => 0,
                     'standard'  => $this->_standard,
-                    'replay_to' => isset( $identity['replay_to'] ) ? $identity['replay_to'] : "",
+                    '`reply-to`' => isset( $identity['reply_to'] ) ? $identity['reply_to'] : "",
                     'bcc' => isset( $identity['bcc'] ) ? $identity['bcc'] : "",
                     'email' => $email,
                     'name' => isset( $identity['name'] ) ? $identity['name'] : "",
@@ -191,7 +191,7 @@ class OSS_API_RoundCube
         $result = $this->getDBAL()->update( 'users', [ 
             'mail_host' => $mail_host,
             'language' => $this->_language,
-            'created'  => new \DateTime(),
+            'created'  => date( 'Y-m-d H:i:s' ),
             'preferences' => serialize( $preferences ) ],
             [ 'username' => $username ]
         );
@@ -228,7 +228,13 @@ class OSS_API_RoundCube
      */
     public function updateIdentity( $user, $identity )
     {
-        $identity['changed'] = new \DateTime();
+        $identity['changed'] = date( 'Y-m-d H:i:s' );
+        if( isset( $identity['replay_to'] ) )
+        {
+            $identity['`replay-to`'] = $identity['replay_to'];
+            unset( $identity['replay_to'] );
+        }
+        
         return $this->getDBAL()->insert( 'identities', $identity,
             [ 'user_id' => $user['user_id'] ] 
         );
