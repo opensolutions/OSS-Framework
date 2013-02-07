@@ -287,28 +287,40 @@
         errorPlacement: function (error, element) {
                                 var id = element.attr('id');
                                 error.appendTo( '#help-' + id );
+                             },
+        highlight: function (element, errorClass ) {
+                                var id = element['id'];
                                 var wraper = $( '#' + id ).closest( '.control-group' );
                                 wraper.addClass( 'error' );
+                                var parent = false;
                                 if( wraper.parent().hasClass( 'tab-pane' ) )
-                                    $( 'a[href|=\"#' + wraper.parent().attr( 'id' ) + '\"]' ).addClass( 'text-error' );
-                                else if( wraper.parent().parent().hasClass( 'row' ) && wraper.parent().parent().parent().hasClass( 'tab-pane' ) )
-                                    $( 'a[href|=\"#' + wraper.parent().parent().parent().attr( 'id' ) + '\"]' ).addClass( 'text-error' );
+                                    parent = wraper.parent();
+                                else if( ( wraper.parent().parent().hasClass( 'row' ) || wraper.parent().parent().hasClass( 'row-fluid' ) ) && wraper.parent().parent().parent().hasClass( 'tab-pane' ) )
+                                    parent = wraper.parent().parent().parent();
+
+                                if( parent )
+                                    $( 'a[href|=\"#' + parent.attr( 'id' ) + '\"]' ).addClass( 'text-error' );
                              },
         unhighlight: function(element, errorClass, validClass){
+                                console.log( 'unhighlight' );
                                 var id = element['id'];
                                 var wraper = $( '#' + id ).closest( '.control-group' );
                                 wraper.removeClass( 'error' );
+                                var parent = false
                                 if( wraper.parent().hasClass( 'tab-pane' ) )
+                                    parent = wraper.parent();
+                                else if( ( wraper.parent().parent().hasClass( 'row' ) || wraper.parent().parent().hasClass( 'row-fluid' ) ) && wraper.parent().parent().parent().hasClass( 'tab-pane' ) )
+                                    parent = wraper.parent().parent().parent();
+
+                                wraper.find( '.help-block' ).each( function(){
+                                    if( $( this ).is( 'span' ) )
+                                        $( this ).remove();
+                                });
+
+                                if( parent )
                                 {
-                                    alert( $( '#' + pid + ' > .error' ).length );
-                                    //if( !wraper.parent().has( '.error' ).length )
-                                        $( 'a[href|=\"#' + wraper.parent().attr( 'id' ) + '\"]' ).removeClass( 'text-error' );
-                                }
-                                else if( wraper.parent().parent().hasClass( 'row' ) && wraper.parent().parent().parent().hasClass( 'tab-pane' ) )
-                                {
-                                    //if( !wraper.parent().parent().parent().has( '.error' ).length )
-                                        $( 'a[href|=\"#' + wraper.parent().parent().parent().attr( 'id' ) + '\"]' ).removeClass( 'text-error' );
-                                        
+                                    if( !parent.find( '.error' ).find( '.control-label' ).length )
+                                        $( 'a[href|=\"#' + parent.attr( 'id' ) + '\"]' ).removeClass( 'text-error' );
                                 }
                             }                    
         });
