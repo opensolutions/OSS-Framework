@@ -185,6 +185,22 @@ class OSS_API_DAViCal
         ];
         return $this->getDBAL()->update( 'usr', $values , [ 'user_no' => $user_id ] );
     }
+
+    /**
+     * Sets user active state.
+     * 
+     * @param int $user_id User id ( user_no )
+     * @param bool $active Active state true for active, false for inactive.
+     * @return bool ture if success
+     */
+    public function setUserActiveState( $user_id, $active )
+    {   
+        $values = [
+            'active' => $active ? "TRUE" : "FALSE",
+            'updated'  => 'now()'
+        ];
+        return $this->getDBAL()->update( 'usr', $values , [ 'user_no' => $user_id ] );
+    }
     
     /**
      * Removes users
