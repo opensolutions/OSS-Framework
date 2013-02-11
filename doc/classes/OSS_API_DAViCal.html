@@ -1,0 +1,922 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>OSS » \OSS_API_DAViCal</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">OSS</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Packages</a></li>
+<li><a href="../packages/OSS.html"><i class="icon-folder-open"></i> OSS</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">209</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul>
+<li>todo 
+                <span class="label label-info">2</span>
+</li>
+<li>fixme 
+                <span class="label label-info">10</span>
+</li>
+</ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods
+                    <ul>
+<li class="method public "><a href="#method___construct" title="__construct :: Constructor
+Initialize DBAL connection."><span class="description">Constructor
+Initialize DBAL connection.</span><pre>__construct()</pre></a></li>
+<li class="method public "><a href="#method_createCalendar" title="createCalendar :: Creates calendar and returns calendar data."><span class="description">Creates calendar and returns calendar data.</span><pre>createCalendar()</pre></a></li>
+<li class="method public "><a href="#method_createCalendarUser" title="createCalendarUser :: Creates user, principal and calendar."><span class="description">Creates user, principal and calendar.</span><pre>createCalendarUser()</pre></a></li>
+<li class="method public "><a href="#method_createCollection" title="createCollection :: Creates colenction and returns it data."><span class="description">Creates colenction and returns it data.</span><pre>createCollection()</pre></a></li>
+<li class="method public "><a href="#method_createPrincipal" title="createPrincipal :: Creates principal and dreturns principles data."><span class="description">Creates principal and dreturns principles data.</span><pre>createPrincipal()</pre></a></li>
+<li class="method public "><a href="#method_createPrincipalUser" title="createPrincipalUser :: Creates user, principal and calendar."><span class="description">Creates user, principal and calendar.</span><pre>createPrincipalUser()</pre></a></li>
+<li class="method public "><a href="#method_createUser" title="createUser :: Create user."><span class="description">Create user.</span><pre>createUser()</pre></a></li>
+<li class="method public "><a href="#method_getAllUsers" title="getAllUsers :: Get all users registered in the database as an array."><span class="description">Get all users registered in the database as an array.</span><pre>getAllUsers()</pre></a></li>
+<li class="method public "><a href="#method_getCalendarById" title="getCalendarById :: Gets calendar data by collection id"><span class="description">Gets calendar data by collection id</span><pre>getCalendarById()</pre></a></li>
+<li class="method public "><a href="#method_getCalendarsByUserId" title="getCalendarsByUserId :: Gets calendars data by user id ( user_no )"><span class="description">Gets calendars data by user id ( user_no )</span><pre>getCalendarsByUserId()</pre></a></li>
+<li class="method public "><a href="#method_getPrincipalById" title="getPrincipalById :: Gets principal data by principal id"><span class="description">Gets principal data by principal id</span><pre>getPrincipalById()</pre></a></li>
+<li class="method public "><a href="#method_getSharedCalendarsForUser" title="getSharedCalendarsForUser :: Gets shared calendars which can be accessed by user"><span class="description">Gets shared calendars which can be accessed by user</span><pre>getSharedCalendarsForUser()</pre></a></li>
+<li class="method public "><a href="#method_getUserById" title="getUserById :: Gets user by Id ( user_no )"><span class="description">Gets user by Id ( user_no )</span><pre>getUserById()</pre></a></li>
+<li class="method public "><a href="#method_getUserByUsername" title="getUserByUsername :: Gets user by username"><span class="description">Gets user by username</span><pre>getUserByUsername()</pre></a></li>
+<li class="method public "><a href="#method_getUsersForSharedCalendar" title="getUsersForSharedCalendar :: Gets users who has access to shared calendar by calendar id."><span class="description">Gets users who has access to shared calendar by calendar id.</span><pre>getUsersForSharedCalendar()</pre></a></li>
+<li class="method public "><a href="#method_grantPrivileges" title="grantPrivileges :: Grants privileges to principal or collection"><span class="description">Grants privileges to principal or collection</span><pre>grantPrivileges()</pre></a></li>
+<li class="method public "><a href="#method_hashPassword" title="hashPassword :: Hash password for davical user."><span class="description">Hash password for davical user.</span><pre>hashPassword()</pre></a></li>
+<li class="method public "><a href="#method_removeCalendar" title="removeCalendar :: Removes calendar"><span class="description">Removes calendar</span><pre>removeCalendar()</pre></a></li>
+<li class="method public "><a href="#method_removeCollection" title="removeCollection :: Removes collection"><span class="description">Removes collection</span><pre>removeCollection()</pre></a></li>
+<li class="method public "><a href="#method_removeGrantPrivileges" title="removeGrantPrivileges :: Remove grant privileges"><span class="description">Remove grant privileges</span><pre>removeGrantPrivileges()</pre></a></li>
+<li class="method public "><a href="#method_removeUser" title="removeUser :: Removes users"><span class="description">Removes users</span><pre>removeUser()</pre></a></li>
+<li class="method public "><a href="#method_setUserPassword" title="setUserPassword :: Sets user password."><span class="description">Sets user password.</span><pre>setUserPassword()</pre></a></li>
+<li class="method public "><a href="#method_updateGrantPrivileges" title="updateGrantPrivileges :: Update grant privileges to principal or collection"><span class="description">Update grant privileges to principal or collection</span><pre>updateGrantPrivileges()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties
+                    <ul><li class="property public "><a href="#property_PRIVILEGES" title="$PRIVILEGES :: Names of Privieleges"><span class="description"></span><pre>$PRIVILEGES</pre></a></li></ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-constant"></i> Constants
+                    <ul>
+<li class="constant  "><a href="#constant_COLLECTION_TYPE_ADDRESSBOOK" title="COLLECTION_TYPE_ADDRESSBOOK :: "><span class="description">COLLECTION_TYPE_ADDRESSBOOK</span><pre>COLLECTION_TYPE_ADDRESSBOOK</pre></a></li>
+<li class="constant  "><a href="#constant_COLLECTION_TYPE_CALENDAR" title="COLLECTION_TYPE_CALENDAR :: Collection types"><span class="description">Collection types</span><pre>COLLECTION_TYPE_CALENDAR</pre></a></li>
+<li class="constant  "><a href="#constant_PASSWORD_HASH_MD5" title="PASSWORD_HASH_MD5 :: "><span class="description">PASSWORD_HASH_MD5</span><pre>PASSWORD_HASH_MD5</pre></a></li>
+<li class="constant  "><a href="#constant_PASSWORD_HASH_PLAIN" title="PASSWORD_HASH_PLAIN :: "><span class="description">PASSWORD_HASH_PLAIN</span><pre>PASSWORD_HASH_PLAIN</pre></a></li>
+<li class="constant  "><a href="#constant_PASSWORD_HASH_SSHA" title="PASSWORD_HASH_SSHA :: Password hashing methods"><span class="description">Password hashing methods</span><pre>PASSWORD_HASH_SSHA</pre></a></li>
+<li class="constant  "><a href="#constant_PRINCIPAL_TYPE_GROUP" title="PRINCIPAL_TYPE_GROUP :: "><span class="description">PRINCIPAL_TYPE_GROUP</span><pre>PRINCIPAL_TYPE_GROUP</pre></a></li>
+<li class="constant  "><a href="#constant_PRINCIPAL_TYPE_PERSON" title="PRINCIPAL_TYPE_PERSON :: Principal type IDs"><span class="description">Principal type IDs</span><pre>PRINCIPAL_TYPE_PERSON</pre></a></li>
+<li class="constant  "><a href="#constant_PRINCIPAL_TYPE_RESOURCE" title="PRINCIPAL_TYPE_RESOURCE :: "><span class="description">PRINCIPAL_TYPE_RESOURCE</span><pre>PRINCIPAL_TYPE_RESOURCE</pre></a></li>
+<li class="constant  "><a href="#constant_PRIVILEGES_NONE" title="PRIVILEGES_NONE :: "><span class="description">PRIVILEGES_NONE</span><pre>PRIVILEGES_NONE</pre></a></li>
+<li class="constant  "><a href="#constant_PRIVILEGES_RO" title="PRIVILEGES_RO :: "><span class="description">PRIVILEGES_RO</span><pre>PRIVILEGES_RO</pre></a></li>
+<li class="constant  "><a href="#constant_PRIVILEGES_RW" title="PRIVILEGES_RW :: Privileges constants which refelects DAViCal database scheme"><span class="description">Privileges constants which refelects DAViCal database scheme</span><pre>PRIVILEGES_RW</pre></a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="span8">
+<a id="\OSS_API_DAViCal"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/global.html">global</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/OSS_API_DAViCal.html">OSS_API_DAViCal</a>
+</li>
+</ul>
+<div class="element class">
+<p class="short_description">A DAViCal API via direct database manipulation.</p>
+<div class="details">
+<div class="long_description"></div>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td><a href="">\global\http://davical.org/</a></td>
+</tr>
+<tr>
+<th>category</th>
+<td>OSS</td>
+</tr>
+<tr>
+<th>package</th>
+<td><a href="../packages/OSS.API.html">OSS_API</a></td>
+</tr>
+<tr>
+<th>copyright</th>
+<td>Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland</td>
+</tr>
+<tr>
+<th>license</th>
+<td><a href="http://www.opensolutions.ie/licenses/new-bsd">New BSD License</a></td>
+</tr>
+</table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a id="method___construct"></a><div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
+<h2>Constructor
+Initialize DBAL connection.</h2>
+<pre>__construct($dbparams) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$dbparams</h4></div>
+</div></div>
+</div>
+<a id="method_createCalendar"></a><div class="element clickable method public method_createCalendar" data-toggle="collapse" data-target=".method_createCalendar .collapse">
+<h2>Creates calendar and returns calendar data.</h2>
+<pre>createCalendar(array $user, string $name, string | null $privileges, bool $public_events_only, bool $publicly_readable, int | null $timezone, string $description) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Returns same array structure as createCollection</p></div>
+<table class="table table-bordered"><tr>
+<th>see</th>
+<td><a href="">\createCollection()</a></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$user</h4>
+<code>array</code><p>Davical user data</p></div>
+<div class="subelement argument">
+<h4>$name</h4>
+<code>string</code><p>Calendars name</p></div>
+<div class="subelement argument">
+<h4>$privileges</h4>
+<code>string</code><code>null</code><p>Default privileges to access calendar</p></div>
+<div class="subelement argument">
+<h4>$public_events_only</h4>
+<code>bool</code><p>Flag to define if calendar contains only public event</p></div>
+<div class="subelement argument">
+<h4>$publicly_readable</h4>
+<code>bool</code><p>Flat to define publicly readable status</p></div>
+<div class="subelement argument">
+<h4>$timezone</h4>
+<code>int</code><code>null</code><p>Time zone id.</p></div>
+<div class="subelement argument">
+<h4>$description</h4>
+<code>string</code><p>Calendar description.</p></div>
+</div></div>
+</div>
+<a id="method_createCalendarUser"></a><div class="element clickable method public method_createCalendarUser" data-toggle="collapse" data-target=".method_createCalendarUser .collapse">
+<h2>Creates user, principal and calendar.</h2>
+<pre>createCalendarUser(array $params, string $cname, int $type) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Takes same parameters as $this->createUser();
+Returns an array wich contains user, principal and calendar collection data.
+ array [
+      'user'      => array users data,
+      'principal' => array principals data,
+      'calendar'  => array calendar collection data
+ ]</p></div>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td><a href="">\createUser()</a></td>
+</tr>
+<tr>
+<th>see</th>
+<td><a href="">\createPrincipal()</a></td>
+</tr>
+<tr>
+<th>see</th>
+<td><a href="">\createCalendar()</a></td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$params</h4>
+<code>array</code><p>User parameters, sames as creatUser parameters.</p></div>
+<div class="subelement argument">
+<h4>$cname</h4>
+<code>string</code><p>Calendar name</p></div>
+<div class="subelement argument">
+<h4>$type</h4>
+<code>int</code><p>Principle type id</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>Array wit data of user, principal and calendar collection.</div>
+</div></div>
+</div>
+<a id="method_createCollection"></a><div class="element clickable method public method_createCollection" data-toggle="collapse" data-target=".method_createCollection .collapse">
+<h2>Creates colenction and returns it data.</h2>
+<pre>createCollection(array $user, string $type, string $name, string | null $privileges, bool $public_events_only, bool $publicly_readable, int | null $timezone, string $description) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Returns:
+ array (size=17)
+     'user_no' => int 1024
+     'parent_container' => string '/nbdavical/' (length=11)
+     'dav_name' => string '/nbdavical/calendar/' (length=20)
+     'dav_etag' => string '-1' (length=2)
+     'dav_displayname' => string 'Davical User calendar' (length=21)
+     'is_calendar' => boolean true
+     'created' => string '2012-12-13 11:39:07.767205+00' (length=29)
+     'modified' => string '2012-12-13 11:39:07.767205+00' (length=29)
+     'public_events_only' => boolean false
+     'publicly_readable' => boolean false
+     'collection_id' => int 1034
+     'default_privileges' => null
+     'is_addressbook' => boolean false
+     'resourcetypes' => string '&lt;DAV::collection/>&lt;urn:ietf:params:xml:ns:carddav:calendar/>' (length=60)
+     'schedule_transp' => string 'opaque' (length=6)
+     'timezone' => null
+     'description' => string '' (length=0)</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$user</h4>
+<code>array</code><p>Davical user data</p></div>
+<div class="subelement argument">
+<h4>$type</h4>
+<code>string</code><p>Collection type</p></div>
+<div class="subelement argument">
+<h4>$name</h4>
+<code>string</code><p>Calendars name</p></div>
+<div class="subelement argument">
+<h4>$privileges</h4>
+<code>string</code><code>null</code><p>Default privileges to access calendar</p></div>
+<div class="subelement argument">
+<h4>$public_events_only</h4>
+<code>bool</code><p>Flag to define if calendar contains only public event</p></div>
+<div class="subelement argument">
+<h4>$publicly_readable</h4>
+<code>bool</code><p>Flat to define publicly readable status</p></div>
+<div class="subelement argument">
+<h4>$timezone</h4>
+<code>int</code><code>null</code><p>Time zone id.</p></div>
+<div class="subelement argument">
+<h4>$description</h4>
+<code>string</code><p>Calendar description.</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
+</div></div>
+</div>
+<a id="method_createPrincipal"></a><div class="element clickable method public method_createPrincipal" data-toggle="collapse" data-target=".method_createPrincipal .collapse">
+<h2>Creates principal and dreturns principles data.</h2>
+<pre>createPrincipal(array $user, int $type, $privileges) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Returns:
+     array (size=5)
+         'principal_id' => int 1
+         'type_id' => int 1
+         'user_no' => int 1
+         'displayname' => string 'DAViCal Administrator' (length=21)
+         'default_privileges' => string '000000000000000000000000' (length=24)</p></div>
+<table class="table table-bordered"><tr>
+<th>pram</th>
+<td>string $privileges Default prinicpals privileges by default is read/write.</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$user</h4>
+<code>array</code><p>Array of user details.</p></div>
+<div class="subelement argument">
+<h4>$type</h4>
+<code>int</code><p>Principal Type id, by default principal type is person.</p></div>
+<div class="subelement argument"><h4>$privileges</h4></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>of prinicpal details</div>
+</div></div>
+</div>
+<a id="method_createPrincipalUser"></a><div class="element clickable method public method_createPrincipalUser" data-toggle="collapse" data-target=".method_createPrincipalUser .collapse">
+<h2>Creates user, principal and calendar.</h2>
+<pre>createPrincipalUser(array $params, int $type) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Takes same parameters as $this->createUser();
+Returns an array wich contains user, principal and calendar collection data.
+ array [
+      'user'      => array users data,
+      'principal' => array principals data,
+    ]</p></div>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td><a href="">\createUser()</a></td>
+</tr>
+<tr>
+<th>see</th>
+<td><a href="">\createPrincipal()</a></td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$params</h4>
+<code>array</code><p>User parameters, sames as creatUser parameters.</p></div>
+<div class="subelement argument">
+<h4>$type</h4>
+<code>int</code><p>Principle type id</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>Array wit data of user, principal and calendar collection.</div>
+</div></div>
+</div>
+<a id="method_createUser"></a><div class="element clickable method public method_createUser" data-toggle="collapse" data-target=".method_createUser .collapse">
+<h2>Create user.</h2>
+<pre>createUser(array $params) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>params:
+    array
+           'active' => boolean
+           'email_ok' => string date time   e.g.'2012-12-07 00:00:00+00'
+           'joined' => string date time     e.g.'2012-12-07 00:00:00+00'
+           'updated' => string date time    e.g.'2012-12-07 00:00:00+00'
+           'last_used' => string date time  e.g.'2012-12-07 00:00:00+00'
+           'username' => string             mandatory
+           'password' => string
+           'fullname' => string
+           'email' => string
+           'config_data' => null
+           'date_format_type' => string     e.g. 'E'
+           'locale' => string               e.g. 'en'</p>
+
+<p>Returns:
+     array
+           'user_no' => int 1
+           'active' => boolean true
+           'email_ok' => string '2012-12-07 00:00:00+00' (length=22)
+           'joined' => string '2012-12-07 11:49:55.231231+00' (length=29)
+           'updated' => string '2012-12-07 13:27:31.698669+00' (length=29)
+           'last_used' => string '2012-12-11 10:01:29.831451+00' (length=29)
+           'username' => string 'usrname' (length=7)
+           'password' => string 'encrypted' (length=9)
+           'fullname' => string 'Name susrname' (length=13)
+           'email' => string 'example@example.ie' (length=18)
+           'config_data' => null
+           'date_format_type' => string 'E' (length=1)
+           'locale' => string 'en' (length=2)</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$params</h4>
+<code>array</code><p>User parameters</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>of user details</div>
+</div></div>
+</div>
+<a id="method_getAllUsers"></a><div class="element clickable method public method_getAllUsers" data-toggle="collapse" data-target=".method_getAllUsers .collapse">
+<h2>Get all users registered in the database as an array.</h2>
+<pre>getAllUsers() : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Returns:
+    array (size=n)
+        0 =>
+           'user_no' => int 1
+           'active' => boolean true
+           'email_ok' => string '2012-12-07 00:00:00+00' (length=22)
+           'joined' => string '2012-12-07 11:49:55.231231+00' (length=29)
+           'updated' => string '2012-12-07 13:27:31.698669+00' (length=29)
+           'last_used' => string '2012-12-11 10:01:29.831451+00' (length=29)
+           'username' => string 'usrname' (length=7)
+           'password' => string 'hashed' (length=9)
+           'fullname' => string 'Name susrname' (length=13)
+           'email' => string 'example@example.ie' (length=18)
+           'config_data' => null
+           'date_format_type' => string 'E' (length=1)
+           'locale' => string 'en' (length=2)
+        1 =>
+            ...</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>All users registered in the database</div>
+</div></div>
+</div>
+<a id="method_getCalendarById"></a><div class="element clickable method public method_getCalendarById" data-toggle="collapse" data-target=".method_getCalendarById .collapse">
+<h2>Gets calendar data by collection id</h2>
+<pre>getCalendarById(int $collection_id) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Returns:
+ array (size=17)
+     'user_no' => int 1024
+     'parent_container' => string '/nbdavical/' (length=11)
+     'dav_name' => string '/nbdavical/calendar/' (length=20)
+     'dav_etag' => string '-1' (length=2)
+     'dav_displayname' => string 'Davical User calendar' (length=21)
+     'is_calendar' => boolean true
+     'created' => string '2012-12-13 11:39:07.767205+00' (length=29)
+     'modified' => string '2012-12-13 11:39:07.767205+00' (length=29)
+     'public_events_only' => boolean false
+     'publicly_readable' => boolean false
+     'collection_id' => int 1034
+     'default_privileges' => null
+     'is_addressbook' => boolean false
+     'resourcetypes' => string '&lt;DAV::collection/>&lt;urn:ietf:params:xml:ns:carddav:calendar/>' (length=60)
+     'schedule_transp' => string 'opaque' (length=6)
+     'timezone' => null
+     'description' => string '' (length=0)</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$collection_id</h4>
+<code>int</code><p>Calendar collection id</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
+</div></div>
+</div>
+<a id="method_getCalendarsByUserId"></a><div class="element clickable method public method_getCalendarsByUserId" data-toggle="collapse" data-target=".method_getCalendarsByUserId .collapse">
+<h2>Gets calendars data by user id ( user_no )</h2>
+<pre>getCalendarsByUserId(int $user_id) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Returns:
+ array( size=n )
+     0=> array (size=17)
+         'user_no' => int 1024
+         'parent_container' => string '/nbdavical/' (length=11)
+         'dav_name' => string '/nbdavical/calendar/' (length=20)
+         'dav_etag' => string '-1' (length=2)
+         'dav_displayname' => string 'Davical User calendar' (length=21)
+         'is_calendar' => boolean true
+         'created' => string '2012-12-13 11:39:07.767205+00' (length=29)
+         'modified' => string '2012-12-13 11:39:07.767205+00' (length=29)
+         'public_events_only' => boolean false
+         'publicly_readable' => boolean false
+         'collection_id' => int 1034
+         'default_privileges' => null
+         'is_addressbook' => boolean false
+         'resourcetypes' => string '&lt;DAV::collection/>&lt;urn:ietf:params:xml:ns:carddav:calendar/>' (length=60)
+         'schedule_transp' => string 'opaque' (length=6)
+         'timezone' => null
+         'description' => string '' (length=0)
+     1 => array ......</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$user_id</h4>
+<code>int</code><p>Users id ( user_no )</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
+</div></div>
+</div>
+<a id="method_getPrincipalById"></a><div class="element clickable method public method_getPrincipalById" data-toggle="collapse" data-target=".method_getPrincipalById .collapse">
+<h2>Gets principal data by principal id</h2>
+<pre>getPrincipalById(int $principal_id) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Returns:
+     array (size=5)
+         'principal_id' => int 1
+         'type_id' => int 1
+         'user_no' => int 1
+         'displayname' => string 'DAViCal Administrator' (length=21)
+         'default_privileges' => string '000000000000000000000000' (length=24)</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$principal_id</h4>
+<code>int</code><p>Principal id</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
+</div></div>
+</div>
+<a id="method_getSharedCalendarsForUser"></a><div class="element clickable method public method_getSharedCalendarsForUser" data-toggle="collapse" data-target=".method_getSharedCalendarsForUser .collapse">
+<h2>Gets shared calendars which can be accessed by user</h2>
+<pre>getSharedCalendarsForUser(int $user_id) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Return:
+ array ( size = n )
+     0 => array (size=25)
+         'by_principal' => int 1100
+         'by_collection' => int 1101
+         'to_principal' => int 1084
+         'privileges' => string '000000001111111011100111' (length=24)
+         'is_group' => null
+         'principal_id' => int 1084
+         'type_id' => int 1
+         'user_no' => int 1051
+         'displayname' => string 'Davical Box' (length=11)
+         'default_privileges' => null
+         'parent_container' => string '/sdcc@sdcc.ie/' (length=14)
+         'dav_name' => string '/sdcc@sdcc.ie/calendar/' (length=23)
+         'dav_etag' => string '-1' (length=2)
+         'dav_displayname' => string 'South Dublin County Council calendar' (length=36)
+         'is_calendar' => boolean true
+         'created' => string '2012-12-14 16:24:20.325642+00' (length=29)
+         'modified' => string '2012-12-14 16:24:20.325642+00' (length=29)
+         'public_events_only' => boolean false
+         'publicly_readable' => boolean false
+         'collection_id' => int 1101
+         'is_addressbook' => boolean false
+         'resourcetypes' => string '&lt;DAV::collection/>&lt;urn:ietf:params:xml:ns:carddav:calendar/>'' (length=61)
+         'schedule_transp' => string 'opaque' (length=6)
+         'timezone' => null
+         'description' => string '' (length=0)
+     1 => array ...</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$user_id</h4>
+<code>int</code><p>User id ( user_no )</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
+</div></div>
+</div>
+<a id="method_getUserById"></a><div class="element clickable method public method_getUserById" data-toggle="collapse" data-target=".method_getUserById .collapse">
+<h2>Gets user by Id ( user_no )</h2>
+<pre>getUserById(int $user_id) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Returns:
+    array (size=13)
+           'user_no' => int 1
+           'active' => boolean true
+           'email_ok' => string '2012-12-07 00:00:00+00' (length=22)
+           'joined' => string '2012-12-07 11:49:55.231231+00' (length=29)
+           'updated' => string '2012-12-07 13:27:31.698669+00' (length=29)
+           'last_used' => string '2012-12-11 10:01:29.831451+00' (length=29)
+           'username' => string 'usrname' (length=7)
+           'password' => string 'encrypted' (length=9)
+           'fullname' => string 'Name susrname' (length=13)
+           'email' => string 'example@example.ie' (length=18)
+           'config_data' => null
+           'date_format_type' => string 'E' (length=1)
+           'locale' => string 'en' (length=2)</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$user_id</h4>
+<code>int</code><p>User id (user_no)</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
+</div></div>
+</div>
+<a id="method_getUserByUsername"></a><div class="element clickable method public method_getUserByUsername" data-toggle="collapse" data-target=".method_getUserByUsername .collapse">
+<h2>Gets user by username</h2>
+<pre>getUserByUsername(string $username) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Returns:
+    array (size=13)
+           'user_no' => int 1
+           'active' => boolean true
+           'email_ok' => string '2012-12-07 00:00:00+00' (length=22)
+           'joined' => string '2012-12-07 11:49:55.231231+00' (length=29)
+           'updated' => string '2012-12-07 13:27:31.698669+00' (length=29)
+           'last_used' => string '2012-12-11 10:01:29.831451+00' (length=29)
+           'username' => string 'usrname' (length=7)
+           'password' => string 'encrypted' (length=9)
+           'fullname' => string 'Name susrname' (length=13)
+           'email' => string 'example@example.ie' (length=18)
+           'config_data' => null
+           'date_format_type' => string 'E' (length=1)
+           'locale' => string 'en' (length=2)</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$username</h4>
+<code>string</code><p>Username</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
+</div></div>
+</div>
+<a id="method_getUsersForSharedCalendar"></a><div class="element clickable method public method_getUsersForSharedCalendar" data-toggle="collapse" data-target=".method_getUsersForSharedCalendar .collapse">
+<h2>Gets users who has access to shared calendar by calendar id.</h2>
+<pre>getUsersForSharedCalendar(int $collection_id) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Return:
+ array ( size = n )
+     0 => array (size=22)
+         'by_principal' => int 1094
+         'by_collection' => int 1095
+         'to_principal' => int 1089
+         'privileges' => string '000000001111111011100111' (length=24)
+         'is_group' => null
+         'principal_id' => int 1089
+         'type_id' => int 1
+         'user_no' => int 1048
+         'displayname' => string 'Nerijus Barauskas' (length=17)
+         'default_privileges' => string '000000000000000000000000' (length=24)
+         'active' => boolean true
+         'email_ok' => null
+         'joined' => string '2012-12-14 13:25:53.173706+00' (length=29)
+         'updated' => string '2012-12-14 13:25:53.173706+00' (length=29)
+         'last_used' => null
+         'username' => string 'nerijus@opensolutions.ie' (length=24)
+         'password' => string '**qwerty78' (length=10)
+         'fullname' => string 'Nerijus Barauskas' (length=17)
+         'email' => string 'nerijus@opensolutions.ie' (length=24)
+         'config_data' => null
+         'date_format_type' => string 'E' (length=1)
+         'locale' => null
+     1 => aray ....</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$collection_id</h4>
+<code>int</code><p>Collection id</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
+</div></div>
+</div>
+<a id="method_grantPrivileges"></a><div class="element clickable method public method_grantPrivileges" data-toggle="collapse" data-target=".method_grantPrivileges .collapse">
+<h2>Grants privileges to principal or collection</h2>
+<pre>grantPrivileges(int $to_user_id, string $privileges, int $by_user_id, int $by_collection_id, bool $is_group) : bool</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Grants privleges to principal if by_user_id is set or grant privileges to collection if by_collection_id is set.
+Users IDs should be passed, principal IDs will be loaded from database.</p>
+
+<p>NOTICE: $by_user_id or $by_collection_id are mandatory params, if both is null it will thorw an Exception.</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$to_user_id</h4>
+<code>int</code><p>Users for who privleges will be grant.</p></div>
+<div class="subelement argument">
+<h4>$privileges</h4>
+<code>string</code><p>Privileges to grant.</p></div>
+<div class="subelement argument">
+<h4>$by_user_id</h4>
+<code>int</code><p>User by who privileges will be grant.</p></div>
+<div class="subelement argument">
+<h4>$by_collection_id</h4>
+<code>int</code><p>Collection by which privileges will be grant.</p></div>
+<div class="subelement argument">
+<h4>$is_group</h4>
+<code>bool</code><p>Flag if to user is group</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code>\OSS_Execpion</code></th>
+<td>if $by_user_id and $by_collection_id is null</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>bool</code></div>
+</div></div>
+</div>
+<a id="method_hashPassword"></a><div class="element clickable method public method_hashPassword" data-toggle="collapse" data-target=".method_hashPassword .collapse">
+<h2>Hash password for davical user.</h2>
+<pre>hashPassword(string $password, string $method) : string</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>It hashes three davical supported types hash:
+ * First and most unsecured hash is plain it just add two start infont of password.
+ * Second is md5 result is <em><salt></em> (where <salt> is a random series of characters not including '<em>')
+      then the rest of the string is a hash of (password + salt), i.e. a salted hash.
+ * Third  is SSHA result is is "</em><salt>*<LDAP compatible SSHA password>" and the <LDAP compatible SSHA password>
+      is "{SSHA}<SHA-1 salted hash>". Read the code in /usr/share/awl/inc/AWLUtilities.php if you want to
+      understand that format more deeply!</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$password</h4>
+<code>string</code><p>Users password to login.</p></div>
+<div class="subelement argument">
+<h4>$method</h4>
+<code>string</code><p>Hash method</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>return hashed string.</div>
+</div></div>
+</div>
+<a id="method_removeCalendar"></a><div class="element clickable method public method_removeCalendar" data-toggle="collapse" data-target=".method_removeCalendar .collapse">
+<h2>Removes calendar</h2>
+<pre>removeCalendar(int $collection_id) : bool</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Calls removeCollection() method</p></div>
+<table class="table table-bordered"><tr>
+<th>see</th>
+<td><a href="">\removeCollection()</a></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$collection_id</h4>
+<code>int</code><p>Collection id to remove</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>bool</code>true if removed.</div>
+</div></div>
+</div>
+<a id="method_removeCollection"></a><div class="element clickable method public method_removeCollection" data-toggle="collapse" data-target=".method_removeCollection .collapse">
+<h2>Removes collection</h2>
+<pre>removeCollection(int $collection_id) : bool</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$collection_id</h4>
+<code>int</code><p>Collection id to remove</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>bool</code>true if removed.</div>
+</div></div>
+</div>
+<a id="method_removeGrantPrivileges"></a><div class="element clickable method public method_removeGrantPrivileges" data-toggle="collapse" data-target=".method_removeGrantPrivileges .collapse">
+<h2>Remove grant privileges</h2>
+<pre>removeGrantPrivileges(int $to_user_id, int $by_user_id, $by_collection_id) : bool</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Grants privleges for prinicipal to collection or for principal to principal
+Users IDs should be passed, principal IDs will be loaded from database.</p>
+
+<p>NOTICE: $by_user_id or $by_collection_id are mandatory params, if both is null it will thorw an Exception.</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$to_user_id</h4>
+<code>int</code><p>Users for who privleges will be removed.</p></div>
+<div class="subelement argument">
+<h4>$by_user_id</h4>
+<code>int</code><p>User by who privileges will be removed.</p></div>
+<div class="subelement argument"><h4>$by_collection_id</h4></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code>\OSS_Execpion</code></th>
+<td>if $by_user_id and $by_collection_id is null</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>bool</code></div>
+</div></div>
+</div>
+<a id="method_removeUser"></a><div class="element clickable method public method_removeUser" data-toggle="collapse" data-target=".method_removeUser .collapse">
+<h2>Removes users</h2>
+<pre>removeUser(int $user_id) : bool</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$user_id</h4>
+<code>int</code><p>User id to remove (user_no)</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>bool</code>true if removed.</div>
+</div></div>
+</div>
+<a id="method_setUserPassword"></a><div class="element clickable method public method_setUserPassword" data-toggle="collapse" data-target=".method_setUserPassword .collapse">
+<h2>Sets user password.</h2>
+<pre>setUserPassword(int $user_id, string $hashed_password) : bool</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$user_id</h4>
+<code>int</code><p>User id ( user_no )</p>
+</div>
+<div class="subelement argument">
+<h4>$hashed_password</h4>
+<code>string</code><p>Hashed pasword.</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>bool</code>ture if success</div>
+</div></div>
+</div>
+<a id="method_updateGrantPrivileges"></a><div class="element clickable method public method_updateGrantPrivileges" data-toggle="collapse" data-target=".method_updateGrantPrivileges .collapse">
+<h2>Update grant privileges to principal or collection</h2>
+<pre>updateGrantPrivileges(int $to_user_id, string $privileges, int $by_user_id, int $by_collection_id) : bool</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Updated grants privleges to principal if by_user_id is set or grant privileges to collection if by_collection_id is set.
+Users IDs should be passed, principal IDs will be loaded from database.</p>
+
+<p>NOTICE: $by_user_id or $by_collection_id are mandatory params, if both is null it will thorw an Exception.</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$to_user_id</h4>
+<code>int</code><p>Users for who privleges will be updated.</p></div>
+<div class="subelement argument">
+<h4>$privileges</h4>
+<code>string</code><p>Privileges to set.</p></div>
+<div class="subelement argument">
+<h4>$by_user_id</h4>
+<code>int</code><p>User by who privileges will be updated.</p></div>
+<div class="subelement argument">
+<h4>$by_collection_id</h4>
+<code>int</code><p>Collection by which privileges will be updated.</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code>\OSS_Execpion</code></th>
+<td>if $by_user_id and $by_collection_id is null</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>bool</code></div>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a id="property_PRIVILEGES"> </a><div class="element clickable property public property_PRIVILEGES" data-toggle="collapse" data-target=".property_PRIVILEGES .collapse">
+<h2></h2>
+<pre>$PRIVILEGES </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<h3>
+<i class="icon-custom icon-constant"></i> Constants</h3>
+<a id="constant_COLLECTION_TYPE_ADDRESSBOOK"> </a><div class="element clickable constant  constant_COLLECTION_TYPE_ADDRESSBOOK" data-toggle="collapse" data-target=".constant_COLLECTION_TYPE_ADDRESSBOOK .collapse">
+<h2>COLLECTION_TYPE_ADDRESSBOOK</h2>
+<pre>COLLECTION_TYPE_ADDRESSBOOK </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_COLLECTION_TYPE_CALENDAR"> </a><div class="element clickable constant  constant_COLLECTION_TYPE_CALENDAR" data-toggle="collapse" data-target=".constant_COLLECTION_TYPE_CALENDAR .collapse">
+<h2>Collection types</h2>
+<pre>COLLECTION_TYPE_CALENDAR </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_PASSWORD_HASH_MD5"> </a><div class="element clickable constant  constant_PASSWORD_HASH_MD5" data-toggle="collapse" data-target=".constant_PASSWORD_HASH_MD5 .collapse">
+<h2>PASSWORD_HASH_MD5</h2>
+<pre>PASSWORD_HASH_MD5 </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_PASSWORD_HASH_PLAIN"> </a><div class="element clickable constant  constant_PASSWORD_HASH_PLAIN" data-toggle="collapse" data-target=".constant_PASSWORD_HASH_PLAIN .collapse">
+<h2>PASSWORD_HASH_PLAIN</h2>
+<pre>PASSWORD_HASH_PLAIN </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_PASSWORD_HASH_SSHA"> </a><div class="element clickable constant  constant_PASSWORD_HASH_SSHA" data-toggle="collapse" data-target=".constant_PASSWORD_HASH_SSHA .collapse">
+<h2>Password hashing methods</h2>
+<pre>PASSWORD_HASH_SSHA </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_PRINCIPAL_TYPE_GROUP"> </a><div class="element clickable constant  constant_PRINCIPAL_TYPE_GROUP" data-toggle="collapse" data-target=".constant_PRINCIPAL_TYPE_GROUP .collapse">
+<h2>PRINCIPAL_TYPE_GROUP</h2>
+<pre>PRINCIPAL_TYPE_GROUP </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_PRINCIPAL_TYPE_PERSON"> </a><div class="element clickable constant  constant_PRINCIPAL_TYPE_PERSON" data-toggle="collapse" data-target=".constant_PRINCIPAL_TYPE_PERSON .collapse">
+<h2>Principal type IDs</h2>
+<pre>PRINCIPAL_TYPE_PERSON </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_PRINCIPAL_TYPE_RESOURCE"> </a><div class="element clickable constant  constant_PRINCIPAL_TYPE_RESOURCE" data-toggle="collapse" data-target=".constant_PRINCIPAL_TYPE_RESOURCE .collapse">
+<h2>PRINCIPAL_TYPE_RESOURCE</h2>
+<pre>PRINCIPAL_TYPE_RESOURCE </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_PRIVILEGES_NONE"> </a><div class="element clickable constant  constant_PRIVILEGES_NONE" data-toggle="collapse" data-target=".constant_PRIVILEGES_NONE .collapse">
+<h2>PRIVILEGES_NONE</h2>
+<pre>PRIVILEGES_NONE </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_PRIVILEGES_RO"> </a><div class="element clickable constant  constant_PRIVILEGES_RO" data-toggle="collapse" data-target=".constant_PRIVILEGES_RO .collapse">
+<h2>PRIVILEGES_RO</h2>
+<pre>PRIVILEGES_RO </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_PRIVILEGES_RW"> </a><div class="element clickable constant  constant_PRIVILEGES_RW" data-toggle="collapse" data-target=".constant_PRIVILEGES_RW .collapse">
+<h2>Privileges constants which refelects DAViCal database scheme</h2>
+<pre>PRIVILEGES_RW </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
+            generated on 2013-02-11T11:16:48Z.<br></footer></div>
+</div>
+</body>
+</html>

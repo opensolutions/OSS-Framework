@@ -104,19 +104,19 @@ class OSS_License_MD5Test extends PHPUnit_Framework_TestCase
     }
 
 
-/*    public function testsLicenseReallyValidates()
+    public function testsLicenseReallyValidates()
     {
-        $company = 'Open Source Solutions Limited';
+        $company = 'Telcom Limited';
         
         $l = new OSS_License_MD5();
         $l->setParam( 'Company', $company );
-        $l->setParam( 'IssuedTo', 'barry@opensolutions.ie' );
-        $l->setParam( 'Expires', '2012-12-31' );
-        $l->setParam( 'Issued', '2012-07-25' );
+        $l->setParam( 'IssuedTo', 'leightonbrennan@telcom.ie' );
+        $l->setParam( 'Expires', '2013-12-31' );
+        $l->setParam( 'Issued', '2012-12-01' );
         $l->setParam( 'PrimaryModule', 'Call-Recorder' );
 
         die( $l->generate() );
     }
-  */
+  
 }
 

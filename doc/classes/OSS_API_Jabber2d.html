@@ -31,7 +31,7 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">200</span></a></li>
+                <span class="label label-info">209</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul>
 <li>todo 
@@ -62,9 +62,12 @@
 <ul class="side-nav nav nav-list"><li class="nav-header">
 <i class="icon-custom icon-method"></i> Methods
                     <ul>
-<li class="method public "><a href="#method___construct" title="__construct :: "><span class="description">__construct()
-        </span><pre>__construct()</pre></a></li>
+<li class="method public "><a href="#method___construct" title="__construct :: Constructor - creates a new DBAL connection."><span class="description">Constructor - creates a new DBAL connection.</span><pre>__construct()</pre></a></li>
+<li class="method public "><a href="#method_addAuthReg" title="addAuthReg :: Adds an authreg entry."><span class="description">Adds an authreg entry.</span><pre>addAuthReg()</pre></a></li>
+<li class="method public "><a href="#method_deleteAuthReg" title="deleteAuthReg :: Deletes a user's authreg entry, and all related entries."><span class="description">Deletes a user's authreg entry, and all related entries.</span><pre>deleteAuthReg()</pre></a></li>
 <li class="method public "><a href="#method_getAllUsers" title="getAllUsers :: Get all users registered in the database as an array."><span class="description">Get all users registered in the database as an array.</span><pre>getAllUsers()</pre></a></li>
+<li class="method public "><a href="#method_getAuthReg" title="getAuthReg :: Returns with a user's authreg entry as an assciative array, or with false if it wasn't found."><span class="description">Returns with a user's authreg entry as an assciative array, or with false if it wasn't found.</span><pre>getAuthReg()</pre></a></li>
+<li class="method public "><a href="#method_updateAuthReg" title="updateAuthReg :: Updates an authreg entry."><span class="description">Updates an authreg entry.</span><pre>updateAuthReg()</pre></a></li>
 </ul>
 </li></ul>
 </div>
@@ -107,14 +110,64 @@
 <h3>
 <i class="icon-custom icon-method"></i> Methods</h3>
 <a id="method___construct"></a><div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
-<h2>__construct()
-        </h2>
-<pre>__construct($dbparams) </pre>
+<h2>Constructor - creates a new DBAL connection.</h2>
+<pre>__construct(array $dbparams) : void</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <h3>Parameters</h3>
-<div class="subelement argument"><h4>$dbparams</h4></div>
+<div class="subelement argument">
+<h4>$dbparams</h4>
+<code>array</code>
+</div>
+</div></div>
+</div>
+<a id="method_addAuthReg"></a><div class="element clickable method public method_addAuthReg" data-toggle="collapse" data-target=".method_addAuthReg .collapse">
+<h2>Adds an authreg entry.</h2>
+<pre>addAuthReg(string $username, string $realm, string $password) : int</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>public</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$username</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$realm</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$password</h4>
+<code>string</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>int</code></div>
+</div></div>
+</div>
+<a id="method_deleteAuthReg"></a><div class="element clickable method public method_deleteAuthReg" data-toggle="collapse" data-target=".method_deleteAuthReg .collapse">
+<h2>Deletes a user's authreg entry, and all related entries.</h2>
+<pre>deleteAuthReg(string $username, string $realm) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Encapsulates all the delete statements in one transaction.</p></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>public</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$username</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$realm</h4>
+<code>string</code>
+</div>
 </div></div>
 </div>
 <a id="method_getAllUsers"></a><div class="element clickable method public method_getAllUsers" data-toggle="collapse" data-target=".method_getAllUsers .collapse">
@@ -133,9 +186,65 @@
     1 =&gt;
         ...
 </code></pre></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>public</td>
+</tr></table>
 <h3>Returns</h3>
 <div class="subelement response">
 <code>array</code>All users registered in the database</div>
+</div></div>
+</div>
+<a id="method_getAuthReg"></a><div class="element clickable method public method_getAuthReg" data-toggle="collapse" data-target=".method_getAuthReg .collapse">
+<h2>Returns with a user's authreg entry as an assciative array, or with false if it wasn't found.</h2>
+<pre>getAuthReg(string $username, string $realm) : array | boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>public</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$username</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$realm</h4>
+<code>string</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code><code>boolean</code>
+</div>
+</div></div>
+</div>
+<a id="method_updateAuthReg"></a><div class="element clickable method public method_updateAuthReg" data-toggle="collapse" data-target=".method_updateAuthReg .collapse">
+<h2>Updates an authreg entry.</h2>
+<pre>updateAuthReg(string $username, string $realm, string $password) : int</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>public</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$username</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$realm</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$password</h4>
+<code>string</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>int</code></div>
 </div></div>
 </div>
 </div>
@@ -145,7 +254,7 @@
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
-            generated on 2012-12-12T10:59:29Z.<br></footer></div>
+            generated on 2013-02-11T11:16:48Z.<br></footer></div>
 </div>
 </body>
 </html>
