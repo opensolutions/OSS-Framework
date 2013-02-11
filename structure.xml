@@ -192,7 +192,7 @@ to info@opensolutions.ie so we can send you a copy immediately.&lt;/p&gt;</long-
       </method>
     </class>
   </file>
-  <file path="View/Helper/DateForm.php" hash="f26c0aa6562ae4e65fc8944969fc9af3" package="OSS\View\Helper">
+  <file path="View/Helper/DateForm.php" hash="5b0b66494b94ba7732ca3137fd0aac5e" package="OSS\View\Helper">
     <docblock line="2">
       <description>OSS Framework</description>
       <long-description>&lt;p&gt;This file is part of the "OSS Framework" - a library of tools, utilities and
@@ -1237,7 +1237,7 @@ Retruns with a negative integer on error.&lt;/p&gt;
       <notice line="94" code="50013">Parameter $pModHex could not be found in modhex2hex()</notice>
     </parse_markers>
   </file>
-  <file path="API/Jabber2d.php" hash="f2652935683be0215996f71c22b90098" package="OSS\API">
+  <file path="API/Jabber2d.php" hash="20a75d2a17e955da590e50108eb5f4b1" package="OSS\API">
     <docblock line="2">
       <description>OSS Framework</description>
       <long-description>&lt;p&gt;This file is part of the "OSS Framework" - a library of tools, utilities and
@@ -1285,19 +1285,29 @@ to info@opensolutions.ie so we can send you a copy immediately.&lt;/p&gt;</long-
         <tag line="40" name="copyright" description="Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland"/>
         <tag line="40" name="license" description="http://www.opensolutions.ie/licenses/new-bsd New BSD License"/>
       </docblock>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="56" package="OSS\API">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="61" package="OSS\API">
         <name>__construct</name>
         <full_name>__construct</full_name>
-        <argument line="56">
+        <docblock line="55">
+          <description>Constructor - creates a new DBAL connection.</description>
+          <long-description/>
+          <tag line="55" name="param" description="" type="array" variable="$dbparams">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="55" name="return" description="" type="void">
+            <type by_reference="false">void</type>
+          </tag>
+        </docblock>
+        <argument line="61">
           <name>$dbparams</name>
           <default/>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="78" package="OSS\API">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="85" package="OSS\API">
         <name>getAllUsers</name>
         <full_name>getAllUsers</full_name>
-        <docblock line="62">
+        <docblock line="67">
           <description>Get all users registered in the database as an array.</description>
           <long-description>&lt;p&gt;Returns:&lt;/p&gt;
 
@@ -1310,14 +1320,1611 @@ to info@opensolutions.ie so we can send you a copy immediately.&lt;/p&gt;</long-
     1 =&amp;gt;
         ...
 &lt;/code&gt;&lt;/pre&gt;</long-description>
-          <tag line="62" name="return" description="All users registered in the database" type="array">
+          <tag line="67" name="param" description="" type="void" variable="">
+            <type by_reference="false">void</type>
+          </tag>
+          <tag line="67" name="return" description="All users registered in the database" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="67" name="access" description="public"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="99" package="OSS\API">
+        <name>getAuthReg</name>
+        <full_name>getAuthReg</full_name>
+        <docblock line="91">
+          <description>Returns with a user's authreg entry as an assciative array, or with false if it wasn't found.</description>
+          <long-description/>
+          <tag line="91" name="param" description="" type="string" variable="$username">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="91" name="param" description="" type="string" variable="$realm">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="91" name="return" description="" type="array|boolean">
+            <type by_reference="false">array</type>
+            <type by_reference="false">boolean</type>
+          </tag>
+          <tag line="91" name="access" description="public"/>
+        </docblock>
+        <argument line="99">
+          <name>$username</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="99">
+          <name>$realm</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="116" package="OSS\API">
+        <name>addAuthReg</name>
+        <full_name>addAuthReg</full_name>
+        <docblock line="107">
+          <description>Adds an authreg entry.</description>
+          <long-description/>
+          <tag line="107" name="param" description="" type="string" variable="$username">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="107" name="param" description="" type="string" variable="$realm">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="107" name="param" description="" type="string" variable="$password">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="107" name="return" description="" type="int">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="107" name="access" description="public"/>
+        </docblock>
+        <argument line="116">
+          <name>$username</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="116">
+          <name>$realm</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="116">
+          <name>$password</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="133" package="OSS\API">
+        <name>updateAuthReg</name>
+        <full_name>updateAuthReg</full_name>
+        <docblock line="124">
+          <description>Updates an authreg entry.</description>
+          <long-description/>
+          <tag line="124" name="param" description="" type="string" variable="$username">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="124" name="param" description="" type="string" variable="$realm">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="124" name="param" description="" type="string" variable="$password">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="124" name="return" description="" type="int">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="124" name="access" description="public"/>
+        </docblock>
+        <argument line="133">
+          <name>$username</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="133">
+          <name>$realm</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="133">
+          <name>$password</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="152" package="OSS\API">
+        <name>deleteAuthReg</name>
+        <full_name>deleteAuthReg</full_name>
+        <docblock line="142">
+          <description>Deletes a user's authreg entry, and all related entries.</description>
+          <long-description>&lt;p&gt;Encapsulates all the delete statements in one transaction.&lt;/p&gt;</long-description>
+          <tag line="142" name="param" description="" type="string" variable="$username">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="142" name="param" description="" type="string" variable="$realm">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="142" name="return" description="" type="void">
+            <type by_reference="false">void</type>
+          </tag>
+          <tag line="142" name="access" description="public"/>
+        </docblock>
+        <argument line="152">
+          <name>$username</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="152">
+          <name>$realm</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <notice line="67" code="50013">Parameter  could not be found in getAllUsers()</notice>
+    </parse_markers>
+  </file>
+  <file path="API/DAViCal.php" hash="12d8950174328d78df0ee6afba1ba143" package="OSS\API">
+    <docblock line="2">
+      <description>OSS Framework</description>
+      <long-description>&lt;p&gt;This file is part of the "OSS Framework" - a library of tools, utilities and
+extensions to the Zend Framework V1.x used for PHP application development.&lt;/p&gt;
+
+&lt;p&gt;Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland
+All rights reserved.&lt;/p&gt;
+
+&lt;p&gt;Open Source Solutions Limited is a company registered in Dublin,
+Ireland with the Companies Registration Office (#438231). We
+trade as Open Solutions with registered business name (#329120).&lt;/p&gt;
+
+&lt;p&gt;Contact: Barry O'Donovan - info (at) opensolutions (dot) ie
+         http://www.opensolutions.ie/&lt;/p&gt;
+
+&lt;p&gt;LICENSE&lt;/p&gt;
+
+&lt;p&gt;This source file is subject to the new BSD license that is bundled
+with this package in the file LICENSE.txt.&lt;/p&gt;
+
+&lt;p&gt;It is also available through the world-wide-web at this URL:
+    http://www.opensolutions.ie/licenses/new-bsd&lt;/p&gt;
+
+&lt;p&gt;If you did not receive a copy of the license and are unable to
+obtain it through the world-wide-web, please send an email
+to info@opensolutions.ie so we can send you a copy immediately.&lt;/p&gt;</long-description>
+      <tag line="2" name="category" description="OSS"/>
+      <tag line="2" name="package" description="OSS_API"/>
+      <tag line="2" name="copyright" description="Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland"/>
+      <tag line="2" name="license" description="http://www.opensolutions.ie/licenses/new-bsd New BSD License"/>
+      <tag line="2" name="link" description="Open Source Solutions Limited" link="http://www.opensolutions.ie/"/>
+      <tag line="2" name="author" description="Barry O'Donovan &lt;barry@opensolutions.ie&gt;"/>
+      <tag line="2" name="author" description="The Skilled Team of PHP Developers at Open Solutions &lt;info@opensolutions.ie&gt;"/>
+    </docblock>
+    <class final="false" abstract="false" namespace="global" line="50" package="OSS\API">
+      <extends/>
+      <name>OSS_API_DAViCal</name>
+      <full_name>\OSS_API_DAViCal</full_name>
+      <docblock line="40">
+        <description>A DAViCal API via direct database manipulation.</description>
+        <long-description/>
+        <tag line="40" name="see" description="\global\http://davical.org/" refers="\global\http://davical.org/"/>
+        <tag line="40" name="category" description="OSS"/>
+        <tag line="40" name="package" description="OSS_API"/>
+        <tag line="40" name="copyright" description="Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland"/>
+        <tag line="40" name="license" description="http://www.opensolutions.ie/licenses/new-bsd New BSD License"/>
+      </docblock>
+      <constant namespace="global" line="58" package="OSS\API">
+        <name>PRIVILEGES_RW</name>
+        <full_name>PRIVILEGES_RW</full_name>
+        <value>'000000001111111011100111'</value>
+        <docblock line="55">
+          <description>Privileges constants which refelects DAViCal database scheme</description>
+          <long-description/>
+        </docblock>
+      </constant>
+      <constant namespace="global" line="59" package="OSS\API">
+        <name>PRIVILEGES_RO</name>
+        <full_name>PRIVILEGES_RO</full_name>
+        <value>'000000000001001000100001'</value>
+      </constant>
+      <constant namespace="global" line="60" package="OSS\API">
+        <name>PRIVILEGES_NONE</name>
+        <full_name>PRIVILEGES_NONE</full_name>
+        <value>'000000000000000000000000'</value>
+      </constant>
+      <constant namespace="global" line="74" package="OSS\API">
+        <name>PRINCIPAL_TYPE_PERSON</name>
+        <full_name>PRINCIPAL_TYPE_PERSON</full_name>
+        <value>1</value>
+        <docblock line="71">
+          <description>Principal type IDs</description>
+          <long-description/>
+        </docblock>
+      </constant>
+      <constant namespace="global" line="75" package="OSS\API">
+        <name>PRINCIPAL_TYPE_RESOURCE</name>
+        <full_name>PRINCIPAL_TYPE_RESOURCE</full_name>
+        <value>2</value>
+      </constant>
+      <constant namespace="global" line="76" package="OSS\API">
+        <name>PRINCIPAL_TYPE_GROUP</name>
+        <full_name>PRINCIPAL_TYPE_GROUP</full_name>
+        <value>3</value>
+      </constant>
+      <constant namespace="global" line="81" package="OSS\API">
+        <name>COLLECTION_TYPE_CALENDAR</name>
+        <full_name>COLLECTION_TYPE_CALENDAR</full_name>
+        <value>'calendar'</value>
+        <docblock line="78">
+          <description>Collection types</description>
+          <long-description/>
+        </docblock>
+      </constant>
+      <constant namespace="global" line="82" package="OSS\API">
+        <name>COLLECTION_TYPE_ADDRESSBOOK</name>
+        <full_name>COLLECTION_TYPE_ADDRESSBOOK</full_name>
+        <value>'addressbook'</value>
+      </constant>
+      <constant namespace="global" line="87" package="OSS\API">
+        <name>PASSWORD_HASH_SSHA</name>
+        <full_name>PASSWORD_HASH_SSHA</full_name>
+        <value>"hash"</value>
+        <docblock line="84">
+          <description>Password hashing methods</description>
+          <long-description/>
+        </docblock>
+      </constant>
+      <constant namespace="global" line="88" package="OSS\API">
+        <name>PASSWORD_HASH_MD5</name>
+        <full_name>PASSWORD_HASH_MD5</full_name>
+        <value>"md5"</value>
+      </constant>
+      <constant namespace="global" line="89" package="OSS\API">
+        <name>PASSWORD_HASH_PLAIN</name>
+        <full_name>PASSWORD_HASH_PLAIN</full_name>
+        <value>"plain"</value>
+      </constant>
+      <property final="false" static="true" visibility="public" line="65" namespace="global" package="Default">
+        <name>$PRIVILEGES</name>
+        <default>array(self::PRIVILEGES_RW =&gt; "Read / Write", self::PRIVILEGES_RO =&gt; "Read Only", self::PRIVILEGES_NONE =&gt; "No Actions")</default>
+        <docblock line="62">
+          <description>Names of Privieleges</description>
+          <long-description/>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="96" package="OSS\API">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <docblock line="92">
+          <description>Constructor
+Initialize DBAL connection.</description>
+          <long-description/>
+        </docblock>
+        <argument line="96">
+          <name>$dbparams</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="125" package="OSS\API">
+        <name>getAllUsers</name>
+        <full_name>getAllUsers</full_name>
+        <docblock line="101">
+          <description>Get all users registered in the database as an array.</description>
+          <long-description>&lt;p&gt;Returns:
+    array (size=n)
+        0 =&gt;
+           'user_no' =&gt; int 1
+           'active' =&gt; boolean true
+           'email_ok' =&gt; string '2012-12-07 00:00:00+00' (length=22)
+           'joined' =&gt; string '2012-12-07 11:49:55.231231+00' (length=29)
+           'updated' =&gt; string '2012-12-07 13:27:31.698669+00' (length=29)
+           'last_used' =&gt; string '2012-12-11 10:01:29.831451+00' (length=29)
+           'username' =&gt; string 'usrname' (length=7)
+           'password' =&gt; string 'hashed' (length=9)
+           'fullname' =&gt; string 'Name susrname' (length=13)
+           'email' =&gt; string 'example@example.ie' (length=18)
+           'config_data' =&gt; null
+           'date_format_type' =&gt; string 'E' (length=1)
+           'locale' =&gt; string 'en' (length=2)
+        1 =&gt;
+            ...&lt;/p&gt;</long-description>
+          <tag line="101" name="return" description="All users registered in the database" type="array">
             <type by_reference="false">array</type>
           </tag>
         </docblock>
       </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="167" package="OSS\API">
+        <name>createUser</name>
+        <full_name>createUser</full_name>
+        <docblock line="130">
+          <description>Create user.</description>
+          <long-description>&lt;p&gt;params:
+    array
+           'active' =&gt; boolean
+           'email_ok' =&gt; string date time   e.g.'2012-12-07 00:00:00+00'
+           'joined' =&gt; string date time     e.g.'2012-12-07 00:00:00+00'
+           'updated' =&gt; string date time    e.g.'2012-12-07 00:00:00+00'
+           'last_used' =&gt; string date time  e.g.'2012-12-07 00:00:00+00'
+           'username' =&gt; string             mandatory
+           'password' =&gt; string
+           'fullname' =&gt; string
+           'email' =&gt; string
+           'config_data' =&gt; null
+           'date_format_type' =&gt; string     e.g. 'E'
+           'locale' =&gt; string               e.g. 'en'&lt;/p&gt;
+
+&lt;p&gt;Returns:
+     array
+           'user_no' =&gt; int 1
+           'active' =&gt; boolean true
+           'email_ok' =&gt; string '2012-12-07 00:00:00+00' (length=22)
+           'joined' =&gt; string '2012-12-07 11:49:55.231231+00' (length=29)
+           'updated' =&gt; string '2012-12-07 13:27:31.698669+00' (length=29)
+           'last_used' =&gt; string '2012-12-11 10:01:29.831451+00' (length=29)
+           'username' =&gt; string 'usrname' (length=7)
+           'password' =&gt; string 'encrypted' (length=9)
+           'fullname' =&gt; string 'Name susrname' (length=13)
+           'email' =&gt; string 'example@example.ie' (length=18)
+           'config_data' =&gt; null
+           'date_format_type' =&gt; string 'E' (length=1)
+           'locale' =&gt; string 'en' (length=2)&lt;/p&gt;</long-description>
+          <tag line="130" name="param" description="User parameters" type="array" variable="$params">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="130" name="return" description="of user details" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+        <argument line="167">
+          <name>$params</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="180" package="OSS\API">
+        <name>setUserPassword</name>
+        <full_name>setUserPassword</full_name>
+        <docblock line="173">
+          <description>Sets user password.</description>
+          <long-description/>
+          <tag line="173" name="param" description="User id ( user_no )" type="int" variable="$user_id">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="173" name="param" description="Hashed pasword." type="string" variable="$hashed_password">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="173" name="return" description="ture if success" type="bool">
+            <type by_reference="false">bool</type>
+          </tag>
+        </docblock>
+        <argument line="180">
+          <name>$user_id</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="180">
+          <name>$hashed_password</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="195" package="OSS\API">
+        <name>removeUser</name>
+        <full_name>removeUser</full_name>
+        <docblock line="189">
+          <description>Removes users</description>
+          <long-description/>
+          <tag line="189" name="param" description="User id to remove (user_no)" type="int" variable="$user_id">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="189" name="return" description="true if removed." type="bool">
+            <type by_reference="false">bool</type>
+          </tag>
+        </docblock>
+        <argument line="195">
+          <name>$user_id</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="217" package="OSS\API">
+        <name>createPrincipal</name>
+        <full_name>createPrincipal</full_name>
+        <docblock line="200">
+          <description>Creates principal and dreturns principles data.</description>
+          <long-description>&lt;p&gt;Returns:
+     array (size=5)
+         'principal_id' =&gt; int 1
+         'type_id' =&gt; int 1
+         'user_no' =&gt; int 1
+         'displayname' =&gt; string 'DAViCal Administrator' (length=21)
+         'default_privileges' =&gt; string '000000000000000000000000' (length=24)&lt;/p&gt;</long-description>
+          <tag line="200" name="param" description="Array of user details." type="array" variable="$user">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="200" name="param" description="Principal Type id, by default principal type is person." type="int" variable="$type">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="200" name="pram" description="string $privileges Default prinicpals privileges by default is read/write."/>
+          <tag line="200" name="return" description="of prinicpal details" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+        <argument line="217">
+          <name>$user</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="217">
+          <name>$type</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="217">
+          <name>$privileges</name>
+          <default>self::PRIVILEGES_NONE</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="247" package="OSS\API">
+        <name>createPrincipalUser</name>
+        <full_name>createPrincipalUser</full_name>
+        <docblock line="230">
+          <description>Creates user, principal and calendar.</description>
+          <long-description>&lt;p&gt;Takes same parameters as $this-&gt;createUser();
+Returns an array wich contains user, principal and calendar collection data.
+ array [
+      'user'      =&gt; array users data,
+      'principal' =&gt; array principals data,
+    ]&lt;/p&gt;</long-description>
+          <tag line="230" name="param" description="User parameters, sames as creatUser parameters." type="array" variable="$params">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="230" name="param" description="Principle type id" type="int" variable="$type">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="230" name="return" description="Array wit data of user, principal and calendar collection." type="array">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="230" name="see" description="\createUser()" refers="\createUser()"/>
+          <tag line="230" name="see" description="\createPrincipal()" refers="\createPrincipal()"/>
+        </docblock>
+        <argument line="247">
+          <name>$params</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="247">
+          <name>$type</name>
+          <default>self::PRINCIPAL_TYPE_PERSON</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="299" package="OSS\API">
+        <name>createCollection</name>
+        <full_name>createCollection</full_name>
+        <docblock line="266">
+          <description>Creates colenction and returns it data.</description>
+          <long-description>&lt;p&gt;Returns:
+ array (size=17)
+     'user_no' =&gt; int 1024
+     'parent_container' =&gt; string '/nbdavical/' (length=11)
+     'dav_name' =&gt; string '/nbdavical/calendar/' (length=20)
+     'dav_etag' =&gt; string '-1' (length=2)
+     'dav_displayname' =&gt; string 'Davical User calendar' (length=21)
+     'is_calendar' =&gt; boolean true
+     'created' =&gt; string '2012-12-13 11:39:07.767205+00' (length=29)
+     'modified' =&gt; string '2012-12-13 11:39:07.767205+00' (length=29)
+     'public_events_only' =&gt; boolean false
+     'publicly_readable' =&gt; boolean false
+     'collection_id' =&gt; int 1034
+     'default_privileges' =&gt; null
+     'is_addressbook' =&gt; boolean false
+     'resourcetypes' =&gt; string '&amp;lt;DAV::collection/&gt;&amp;lt;urn:ietf:params:xml:ns:carddav:calendar/&gt;' (length=60)
+     'schedule_transp' =&gt; string 'opaque' (length=6)
+     'timezone' =&gt; null
+     'description' =&gt; string '' (length=0)&lt;/p&gt;</long-description>
+          <tag line="266" name="param" description="Davical user data" type="array" variable="$user">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="266" name="param" description="Collection type" type="string" variable="$type">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="266" name="param" description="Calendars name" type="string" variable="$name">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="266" name="param" description="Default privileges to access calendar" type="string|null" variable="$privileges">
+            <type by_reference="false">string</type>
+            <type by_reference="false">null</type>
+          </tag>
+          <tag line="266" name="param" description="Flag to define if calendar contains only public event" type="bool" variable="$public_events_only">
+            <type by_reference="false">bool</type>
+          </tag>
+          <tag line="266" name="param" description="Flat to define publicly readable status" type="bool" variable="$publicly_readable">
+            <type by_reference="false">bool</type>
+          </tag>
+          <tag line="266" name="param" description="Time zone id." type="int|null" variable="$timezone">
+            <type by_reference="false">int</type>
+            <type by_reference="false">null</type>
+          </tag>
+          <tag line="266" name="param" description="Calendar description." type="string" variable="$description">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="266" name="return" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+        <argument line="299">
+          <name>$user</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="299">
+          <name>$type</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="299">
+          <name>$name</name>
+          <default>null</default>
+          <type/>
+        </argument>
+        <argument line="299">
+          <name>$privileges</name>
+          <default>null</default>
+          <type/>
+        </argument>
+        <argument line="299">
+          <name>$public_events_only</name>
+          <default>false</default>
+          <type/>
+        </argument>
+        <argument line="299">
+          <name>$publicly_readable</name>
+          <default>false</default>
+          <type/>
+        </argument>
+        <argument line="299">
+          <name>$timezone</name>
+          <default>null</default>
+          <type/>
+        </argument>
+        <argument line="299">
+          <name>$description</name>
+          <default>""</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="354" package="OSS\API">
+        <name>removeCollection</name>
+        <full_name>removeCollection</full_name>
+        <docblock line="348">
+          <description>Removes collection</description>
+          <long-description/>
+          <tag line="348" name="param" description="Collection id to remove" type="int" variable="$collection_id">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="348" name="return" description="true if removed." type="bool">
+            <type by_reference="false">bool</type>
+          </tag>
+        </docblock>
+        <argument line="354">
+          <name>$collection_id</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="374" package="OSS\API">
+        <name>createCalendar</name>
+        <full_name>createCalendar</full_name>
+        <docblock line="359">
+          <description>Creates calendar and returns calendar data.</description>
+          <long-description>&lt;p&gt;Returns same array structure as createCollection&lt;/p&gt;</long-description>
+          <tag line="359" name="param" description="Davical user data" type="array" variable="$user">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="359" name="param" description="Calendars name" type="string" variable="$name">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="359" name="param" description="Default privileges to access calendar" type="string|null" variable="$privileges">
+            <type by_reference="false">string</type>
+            <type by_reference="false">null</type>
+          </tag>
+          <tag line="359" name="param" description="Flag to define if calendar contains only public event" type="bool" variable="$public_events_only">
+            <type by_reference="false">bool</type>
+          </tag>
+          <tag line="359" name="param" description="Flat to define publicly readable status" type="bool" variable="$publicly_readable">
+            <type by_reference="false">bool</type>
+          </tag>
+          <tag line="359" name="param" description="Time zone id." type="int|null" variable="$timezone">
+            <type by_reference="false">int</type>
+            <type by_reference="false">null</type>
+          </tag>
+          <tag line="359" name="param" description="Calendar description." type="string" variable="$description">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="359" name="see" description="\createCollection()" refers="\createCollection()"/>
+        </docblock>
+        <argument line="374">
+          <name>$user</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="374">
+          <name>$name</name>
+          <default>null</default>
+          <type/>
+        </argument>
+        <argument line="374">
+          <name>$privileges</name>
+          <default>null</default>
+          <type/>
+        </argument>
+        <argument line="374">
+          <name>$public_events_only</name>
+          <default>false</default>
+          <type/>
+        </argument>
+        <argument line="374">
+          <name>$publicly_readable</name>
+          <default>false</default>
+          <type/>
+        </argument>
+        <argument line="374">
+          <name>$timezone</name>
+          <default>null</default>
+          <type/>
+        </argument>
+        <argument line="374">
+          <name>$description</name>
+          <default>""</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="388" package="OSS\API">
+        <name>removeCalendar</name>
+        <full_name>removeCalendar</full_name>
+        <docblock line="379">
+          <description>Removes calendar</description>
+          <long-description>&lt;p&gt;Calls removeCollection() method&lt;/p&gt;</long-description>
+          <tag line="379" name="param" description="Collection id to remove" type="int" variable="$collection_id">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="379" name="return" description="true if removed." type="bool">
+            <type by_reference="false">bool</type>
+          </tag>
+          <tag line="379" name="see" description="\removeCollection()" refers="\removeCollection()"/>
+        </docblock>
+        <argument line="388">
+          <name>$collection_id</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="413" package="OSS\API">
+        <name>createCalendarUser</name>
+        <full_name>createCalendarUser</full_name>
+        <docblock line="393">
+          <description>Creates user, principal and calendar.</description>
+          <long-description>&lt;p&gt;Takes same parameters as $this-&gt;createUser();
+Returns an array wich contains user, principal and calendar collection data.
+ array [
+      'user'      =&gt; array users data,
+      'principal' =&gt; array principals data,
+      'calendar'  =&gt; array calendar collection data
+ ]&lt;/p&gt;</long-description>
+          <tag line="393" name="param" description="User parameters, sames as creatUser parameters." type="array" variable="$params">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="393" name="param" description="Calendar name" type="string" variable="$cname">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="393" name="param" description="Principle type id" type="int" variable="$type">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="393" name="return" description="Array wit data of user, principal and calendar collection." type="array">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="393" name="see" description="\createUser()" refers="\createUser()"/>
+          <tag line="393" name="see" description="\createPrincipal()" refers="\createPrincipal()"/>
+          <tag line="393" name="see" description="\createCalendar()" refers="\createCalendar()"/>
+        </docblock>
+        <argument line="413">
+          <name>$params</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="413">
+          <name>$cname</name>
+          <default>null</default>
+          <type/>
+        </argument>
+        <argument line="413">
+          <name>$type</name>
+          <default>self::PRINCIPAL_TYPE_PERSON</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="449" package="OSS\API">
+        <name>grantPrivileges</name>
+        <full_name>grantPrivileges</full_name>
+        <docblock line="433">
+          <description>Grants privileges to principal or collection</description>
+          <long-description>&lt;p&gt;Grants privleges to principal if by_user_id is set or grant privileges to collection if by_collection_id is set.
+Users IDs should be passed, principal IDs will be loaded from database.&lt;/p&gt;
+
+&lt;p&gt;NOTICE: $by_user_id or $by_collection_id are mandatory params, if both is null it will thorw an Exception.&lt;/p&gt;</long-description>
+          <tag line="433" name="param" description="Users for who privleges will be grant." type="int" variable="$to_user_id">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="433" name="param" description="Privileges to grant." type="string" variable="$privileges">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="433" name="param" description="User by who privileges will be grant." type="int" variable="$by_user_id">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="433" name="param" description="Collection by which privileges will be grant." type="int" variable="$by_collection_id">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="433" name="param" description="Flag if to user is group" type="bool" variable="$is_group">
+            <type by_reference="false">bool</type>
+          </tag>
+          <tag line="433" name="return" description="" type="bool">
+            <type by_reference="false">bool</type>
+          </tag>
+          <tag line="433" name="throws" description="if $by_user_id and $by_collection_id is null" type="\OSS_Execpion">
+            <type by_reference="false">\OSS_Execpion</type>
+          </tag>
+        </docblock>
+        <argument line="449">
+          <name>$to_user_id</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="449">
+          <name>$privileges</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="449">
+          <name>$by_user_id</name>
+          <default>null</default>
+          <type/>
+        </argument>
+        <argument line="449">
+          <name>$by_collection_id</name>
+          <default>null</default>
+          <type/>
+        </argument>
+        <argument line="449">
+          <name>$is_group</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="483" package="OSS\API">
+        <name>removeGrantPrivileges</name>
+        <full_name>removeGrantPrivileges</full_name>
+        <docblock line="469">
+          <description>Remove grant privileges</description>
+          <long-description>&lt;p&gt;Grants privleges for prinicipal to collection or for principal to principal
+Users IDs should be passed, principal IDs will be loaded from database.&lt;/p&gt;
+
+&lt;p&gt;NOTICE: $by_user_id or $by_collection_id are mandatory params, if both is null it will thorw an Exception.&lt;/p&gt;</long-description>
+          <tag line="469" name="param" description="Users for who privleges will be removed." type="int" variable="$to_user_id">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="469" name="param" description="User by who privileges will be removed." type="int" variable="$by_user_id">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="469" name="param" description="Collection by which privileges will be removed." type="int" variable="$collection_id">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="469" name="return" description="" type="bool">
+            <type by_reference="false">bool</type>
+          </tag>
+          <tag line="469" name="throws" description="if $by_user_id and $by_collection_id is null" type="\OSS_Execpion">
+            <type by_reference="false">\OSS_Execpion</type>
+          </tag>
+        </docblock>
+        <argument line="483">
+          <name>$to_user_id</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="483">
+          <name>$by_user_id</name>
+          <default>null</default>
+          <type/>
+        </argument>
+        <argument line="483">
+          <name>$by_collection_id</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="518" package="OSS\API">
+        <name>updateGrantPrivileges</name>
+        <full_name>updateGrantPrivileges</full_name>
+        <docblock line="503">
+          <description>Update grant privileges to principal or collection</description>
+          <long-description>&lt;p&gt;Updated grants privleges to principal if by_user_id is set or grant privileges to collection if by_collection_id is set.
+Users IDs should be passed, principal IDs will be loaded from database.&lt;/p&gt;
+
+&lt;p&gt;NOTICE: $by_user_id or $by_collection_id are mandatory params, if both is null it will thorw an Exception.&lt;/p&gt;</long-description>
+          <tag line="503" name="param" description="Users for who privleges will be updated." type="int" variable="$to_user_id">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="503" name="param" description="Privileges to set." type="string" variable="$privileges">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="503" name="param" description="User by who privileges will be updated." type="int" variable="$by_user_id">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="503" name="param" description="Collection by which privileges will be updated." type="int" variable="$by_collection_id">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="503" name="return" description="" type="bool">
+            <type by_reference="false">bool</type>
+          </tag>
+          <tag line="503" name="throws" description="if $by_user_id and $by_collection_id is null" type="\OSS_Execpion">
+            <type by_reference="false">\OSS_Execpion</type>
+          </tag>
+        </docblock>
+        <argument line="518">
+          <name>$to_user_id</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="518">
+          <name>$privileges</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="518">
+          <name>$by_user_id</name>
+          <default>null</default>
+          <type/>
+        </argument>
+        <argument line="518">
+          <name>$by_collection_id</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="553" package="OSS\API">
+        <name>hashPassword</name>
+        <full_name>hashPassword</full_name>
+        <docblock line="538">
+          <description>Hash password for davical user.</description>
+          <long-description>&lt;p&gt;It hashes three davical supported types hash:
+ * First and most unsecured hash is plain it just add two start infont of password.
+ * Second is md5 result is &lt;em&gt;&lt;salt&gt;&lt;/em&gt; (where &lt;salt&gt; is a random series of characters not including '&lt;em&gt;')
+      then the rest of the string is a hash of (password + salt), i.e. a salted hash.
+ * Third  is SSHA result is is "&lt;/em&gt;&lt;salt&gt;*&lt;LDAP compatible SSHA password&gt;" and the &lt;LDAP compatible SSHA password&gt;
+      is "{SSHA}&lt;SHA-1 salted hash&gt;". Read the code in /usr/share/awl/inc/AWLUtilities.php if you want to
+      understand that format more deeply!&lt;/p&gt;</long-description>
+          <tag line="538" name="param" description="Users password to login." type="string" variable="$password">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="538" name="param" description="Hash method" type="string" variable="$method">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="538" name="return" description="return hashed string." type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="553">
+          <name>$password</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="553">
+          <name>$method</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="587" package="OSS\API">
+        <name>getUserById</name>
+        <full_name>getUserById</full_name>
+        <docblock line="565">
+          <description>Gets user by Id ( user_no )</description>
+          <long-description>&lt;p&gt;Returns:
+    array (size=13)
+           'user_no' =&gt; int 1
+           'active' =&gt; boolean true
+           'email_ok' =&gt; string '2012-12-07 00:00:00+00' (length=22)
+           'joined' =&gt; string '2012-12-07 11:49:55.231231+00' (length=29)
+           'updated' =&gt; string '2012-12-07 13:27:31.698669+00' (length=29)
+           'last_used' =&gt; string '2012-12-11 10:01:29.831451+00' (length=29)
+           'username' =&gt; string 'usrname' (length=7)
+           'password' =&gt; string 'encrypted' (length=9)
+           'fullname' =&gt; string 'Name susrname' (length=13)
+           'email' =&gt; string 'example@example.ie' (length=18)
+           'config_data' =&gt; null
+           'date_format_type' =&gt; string 'E' (length=1)
+           'locale' =&gt; string 'en' (length=2)&lt;/p&gt;</long-description>
+          <tag line="565" name="param" description="User id (user_no)" type="int" variable="$user_id">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="565" name="return" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+        <argument line="587">
+          <name>$user_id</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="614" package="OSS\API">
+        <name>getUserByUsername</name>
+        <full_name>getUserByUsername</full_name>
+        <docblock line="592">
+          <description>Gets user by username</description>
+          <long-description>&lt;p&gt;Returns:
+    array (size=13)
+           'user_no' =&gt; int 1
+           'active' =&gt; boolean true
+           'email_ok' =&gt; string '2012-12-07 00:00:00+00' (length=22)
+           'joined' =&gt; string '2012-12-07 11:49:55.231231+00' (length=29)
+           'updated' =&gt; string '2012-12-07 13:27:31.698669+00' (length=29)
+           'last_used' =&gt; string '2012-12-11 10:01:29.831451+00' (length=29)
+           'username' =&gt; string 'usrname' (length=7)
+           'password' =&gt; string 'encrypted' (length=9)
+           'fullname' =&gt; string 'Name susrname' (length=13)
+           'email' =&gt; string 'example@example.ie' (length=18)
+           'config_data' =&gt; null
+           'date_format_type' =&gt; string 'E' (length=1)
+           'locale' =&gt; string 'en' (length=2)&lt;/p&gt;</long-description>
+          <tag line="592" name="param" description="Username" type="string" variable="$username">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="592" name="return" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+        <argument line="614">
+          <name>$username</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="633" package="OSS\API">
+        <name>getPrincipalById</name>
+        <full_name>getPrincipalById</full_name>
+        <docblock line="619">
+          <description>Gets principal data by principal id</description>
+          <long-description>&lt;p&gt;Returns:
+     array (size=5)
+         'principal_id' =&gt; int 1
+         'type_id' =&gt; int 1
+         'user_no' =&gt; int 1
+         'displayname' =&gt; string 'DAViCal Administrator' (length=21)
+         'default_privileges' =&gt; string '000000000000000000000000' (length=24)&lt;/p&gt;</long-description>
+          <tag line="619" name="param" description="Principal id" type="int" variable="$principal_id">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="619" name="return" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+        <argument line="633">
+          <name>$principal_id</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="664" package="OSS\API">
+        <name>getCalendarById</name>
+        <full_name>getCalendarById</full_name>
+        <docblock line="638">
+          <description>Gets calendar data by collection id</description>
+          <long-description>&lt;p&gt;Returns:
+ array (size=17)
+     'user_no' =&gt; int 1024
+     'parent_container' =&gt; string '/nbdavical/' (length=11)
+     'dav_name' =&gt; string '/nbdavical/calendar/' (length=20)
+     'dav_etag' =&gt; string '-1' (length=2)
+     'dav_displayname' =&gt; string 'Davical User calendar' (length=21)
+     'is_calendar' =&gt; boolean true
+     'created' =&gt; string '2012-12-13 11:39:07.767205+00' (length=29)
+     'modified' =&gt; string '2012-12-13 11:39:07.767205+00' (length=29)
+     'public_events_only' =&gt; boolean false
+     'publicly_readable' =&gt; boolean false
+     'collection_id' =&gt; int 1034
+     'default_privileges' =&gt; null
+     'is_addressbook' =&gt; boolean false
+     'resourcetypes' =&gt; string '&amp;lt;DAV::collection/&gt;&amp;lt;urn:ietf:params:xml:ns:carddav:calendar/&gt;' (length=60)
+     'schedule_transp' =&gt; string 'opaque' (length=6)
+     'timezone' =&gt; null
+     'description' =&gt; string '' (length=0)&lt;/p&gt;</long-description>
+          <tag line="638" name="param" description="Calendar collection id" type="int" variable="$collection_id">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="638" name="return" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+        <argument line="664">
+          <name>$collection_id</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="697" package="OSS\API">
+        <name>getCalendarsByUserId</name>
+        <full_name>getCalendarsByUserId</full_name>
+        <docblock line="669">
+          <description>Gets calendars data by user id ( user_no )</description>
+          <long-description>&lt;p&gt;Returns:
+ array( size=n )
+     0=&gt; array (size=17)
+         'user_no' =&gt; int 1024
+         'parent_container' =&gt; string '/nbdavical/' (length=11)
+         'dav_name' =&gt; string '/nbdavical/calendar/' (length=20)
+         'dav_etag' =&gt; string '-1' (length=2)
+         'dav_displayname' =&gt; string 'Davical User calendar' (length=21)
+         'is_calendar' =&gt; boolean true
+         'created' =&gt; string '2012-12-13 11:39:07.767205+00' (length=29)
+         'modified' =&gt; string '2012-12-13 11:39:07.767205+00' (length=29)
+         'public_events_only' =&gt; boolean false
+         'publicly_readable' =&gt; boolean false
+         'collection_id' =&gt; int 1034
+         'default_privileges' =&gt; null
+         'is_addressbook' =&gt; boolean false
+         'resourcetypes' =&gt; string '&amp;lt;DAV::collection/&gt;&amp;lt;urn:ietf:params:xml:ns:carddav:calendar/&gt;' (length=60)
+         'schedule_transp' =&gt; string 'opaque' (length=6)
+         'timezone' =&gt; null
+         'description' =&gt; string '' (length=0)
+     1 =&gt; array ......&lt;/p&gt;</long-description>
+          <tag line="669" name="param" description="Users id ( user_no )" type="int" variable="$user_id">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="669" name="return" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+        <argument line="697">
+          <name>$user_id</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="735" package="OSS\API">
+        <name>getUsersForSharedCalendar</name>
+        <full_name>getUsersForSharedCalendar</full_name>
+        <docblock line="702">
+          <description>Gets users who has access to shared calendar by calendar id.</description>
+          <long-description>&lt;p&gt;Return:
+ array ( size = n )
+     0 =&gt; array (size=22)
+         'by_principal' =&gt; int 1094
+         'by_collection' =&gt; int 1095
+         'to_principal' =&gt; int 1089
+         'privileges' =&gt; string '000000001111111011100111' (length=24)
+         'is_group' =&gt; null
+         'principal_id' =&gt; int 1089
+         'type_id' =&gt; int 1
+         'user_no' =&gt; int 1048
+         'displayname' =&gt; string 'Nerijus Barauskas' (length=17)
+         'default_privileges' =&gt; string '000000000000000000000000' (length=24)
+         'active' =&gt; boolean true
+         'email_ok' =&gt; null
+         'joined' =&gt; string '2012-12-14 13:25:53.173706+00' (length=29)
+         'updated' =&gt; string '2012-12-14 13:25:53.173706+00' (length=29)
+         'last_used' =&gt; null
+         'username' =&gt; string 'nerijus@opensolutions.ie' (length=24)
+         'password' =&gt; string '**qwerty78' (length=10)
+         'fullname' =&gt; string 'Nerijus Barauskas' (length=17)
+         'email' =&gt; string 'nerijus@opensolutions.ie' (length=24)
+         'config_data' =&gt; null
+         'date_format_type' =&gt; string 'E' (length=1)
+         'locale' =&gt; null
+     1 =&gt; aray ....&lt;/p&gt;</long-description>
+          <tag line="702" name="param" description="Collection id" type="int" variable="$collection_id">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="702" name="return" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+        <argument line="735">
+          <name>$collection_id</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="776" package="OSS\API">
+        <name>getSharedCalendarsForUser</name>
+        <full_name>getSharedCalendarsForUser</full_name>
+        <docblock line="740">
+          <description>Gets shared calendars which can be accessed by user</description>
+          <long-description>&lt;p&gt;Return:
+ array ( size = n )
+     0 =&gt; array (size=25)
+         'by_principal' =&gt; int 1100
+         'by_collection' =&gt; int 1101
+         'to_principal' =&gt; int 1084
+         'privileges' =&gt; string '000000001111111011100111' (length=24)
+         'is_group' =&gt; null
+         'principal_id' =&gt; int 1084
+         'type_id' =&gt; int 1
+         'user_no' =&gt; int 1051
+         'displayname' =&gt; string 'Davical Box' (length=11)
+         'default_privileges' =&gt; null
+         'parent_container' =&gt; string '/sdcc@sdcc.ie/' (length=14)
+         'dav_name' =&gt; string '/sdcc@sdcc.ie/calendar/' (length=23)
+         'dav_etag' =&gt; string '-1' (length=2)
+         'dav_displayname' =&gt; string 'South Dublin County Council calendar' (length=36)
+         'is_calendar' =&gt; boolean true
+         'created' =&gt; string '2012-12-14 16:24:20.325642+00' (length=29)
+         'modified' =&gt; string '2012-12-14 16:24:20.325642+00' (length=29)
+         'public_events_only' =&gt; boolean false
+         'publicly_readable' =&gt; boolean false
+         'collection_id' =&gt; int 1101
+         'is_addressbook' =&gt; boolean false
+         'resourcetypes' =&gt; string '&amp;lt;DAV::collection/&gt;&amp;lt;urn:ietf:params:xml:ns:carddav:calendar/&gt;'' (length=61)
+         'schedule_transp' =&gt; string 'opaque' (length=6)
+         'timezone' =&gt; null
+         'description' =&gt; string '' (length=0)
+     1 =&gt; array ...&lt;/p&gt;</long-description>
+          <tag line="740" name="param" description="User id ( user_no )" type="int" variable="$user_id">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="740" name="return" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+        <argument line="776">
+          <name>$user_id</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
     </class>
     <parse_markers>
-      <error line="56" code="50010">No DocBlock was found for method __construct()</error>
+      <error line="92" code="50015">Argument $dbparams is missing from the Docblock of __construct()</error>
+      <error line="200" code="50015">Argument $privileges is missing from the Docblock of createPrincipal()</error>
+      <error line="469" code="50014">Name of argument $by_collection_id does not match with the DocBlock's name $collection_id in removeGrantPrivileges()</error>
+      <notice line="469" code="50013">Parameter $collection_id could not be found in removeGrantPrivileges()</notice>
+    </parse_markers>
+  </file>
+  <file path="API/RoundCube.php" hash="c42a0005b48c7518e66256d5d119aad5" package="OSS\API">
+    <docblock line="2">
+      <description>OSS Framework</description>
+      <long-description>&lt;p&gt;This file is part of the "OSS Framework" - a library of tools, utilities and
+extensions to the Zend Framework V1.x used for PHP application development.&lt;/p&gt;
+
+&lt;p&gt;Copyright (c) 2007 - 2013, Open Source Solutions Limited, Dublin, Ireland
+All rights reserved.&lt;/p&gt;
+
+&lt;p&gt;Open Source Solutions Limited is a company registered in Dublin,
+Ireland with the Companies Registration Office (#438231). We
+trade as Open Solutions with registered business name (#329120).&lt;/p&gt;
+
+&lt;p&gt;Contact: Barry O'Donovan - info (at) opensolutions (dot) ie
+         http://www.opensolutions.ie/&lt;/p&gt;
+
+&lt;p&gt;LICENSE&lt;/p&gt;
+
+&lt;p&gt;This source file is subject to the new BSD license that is bundled
+with this package in the file LICENSE.txt.&lt;/p&gt;
+
+&lt;p&gt;It is also available through the world-wide-web at this URL:
+    http://www.opensolutions.ie/licenses/new-bsd&lt;/p&gt;
+
+&lt;p&gt;If you did not receive a copy of the license and are unable to
+obtain it through the world-wide-web, please send an email
+to info@opensolutions.ie so we can send you a copy immediately.&lt;/p&gt;</long-description>
+      <tag line="2" name="category" description="OSS"/>
+      <tag line="2" name="package" description="OSS_API"/>
+      <tag line="2" name="copyright" description="Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland"/>
+      <tag line="2" name="license" description="http://www.opensolutions.ie/licenses/new-bsd New BSD License"/>
+      <tag line="2" name="link" description="Open Source Solutions Limited" link="http://www.opensolutions.ie/"/>
+      <tag line="2" name="author" description="Barry O'Donovan &lt;barry@opensolutions.ie&gt;"/>
+      <tag line="2" name="author" description="The Skilled Team of PHP Developers at Open Solutions &lt;info@opensolutions.ie&gt;"/>
+    </docblock>
+    <class final="false" abstract="false" namespace="global" line="48" package="OSS\API">
+      <extends/>
+      <name>OSS_API_RoundCube</name>
+      <full_name>\OSS_API_RoundCube</full_name>
+      <docblock line="40">
+        <description>A RoundCube API via direct database manipulation.</description>
+        <long-description/>
+        <tag line="40" name="category" description="OSS"/>
+        <tag line="40" name="package" description="OSS_API"/>
+        <tag line="40" name="copyright" description="Copyright (c) 2007 - 2013, Open Source Solutions Limited, Dublin, Ireland"/>
+        <tag line="40" name="license" description="http://www.opensolutions.ie/licenses/new-bsd New BSD License"/>
+      </docblock>
+      <property final="false" static="false" visibility="private" line="57" namespace="global" package="Default">
+        <name>$_language</name>
+        <default>"en_GB"</default>
+        <docblock line="53">
+          <description>Stores users preference default language</description>
+          <long-description/>
+          <tag line="53" name="var" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="63" namespace="global" package="Default">
+        <name>$_standard</name>
+        <default>1</default>
+        <docblock line="59">
+          <description>Stores users identity standard default value</description>
+          <long-description/>
+          <tag line="59" name="var" description="" type="int">
+            <type by_reference="false">int</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="71" package="OSS\API">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <docblock line="65">
+          <description>Constructor - creates a new DBAL connection.</description>
+          <long-description/>
+          <tag line="65" name="param" description="" type="array" variable="$dbparams">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="65" name="return" description="" type="void">
+            <type by_reference="false">void</type>
+          </tag>
+        </docblock>
+        <argument line="71">
+          <name>$dbparams</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="84" package="OSS\API">
+        <name>getAllUsers</name>
+        <full_name>getAllUsers</full_name>
+        <docblock line="77">
+          <description>Get all users registered in the RoundCube database as an array.</description>
+          <long-description/>
+          <tag line="77" name="param" description="" type="void" variable="">
+            <type by_reference="false">void</type>
+          </tag>
+          <tag line="77" name="return" description="All users registered in the database" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="77" name="access" description="public"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="97" package="OSS\API">
+        <name>getUser</name>
+        <full_name>getUser</full_name>
+        <docblock line="90">
+          <description>Get users data from the RoundCube database as an array.</description>
+          <long-description/>
+          <tag line="90" name="param" description="Users username" type="\strint" variable="$username">
+            <type by_reference="false">\strint</type>
+          </tag>
+          <tag line="90" name="return" description="" type="array|bool">
+            <type by_reference="false">array</type>
+            <type by_reference="false">bool</type>
+          </tag>
+          <tag line="90" name="access" description="public"/>
+        </docblock>
+        <argument line="97">
+          <name>$username</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="119" package="OSS\API">
+        <name>addUser</name>
+        <full_name>addUser</full_name>
+        <docblock line="105">
+          <description>Creates RoundCube user, and also creates identity if $identity array is passed.</description>
+          <long-description>&lt;p&gt;NOTICE: If $identity array is passed it must contain $identity['mail'].&lt;/p&gt;</long-description>
+          <tag line="105" name="param" description="Users username" type="string" variable="$username">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="105" name="param" description="IMAP addres where email is stored" type="string" variable="$mail_host">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="105" name="param" description="Users preferences such as davical details." type="array" variable="$preferences">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="105" name="param" description="Users identity details." type="array" variable="$identity">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="105" name="return" description="" type="bool">
+            <type by_reference="false">bool</type>
+          </tag>
+          <tag line="105" name="access" description="public"/>
+          <tag line="105" name="throw" description="mail is not set." type="\Identity">
+            <type by_reference="false">\Identity</type>
+          </tag>
+          <tag line="105" name="see" description="\addIdentity()" refers="\addIdentity()"/>
+        </docblock>
+        <argument line="119">
+          <name>$username</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="119">
+          <name>$mail_host</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="119">
+          <name>$preferences</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="119">
+          <name>$identity</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="161" package="OSS\API">
+        <name>addIdentity</name>
+        <full_name>addIdentity</full_name>
+        <docblock line="142">
+          <description>Creates identity for user.</description>
+          <long-description>&lt;p&gt;$identity array sturcture:
+[
+  'replay_to'      =&gt; 'replay_to',
+  'bcc'            =&gt; 'bcc',
+  'name'           =&gt; 'name',
+  'organization'   =&gt; 'organization',
+  'signature'      =&gt; 'signature',
+  'html_signature' =&gt; 'html_signature'
+]&lt;/p&gt;</long-description>
+          <tag line="142" name="param" description="User array loaded form OSS_API_RoundCube" type="array" variable="$user">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="142" name="param" description="Email address" type="string" variable="$email">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="142" name="param" description="" type="array" variable="$identity">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="142" name="return" description="" type="bool">
+            <type by_reference="false">bool</type>
+          </tag>
+          <tag line="142" name="access" description="public"/>
+        </docblock>
+        <argument line="161">
+          <name>$user</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="161">
+          <name>$email</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="161">
+          <name>$identity</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="189" package="OSS\API">
+        <name>updateUser</name>
+        <full_name>updateUser</full_name>
+        <docblock line="179">
+          <description>Updates RoundCube users data, and also updates identity data if $identity array is passed.</description>
+          <long-description/>
+          <tag line="179" name="param" description="Users username" type="string" variable="$username">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="179" name="param" description="IMAP addres where email is stored" type="string" variable="$mail_host">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="179" name="param" description="Users preferences such as davical details." type="array" variable="$preferences">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="179" name="param" description="Users identity details." type="array" variable="$identity">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="179" name="return" description="" type="bool">
+            <type by_reference="false">bool</type>
+          </tag>
+          <tag line="179" name="access" description="public"/>
+        </docblock>
+        <argument line="189">
+          <name>$username</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="189">
+          <name>$mail_host</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="189">
+          <name>$preferences</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="189">
+          <name>$identity</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="229" package="OSS\API">
+        <name>updateIdentity</name>
+        <full_name>updateIdentity</full_name>
+        <docblock line="209">
+          <description>Creates identity for user.</description>
+          <long-description>&lt;p&gt;$identity array sturcture:
+[
+  'email'          =&gt; email,
+  'replay_to'      =&gt; 'replay_to',
+  'bcc'            =&gt; 'bcc',
+  'name'           =&gt; 'name',
+  'organization'   =&gt; 'organization',
+  'signature'      =&gt; 'signature',
+  'html_signature' =&gt; 'html_signature'
+]&lt;/p&gt;</long-description>
+          <tag line="209" name="param" description="User array loaded form OSS_API_RoundCube" type="array" variable="$user">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="209" name="param" description="Email address" type="string" variable="$email">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="209" name="param" description="" type="array" variable="$identity">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="209" name="return" description="" type="bool">
+            <type by_reference="false">bool</type>
+          </tag>
+          <tag line="209" name="access" description="public"/>
+        </docblock>
+        <argument line="229">
+          <name>$user</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="229">
+          <name>$identity</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="254" package="OSS\API">
+        <name>encrypt</name>
+        <full_name>encrypt</full_name>
+        <docblock line="243">
+          <description>Implementation of RoundCube's encryption function.</description>
+          <long-description>&lt;p&gt;Based on source code from the program/include/rcmail.php
+rcmail::encrypt() function.&lt;/p&gt;</long-description>
+          <tag line="243" name="param" description="The cleartext string to encrypt" type="string" variable="$clear">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="243" name="param" description="The encryption key" type="string" variable="$key">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="243" name="param" description="Return the ciphertext as a base64 encoded string" type="string" variable="$base64">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="243" name="return" description="The ciphertext" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="254">
+          <name>$clear</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="254">
+          <name>$key</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="254">
+          <name>$base64</name>
+          <default>true</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="280" package="OSS\API">
+        <name>decrypt</name>
+        <full_name>decrypt</full_name>
+        <docblock line="269">
+          <description>Implementation of RoundCube's decryption function.</description>
+          <long-description>&lt;p&gt;Based on source code from the program/include/rcmail.php
+rcmail::decrypt() function.&lt;/p&gt;</long-description>
+          <tag line="269" name="param" description="The ciphertext string to decrypt" type="string" variable="$cipher">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="269" name="param" description="The encryption key" type="string" variable="$key">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="269" name="param" description="Indicates if the ciphertext is a base64 encoded string" type="string" variable="$base64">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="269" name="return" description="The cleartext" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="280">
+          <name>$cipher</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="280">
+          <name>$key</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="280">
+          <name>$base64</name>
+          <default>true</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="309" package="OSS\API">
+        <name>createIV</name>
+        <full_name>createIV</full_name>
+        <docblock line="300">
+          <description>Implementation of RoundCube's create_iv function.</description>
+          <long-description>&lt;p&gt;Based on source code from the program/include/rcmail.php
+rcmail::create_iv() function.&lt;/p&gt;</long-description>
+          <tag line="300" name="param" description="The size of the initialisation vector" type="int" variable="$size">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="300" name="return" description="The initialisation vector" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="309">
+          <name>$size</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="327" package="OSS\API">
+        <name>setLanguage</name>
+        <full_name>setLanguage</full_name>
+        <docblock line="319">
+          <description>Sets language</description>
+          <long-description>&lt;p&gt;By default is en_GB&lt;/p&gt;</long-description>
+          <tag line="319" name="param" description="Users preference language" type="string" variable="$lang">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="319" name="return" description="for fluent interface" type="$this">
+            <type by_reference="false">$this</type>
+          </tag>
+        </docblock>
+        <argument line="327">
+          <name>$lang</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="341" package="OSS\API">
+        <name>setStandard</name>
+        <full_name>setStandard</full_name>
+        <docblock line="333">
+          <description>Sets standard</description>
+          <long-description>&lt;p&gt;By default is 1&lt;/p&gt;</long-description>
+          <tag line="333" name="param" description="Identity standard" type="int" variable="$standard">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="333" name="return" description="for fluent interface" type="$this">
+            <type by_reference="false">$this</type>
+          </tag>
+        </docblock>
+        <argument line="341">
+          <name>$standard</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <notice line="77" code="50013">Parameter  could not be found in getAllUsers()</notice>
+      <error line="209" code="50014">Name of argument $identity does not match with the DocBlock's name $email in updateIdentity()</error>
+      <notice line="209" code="50013">Parameter $email could not be found in updateIdentity()</notice>
     </parse_markers>
   </file>
   <file path="Html.php" hash="e9ec109cd96a4129be9175ef08036841" package="OSS\HTML">
@@ -8683,7 +10290,7 @@ to info@opensolutions.ie so we can send you a copy immediately.&lt;/p&gt;</long-
       <critical line="39" code="50005">No short description for class \OSS_Resource_Zfdebug</critical>
     </parse_markers>
   </file>
-  <file path="Resource/Doctrine2.php" hash="0c1ab494d268c408b81d84f47aeaafd2" package="OSS\Resource">
+  <file path="Resource/Doctrine2.php" hash="a5ce2455a9e8a1620f97941555fae7cb" package="OSS\Resource">
     <docblock line="2">
       <description>OSS Framework</description>
       <long-description>&lt;p&gt;This file is part of the "OSS Framework" - a library of tools, utilities and
@@ -8984,7 +10591,7 @@ to info@opensolutions.ie so we can send you a copy immediately.&lt;/p&gt;</long-
       <critical line="39" code="50005">No short description for class \OSS_Resource_StatsD</critical>
     </parse_markers>
   </file>
-  <file path="Resource/Namespace.php" hash="2059ded4b8d483d4ffa093fea1ff9e0b" package="OSS\Resource">
+  <file path="Resource/Namespace.php" hash="b718aa3c8104646bf9f1b904e9bc3c10" package="OSS\Resource">
     <docblock line="2">
       <description>OSS Framework</description>
       <long-description>&lt;p&gt;This file is part of the "OSS Framework" - a library of tools, utilities and
@@ -10453,7 +12060,7 @@ to info@opensolutions.ie so we can send you a copy immediately.&lt;/p&gt;</long-
       </method>
     </class>
   </file>
-  <file path="Plugin/Observer.php" hash="53fa93399da70cdee7e5af3979ef605e" package="OSS\Plugin">
+  <file path="Plugin/Observer.php" hash="0577d379d5a1691744eed15fe11e731b" package="OSS\Plugin">
     <docblock line="2">
       <description>OSS Framework</description>
       <long-description>&lt;p&gt;This file is part of the "OSS Framework" - a library of tools, utilities and
@@ -10521,13 +12128,18 @@ to info@opensolutions.ie so we can send you a copy immediately.&lt;/p&gt;</long-
           <default/>
           <type>\OSS_Controller_Action</type>
         </argument>
+        <argument line="48">
+          <name>$params</name>
+          <default>null</default>
+          <type/>
+        </argument>
       </method>
     </interface>
     <parse_markers>
       <error line="48" code="50010">No DocBlock was found for method update()</error>
     </parse_markers>
   </file>
-  <file path="Plugin/Observable.php" hash="83b4551d84d23dd1c421f37639ae52ec" package="OSS\Plugin">
+  <file path="Plugin/Observable.php" hash="a676b172d418303ab676856930baedba" package="OSS\Plugin">
     <docblock line="2">
       <description>OSS Framework</description>
       <long-description>&lt;p&gt;This file is part of the "OSS Framework" - a library of tools, utilities and
@@ -10613,6 +12225,11 @@ which for which plugins can be developed.&lt;/p&gt;</long-description>
           <name>$controllerObject</name>
           <default/>
           <type>\OSS_Controller_Action</type>
+        </argument>
+        <argument line="52">
+          <name>$params</name>
+          <default>null</default>
+          <type/>
         </argument>
       </method>
     </interface>
@@ -11201,7 +12818,7 @@ to info@opensolutions.ie so we can send you a copy immediately.&lt;/p&gt;</long-
       <critical line="39" code="50005">No short description for class \OSS_Doctrine2_Utils</critical>
     </parse_markers>
   </file>
-  <file path="Doctrine2/WithPreferences.php" hash="83ab0eb34ef020dc47eded4b53a07dee" package="OSS\Doctrine2">
+  <file path="Doctrine2/WithPreferences.php" hash="d11e6894a15be1804af37971490cca7b" package="OSS\Doctrine2">
     <docblock line="3">
       <description>OSS Framework</description>
       <long-description>&lt;p&gt;This file is part of the "OSS Framework" - a library of tools, utilities and
@@ -11405,7 +13022,7 @@ to info@opensolutions.ie so we can send you a copy immediately.&lt;/p&gt;</long-
       <notice line="90" code="50013">Parameter $executionMS could not be found in startQuery()</notice>
     </parse_markers>
   </file>
-  <file path="Doctrine2/DBAL/Connection.php" hash="eddfebfefe3cb745c05fd962ed891cab" package="OSS\Doctrine2">
+  <file path="Doctrine2/DBAL/Connection.php" hash="7b0b0f8ed4a1d6581d7f08b08cc5700b" package="OSS\Doctrine2">
     <docblock line="2">
       <description>OSS Framework</description>
       <long-description>&lt;p&gt;This file is part of the "OSS Framework" - a library of tools, utilities and
@@ -12770,7 +14387,7 @@ to info@opensolutions.ie so we can send you a copy immediately.&lt;/p&gt;</long-
       </argument>
     </function>
   </file>
-  <file path="Smarty/functions/function.addJSValidator.php" hash="3412f86392804fc4cac1f61cb207d430" package="OSS\Smarty\Functions">
+  <file path="Smarty/functions/function.addJSValidator.php" hash="8d6b6849b3de21db431e52c91f82836e" package="OSS\Smarty\Functions">
     <docblock line="2">
       <description>OSS Framework</description>
       <long-description>&lt;p&gt;This file is part of the "OSS Framework" - a library of tools, utilities and
@@ -18370,7 +19987,7 @@ to info@opensolutions.ie so we can send you a copy immediately.&lt;/p&gt;</long-
       <critical line="40" code="50005">No short description for class \OSS_ZFDebug_Controller_Plugin_Debug_Plugin_Doctrine</critical>
     </parse_markers>
   </file>
-  <file path="Controller/Trait/Auth.php" hash="805b3b79d49fb793d2742709ebccdd08" package="OSS\Controller">
+  <file path="Controller/Trait/Auth.php" hash="2fbe6e4c8a4769b8ed47e77c40e83c74" package="OSS\Controller">
     <docblock line="3">
       <description>OSS Framework</description>
       <long-description>&lt;p&gt;This file is part of the "OSS Framework" - a library of tools, utilities and
@@ -18550,7 +20167,7 @@ to info@opensolutions.ie so we can send you a copy immediately.&lt;/p&gt;</long-
       <tag line="2" name="author" description="The Skilled Team of PHP Developers at Open Solutions &lt;info@opensolutions.ie&gt;"/>
     </docblock>
   </file>
-  <file path="Controller/Action/Trait/Doctrine2Cache.php" hash="8e82f614881bcb7765e18dc743cbdb1f" package="OSS\Controller\Action\Traits">
+  <file path="Controller/Action/Trait/Doctrine2Cache.php" hash="38e214edde0957a9a87c02b43465f371" package="OSS\Controller\Action\Traits">
     <docblock line="2">
       <description>OSS Framework</description>
       <long-description>&lt;p&gt;This file is part of the "OSS Framework" - a library of tools, utilities and
@@ -18694,7 +20311,7 @@ to info@opensolutions.ie so we can send you a copy immediately.&lt;/p&gt;</long-
       <tag line="2" name="author" description="The Skilled Team of PHP Developers at Open Solutions &lt;info@opensolutions.ie&gt;"/>
     </docblock>
   </file>
-  <file path="Controller/Action/Trait/Doctrine2.php" hash="45e30b27f0ff70c306ce4adde052532e" package="OSS\Controller\Action\Traits">
+  <file path="Controller/Action/Trait/Doctrine2.php" hash="ea5573c7312cf286dc53914bbf3aec7b" package="OSS\Controller\Action\Traits">
     <docblock line="2">
       <description>OSS Framework</description>
       <long-description>&lt;p&gt;This file is part of the "OSS Framework" - a library of tools, utilities and
@@ -18766,7 +20383,7 @@ to info@opensolutions.ie so we can send you a copy immediately.&lt;/p&gt;</long-
       <tag line="2" name="author" description="The Skilled Team of PHP Developers at Open Solutions &lt;info@opensolutions.ie&gt;"/>
     </docblock>
   </file>
-  <file path="Controller/Action/Trait/Doctrine2User.php" hash="172206267b687c84823add97e08c08cd" package="OSS\Controller\Action\Traits">
+  <file path="Controller/Action/Trait/Doctrine2User.php" hash="ae6e43907db5d2745ba1661bd5ece842" package="OSS\Controller\Action\Traits">
     <docblock line="2">
       <description>OSS Framework</description>
       <long-description>&lt;p&gt;This file is part of the "OSS Framework" - a library of tools, utilities and
@@ -19165,7 +20782,7 @@ to info@opensolutions.ie so we can send you a copy immediately.&lt;/p&gt;</long-
       <tag line="2" name="author" description="The Skilled Team of PHP Developers at Open Solutions &lt;info@opensolutions.ie&gt;"/>
     </docblock>
   </file>
-  <file path="Controller/Action.php" hash="890ecbcce6c0cb0444424766816b9fa6" package="OSS\Controller">
+  <file path="Controller/Action.php" hash="f7631ab88536ca1514b494ed9efda47a" package="OSS\Controller">
     <docblock line="3">
       <description>OSS Framework</description>
       <long-description>&lt;p&gt;This file is part of the "OSS Framework" - a library of tools, utilities and
@@ -19856,6 +21473,224 @@ to info@opensolutions.ie so we can send you a copy immediately.&lt;/p&gt;</long-
       <error line="102" code="50010">No DocBlock was found for method generateSalt()</error>
     </parse_markers>
   </file>
+  <file path="Crypt/OpenSSL.php" hash="f39dc2dc6d13eb716c0503ce67d648d1" package="OSS\Crypt">
+    <docblock line="2">
+      <description>OSS Framework</description>
+      <long-description>&lt;p&gt;This file is part of the "OSS Framework" - a library of tools, utilities and
+extensions to the Zend Framework V1.x used for PHP application development.&lt;/p&gt;
+
+&lt;p&gt;Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland
+All rights reserved.&lt;/p&gt;
+
+&lt;p&gt;Open Source Solutions Limited is a company registered in Dublin,
+Ireland with the Companies Registration Office (#438231). We
+trade as Open Solutions with registered business name (#329120).&lt;/p&gt;
+
+&lt;p&gt;Contact: Barry O'Donovan - info (at) opensolutions (dot) ie
+         http://www.opensolutions.ie/&lt;/p&gt;
+
+&lt;p&gt;LICENSE&lt;/p&gt;
+
+&lt;p&gt;This source file is subject to the new BSD license that is bundled
+with this package in the file LICENSE.txt.&lt;/p&gt;
+
+&lt;p&gt;It is also available through the world-wide-web at this URL:
+    http://www.opensolutions.ie/licenses/new-bsd&lt;/p&gt;
+
+&lt;p&gt;If you did not receive a copy of the license and are unable to
+obtain it through the world-wide-web, please send an email
+to info@opensolutions.ie so we can send you a copy immediately.&lt;/p&gt;</long-description>
+      <tag line="2" name="category" description="OSS"/>
+      <tag line="2" name="package" description="OSS_Crypt"/>
+      <tag line="2" name="copyright" description="Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland"/>
+      <tag line="2" name="license" description="http://www.opensolutions.ie/licenses/new-bsd New BSD License"/>
+      <tag line="2" name="link" description="Open Source Solutions Limited" link="http://www.opensolutions.ie/"/>
+      <tag line="2" name="author" description="Barry O'Donovan &lt;barry@opensolutions.ie&gt;"/>
+      <tag line="2" name="author" description="The Skilled Team of PHP Developers at Open Solutions &lt;info@opensolutions.ie&gt;"/>
+    </docblock>
+    <class final="false" abstract="false" namespace="global" line="50" package="OSS\Crypt">
+      <extends/>
+      <name>OSS_Crypt_OpenSSL</name>
+      <full_name>\OSS_Crypt_OpenSSL</full_name>
+      <docblock line="40">
+        <description>OpenSSL public/private key generation tools.</description>
+        <long-description/>
+        <tag line="40" name="author" description="Barry O'Donovan &lt;barry@opensolutions.ie&gt;"/>
+        <tag line="40" name="author" description="The Skilled Team of PHP Developers at Open Solutions &lt;info@opensolutions.ie&gt;"/>
+        <tag line="40" name="category" description="OSS"/>
+        <tag line="40" name="package" description="OSS_Crypt"/>
+        <tag line="40" name="copyright" description="Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland"/>
+        <tag line="40" name="license" description="http://www.opensolutions.ie/licenses/new-bsd New BSD License"/>
+      </docblock>
+      <property final="false" static="false" visibility="private" line="57" namespace="global" package="Default">
+        <name>$_passphrase</name>
+        <default>null</default>
+        <docblock line="52">
+          <description>A variable to store a Passphrase to encrypt / decrypt the key pair</description>
+          <long-description/>
+          <tag line="52" name="var" description="Passphrase to encrypt / decrypt the key pair" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="64" namespace="global" package="Default">
+        <name>$_keypair</name>
+        <default>null</default>
+        <docblock line="59">
+          <description>A variable to hold a key pair resource</description>
+          <long-description/>
+          <tag line="59" name="var" description="A key pair resource" type="resource">
+            <type by_reference="false">resource</type>
+          </tag>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="71" namespace="global" package="Default">
+        <name>$_cert</name>
+        <default>null</default>
+        <docblock line="66">
+          <description>A variable to hold a certificate resource</description>
+          <long-description/>
+          <tag line="66" name="var" description="A certificate resource" type="resource">
+            <type by_reference="false">resource</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="81" package="OSS\Crypt">
+        <name>setPassphrase</name>
+        <full_name>setPassphrase</full_name>
+        <docblock line="73">
+          <description>Sets passphrase.</description>
+          <long-description>&lt;p&gt;Sets passphrase which will be used for key pair encryption.&lt;/p&gt;</long-description>
+          <tag line="73" name="param" description="The passphrase for key pair encryption" type="string" variable="$passphrase">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="73" name="return" description="" type="void">
+            <type by_reference="false">void</type>
+          </tag>
+        </docblock>
+        <argument line="81">
+          <name>$passphrase</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="94" package="OSS\Crypt">
+        <name>setKeyPair</name>
+        <full_name>setKeyPair</full_name>
+        <docblock line="86">
+          <description>Sets key pair.</description>
+          <long-description>&lt;p&gt;Sets key pair from key pair file content&lt;/p&gt;</long-description>
+          <tag line="86" name="param" description="The key pair file content" type="string" variable="$keypair">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="86" name="return" description="of key pair" type="resource">
+            <type by_reference="false">resource</type>
+          </tag>
+        </docblock>
+        <argument line="94">
+          <name>$keypair</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="109" package="OSS\Crypt">
+        <name>genKeyPair</name>
+        <full_name>genKeyPair</full_name>
+        <docblock line="101">
+          <description>Generates key pair.</description>
+          <long-description>&lt;p&gt;Generates public and private key pair for encryption / decryption.&lt;/p&gt;</long-description>
+          <tag line="101" name="param" description="The generator options." type="array" variable="$options">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="101" name="return" description="of key pair" type="resource">
+            <type by_reference="false">resource</type>
+          </tag>
+        </docblock>
+        <argument line="109">
+          <name>$options</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="127" package="OSS\Crypt">
+        <name>exportKeyPair</name>
+        <full_name>exportKeyPair</full_name>
+        <docblock line="115">
+          <description>Exports key pair.</description>
+          <long-description>&lt;p&gt;Exports key pair which is actually private key which store public key information.
+If encrypt is set to true then export resource will be encrypted with $_passphrase
+else it will return the actual key without encryption. By default $encrypt is true.&lt;/p&gt;</long-description>
+          <tag line="115" name="param" description="The encrypt flag to encrypt or not the returning resource." type="\boo" variable="$encrypt">
+            <type by_reference="false">\boo</type>
+          </tag>
+          <tag line="115" name="return" description="of key pair" type="resource">
+            <type by_reference="false">resource</type>
+          </tag>
+          <tag line="115" name="throws" description="if $_keypair is not generated, or if encryption required&#10;        and $_passphrase is not unset." type="\OSS_Crypt_Exception">
+            <type by_reference="false">\OSS_Crypt_Exception</type>
+          </tag>
+        </docblock>
+        <argument line="127">
+          <name>$encrypt</name>
+          <default>true</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="152" package="OSS\Crypt">
+        <name>exportPublicKey</name>
+        <full_name>exportPublicKey</full_name>
+        <docblock line="144">
+          <description>Exports public.</description>
+          <long-description>&lt;p&gt;Exports public key from $_keypair.&lt;/p&gt;</long-description>
+          <tag line="144" name="return" description="of public key" type="resource">
+            <type by_reference="false">resource</type>
+          </tag>
+          <tag line="144" name="throws" description="if $_keypair is not generated." type="\OSS_Crypt_Exception">
+            <type by_reference="false">\OSS_Crypt_Exception</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="167" package="OSS\Crypt">
+        <name>genSelfSignedCert</name>
+        <full_name>genSelfSignedCert</full_name>
+        <docblock line="160">
+          <description>Generates self signed certificate.</description>
+          <long-description>&lt;p&gt;Generates self signed certificate and returns it.&lt;/p&gt;</long-description>
+          <tag line="160" name="return" description="of certificate." type="resource">
+            <type by_reference="false">resource</type>
+          </tag>
+        </docblock>
+        <argument line="167">
+          <name>$dn</name>
+          <default/>
+          <type/>
+        </argument>
+        <argument line="167">
+          <name>$days</name>
+          <default/>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="181" package="OSS\Crypt">
+        <name>exportCert</name>
+        <full_name>exportCert</full_name>
+        <docblock line="173">
+          <description>Exports self signed certificate as string.</description>
+          <long-description>&lt;p&gt;Converts self signed certificate to string, and returns it.&lt;/p&gt;</long-description>
+          <tag line="173" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="173" name="throws" description="if $_cert is not generated." type="\OSS_Crypt_Exception">
+            <type by_reference="false">\OSS_Crypt_Exception</type>
+          </tag>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="160" code="50015">Argument $dn is missing from the Docblock of genSelfSignedCert()</error>
+      <error line="160" code="50015">Argument $days is missing from the Docblock of genSelfSignedCert()</error>
+    </parse_markers>
+  </file>
   <file path="Crypt/GibberishAES.php" hash="c07e1a1d8716f459970faa73814000bc" package="OSS\Crypt">
     <docblock line="2">
       <description>OSS Framework</description>
@@ -20366,7 +22201,7 @@ to info@opensolutions.ie so we can send you a copy immediately.&lt;/p&gt;</long-
       <critical line="39" code="50005">No short description for class \OSS_License_Exception</critical>
     </parse_markers>
   </file>
-  <file path="Auth/Password.php" hash="87d3244ec7ac75eb67828a359327f9ba" package="OSS\Auth">
+  <file path="Auth/Password.php" hash="afcd1ffe6b53f0346b39e4c19e32be8b" package="OSS\Auth">
     <docblock line="2">
       <description>OSS Framework</description>
       <long-description>&lt;p&gt;This file is part of the "OSS Framework" - a library of tools, utilities and
@@ -20419,14 +22254,24 @@ to info@opensolutions.ie so we can send you a copy immediately.&lt;/p&gt;</long-
         <value>'plaintext'</value>
       </constant>
       <constant namespace="global" line="50" package="OSS\Auth">
+        <name>HASH_PLAIN</name>
+        <full_name>HASH_PLAIN</full_name>
+        <value>'plain'</value>
+      </constant>
+      <constant namespace="global" line="51" package="OSS\Auth">
         <name>HASH_BCRYPT</name>
         <full_name>HASH_BCRYPT</full_name>
         <value>'bcrypt'</value>
       </constant>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="66" package="OSS\Auth">
+      <constant namespace="global" line="52" package="OSS\Auth">
+        <name>HASH_UNKNOWN</name>
+        <full_name>HASH_UNKNOWN</full_name>
+        <value>'*unknown*'</value>
+      </constant>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="68" package="OSS\Auth">
         <name>hash</name>
         <full_name>hash</full_name>
-        <docblock line="53">
+        <docblock line="55">
           <description>A generic password hashing method using a given configuration array</description>
           <long-description>&lt;p&gt;The parameters expected in &lt;code&gt;$config&lt;/code&gt; are:&lt;/p&gt;
 
@@ -20434,64 +22279,64 @@ to info@opensolutions.ie so we can send you a copy immediately.&lt;/p&gt;</long-
 &lt;li&gt;&lt;code&gt;pwhash&lt;/code&gt;      - a hashing method from the &lt;code&gt;HASH_&lt;/code&gt; constants in this class&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;hash_cost&lt;/code&gt;   - a &lt;em&gt;cost&lt;/em&gt; parameter for certain hashing functions - e.g. bcrypt (defaults to 9)&lt;/li&gt;
 &lt;/ul&gt;</long-description>
-          <tag line="53" name="param" description="The plaintext password to hash" type="string" variable="$pw">
+          <tag line="55" name="param" description="The plaintext password to hash" type="string" variable="$pw">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="53" name="param" description="The resources.auth.oss array from `application.ini`" type="array" variable="$config">
+          <tag line="55" name="param" description="The resources.auth.oss array from `application.ini`" type="array" variable="$config">
             <type by_reference="false">array</type>
           </tag>
-          <tag line="53" name="throws" description="" type="\OSS_Exception">
+          <tag line="55" name="throws" description="" type="\OSS_Exception">
             <type by_reference="false">\OSS_Exception</type>
           </tag>
-          <tag line="53" name="return" description="The hashed password" type="string">
+          <tag line="55" name="return" description="The hashed password" type="string">
             <type by_reference="false">string</type>
           </tag>
         </docblock>
-        <argument line="66">
+        <argument line="68">
           <name>$pw</name>
           <default/>
           <type/>
         </argument>
-        <argument line="66">
+        <argument line="68">
           <name>$config</name>
           <default/>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="102" package="OSS\Auth">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="114" package="OSS\Auth">
         <name>verify</name>
         <full_name>verify</full_name>
-        <docblock line="91">
+        <docblock line="103">
           <description>A generic password verification function for various hashing methods using a given configuration array</description>
           <long-description/>
-          <tag line="91" name="see" description="for full documentation" refers="\hash()"/>
-          <tag line="91" name="param" description="The plaintext password" type="string" variable="$pwplain">
+          <tag line="103" name="see" description="for full documentation" refers="\hash()"/>
+          <tag line="103" name="param" description="The plaintext password" type="string" variable="$pwplain">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="91" name="param" description="The hashed password to use for verification" type="string" variable="$pwhash">
+          <tag line="103" name="param" description="The hashed password to use for verification" type="string" variable="$pwhash">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="91" name="param" description="The resources.auth.oss array from `application.ini`" type="array" variable="$config">
+          <tag line="103" name="param" description="The resources.auth.oss array from `application.ini`" type="array" variable="$config">
             <type by_reference="false">array</type>
           </tag>
-          <tag line="91" name="throws" description="" type="\OSS_Exception">
+          <tag line="103" name="throws" description="" type="\OSS_Exception">
             <type by_reference="false">\OSS_Exception</type>
           </tag>
-          <tag line="91" name="return" description="True if the passwords match" type="bool">
+          <tag line="103" name="return" description="True if the passwords match" type="bool">
             <type by_reference="false">bool</type>
           </tag>
         </docblock>
-        <argument line="102">
+        <argument line="114">
           <name>$pwplain</name>
           <default/>
           <type/>
         </argument>
-        <argument line="102">
+        <argument line="114">
           <name>$pwhash</name>
           <default/>
           <type/>
         </argument>
-        <argument line="102">
+        <argument line="114">
           <name>$config</name>
           <default/>
           <type/>
@@ -20834,7 +22679,7 @@ to info@opensolutions.ie so we can send you a copy immediately.&lt;/p&gt;</long-
       <error line="118" code="50010">No DocBlock was found for method haveCookie()</error>
     </parse_markers>
   </file>
-  <file path="String.php" hash="90dff41beb9da800398ec8d5a12be18c" package="OSS\String">
+  <file path="String.php" hash="443ec841bf4664351e2c2c579cc6a6e5" package="OSS\String">
     <docblock line="2">
       <description>OSS Framework</description>
       <long-description>&lt;p&gt;This file is part of the "OSS Framework" - a library of tools, utilities and
@@ -21100,7 +22945,7 @@ underscores are also removed.&lt;/p&gt;</long-description>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="231" package="OSS\String">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="232" package="OSS\String">
         <name>normalise</name>
         <full_name>normalise</full_name>
         <docblock line="220">
@@ -21112,93 +22957,101 @@ setlocale(LC_ALL, "en_IE.utf8"); //or any other locale, as long as it's utf8&lt;
           <tag line="220" name="param" description="the original input string" type="string" variable="$input">
             <type by_reference="false">string</type>
           </tag>
+          <tag line="220" name="param" description="By default is false and it will remove spaces from string. Then it is set true it will keep spaces in string." type="bool" variable="$keepSpaces">
+            <type by_reference="false">bool</type>
+          </tag>
           <tag line="220" name="return" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
         </docblock>
-        <argument line="231">
+        <argument line="232">
           <name>$input</name>
           <default/>
           <type/>
         </argument>
+        <argument line="232">
+          <name>$keepSpaces</name>
+          <default>false</default>
+          <type/>
+        </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="266" package="OSS\String">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="270" package="OSS\String">
         <name>salt</name>
         <full_name>salt</full_name>
-        <docblock line="260">
+        <docblock line="264">
           <description>Generates a random salt.</description>
           <long-description/>
-          <tag line="260" name="param" description="Length of return salt." type="int" variable="$len">
+          <tag line="264" name="param" description="Length of return salt." type="int" variable="$len">
             <type by_reference="false">int</type>
           </tag>
-          <tag line="260" name="return" description="" type="string">
+          <tag line="264" name="return" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
         </docblock>
-        <argument line="266">
+        <argument line="270">
           <name>$len</name>
           <default/>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="277" package="OSS\String">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="281" package="OSS\String">
         <name>randomMacAddress</name>
         <full_name>randomMacAddress</full_name>
-        <docblock line="271">
+        <docblock line="275">
           <description>Generates a random MAC address.</description>
           <long-description/>
-          <tag line="271" name="param" description="default false" type="bool" variable="$upperCase">
+          <tag line="275" name="param" description="default false" type="bool" variable="$upperCase">
             <type by_reference="false">bool</type>
           </tag>
-          <tag line="271" name="return" description="" type="string">
+          <tag line="275" name="return" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
         </docblock>
-        <argument line="277">
+        <argument line="281">
           <name>$upperCase</name>
           <default>false</default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="299" package="OSS\String">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="303" package="OSS\String">
         <name>stripSlashes</name>
         <full_name>stripSlashes</full_name>
-        <docblock line="290">
+        <docblock line="294">
           <description>If the parameter is an array, then runs stripslashes() on every item of it, recursively.</description>
           <long-description>&lt;p&gt;Otherwise treats the input as a string, and runs stripslashes() on it. If the input is an
 object, then the return value will be an array of the public object properties.
 The return value is either a string or an array.&lt;/p&gt;</long-description>
-          <tag line="290" name="param" description="" type="mixed" variable="$input">
+          <tag line="294" name="param" description="" type="mixed" variable="$input">
             <type by_reference="false">mixed</type>
           </tag>
-          <tag line="290" name="return" description="" type="array|string">
+          <tag line="294" name="return" description="" type="array|string">
             <type by_reference="false">array</type>
             <type by_reference="false">string</type>
           </tag>
         </docblock>
-        <argument line="299">
+        <argument line="303">
           <name>$input</name>
           <default/>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="334" package="OSS\String">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="338" package="OSS\String">
         <name>htmlEntityDecode</name>
         <full_name>htmlEntityDecode</full_name>
-        <docblock line="325">
+        <docblock line="329">
           <description>If the parameter is an array, then runs html_entity_decode() on every item of it, recursively.</description>
           <long-description>&lt;p&gt;Otherwise treats the input as a string, and runs html_entity_decode() on it. If the input is an
 object, then the return value will be an array of the public object properties.
 The return value is either a string or an array.&lt;/p&gt;</long-description>
-          <tag line="325" name="param" description="" type="mixed" variable="$input">
+          <tag line="329" name="param" description="" type="mixed" variable="$input">
             <type by_reference="false">mixed</type>
           </tag>
-          <tag line="325" name="return" description="" type="array|string">
+          <tag line="329" name="return" description="" type="array|string">
             <type by_reference="false">array</type>
             <type by_reference="false">string</type>
           </tag>
         </docblock>
-        <argument line="334">
+        <argument line="338">
           <name>$input</name>
           <default/>
           <type/>

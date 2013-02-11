@@ -31,7 +31,7 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">200</span></a></li>
+                <span class="label label-info">209</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul>
 <li>todo 
@@ -190,7 +190,7 @@ The return value is either a string or an array.</p></div>
 </div>
 <a id="method_normalise"></a><div class="element clickable method public method_normalise" data-toggle="collapse" data-target=".method_normalise .collapse">
 <h2>Removes any diacritic, accent and combining characters from the string.</h2>
-<pre>normalise(string $input) : string</pre>
+<pre>normalise(string $input, bool $keepSpaces) : string</pre>
 <div class="labels"><span class="label">Static</span></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"><p>These settings should be set for working results:
@@ -201,6 +201,9 @@ setlocale(LC_ALL, "en_IE.utf8"); //or any other locale, as long as it's utf8</p>
 <div class="subelement argument">
 <h4>$input</h4>
 <code>string</code><p>the original input string</p></div>
+<div class="subelement argument">
+<h4>$keepSpaces</h4>
+<code>bool</code><p>By default is false and it will remove spaces from string. Then it is set true it will keep spaces in string.</p></div>
 <h3>Returns</h3>
 <div class="subelement response"><code>string</code></div>
 </div></div>
@@ -345,7 +348,7 @@ underscores are also removed.</p></div>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
-            generated on 2012-12-12T10:59:31Z.<br></footer></div>
+            generated on 2013-02-11T11:16:49Z.<br></footer></div>
 </div>
 </body>
 </html>
