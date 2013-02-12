@@ -172,8 +172,17 @@ class OSS_Utils
 
     /**
      * A function to generate a URL with the given parameters.
+     *
      * This is a useful function as no knowledge of the application's path is required.
-     * Uses Zend_Controller_Front.
+     *
+     * It is also configurable (via Zend_Application config and assuming 'options' is 
+     * available in Zend_Registry as it would be from OSS_Controller_Action).
+     *
+     * You can configure the hostname by setting config: utils.genurl.host_mode
+     *
+     * * Default (no config / invalid config): ''$_SERVER['HTTP_HOST']''
+     * * ''HTTP_X_FORWARDED_HOST'': Use ''$_SERVER['HTTP_X_FORWARDED_HOST']''
+     * * ''REPLEACE'': set with value from utils.genurl.host_replace
      *
      * @param string|bool $controller default false The controller to call.
      * @param string|bool $action default false The action to call (controller must be set if setting action)
@@ -184,8 +193,10 @@ class OSS_Utils
      */
     public static function genUrl( $controller = false, $action = false, $module = false, $params = array(), $host = null )
     {
+        $options = Zend_Registry::get( 'options' );
+        
         $url = Zend_Controller_Front::getInstance()->getBaseUrl();
-
+        
         if( $host !== null )
         {
             // strip out http[s]://
@@ -198,13 +209,35 @@ class OSS_Utils
 
             if( $pos !== false )
                 $url = substr( $url, $pos );
-
-            $url = $host . $url;
+        }
+        else 
+        {
+            if( isset( $options['utils']['genurl']['host_mode'] ) )
+            {
+                switch( $options['utils']['genurl']['host_mode'] )
+                {
+                    case 'HTTP_X_FORWARDED_HOST':
+                        $host = $_SERVER['HTTP_X_FORWARDED_HOST'];
+                        break;
+                        
+                    case 'REPLACE':
+                        $host = $options['utils']['genurl']['host_replace'];
+                        break;
+                        
+                    default:
+                        $host = $_SERVER['HTTP_HOST'];
+                }
+            }
+            else
+                $host = $_SERVER['HTTP_HOST'];
         }
 
+        $url = $host . $url;
+        
         // when the webpage is directly under "xyz.com/", and not in "xyz.com/wherever"
         // an empty href attribute in an anchor tag means "the current URL", which is not always good
         //if( $url == '' )
+        
         if( strpos( $url, 'http' ) !== 0 )
         {
             $tmp = 'http';
@@ -212,9 +245,7 @@ class OSS_Utils
             if( isset( $_SERVER['HTTPS'] ) && ( $_SERVER['HTTPS'] == 'on' ) )
                 $tmp .= 's';
 
-            $tmp .= "://{$_SERVER['HTTP_HOST']}";
-
-            $url = "{$tmp}{$url}";
+            $url = "{$tmp}://{$url}";
         }
 
         if( $module )
