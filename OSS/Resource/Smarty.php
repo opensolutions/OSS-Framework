@@ -97,7 +97,7 @@ class OSS_Resource_Smarty extends Zend_Application_Resource_ResourceAbstract
                     $options['templates'], 
                     array( 
                         'cache_dir'   => $options['cache'], 
-                        'config_dir'  => $options['config'], 
+                        'config_dir'  => isset( $options['config'] ) ? $options['config'] : null, 
                         'compile_dir' => $options['compiled'], 
                         'plugins_dir' => $options['plugins'] 
                     ) 
