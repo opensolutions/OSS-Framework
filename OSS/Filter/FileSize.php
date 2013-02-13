@@ -50,10 +50,10 @@ class OSS_Filter_FileSize implements Zend_Filter_Interface
     const SIZE_GIGABYTES = "GB";
 
     public static $SIZE_MULTIPLIERS = [
-        self::SIZE_BYTES => 1,
-        self::SIZE_KILOBYTES => 1024,
-        self::SIZE_MEGABYTES => 1048576,
-        self::SIZE_GIGABYTES => 1073741824
+        self::SIZE_BYTES     => 1.0,
+        self::SIZE_KILOBYTES => 1024.0,
+        self::SIZE_MEGABYTES => 1048576.0,
+        self::SIZE_GIGABYTES => 1073741824.0
     ];
 
     /**
@@ -75,19 +75,45 @@ class OSS_Filter_FileSize implements Zend_Filter_Interface
      */
     public function __construct( $multiplier = null )
     {
-        if( $multiplier )
-        {
-            if( array_key_exists( strtoupper( $multiplier ), self::$SIZE_MULTIPLIERS ) )
-                $this->_multiplier = strtoupper( $multiplier );
-            else
-                throw new OSS_Exception( "Trying to set unknown multiplier for FileSize filter." );
-        }
+        if( $multiplier !== null )
+        	$this->setMultiplier( $multiplier );
+    }
+    
 
+    /**
+	 * Set the multipler (the value by which integers are multiplied when, for
+	 * example, a text field makes it clear to the user than units are MB rather
+	 * than B).
+	 *
+	 * @param string $multiplier A key from self::$SIZE_MULTIPLIERS
+	 * @throws OSS_Exception
+	 * @return OSS_Filter_FileSize for fluent interfaces
+     */
+    public function setMultiplier( $multiplier )
+    {
+        if( array_key_exists( strtoupper( $multiplier ), self::$SIZE_MULTIPLIERS ) )
+    		$this->_multiplier = strtoupper( $multiplier );
+    	else
+    		throw new OSS_Exception( "Trying to set unknown multiplier for FileSize filter." );
+    	
+    	return $this;
     }
 
     /**
-     * Takes string input and returns size in bytes. 
-     * 
+	 * Get the multipler (the value by which integers are multiplied when, for
+	 * example, a text field makes it clear to the user than units are MB rather
+	 * than B).
+	 *
+	 * @return string A key from self::$SIZE_MULTIPLIERS
+     */
+    public function getMultiplier()
+    {
+    	return $this->_multiplier;
+    }
+
+    /**
+     * Takes string input and returns size in bytes.
+     *
      *  10KB, 10Kb, 10kb, 10k input will return 10240 value.
      *  1000 KB, 1000K, 0.98MB input will return 1024000
      *  0.9MB, 0.9m, 0.9mb, 0.9 MB input will return 943718.
@@ -100,7 +126,7 @@ class OSS_Filter_FileSize implements Zend_Filter_Interface
      * @return int|bool
      */
     public function filter( $value )
-    {   
+    {
         $debug = debug_backtrace();
         
         if( $debug[5]['function'] == "render" || $debug[3]['function'] == "render" )
@@ -116,7 +142,7 @@ class OSS_Filter_FileSize implements Zend_Filter_Interface
         if( substr_count( $value, "." ) > 1 )
             return false;
 
-        $fsize = preg_replace( "/[^0123456789\.\-]/", '', (string) $value );
+        $fsize = preg_replace( "/[^0123456789\.]/", '', (string) $value );
         
         if( $fsize == "" ||  $fsize == 0 )
             return 0;
@@ -138,36 +164,47 @@ class OSS_Filter_FileSize implements Zend_Filter_Interface
         
         if( isset( self::$SIZE_MULTIPLIERS[ $subfix ] ) )
             $fsize = $fsize * self::$SIZE_MULTIPLIERS[ $subfix ];
-        else 
+        else
             return false;
         
-        return floor( $fsize );
+        return $fsize;
     }
 
     /**
-     * Takes size input and returns formatted string. 
-     * 
+     * Takes size input and returns formatted string.
+     *
      *  10240 input will return 100.00KB value.
      *  1024000 input will return 0.98MB value.
      *  943718 input will 0.90MB return .
-     *  20 input will return 20B. 
+     *  20 input will return 20B.
      *
      * @param int $value String to parse size in bytes
      * @return string
      */
     public static function unfilter( $value )
-    {   
+    {
         if( !$value )
             return $value;
 
         if( $value / self::$SIZE_MULTIPLIERS[ self::SIZE_KILOBYTES ] < 0.1 )
-            return $value . self::SIZE_BYTES;
+            $value = (float)"{$value}" . self::SIZE_BYTES;
         elseif( $value / self::$SIZE_MULTIPLIERS[ self::SIZE_KILOBYTES ] >= 0.1 && $value / self::$SIZE_MULTIPLIERS[ self::SIZE_KILOBYTES ] < 900 )
-            return sprintf( "%0.2f%s", $value / self::$SIZE_MULTIPLIERS[ self::SIZE_KILOBYTES ], self::SIZE_KILOBYTES );
+        {
+            $value = $value / self::$SIZE_MULTIPLIERS[ self::SIZE_KILOBYTES ];
+            $value = (float)"{$value}" . self::SIZE_KILOBYTES;
+        }
         elseif( $value / self::$SIZE_MULTIPLIERS[ self::SIZE_MEGABYTES ] >= 0.1 && $value / self::$SIZE_MULTIPLIERS[ self::SIZE_MEGABYTES ] < 900 )
-            return sprintf( "%0.2f%s", $value / self::$SIZE_MULTIPLIERS[ self::SIZE_MEGABYTES ], self::SIZE_MEGABYTES );
+        {
+            $value = $value / self::$SIZE_MULTIPLIERS[ self::SIZE_MEGABYTES ];
+            $value = (float)"{$value}" . self::SIZE_MEGABYTES;
+        }
         elseif( $value / self::$SIZE_MULTIPLIERS[ self::SIZE_GIGABYTES ] >= 0.1 && $value / self::$SIZE_MULTIPLIERS[ self::SIZE_GIGABYTES ] < 900 )
-            return sprintf( "%0.2f%s", $value / self::$SIZE_MULTIPLIERS[ self::SIZE_GIGABYTES ], self::SIZE_GIGABYTES );
+        {
+            $value = $value / self::$SIZE_MULTIPLIERS[ self::SIZE_GIGABYTES ];
+            $value .= (float)"{$value}" . self::SIZE_GIGABYTES;
+        }
+        
+        return $value;
     }
 
 }
