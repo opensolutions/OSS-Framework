@@ -58,9 +58,9 @@ class OSS_Debug
     */
     public static function dd( $object, $html = true )
     {
-        if( $html ) echo '<pre>';
+        if( $html && php_sapi_name() != 'cli' ) echo '<pre>';
         Zend_Debug::dump( $object );
-        if( $html ) echo '</pre>';
+        if( $html && php_sapi_name() != 'cli' ) echo '</pre>';
         die();
     }
 
