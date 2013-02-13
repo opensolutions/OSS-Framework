@@ -5,7 +5,7 @@
  * This file is part of the "OSS Framework" - a library of tools, utilities and
  * extensions to the Zend Framework V1.x used for PHP application development.
  *
- * Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland
+ * Copyright (c) 2007 - 2013, Open Source Solutions Limited, Dublin, Ireland
  * All rights reserved.
  *
  * Open Source Solutions Limited is a company registered in Dublin,
@@ -29,7 +29,7 @@
  *
  * @category   OSS
  * @package    OSS_Filter
- * @copyright  Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland
+ * @copyright  Copyright (c) 2007 - 2013, Open Source Solutions Limited, Dublin, Ireland
  * @license    http://www.opensolutions.ie/licenses/new-bsd New BSD License
  * @link       http://www.opensolutions.ie/ Open Source Solutions Limited
  * @author     Barry O'Donovan <barry@opensolutions.ie>
@@ -39,7 +39,7 @@
 /**
  * @category   OSS
  * @package    OSS_Filter
- * @copyright  Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland
+ * @copyright  Copyright (c) 2007 - 2013, Open Source Solutions Limited, Dublin, Ireland
  * @license    http://www.opensolutions.ie/licenses/new-bsd New BSD License
  */
 class OSS_Filter_FileSize implements Zend_Filter_Interface
@@ -142,17 +142,17 @@ class OSS_Filter_FileSize implements Zend_Filter_Interface
         if( substr_count( $value, "." ) > 1 )
             return false;
 
-        $fsize = preg_replace( "/[^0123456789\.]/", '', (string) $value );
+        $numericValue = preg_replace( "/[^0123456789\.]/", '', (string) $value );
         
-        if( $fsize == "" ||  $fsize == 0 )
+        if( $numericValue == "" ||  $numericValue == 0 )
             return 0;
         
         $subfix = false;
-        if( strlen( $value ) == strlen( $fsize ) )
+        if( strlen( $value ) == strlen( $numericValue ) )
             $subfix = $this->_multiplier;
-        else if( strlen( $value ) - strlen( $fsize ) == 2 )
+        else if( strlen( $value ) - strlen( $numericValue ) == 2 )
             $subfix = strtoupper( substr( $value, -2 ) );
-        else if( strlen( $value ) - strlen( $fsize ) == 1 )
+        else if( strlen( $value ) - strlen( $numericValue ) == 1 )
         {
             $subfix = strtoupper( substr( $value, -1 ) );
             if( $subfix != self::SIZE_BYTES )
@@ -163,11 +163,11 @@ class OSS_Filter_FileSize implements Zend_Filter_Interface
 
         
         if( isset( self::$SIZE_MULTIPLIERS[ $subfix ] ) )
-            $fsize = $fsize * self::$SIZE_MULTIPLIERS[ $subfix ];
+            $value = $numericValue * self::$SIZE_MULTIPLIERS[ $subfix ];
         else
             return false;
         
-        return $fsize;
+        return $value;
     }
 
     /**
