@@ -302,7 +302,6 @@
                                     $( 'a[href|=\"#' + parent.attr( 'id' ) + '\"]' ).addClass( 'text-error' );
                              },
         unhighlight: function(element, errorClass, validClass){
-                                console.log( 'unhighlight' );
                                 var id = element['id'];
                                 var wraper = $( '#' + id ).closest( '.control-group' );
                                 wraper.removeClass( 'error' );
