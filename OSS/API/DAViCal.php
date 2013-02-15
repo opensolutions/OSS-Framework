@@ -55,9 +55,10 @@ class OSS_API_DAViCal
     /**
      * Privileges constants which refelects DAViCal database scheme
      */
-    const PRIVILEGES_RW   = '000000001111111011100111';
-    const PRIVILEGES_RO   = '000000000001001000100001';
-    const PRIVILEGES_NONE = '000000000000000000000000';
+    const PRIVILEGES_RW    = '000000001111111011100111';
+    const PRIVILEGES_RO    = '000000000001001000100001';
+    const PRIVILEGES_NONE  = '000000000000000000000000';
+    const PRIVILEGES_BLOCK = '000000000001110000000000';
     
     /**
      * Names of Privieleges
@@ -356,7 +357,9 @@ class OSS_API_DAViCal
         ];
         
         if( $this->getDBAL()->insert( 'collection', $params ) )
+        {
             return $this->getDBAL()->fetchAssoc( "SELECT * FROM collection WHERE user_no = '{$user['user_no']}' AND dav_name = '{$params['dav_name']}'" );
+        }
         else
             return false;
     }
@@ -377,6 +380,8 @@ class OSS_API_DAViCal
      *
      * Returns same array structure as createCollection
      *
+     * If principal has delegated principals, function iterates all of them and blocks access to new calendar.
+     *
      * @param array $user Davical user data
      * @param string $name Calendars name
      * @param string|null $privileges Default privileges to access calendar
@@ -389,7 +394,96 @@ class OSS_API_DAViCal
      */
     public function createCalendar( $user, $name = null, $privileges = null, $public_events_only = false, $publicly_readable = false, $timezone = null, $description = "" )
     {
-        return $this->createCollection( $user, self::COLLECTION_TYPE_CALENDAR, $name, $privileges, $public_events_only, $publicly_readable, $timezone, $description );
+        $calendar = $this->createCollection( $user, self::COLLECTION_TYPE_CALENDAR, $name, $privileges, $public_events_only, $publicly_readable, $timezone, $description );
+
+        $pids = $this->getGrantedToPrincipalsIds( $user['user_no'] );
+        if( $pids && $calendar )
+        {
+            foreach( $pids as $pid )
+            {
+                $duser = $this->getPrincipalById( $pid['to_principal'] );
+                if( $duser )
+                    $this->grantPrivileges( $duser['user_no'], self::PRIVILEGES_BLOCK, null, $calendar['collection_id'] );
+            }
+        }
+
+        return $calendar;
+    }
+
+    /**
+     * Shares / delegates calendar
+     *
+     * Then sharing calendar then function iterate all users delegate principals if new calendar's owner
+     * is already in list then it just update privileges. Otherwise it grants principal privileges to read only
+     * then iterate to all calendars and block the access for them, and finally set correct privileges to given 
+     * calendar.
+     *
+     * @param array $user Davical user data
+     * @param string $description Calendar description.
+     * @return bool
+     */
+    public function shareCalendar( $user_no, $collection_id, $privileges )
+    {
+        $calendar = $this->getCalendarById( $collection_id );
+        $principal = $this->getPrincipalByUserId( $user_no );
+        if( !$calendar || !$principal )
+            return false;
+        $dprincipal = $this->getPrincipalByUserId( $calendar['user_no'] );
+        $pids = $this->getGrantedToPrincipalsIds( $calendar['user_no'] );
+        
+        $usr_del = false;
+        if( $pids  )
+        {
+            foreach( $pids as $pid )
+            {
+                if( $pid['to_principal'] == $principal['principal_id'] )
+                {
+                    $usr_del = true;
+                    break;
+                }
+            }
+        }
+
+        if( !$usr_del )
+        {
+            $ret = $this->grantPrivileges( $principal['user_no'], self::PRIVILEGES_RO, $dprincipal['user_no'] );
+            if( !$ret )
+                return false;
+            $cals = $this->getCalendarsByUserId( $calendar['user_no'] );
+            if( $cals )
+            {
+                foreach( $cals as $cal )
+                {
+                    $this->grantPrivileges( $principal['user_no'], self::PRIVILEGES_BLOCK, null, $cal['collection_id'] );
+                }
+            }
+
+        }
+
+        $this->removeGrantPrivileges( $principal['user_no'], null, $calendar['collection_id'] );
+        return $this->grantPrivileges( $principal['user_no'], $privileges, null, $calendar['collection_id'] );
+    }
+
+    /**
+     * Unshare calendar.
+     *
+     * Sets existent privileges to PRIVILEGES_BLOCK.
+     *
+     * @param array $user Davical user data
+     * @param string $description Calendar description.
+     * @return bool
+     */
+    public function unshareCalendar( $user_no, $collection_id )
+    {
+        $calendar = $this->getCalendarById( $collection_id );
+        $principal = $this->getPrincipalByUserId( $user_no );
+        if( !$calendar || !$principal )
+            return false;
+        $dprincipal = $this->getPrincipalByUserId( $calendar['user_no'] );
+        $pids = $this->getGrantedToPrincipalsIds( $calendar['user_no'] );
+
+        $this->removeGrantPrivileges( $principal['user_no'], null, $calendar['collection_id'] );
+        return $this->grantPrivileges( $principal['user_no'], self::PRIVILEGES_BLOCK, null, $calendar['collection_id'] );
     }
     
     /**
@@ -650,6 +744,25 @@ class OSS_API_DAViCal
     {
         return $this->getDBAL()->fetchAssoc( "SELECT * FROM principal WHERE principal_id = {$principal_id}" );
     }
+
+    /**
+     * Gets principal data by user_no
+     *
+     * Returns:
+     *      array (size=5)
+     *          'principal_id' => int 1
+     *          'type_id' => int 1
+     *          'user_no' => int 1
+     *          'displayname' => string 'DAViCal Administrator' (length=21)
+     *          'default_privileges' => string '000000000000000000000000' (length=24)
+     *
+     * @param int $user_no User id
+     * @return array
+     */
+    public function getPrincipalByUserId( $user_no )
+    {
+        return $this->getDBAL()->fetchAssoc( "SELECT * FROM principal WHERE user_no = {$user_no}" );
+    }
     
     /**
      * Gets calendar data by collection id
@@ -718,6 +831,8 @@ class OSS_API_DAViCal
     /**
      * Gets users who has access to shared calendar by calendar id.
      *
+     * Users with PRIVILEGES_BLOCK are ignored.
+     *
      * Return:
      *  array ( size = n )
      *      0 => array (size=22)
@@ -750,11 +865,13 @@ class OSS_API_DAViCal
      */
     public function getUsersForSharedCalendar( $collection_id )
     {
-        return $this->getDBAL()->fetchAll( "SELECT * FROM grants as gr JOIN principal as pr ON pr.principal_id = gr.to_principal JOIN usr as us ON pr.user_no = us.user_no WHERE gr.by_collection = {$collection_id}" );
+        return $this->getDBAL()->fetchAll( "SELECT * FROM grants as gr JOIN principal as pr ON pr.principal_id = gr.to_principal JOIN usr as us ON pr.user_no = us.user_no WHERE gr.by_collection = {$collection_id} AND gr.privileges <> '" . self::PRIVILEGES_BLOCK . "'" );
     }
     
     /**
      * Gets shared calendars which can be accessed by user
+     *
+     * Calendars with PRIVILEGES_BLOCK are ignored.
      *
      * Return:
      *  array ( size = n )
@@ -791,6 +908,25 @@ class OSS_API_DAViCal
      */
     public function getSharedCalendarsForUser( $user_id )
     {
-        return $this->getDBAL()->fetchAll( "SELECT * FROM grants as gr JOIN principal as pr ON pr.principal_id = gr.to_principal JOIN collection as cl ON gr.by_collection = cl.collection_id WHERE pr.user_no = {$user_id}" );
-    }     
+        return $this->getDBAL()->fetchAll( "SELECT * FROM grants as gr JOIN principal as pr ON pr.principal_id = gr.to_principal JOIN collection as cl ON gr.by_collection = cl.collection_id WHERE pr.user_no = {$user_id} AND gr.privileges <> '" . self::PRIVILEGES_BLOCK . "'" );
+    }
+
+    /**
+     * Gets principals IDs which have privileges to given users principal 
+     *
+     *
+     * Return:
+     *  array ( size = n )
+     *      0 => ['to_principal' => int 1084 ]
+     *      1 => ['to_principal' => int 1084 ]
+     *      .............
+     *      N => array ...
+     *
+     * @param int $user_id User id ( user_no )
+     * @return array
+     */
+    public function getGrantedToPrincipalsIds( $user_id )
+    {
+        return $this->getDBAL()->fetchAll( "SELECT gr.to_principal FROM grants as gr JOIN principal as pr ON pr.principal_id = gr.by_principal WHERE pr.user_no = {$user_id} AND gr.by_principal IS NOT NULL" );
+    }          
 }
