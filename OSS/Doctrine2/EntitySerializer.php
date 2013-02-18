@@ -1,28 +1,59 @@
 <?php
-/**
-* Bgy Library
-*
-* LICENSE
-*
-* This program is free software. It comes without any warranty, to
-* the extent permitted by applicable law. You can redistribute it
-* and/or modify it under the terms of the Do What The Fuck You Want
-* To Public License, Version 2, as published by Sam Hocevar. See
-* http://sam.zoy.org/wtfpl/COPYING for more details.
-*
-* @category Bgy
-* @package Bgy\Doctrine
-* @author Boris Guéry <guery.b@gmail.com>
-* @license http://sam.zoy.org/wtfpl/COPYING
-* @link http://borisguery.github.com/bgylibrary
-* @see https://gist.github.com/1034079#file_serializable_entity.php
-*/
 
+/**
+ * OSS Framework
+ *
+ * This file is part of the "OSS Framework" - a library of tools, utilities and
+ * extensions to the Zend Framework V1.x used for PHP application development.
+ *
+ * Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland
+ * All rights reserved.
+ *
+ * Open Source Solutions Limited is a company registered in Dublin,
+ * Ireland with the Companies Registration Office (#438231). We
+ * trade as Open Solutions with registered business name (#329120).
+ *
+ * Contact: Barry O'Donovan - info (at) opensolutions (dot) ie
+ *          http://www.opensolutions.ie/
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ *
+ * It is also available through the world-wide-web at this URL:
+ *     http://www.opensolutions.ie/licenses/new-bsd
+ *
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to info@opensolutions.ie so we can send you a copy immediately.
+ *
+ * @category   OSS
+ * @package    OSS_Doctrine2
+ * @copyright  Copyright (c) 2007 - 2013, Open Source Solutions Limited, Dublin, Ireland
+ * @license    http://www.opensolutions.ie/licenses/new-bsd New BSD License
+ * @link       http://www.opensolutions.ie/ Open Source Solutions Limited
+ * @author     The Skilled Team of PHP Developers at Open Solutions <info@opensolutions.ie>
+ */
 
 use Doctrine\ORM\Mapping\ClassMetadata,
     Doctrine\Common\Util\Inflector,
     Doctrine\ORM\EntityManager;
 
+/**
+ * A Doctrine2 Entity Serializer
+ *
+ * Based on:
+ * @link https://github.com/borisguery/bgylibrary/blob/master/library/Bgy/Doctrine/EntitySerializer.php
+ * which is licensed under http://sam.zoy.org/wtfpl/COPYING. This is turn was based
+ * on the Gist:
+ * @link https://gist.github.com/1034079#file_serializable_entity.php
+ *
+ * @category   OSS
+ * @package    OSS_Doctrine2
+ * @copyright  Copyright (c) 2007 - 2013, Open Source Solutions Limited, Dublin, Ireland
+ * @license    http://www.opensolutions.ie/licenses/new-bsd New BSD License
+ */
 class OSS_Doctrine2_EntitySerializer
 {
 
