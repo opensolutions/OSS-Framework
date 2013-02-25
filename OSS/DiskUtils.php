@@ -76,21 +76,28 @@ class OSS_DiskUtils
         {
             $command = sprintf( "%s -sk %s 2>&1", $du, $path );
             exec( escapeshellcmd( $command ), $output, $result );
-            $output = explode( "\t", $output[0] );
-            return (int) $output[0] * 1024;
+            if( $result === 0 )
+            {
+                $output = explode( "\t", $output[0] );
+                return (int) $output[0] * 1024;
+            }
         }
         else
         {
             $command = sprintf( "%s -k %s 2>&1", $du, $path );
             exec( escapeshellcmd( $command ), $output, $result );
-            foreach( $output as $key => $line )
+            if( $result === 0 )
             {
-                $row = explode( "\t", $output[$key] );
-                $row[0] = (int) $row[0] * 1024;
-                $output[$key] = $row;
+                foreach( $output as $key => $line )
+                {
+                    $row = explode( "\t", $output[$key] );
+                    $row[0] = (int) $row[0] * 1024;
+                    $output[$key] = $row;
+                }
+                return $ouput;
             }
-            return $ouput;
         }
+        return false;
     }
 
 }
