@@ -44,6 +44,7 @@
  */
 class OSS_DiskUtils
 {
+    const DEFAULTS_PATH_DU = "/usr/bin/du";
 
     /**
      * Summarize disk usage of each FILE, recursively for directories.
@@ -59,31 +60,29 @@ class OSS_DiskUtils
      *
      * @param string $path      Path to folder for size checking
      * @param bool   $summarize If it set to true then displays only a total for each argument.
+     * @param string $du        Path to du application, if is not set or file on given path is not existent it uses /usr/bin/du as default.
      * @return mixed
+     * @throw OSS_Exception Cannot find du path.
      */
-    public static function du( $path, $summarize = true )
+    public static function du( $path, $summarize = true, $du = self::DEFAULTS_PATH_DU )
     {
         if( !is_dir( $path ) )
             return false;
 
-        $options = Zend_Registry::get( 'options' );
-
-        if( isset( $options['binary']['path']['du'] ) )
-            $du = $options['binary']['path']['du'];
-        else
-            $du = "/usr/bin/du";
+        if( !file_exists( $du ) )
+            throw new OSS_Exception( "OSS_DiskUtils::du: Cannot find '{$du}'" );
 
         if( $summarize )
         {
-            $command = sprintf( "%s -s %s 2>&1", $du, $path );
-            exec( $command, $output, $result );
+            $command = sprintf( "%s -sk %s 2>&1", $du, $path );
+            exec( escapeshellcmd( $command ), $output, $result );
             $output = explode( "\t", $output[0] );
             return (int) $output[0] * 1024;
         }
         else
         {
-            $command = sprintf( "%s -s %s 2>&1", $du, $path );
-            exec( $command, $output, $result );
+            $command = sprintf( "%s -k %s 2>&1", $du, $path );
+            exec( escapeshellcmd( $command ), $output, $result );
             foreach( $output as $key => $line )
             {
                 $row = explode( "\t", $output[$key] );
