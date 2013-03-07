@@ -88,4 +88,18 @@ trait OSS_Form_Trait_CancelLocation
         return $cancel->setAttrib( 'href', $cancelLocation )
             ->setAttrib( 'label', _( 'Cancel' ) );
     }
+    
+    /**
+     * Set / change the cancel location
+     *
+     * @param string $cancelLocation The cancel location URL
+     * @param string $name The element name
+     * @return Zend_Form The form object for fluent interfaces
+     */
+    public function updateCancelLocation( $cancelLocation, $name = 'cancel' )
+    {
+        $this->getElement( $name )->setAttrib( 'href', $cancelLocation );
+        $this->cancelLocation = $cancelLocation;
+        return $this;
+    }
 }
