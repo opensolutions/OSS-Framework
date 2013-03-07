@@ -46,7 +46,7 @@ class OSS_Debug
 {
 
    /**
-    * This function will 'dump and die' - it will (if HTML) surround the
+    * This function will 'var_dump and die' - it will (if HTML) surround the
     * output with <pre> tags.
     *
     * The dump command is Zend_Debug::dump()
@@ -64,7 +64,23 @@ class OSS_Debug
         die();
     }
 
-
+    /**
+     * This function will 'print_r() and die' - it will (if HTML) surround the
+     * output with <pre> tags.
+     *
+     * @param array $array The array to dump
+     * @param bool $html If true (default) surround the output with <pre> tags
+     * @return void
+     */
+    public static function pd( $array, $html = true )
+    {
+        if( $html && php_sapi_name() != 'cli' ) echo '<pre>';
+        print_r( $array );
+        if( $html && php_sapi_name() != 'cli' ) echo '</pre>';
+        die();
+    }
+    
+    
     /**
      * A wrapper and extension for print_r(). The output looks the same in the browser as the output of print_r() in the source, as it turns the pure
      * text output of print_r() into HTML (XHTML).
