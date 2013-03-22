@@ -172,4 +172,162 @@ class OSS_API_SOGo
             [ 'c_uid' => $uid ]
         );
     }
+
+    /**
+     * Sets access privileges to resource for another SOGo user.
+     *
+     * First script fill find acl table name for resource. then it will remove privileges
+     * for the user and then it will add new ones.
+     *
+     * Privileges array sample
+     *      $privileges = ['ConfidentialDandTViewer','ObjectCreator','PublicViewer','ConfidentialViewer','ObjectEraser'];
+     *
+     * @param string      $uid        Users id (username) to share resource with.
+     * @param string      $own_uid    Resource owner SOGo user id (username)
+     * @param string      $name       Resource name for example personal.
+     * @param strig|array $privileges Privileges to set.
+     * @param bool        $calendar   If it set to true then it will look for calendar. False for contacts.
+     * @return bool
+     */
+    public function setAccessPrivileges( $uid, $own_uid, $name, $privileges, $calendar = true )
+    {
+        $type = $calendar ? 'Calendar' : 'Contacts';
+        $privileges = is_array( $privileges ) ? $privileges : [ $privileges ];
+
+        $acl_loc = $this->getDBAL()->fetchColumn( 'SELECT c_acl_location FROM sogo_folder_info WHERE c_path2 = ? AND c_path3 = ? AND c_path4 = ?',
+            [ $own_uid, $type, $name ]
+        );
+
+        if( !$acl_loc )
+            return false;
+
+        $acl_name = substr( $acl_loc, strrpos( $acl_loc, "/") + 1 );
+        $params = [
+            'c_uid'    => $uid,
+            'c_object' => sprintf( "/%s/%s/%s", $own_uid, $type, $name )
+        ];
+
+        $this->getDBAL()->delete( $acl_name, [ 'c_uid' => $uid ] );
+        foreach( $privileges as $privilege )
+        {
+            $params['c_role'] = $privilege;
+            $this->getDBAL()->insert( $acl_name, $params );
+        }
+        return true;
+        
+    }
+
+    /**
+     * Unsets access privileges to resource for another SOGo user.
+     *
+     * First script fill find acl table name for resource. then it will remove privileges
+     * for the user.
+     *
+     * @param string      $uid        Users id (username) to share resource with.
+     * @param string      $own_uid    Resource owner SOGo user id (username)
+     * @param string      $name       Resource name for example personal.
+     * @param bool        $calendar   If it set to true then it will look for calendar. False for contacts.
+     * @return bool
+     */
+    public function unsetAccessPrivileges( $uid, $own_uid, $name, $calendar = true )
+    {
+        $type = $calendar ? 'Calendar' : 'Contacts';
+
+        $acl_loc = $this->getDBAL()->fetchColumn( 'SELECT c_acl_location FROM sogo_folder_info WHERE c_path2 = ? AND c_path3 = ? AND c_path4 = ?',
+            [ $own_uid, $type, $name ]
+        );
+
+        if( !$acl_loc )
+            return false;
+
+        $acl_name = substr( $acl_loc, strrpos( $acl_loc, "/") + 1 );
+        $params = [
+            'c_uid'    => $uid,
+            'c_object' => sprintf( "/%s/%s/%s", $own_uid, $type, $name )
+        ];
+
+        $this->getDBAL()->delete( $acl_name, [ 'c_uid' => $uid ] );
+        return true;
+  
+    }
+
+
+    /**
+     * Subscribe resource
+     *
+     * @param string  $uid      Users id (username) which is suscribing
+     * @param string  $own_uid  Resource owner SOGo user id (username)
+     * @param string  $name     Resource name for subscribing
+     * @param bool    $calendar If it set to true then it will look for calendar. False for contacts.
+     * @param string  $color    Color for new calendar. Applies only for calendars.
+     * @return bool
+     */
+    public function subscribeResource( $uid, $own_uid, $name, $calendar = true , $color = false )
+    {
+        $type = $calendar ? 'Calendar' : 'Contacts';
+
+        $profile = $this->getUserProfile( $uid );
+        if( !$profile )
+            return false;
+
+        //FIXME: Check if resource exists
+
+        $settings = $profile['c_settings'];
+        $resource = sprintf( "%s:%s/%s", $own_uid, $type, $name );
+        if( !is_array( $settings ) )
+            $settings = [];
+        
+        if( !isset( $settings[ $type ]['SubscribedFolders'] ) )
+            $settings[ $type ]['SubscribedFolders'] = [];
+
+        if( !in_array( $resource, $settings[ $type ]['SubscribedFolders'] ) )
+        {
+            $settings[ $type ]['SubscribedFolders'][] = $resource;
+
+            if( $calendar && $color )
+                $settings[ $type ]['FolderColors'][ $resource ] = $color;
+        }
+        var_dump( $settings );
+        return $this->updateUserProfile( $uid, null, $settings );
+    }
+
+    /**
+     * Gets calendar or contacts resource list for user.
+     *
+     * Return array structure:
+     *   array(1) {
+     *     [0] =>
+     *     array(3) {
+     *       'db_table' =>
+     *       string(23) "sogoopensolu00471298964"
+     *       'resource_name' =>
+     *       string(8) "personal"
+     *       'display_name' =>
+     *       string(17) "Personal Calendar"
+     *     }
+     *   }
+     *
+     * @param string $uid      Users id (username) to have a list of his resources.
+     * @param bool   $calendar If it set to true then it will look for calendars. False for contacts.
+     * @return array|bool
+     */
+    public function getResourceNames( $uid, $calendar = true )
+    {
+        $type = $calendar ? 'Calendar' : 'Contacts';
+
+        $data = $this->getDBAL()->fetchAll( 'SELECT c_location as db_table, c_path4 as resource_name, c_foldername as display_name FROM sogo_folder_info WHERE c_path2 = ? AND c_path3 = ?',
+            [ $uid, $type ]
+        );
+
+        if( !$data )
+            return false;
+        
+        if( isset( $data['db_table'] ) )
+            $data = [ $data ];
+
+        foreach( $data as $idx => $row )
+            $data[$idx]['db_table'] = substr( $row['db_table'], strrpos( $row['db_table'], "/") + 1 );
+        
+        return $data;
+    }
 }
