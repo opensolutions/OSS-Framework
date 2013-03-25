@@ -124,7 +124,7 @@ class OSS_Filter_FileSize implements Zend_Filter_Interface
      *  10KB, 10Kb, 10kb, 10k input will return 10240 value.
      *  1000 KB, 1000K, 0.98MB input will return 1024000
      *  0.9MB, 0.9m, 0.9mb, 0.9 MB input will return 943718.
-     *  2B, 2b, 2 B input will return b.
+     *  2B, 2b, 2 B input will return 2.
      *  0.978GSM, 0.8S7M input will return false;
      *  20 will look for parameter defaults.quota.multiplier in application.ini and use as subfix.
      *     else it will return 20.
@@ -136,12 +136,15 @@ class OSS_Filter_FileSize implements Zend_Filter_Interface
     {
         $debug = debug_backtrace();
         
-        if( $debug[5]['function'] == "render" || $debug[3]['function'] == "render" )
+        foreach( $debug as $info )
         {
-            if( is_numeric( $value ) )
-                return self::unfilter( $value );
-            else
-                return $value;
+            if( $info['function'] == "render" )
+            {
+                if( is_numeric( $value ) )
+                    return self::unfilter( $value );
+                else
+                    return $value;
+            }
         }
         
         $value = str_replace( " ", "", $value );
