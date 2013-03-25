@@ -56,6 +56,13 @@ class OSS_Filter_FileSize implements Zend_Filter_Interface
         self::SIZE_GIGABYTES => 1073741824.0
     ];
 
+    public static $SIZE_PRECISION = [
+        self::SIZE_BYTES     => 1,
+        self::SIZE_KILOBYTES => 3,
+        self::SIZE_MEGABYTES => 6,
+        self::SIZE_GIGABYTES => 9
+    ];
+
     /**
      * Corresponds to default multiplier
      *
@@ -201,7 +208,7 @@ class OSS_Filter_FileSize implements Zend_Filter_Interface
         elseif( $value / self::$SIZE_MULTIPLIERS[ self::SIZE_GIGABYTES ] >= 0.1 && $value / self::$SIZE_MULTIPLIERS[ self::SIZE_GIGABYTES ] < 900 )
         {
             $value = $value / self::$SIZE_MULTIPLIERS[ self::SIZE_GIGABYTES ];
-            $value .= (float)"{$value}" . self::SIZE_GIGABYTES;
+            $value = (float)"{$value}" . self::SIZE_GIGABYTES;
         }
         
         return $value;
