@@ -87,13 +87,21 @@ class OSS_Resource_Logger extends Zend_Application_Resource_ResourceAbstract
                     switch( $writer )
                     {
                         case 'stream':
-                            $log_path = $writerOptions['path']
+                            if( isset( $writerOptions['mode'] ) && $writerOptions['mode'] = 'single' )
+                            {
+                                $log_path = $writerOptions['path'];
+                                $log_file = $log_path . DIRECTORY_SEPARATOR . ( isset( $writerOptions['logname'] ) ? $writerOptions['logname'] : 'log.log' );
+                            }
+                            else
+                            {
+                                $log_path = $writerOptions['path']
                                             . DIRECTORY_SEPARATOR .  date( 'Y' )
                                             . DIRECTORY_SEPARATOR . date( 'm' );
 
-                            $log_file = $log_path . DIRECTORY_SEPARATOR . date( 'Ymd') . '.log';
+                                $log_file = $log_path . DIRECTORY_SEPARATOR . date( 'Ymd') . '.log';
+                            }
 
-                            if (file_exists($log_path) == false)
+                            if( file_exists( $log_path ) == false )
                             {
                                 mkdir(  $log_path, 0755, true              );
                                 @chmod( $log_path, 0755                    );
@@ -101,7 +109,7 @@ class OSS_Resource_Logger extends Zend_Application_Resource_ResourceAbstract
                                 @chgrp( $log_path, $writerOptions['group'] );
                             }
 
-                            if (file_exists($log_file) == false)
+                            if( file_exists( $log_file ) == false )
                             {
                                 touch(  $log_file                          );
                                 @chmod( $log_file, 0777                    );

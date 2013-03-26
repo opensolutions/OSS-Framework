@@ -118,6 +118,7 @@ trait OSS_Controller_Trait_Auth
                 case Zend_Auth_Result::FAILURE_IDENTITY_NOT_FOUND:
                 case Zend_Auth_Result::FAILURE_CREDENTIAL_INVALID:
                     $this->addMessage( _( 'Invalid username or password' ) . '. ' . _( 'Please try again' ) . '.', OSS_Message::ERROR );
+                    $this->getLogger()->notice( sprintf( _( "Authentication failure for %s" ), $form->getValue( 'username' ) ) );
                     return false;
                     break;
     
