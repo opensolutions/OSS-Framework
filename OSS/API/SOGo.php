@@ -287,7 +287,6 @@ class OSS_API_SOGo
             if( $calendar && $color )
                 $settings[ $type ]['FolderColors'][ $resource ] = $color;
         }
-        var_dump( $settings );
         return $this->updateUserProfile( $uid, null, $settings );
     }
 
