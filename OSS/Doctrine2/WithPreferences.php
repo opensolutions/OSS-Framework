@@ -446,36 +446,38 @@ trait OSS_Doctrine2_WithPreferences
 
 
     /**
-     * Get associative preferences as an array
+     * Get associative preferences as an array.
      *
-     * we have prefrences:
-     * attribute email.address   idx=0 value=1email
-     * attribute email.confirmed idx=0 value=false
-     * attribute email.tokens.0  idx=0 value=fwfddwde
-     * attribute email.tokens.1  idx=0 value=fwewec4r
-     * attribute email.address   idx=1 value=2email
-     * attribute email.confirmed idx=1 value=true
+     * For example, if we have prefrences:
      *
-     * if we will serch by given $attribute 'email' we will get:
+     *     attribute email.address   idx=0 value=1email
+     *     attribute email.confirmed idx=0 value=false
+     *     attribute email.tokens.0  idx=0 value=fwfddwde
+     *     attribute email.tokens.1  idx=0 value=fwewec4r
+     *     attribute email.address   idx=1 value=2email
+     *     attribute email.confirmed idx=1 value=true
      *
-     * array(
-     *   0 => array(
-     *      'address' => '1email',
-     *       'confirmed' => false,
-     *       'tokens' => array(
-     *           0 => 'fwfddwde',
-     *           1 => 'fwewec4r'
-     *       )
-     *   ),
-     *   1 = > array(
-     *       'address' => '2email',
-     *       'confirmed' => true
-     *   )
-     * )
+     * and if we search by `$attribute = 'email'` we will get:
+     *
+     *     [
+     *         0 => [
+     *             'address' => '1email',
+     *             'confirmed' => false,
+     *             'tokens' => [
+     *                 0 => 'fwfddwde',
+     *                 1 => 'fwewec4r'
+     *             ]
+     *         ],
+
+     *         1 => [
+     *             'address' => '2email',
+     *             'confirmed' => true
+     *         ]
+     *     ]
      *
      *
      * @param string  $attribute The attribute to load
-     * @param int $index default null If an indexed preference, get a specific index, null means all indexes alowed (default: null)
+     * @param int     $index If an indexed preference, get a specific index, null means all indexes alowed (default: null)
      * @param boolean $ignoreExpired If set to false, include expired preferences
      * @return boolean|array False if no such preference(s) exist, otherwise an array.
      */
