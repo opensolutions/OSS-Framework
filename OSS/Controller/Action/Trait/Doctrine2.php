@@ -104,6 +104,18 @@ trait OSS_Controller_Action_Trait_Doctrine2
     }
 
     /**
+     * Returns an instance of the requested Doctrine2 repository class
+     *
+     * @param string $repository Which repository to instantiate
+     * @param string $db Which database entity manager to get (for use when using multiple databases)
+     * @return Doctrine\ORM\EntityRepository The Doctrine2 Entity Repository
+     */
+    public function getD2R( $repository, $db = 'default' )
+    {
+        return $this->getEntityManager( $db )->getRepository( $repository );
+    }
+
+    /**
      * Returns an instance of the Doctrine2 entity manager
      *
      * @param string $db Which database entity manager to get (for use when using multiple databases)
