@@ -326,7 +326,7 @@ trait OSS_Controller_Action_Trait_Doctrine2Frontend
      */
     protected function postDelete( $object )
     {
-        return $this->postFlush();
+        return $this->postFlush( $object );
     }
     
 
