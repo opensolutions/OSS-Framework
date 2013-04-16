@@ -105,8 +105,14 @@ class OSS_View_Helper_DateForm extends Zend_View_Helper_FormElement
             $html .= '
                     maxDate: "' . $attribs['data-maxdate'] . '",';
 
+        if( !isset( $attribs['data-yearRange'] ) )
+            $html .= '
+                    yearRange: "2012:'. date( 'Y' ) . '"';
+        else
+            $html .= '
+                    yearRange: "' . $attribs['data-yearRange'] . '"';
+
         $html .= '
-                    yearRange: "2012:'. date( 'Y' ) . '"
                 });
 
                 $( "#' . $dateId . '_date_pick" ).bind( "click", function( e ){
