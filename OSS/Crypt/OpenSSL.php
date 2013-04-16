@@ -171,18 +171,6 @@ class OSS_Crypt_OpenSSL
           
         return openssl_csr_new( $dn, $this->_keypair, $options );
     }
-    
-    /**
-     * Parses encrypted certificate
-     *
-     * @param string $cert Encrypted certificate
-     * @return array
-     */
-    public static function parseCertificate( $cert )
-    {     
-        return openssl_x509_parse( $cert );
-    }
-    
 
     /**
      * Generates self signed certificate and returns it.
@@ -212,7 +200,7 @@ class OSS_Crypt_OpenSSL
      */
     public function genSignedCert( $dn, $days, $cacert, $cakey, $options = null, $serial = 0  )
     {
-        $this->_cert = openssl_csr_sign( $this->createCertificate( $dn, $options ), $cacert, $cakey, $days, $options, $serial );
+        $this->_cert = openssl_csr_sign( $this->genCertificate( $dn, $options ), $cacert, $cakey, $days, $options, $serial );
         return $this->_cert;
     }
 
@@ -231,6 +219,17 @@ class OSS_Crypt_OpenSSL
         
         openssl_x509_export( $this->_cert, $out );
         return $out;
+    }
+    
+    /**
+     * Parses encrypted certificate
+     *
+     * @param string $cert Encrypted certificate
+     * @return array
+     */
+    public static function parseCertificate( $cert )
+    {     
+        return openssl_x509_parse( $cert );
     }
 }
 
