@@ -156,17 +156,63 @@ class OSS_Crypt_OpenSSL
         
         return openssl_pkey_get_details( $this->_keypair )[ 'key' ];
     } 
+    
+    /**
+     * Generates sertificate for given information
+     *
+     * @param array      $dn      Certificate information
+     * @oaram array|null $options Options for creating certificate
+     * @return resource
+     */
+    public function genCertificate( $dn, $options = null )
+    {
+        if( !$this->_keypair )
+            throw new OSS_Crypt_Exception( 'To create certificate, you need to generate key pair first.' );
+          
+        return openssl_csr_new( $dn, $this->_keypair, $options );
+    }
+    
+    /**
+     * Parses encrypted certificate
+     *
+     * @param string $cert Encrypted certificate
+     * @return array
+     */
+    public static function parseCertificate( $cert )
+    {     
+        return openssl_x509_parse( $cert );
+    }
+    
 
     /**
-     * Generates self signed certificate.
-     *
      * Generates self signed certificate and returns it.
      * 
+     * @param array      $dn      Certificate information
+     * @param int        $days    Days until certificate expires
+     * @param array|null $options Options for creating certificate
+     * @param int        $serial  Serial number by default is 0
      * @return resource of certificate.
      */
-    public function genSelfSignedCert( $dn, $days )
+    public function genSelfSignedCert( $dn, $days, $options = null, $serial = 0 )
     {
-        $this->_cert = openssl_csr_sign(  openssl_csr_new( $dn, $this->_keypair ), null, $this->_keypair, $days );
+        $this->_cert = openssl_csr_sign( $this->genCertificate( $dn, $options ), null, $this->_keypair, $days, $options, $serial );
+        return $this->_cert;
+    }
+    
+    /**
+     * Generates self signed certificate and returns it.
+     * 
+     * @param array      $dn      Certificate information
+     * @param int        $days    Days until certificate expires
+     * @param string     $cacert  Encrypted issuer certifcate
+     * @param string     $cakey   Encrypted issuer private key
+     * @param array|null $options Options for creating certificate
+     * @param int        $serial  Serial number by default is 0
+     * @return resource of certificate.
+     */
+    public function genSignedCert( $dn, $days, $cacert, $cakey, $options = null, $serial = 0  )
+    {
+        $this->_cert = openssl_csr_sign( $this->createCertificate( $dn, $options ), $cacert, $cakey, $days, $options, $serial );
         return $this->_cert;
     }
 
