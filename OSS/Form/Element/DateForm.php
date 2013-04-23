@@ -5,7 +5,7 @@
  * This file is part of the "OSS Framework" - a library of tools, utilities and
  * extensions to the Zend Framework V1.x used for PHP application development.
  *
- * Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland
+ * Copyright (c) 2007 - 2013, Open Source Solutions Limited, Dublin, Ireland
  * All rights reserved.
  *
  * Open Source Solutions Limited is a company registered in Dublin,
@@ -30,7 +30,7 @@
  * @category   OSS
  * @package    OSS_Form
  * @subpackage OSS_Form_Element
- * @copyright  Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland
+ * @copyright  Copyright (c) 2007 - 2013, Open Source Solutions Limited, Dublin, Ireland
  * @license    http://www.opensolutions.ie/licenses/new-bsd New BSD License
  * @link       http://www.opensolutions.ie/ Open Source Solutions Limited
  * @author     Barry O'Donovan <barry@opensolutions.ie>
@@ -47,8 +47,8 @@ require_once 'Zend/Form/Element/Xhtml.php';
  * @author     The Skilled Team of PHP Developers at Open Solutions <info@opensolutions.ie>
  * @category   OSS
  * @package    OSS_Form
- * @subpackage    OSS_Form_Element
- * @copyright  Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland
+ * @subpackage OSS_Form_Element
+ * @copyright  Copyright (c) 2007 - 2013, Open Source Solutions Limited, Dublin, Ireland
  * @license    http://www.opensolutions.ie/licenses/new-bsd New BSD License
  */
 
