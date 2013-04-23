@@ -78,9 +78,9 @@ class OSS_View_Helper_Buttonlink extends Zend_View_Helper_FormElement
         $label = $attribs["label"];
         unset( $attribs["label"] );
 
-        if( isset( $attribs["clas"] ) )
+        if( isset( $attribs["class"] ) )
         {
-            $class = ' class="'.$attribs["class"] ."' ";
+            $class = ' class="' . $attribs["class"] . '" ';
             unset( $attribs["class"] );
         }
         else
