@@ -77,9 +77,17 @@ class OSS_View_Helper_Buttonlink extends Zend_View_Helper_FormElement
 
         $label = $attribs["label"];
         unset( $attribs["label"] );
-        
+
+        if( isset( $attribs["class"] ) )
+        {
+            $class = ' class="' . $attribs["class"] . '" ';
+            unset( $attribs["class"] );
+        }
+        else
+            $class = ' class="btn" ';
+
         // Render the button.
-        $xhtml = '<a ' . 'class="btn"' . $id . $disabled . $this->_htmlAttribs( $attribs )
+        $xhtml = '<a ' . $class . $id . $disabled . $this->_htmlAttribs( $attribs )
                  . $this->getClosingBracket() . $label . '</a>';
         
         return $xhtml;
