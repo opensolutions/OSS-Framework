@@ -120,6 +120,10 @@ class OSS_Resource_Doctrine2cache extends Zend_Application_Resource_ResourceAbst
             else
                 $cache = new \Doctrine\Common\Cache\ArrayCache();
             
+            if( isset( $config['namespace'] ) )
+                $cache->setNamespace( $config['namespace'] );
+            
+            
             // stick the cache in the registry
             Zend_Registry::set( 'd2cache', $cache );
             $this->setDoctrine2Cache( $cache );
