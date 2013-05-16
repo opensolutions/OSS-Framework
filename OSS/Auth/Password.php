@@ -75,8 +75,8 @@ class OSS_Auth_Password
                 throw new OSS_Exception( 'Cannot hash password without a hash method' );
             
             $hash = $config['pwhash'];
-        }        
-        else 
+        }
+        else
             $hash = $config;
         
         switch( $hash )
@@ -121,8 +121,8 @@ class OSS_Auth_Password
                 throw new OSS_Exception( 'Cannot verify password without a hash method' );
             
             $hash = $config['pwhash'];
-        }        
-        else 
+        }
+        else
             $hash = $config;
         
         switch( $config['pwhash'] )

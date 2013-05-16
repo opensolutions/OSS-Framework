@@ -117,7 +117,7 @@ class OSS_Form_Auth
             ->setAttrib( 'class', 'span3 required' )
             ->setRequired( true )
             ->addValidator( 'NotEmpty', true )
-            ->addValidator( 'StringLength', true, array( 8, 128 ) )
+            ->addValidator( 'StringLength', true, array( 1, 1024 ) )
             ->addFilter( 'HtmlEntitiesDecode' )
             ->addFilter( 'StripSlashes' )
             ->addFilter( 'StringTrim' );
