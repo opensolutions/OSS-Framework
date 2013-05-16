@@ -552,7 +552,7 @@ trait OSS_Controller_Action_Trait_Doctrine2Frontend
     {
         $options['cancelLocation'] = $cancelLocation === null ? $this->_getBaseUrl() . '/index' : $cancelLocation;
         $options['isEdit'] = $isEdit;
-        
+
         $formName = $this->feGetParam( 'form' );
         $form = new $formName( $options );
         
@@ -565,7 +565,7 @@ trait OSS_Controller_Action_Trait_Doctrine2Frontend
             )
         );
         
-        $this->formPostProcess( $form, $object, $isEdit, $options = null, $cancelLocation = null );
+        $this->formPostProcess( $form, $object, $isEdit, $options, $cancelLocation );
         return $form;
     }
 
