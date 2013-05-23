@@ -125,7 +125,7 @@ class OSS_Form_Element_DatabaseDropdown extends Zend_Form_Element_Xhtml
      *
      * @param  string $dql DQL query to get chosen options. 
      * @param  string $db  Database name if not default, some project may have more then one.
-     * @return void
+     * @return OSS_Form_Element_DatabaseDropdown
      *
      * @see setChosenOptions()
      */
@@ -140,15 +140,14 @@ class OSS_Form_Element_DatabaseDropdown extends Zend_Form_Element_Xhtml
 			$data = array_combine( $data, $data );
 		}
 
-		$this->setChosenOptions( $data );
-
+		return $this->setChosenOptions( $data );
     }
 
     /**
      * Sets chosen options array
      *
      * @param  array $options Key value pair options for chosen.
-     * @return void
+     * @return OSS_Form_Element_DatabaseDropdown
      */
     public function setChosenOptions( $options )
     {
@@ -157,6 +156,8 @@ class OSS_Form_Element_DatabaseDropdown extends Zend_Form_Element_Xhtml
 		$this->_chznOptions = $options;
         if( is_array( $options ) && count( $options ) > 1 )
         	$this->setAttrib( 'data-osschzn-options', json_encode( $options ) );
+
+        return $this;
     }
 
     /**
