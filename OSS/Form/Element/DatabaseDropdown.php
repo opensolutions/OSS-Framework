@@ -37,9 +37,6 @@
  * @author     The Skilled Team of PHP Developers at Open Solutions <info@opensolutions.ie>
  */
 
-/** Zend_Form_Element_Xhtml */
-require_once 'Zend/Form/Element/Xhtml.php';
-
 /**
  * Form element text field with database dropdown
  *
@@ -73,15 +70,15 @@ class OSS_Form_Element_DatabaseDropdown extends Zend_Form_Element_Xhtml
      * Chosen options can be set in array two ways first by DQL second simple array.
      *
      * To set options by DQL $options array structure should be like:
-     *		[
-     * 			'dql' => "select u.username from \\Entities\\User where u.username IS NOT NULL", //mandatory
-     * 			'db'  => "default" //Optional if db is not default. Some project may have more then one.
-     * 		]
+     *  [
+     *      'dql' => "select u.username from \\Entities\\User where u.username IS NOT NULL", //mandatory
+     *      'db'  => "default" //Optional if db is not default. Some project may have more then one.
+     *  ]
      * 
      * To set options by array $options array structure should be like:
-     *		[
-     * 			'options' => [ 'option1' => 'option1', 'option2' => 'option2', 'option3' => 'option3' ], //mandatory
-     * 		]
+     *  [
+     *      'options' => [ 'option1' => 'option1', 'option2' => 'option2', 'option3' => 'option3' ], //mandatory
+     *  ]
      *
      *
      * @param  string|array|Zend_Config $spec
@@ -95,20 +92,20 @@ class OSS_Form_Element_DatabaseDropdown extends Zend_Form_Element_Xhtml
         
         if( isset( $options['options'] ) )
         {
-        	$this->setChosenOptions( $options['options'] );
-        	unset( $options['options'] );
+            $this->setChosenOptions( $options['options'] );
+                unset( $options['options'] );
         }
         else if( isset( $options['dql'] ) )
-        {	
-        	if( isset( $options['db'] ) )
-        	{
-        		$this->setChosenOptionsByDql( $options['dql'], $options['db'] );
-        		unset( $options['db'] );
-        	}
-        	else
-        		$this->setChosenOptionsByDql( $options['dql'] );
+        {
+            if( isset( $options['db'] ) )
+            {
+                $this->setChosenOptionsByDql( $options['dql'], $options['db'] );
+                unset( $options['db'] );
+            }
+            else
+                $this->setChosenOptionsByDql( $options['dql'] );
 
-			unset( $options['dql'] );	
+            unset( $options['dql'] );
         }
         parent::__construct( $spec, $options );
         
@@ -121,7 +118,7 @@ class OSS_Form_Element_DatabaseDropdown extends Zend_Form_Element_Xhtml
      * where key equals to value. And then calls setChosesOptions.
      *
      * NOTE: DQL query must request data from only one field. e.g.:
-     *	 select u.username from \Entities\User u WHERE u.username IS NOT NULL
+     *  select u.username from \Entities\User u WHERE u.username IS NOT NULL
      *
      * @param  string $dql DQL query to get chosen options. 
      * @param  string $db  Database name if not default, some project may have more then one.
@@ -131,16 +128,16 @@ class OSS_Form_Element_DatabaseDropdown extends Zend_Form_Element_Xhtml
      */
     public function setChosenOptionsByDql( $dql, $db = 'default' )
     {
-    	$em = Zend_Registry::get( "d2em" );
-    	$query = $em[ $db ]->createQuery( $dql );
-		$result = $query->getScalarResult();
-		if( is_array( $result ) && count( $result ) > 0 )
-		{
-			$data = array_map( 'current', $result );
-			$data = array_combine( $data, $data );
-		}
+        $em = Zend_Registry::get( "d2em" );
+        $query = $em[ $db ]->createQuery( $dql );
+        $result = $query->getScalarResult();
+        if( is_array( $result ) && count( $result ) > 0 )
+        {
+            $data = array_map( 'current', $result );
+            $data = array_combine( $data, $data );
+        }
 
-		return $this->setChosenOptions( $data );
+        return $this->setChosenOptions( $data );
     }
 
     /**
@@ -151,11 +148,11 @@ class OSS_Form_Element_DatabaseDropdown extends Zend_Form_Element_Xhtml
      */
     public function setChosenOptions( $options )
     {
-    	$options = [ "" => "" ] + $options;
-		
-		$this->_chznOptions = $options;
+        $options = [ "" => "" ] + $options;
+
+        $this->_chznOptions = $options;
         if( is_array( $options ) && count( $options ) > 1 )
-        	$this->setAttrib( 'data-osschzn-options', json_encode( $options ) );
+            $this->setAttrib( 'data-osschzn-options', json_encode( $options ) );
 
         return $this;
     }
@@ -167,6 +164,6 @@ class OSS_Form_Element_DatabaseDropdown extends Zend_Form_Element_Xhtml
      */
     public function getChosenOptions()
     {
-		return $this->_chznOptions;
+        return $this->_chznOptions;
     }
 }

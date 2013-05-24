@@ -37,9 +37,6 @@
  * @author     The Skilled Team of PHP Developers at Open Solutions <info@opensolutions.ie>
  */
 
-/** Zend_Form_Element_Xhtml */
-require_once 'Zend/Form/Element/Xhtml.php';
-
 /**
  * Form element Date form
  *

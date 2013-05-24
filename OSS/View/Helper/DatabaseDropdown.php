@@ -86,7 +86,7 @@ class OSS_View_Helper_DatabaseDropdown extends Zend_View_Helper_FormElement
                     array_merge(
                         $attribs,
                         array(
-                        	'id' => $elId
+                            'id' => $elId
                         )
                     )
                 );
@@ -94,7 +94,7 @@ class OSS_View_Helper_DatabaseDropdown extends Zend_View_Helper_FormElement
         { 
             $html .= '
             <div id="' . $elId . '_tmp">
-    			<script type="text/javascript" id="' . $elId . '_script">
+                <script type="text/javascript" id="' . $elId . '_script">
                     var tmp = $( "#' . $elId . '_tmp" ).html();
                     if( !tmp )
                     {
