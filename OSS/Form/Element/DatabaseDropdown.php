@@ -135,9 +135,10 @@ class OSS_Form_Element_DatabaseDropdown extends Zend_Form_Element_Xhtml
         {
             $data = array_map( 'current', $result );
             $data = array_combine( $data, $data );
+            $this->setChosenOptions( $data );
         }
 
-        return $this->setChosenOptions( $data );
+        return $this;
     }
 
     /**
