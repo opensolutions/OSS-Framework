@@ -12,4 +12,4 @@
  * @copyright Copyright (c) 2013 Open Source Solutions Limited
  * @license http://opensource.org/licenses/gpl-3.0.html GNU General Public License, version 3 (GPLv3)
  * @author Open Source Solutions Limited <info _at_ opensolutions.ie>
- */\n\n
+ */
