@@ -5,6 +5,7 @@
 $( 'document' ).ready( function(){
     // A good percentage of pages will have message boxes - this activates them all
     $(".alert-message").alert();
+    $( ".alert" ).alert();
 });
 
 /**
