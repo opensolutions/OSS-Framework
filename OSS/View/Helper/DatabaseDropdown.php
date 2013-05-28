@@ -125,19 +125,25 @@ class OSS_View_Helper_DatabaseDropdown extends Zend_View_Helper_FormElement
 
                         $( "#' . $elId . '_osschzn" ).on( "change", function(){
                             $( "#' . $elId . '" ).val( $( this ).val() );
-                            $( "#' . $elId . '_osschzn_chzn > a" ).trigger( "DOMAttrModified" );
                         });
-
 
                         $( "#' . $elId . '_osschzn_chzn" ).on( "mouseup", function(){
-                            $( "#' . $elId . '_osschzn_chzn > a" ).trigger( "DOMAttrModified" );
+                            $( "#' . $elId . '_osschzn_chzn" ).trigger( "DOMAttrModified" );
                         });
 
-                        $( "#' . $elId . '_osschzn_chzn > a" ).on( "DOMAttrModified", function(){
-                            if( $( this ).attr( "class" ).indexOf( "chzn-single-with-drop" ) == -1 )
+                        $( "#' . $elId . '_osschzn_chzn" ).on( "DOMAttrModified", function( event ){
+
+                            if( event.originalEvent != undefined && event.originalEvent.attrName != "class" )
+                                return;
+
+                            if( $( this ).attr( "class" ).indexOf( "chzn-with-drop" ) == -1 )
                             {
                                 $( "#' . $elId . '_osschzn_chzn" ).hide();
                                 $( "#' . $elId . '_append" ).show();
+                            }
+                            else if( $( this ).attr( "class" ).indexOf( "chzn-with-drop" ) )
+                            {
+                                $( "#' . $elId . '_osschzn_chzn" ).show();
                             }
                         });
                         
@@ -147,7 +153,18 @@ class OSS_View_Helper_DatabaseDropdown extends Zend_View_Helper_FormElement
                            pos = $( "#' . $elId . '" ).position();
                            $( "#' . $elId . '_osschzn_chzn" ).css( "top", pos.top );
                         });
-                        
+
+                        var height = $(this).height();
+
+                        $(document).bind( "DOMSubtreeModified", function() {
+                            if($(this).height() != height ) {
+                                height = $(this).height();
+                                $( "#' . $elId . '_osschzn_chzn" ).hide();
+                                $( "#' . $elId . '_append" ).show();
+                                pos = $( "#' . $elId . '" ).position();
+                                $( "#' . $elId . '_osschzn_chzn" ).css( "top", pos.top );
+                            }
+                        });
                     }
                     else
                     {
