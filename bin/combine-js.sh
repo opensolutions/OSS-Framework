@@ -21,7 +21,8 @@ HEADER=`/bin/cat << 'endheader'
  * @copyright Copyright (c) 2013 Open Source Solutions Limited
  * @license http://opensource.org/licenses/gpl-3.0.html GNU General Public License, version 3 (GPLv3)
  * @author Open Source Solutions Limited <info _at_ opensolutions.ie>
- */\n\n
+ */
+ 
 endheader`
 
 #Prints usage to screen
@@ -105,7 +106,7 @@ fi
 #making exclude file list
 EXCLUDE=()
 for file in "$@"; do
-  EXCLUDE=("${EXCLUDE[@]}" "$file")
+  EXCLUDE=( "${EXCLUDE[@]}" "$file" )
 done
 
 #building combined javascript file

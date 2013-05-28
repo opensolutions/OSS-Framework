@@ -1,3 +1,7 @@
+//****************************************************************************
+// Toggle functions
+//****************************************************************************
+
 /**
  * This function is handling toggle elements.
  *
@@ -28,7 +32,7 @@ function ossToggle( e, Url, data, delElement )
         e.removeClass( "btn-success" ).attr( 'disabled', 'disabled' );
     }
 
-    var Throb = tt_throbber( 18, 10, 1, 'images/throbber_16px.gif' ).appendTo( $( '#throb-' + e.attr( 'id' ) ).get(0) ).start();
+    var Throb = ossThrobber( 18, 10, 1, 'images/throbber_16px.gif' ).appendTo( $( '#throb-' + e.attr( 'id' ) ).get(0) ).start();
 
     var ok = false;
 
@@ -72,3 +76,4 @@ function ossToggle( e, Url, data, delElement )
 
     return on;
 }
+
