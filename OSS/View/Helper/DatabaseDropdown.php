@@ -145,13 +145,16 @@ class OSS_View_Helper_DatabaseDropdown extends Zend_View_Helper_FormElement
                             {
                                 $( "#' . $elId . '_osschzn_chzn" ).show();
                             }
-                        });
-                        
+                        });                     
+                    
                         $( window ).resize(function() {
-                           $( "#' . $elId . '_osschzn_chzn" ).hide();
-                           $( "#' . $elId . '_append" ).show();
-                           pos = $( "#' . $elId . '" ).position();
-                           $( "#' . $elId . '_osschzn_chzn" ).css( "top", pos.top );
+                            if( $( "#' . $elId . '_osschzn_chzn" ).width() == 0 ) {
+                                $( "#' . $elId . '_osschzn_chzn" ).width( $( "#' . $elId . '" ).parent().width() );
+                            }
+                            $( "#' . $elId . '_osschzn_chzn" ).hide();
+                            $( "#' . $elId . '_append" ).show();
+                            pos = $( "#' . $elId . '" ).position();
+                            $( "#' . $elId . '_osschzn_chzn" ).css( "top", pos.top );
                         });
 
                         var height = $(this).height();
