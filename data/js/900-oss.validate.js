@@ -117,7 +117,7 @@
     */
     jQuery.validator.addMethod("isChecked", function(value, element, param) {
             // we can do that because id == name in Zend Form, unless the form decorators and viewhelpers are heavily overridden
-            return this.optional(element) || ($('#' + element.name).attr('checked'));
+            return this.optional(element) || ($('#' + element.name).prop('checked'));
         },
         'You must tick this checkbox.'
     );
