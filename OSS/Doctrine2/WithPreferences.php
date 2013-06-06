@@ -285,6 +285,7 @@ trait OSS_Doctrine2_WithPreferences
         if( $max != 0 && $count >= $max )
             throw new \OSS_Doctrine2_WithPreferences_IndexLimitException( 'Requested maximum number of indexed preferences reached' );
 
+        $em = \Zend_Registry::get( 'd2em' )[ 'default' ];
         if( is_array( $value ) )
         {
             foreach( $value as $v )
@@ -296,7 +297,6 @@ trait OSS_Doctrine2_WithPreferences
                 $pref->setExpire( $expires );
                 $pref->setIx( ++$highest );
 
-                $em = \Zend_Registry::get( 'd2em' )[ 'default' ];
                 $em->persist( $pref );
             }
         }
@@ -309,7 +309,6 @@ trait OSS_Doctrine2_WithPreferences
             $pref->setExpire( $expires );
             $pref->setIx( ++$highest );
 
-            $em = \Zend_Registry::get( 'd2em' )[ 'default' ];
             $em->persist( $pref );
         }
 
@@ -335,6 +334,7 @@ trait OSS_Doctrine2_WithPreferences
         if( $asOf === null )
             $asOf = time();
 
+        $em = \Zend_Registry::get( 'd2em' )[ 'default' ];
         foreach( $this->_getPreferences() as $pref )
         {
             if( $attribute !== null && $pref->getAttribute() != $attribute )
@@ -344,7 +344,6 @@ trait OSS_Doctrine2_WithPreferences
             {
                 $count++;
                 $this->getPreferences()->removeElement( $pref );
-                $em = \Zend_Registry::get( 'd2em' )[ 'default' ];
                 $em->remove( $pref );
             }
         }
@@ -365,6 +364,7 @@ trait OSS_Doctrine2_WithPreferences
     {
         $count = 0;
 
+        $em = \Zend_Registry::get( 'd2em' )[ 'default' ];
         foreach( $this->_getPreferences() as $pref )
         {
             if( $pref->getAttribute() == $attribute )
@@ -373,7 +373,6 @@ trait OSS_Doctrine2_WithPreferences
                 {
                     $count++;
                     $this->getPreferences()->removeElement( $pref );
-                    $em = \Zend_Registry::get( 'd2em' )[ 'default' ];
                     $em->remove( $pref );
                 }
             }
@@ -448,7 +447,7 @@ trait OSS_Doctrine2_WithPreferences
     /**
      * Get associative preferences as an array.
      *
-     * For example, if we have prefrences:
+     * For example, if we have preferences:
      *
      *     attribute email.address   idx=0 value=1email
      *     attribute email.confirmed idx=0 value=false
@@ -523,31 +522,25 @@ trait OSS_Doctrine2_WithPreferences
      * @param int $index default null If an indexed preference then delete a specific index, if null then delete all
      * @return int The number of preferences deleted
      */
-    public function deleteAssocPreference( $attribute, $index = false )
+    public function deleteAssocPreference( $attribute, $index = null )
     {
-        $values = array();
+        $cnt = 0;
 
+        $em = \Zend_Registry::get( 'd2em' )[ 'default' ];
         foreach( $this->_getPreferences() as $pref )
         {
             if( strpos( $pref->getAttribute(), $attribute ) === 0 )
             {
-                if( $index === false )
+                if( $index == null || $pref->getIx() == $index)
                 {
-                    $em = \Zend_Registry::get( 'd2em' )[ 'default' ];
+                    $this->getPreferences()->removeElement( $pref );
                     $em->remove( $pref );
-                }
-                else if( $pref->getIx() == $index )
-                {
-                    $em = \Zend_Registry::get( 'd2em' )[ 'default' ];
-                    $em->remove( $pref );
+                    $cnt++;
                 }
             }
         }
 
-        if( $values === array() )
-            return false;
-
-        return $values;
+        return $cnt;
     }
 
 
