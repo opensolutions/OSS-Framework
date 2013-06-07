@@ -127,25 +127,14 @@ class OSS_View_Helper_DatabaseDropdown extends Zend_View_Helper_FormElement
                             $( "#' . $elId . '" ).val( $( this ).val() );
                         });
 
-                        $( "#' . $elId . '_osschzn_chzn" ).on( "mouseup", function(){
-                            $( "#' . $elId . '_osschzn_chzn" ).trigger( "DOMAttrModified" );
+                        $( "#' . $elId . '_osschzn" ).on( "liszt:hiding_dropdown", function( event ){
+                            $( "#' . $elId . '_osschzn_chzn" ).hide();
+                            $( "#' . $elId . '_append" ).show();
                         });
 
-                        $( "#' . $elId . '_osschzn_chzn" ).on( "DOMAttrModified", function( event ){
-
-                            if( event.originalEvent != undefined && event.originalEvent.attrName != "class" )
-                                return;
-
-                            if( $( this ).attr( "class" ).indexOf( "chzn-with-drop" ) == -1 )
-                            {
-                                $( "#' . $elId . '_osschzn_chzn" ).hide();
-                                $( "#' . $elId . '_append" ).show();
-                            }
-                            else if( $( this ).attr( "class" ).indexOf( "chzn-with-drop" ) )
-                            {
-                                $( "#' . $elId . '_osschzn_chzn" ).show();
-                            }
-                        });                     
+                        $( "#' . $elId . '_osschzn" ).on( "liszt:showing_dropdown", function( event ){
+                            $( "#' . $elId . '_osschzn_chzn" ).show();
+                        });
                     
                         $( window ).resize(function() {
                             if( $( "#' . $elId . '_osschzn_chzn" ).width() == 0 ) {
