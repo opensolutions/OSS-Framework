@@ -155,6 +155,15 @@ trait OSS_Controller_Trait_Auth
                         $user->setPreference( 'auth.last_login_from', $_SERVER['REMOTE_ADDR'] );
                         $user->setPreference( 'auth.last_login_at',   mktime()                );
                     }
+
+                    if( isset( $this->_options['login_history']['enabled'] ) && $this->_options['login_history']['enabled'] )
+                    {
+                        $log = new \Entities\UserLoginHistory();
+                        $this->getD2EM()->persist( $log );
+                        $log->setAt( new \DateTime() );
+                        $log->setIp( $_SERVER['REMOTE_ADDR'] );
+                        $log->setUser( $user );
+                    }
     
                     // set the timeout
                     $this->getSessionNamespace()->timeOfLastAction = mktime();
