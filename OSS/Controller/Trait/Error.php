@@ -83,7 +83,7 @@ trait OSS_Controller_Trait_Error
         $log .= "------------------------\n\n"
         	. "HTTP_HOST : {$_SERVER['HTTP_HOST']}\n"
         	. "HTTP_USER_AGENT: {$_SERVER['HTTP_USER_AGENT']}\n"
-        	. "HTTP_COOKIE: {$_SERVER['HTTP_COOKIE']}\n"
+                . ( isset( $_SERVER['HTTP_COOKIE'] ) ? "HTTP_COOKIE: {$_SERVER['HTTP_COOKIE']}\n" : "" )
         	. "REMOTE_PORT: {$_SERVER['REMOTE_PORT']}\n"
         	. "REQUEST_METHOD: {$_SERVER['REQUEST_METHOD']}\n"
         	. "REQUEST_URI: {$_SERVER['REQUEST_URI']}\n\n";
