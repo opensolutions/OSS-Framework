@@ -31,14 +31,14 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">209</span></a></li>
+                <span class="label label-info">236</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul>
 <li>todo 
                 <span class="label label-info">2</span>
 </li>
 <li>fixme 
-                <span class="label label-info">10</span>
+                <span class="label label-info">11</span>
 </li>
 </ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
@@ -91,14 +91,14 @@
 </li>
 <li class="nav-header protected">» Protected
                     <ul>
-<li class="property protected "><a href="#property__className" title="$_className :: The name of the class."><span class="description"></span><pre>$_className</pre></a></li>
-<li class="property protected "><a href="#property__preferenceClassName" title="$_preferenceClassName :: The name of the preference class for this class"><span class="description"></span><pre>$_preferenceClassName</pre></a></li>
+<li class="property protected "><a href="#property__className" title="$_className :: The name of the class."><span class="description">The name of the class.</span><pre>$_className</pre></a></li>
+<li class="property protected "><a href="#property__preferenceClassName" title="$_preferenceClassName :: The name of the preference class for this class"><span class="description">The name of the preference class for this class</span><pre>$_preferenceClassName</pre></a></li>
 </ul>
 </li>
 <li class="nav-header private">» Private
                     <ul>
-<li class="property private "><a href="#property__cache" title="$_cache :: Should we cache the preferences in the session?"><span class="description"></span><pre>$_cache</pre></a></li>
-<li class="property private "><a href="#property__namespace" title="$_namespace :: The namespace for the cache."><span class="description"></span><pre>$_namespace</pre></a></li>
+<li class="property private "><a href="#property__cache" title="$_cache :: Should we cache the preferences in the session?"><span class="description">Should we cache the preferences in the session?</span><pre>$_cache</pre></a></li>
+<li class="property private "><a href="#property__namespace" title="$_namespace :: The namespace for the cache."><span class="description">The namespace for the cache.</span><pre>$_namespace</pre></a></li>
 </ul>
 </li>
 </ul>
@@ -167,7 +167,7 @@
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
 <th>see</th>
-<td><a href="">\_setAssocElementViaArray()</a></td>
+<td><a href="">\global\_setAssocElementViaArray()</a></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -425,7 +425,7 @@ if( $pref === false )
 <p>$pref = $user->getOrSetGetPreference( 'qwerty', 'default' );</p></div>
 <table class="table table-bordered"><tr>
 <th>see</th>
-<td><a href="">\getPreference()</a></td>
+<td><a href="">\global\getPreference()</a></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -518,7 +518,7 @@ will evaluate as false otherwise.</p></div>
 will evaluate as false otherwise.</p></div>
 <table class="table table-bordered"><tr>
 <th>see</th>
-<td><a href="">\getPreference()</a></td>
+<td><a href="">\global\getPreference()</a></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -546,7 +546,7 @@ will evaluate as false otherwise.</p></div>
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
 <th>see</th>
-<td><a href="">\getPreference()</a></td>
+<td><a href="">\global\getPreference()</a></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -651,7 +651,7 @@ will evaluate as false otherwise.</p></div>
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
 <th>see</th>
-<td><a href="">\setPreference()</a></td>
+<td><a href="">\global\setPreference()</a></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -674,25 +674,25 @@ will evaluate as false otherwise.</p></div>
 <h3>
 <i class="icon-custom icon-property"></i> Properties</h3>
 <a id="property__className"> </a><div class="element clickable property protected property__className" data-toggle="collapse" data-target=".property__className .collapse">
-<h2></h2>
+<h2>The name of the class.</h2>
 <pre>$_className : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"><p>Set with get_class( $this )</p></div></div></div>
 </div>
 <a id="property__preferenceClassName"> </a><div class="element clickable property protected property__preferenceClassName" data-toggle="collapse" data-target=".property__preferenceClassName .collapse">
-<h2></h2>
+<h2>The name of the preference class for this class</h2>
 <pre>$_preferenceClassName : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <a id="property__cache"> </a><div class="element clickable property private property__cache" data-toggle="collapse" data-target=".property__cache .collapse">
-<h2></h2>
+<h2>Should we cache the preferences in the session?</h2>
 <pre>$_cache : bool</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <a id="property__namespace"> </a><div class="element clickable property private property__namespace" data-toggle="collapse" data-target=".property__namespace .collapse">
-<h2></h2>
+<h2>The namespace for the cache.</h2>
 <pre>$_namespace : \Zend_Session_Namespace</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
@@ -703,8 +703,8 @@ will evaluate as false otherwise.</p></div>
 </div>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
-            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
-            generated on 2013-02-11T11:16:48Z.<br></footer></div>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
+            generated on 2013-06-27T19:19:02+01:00.<br></footer></div>
 </div>
 </body>
 </html>

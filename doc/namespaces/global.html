@@ -31,14 +31,14 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">209</span></a></li>
+                <span class="label label-info">236</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul>
 <li>todo 
                 <span class="label label-info">2</span>
 </li>
 <li>fixme 
-                <span class="label label-info">10</span>
+                <span class="label label-info">11</span>
 </li>
 </ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
@@ -561,7 +561,7 @@ it displays default one.</h2>
 </div>
 <a id="function_smarty_modifier_debug_print_var"></a><div class="element clickable function  function_smarty_modifier_debug_print_var" data-toggle="collapse" data-target=".function_smarty_modifier_debug_print_var .collapse">
 <h2>Smarty debug_print_var modifier plugin</h2>
-<pre>smarty_modifier_debug_print_var(array | object $var, integer $depth, integer $length) : string</pre>
+<pre>smarty_modifier_debug_print_var($var, $depth, $length) : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"><p>Type:     modifier<br>
@@ -570,7 +570,7 @@ Purpose:  formats variable contents for display in the console</p></div>
 <table class="table table-bordered">
 <tr>
 <th>link</th>
-<td><a href="http://smarty.php.net/manual/en/language.modifier.debug.print.var.php">debug_print_var (Smarty online manual)</a></td>
+<td><a href="http://smarty.php.net/manual/en/language.modifier.debug.print.var.php%0A">debug_print_var (Smarty online manual)</a></td>
 </tr>
 <tr>
 <th>author</th>
@@ -591,17 +591,11 @@ Purpose:  formats variable contents for display in the console</p></div>
 </table>
 <h3>Parameters</h3>
 <div class="subelement argument">
-<h4>$var</h4>
-<code>array</code><code>object</code>
-</div>
+<h4>$var</h4><p>array|object</p></div>
 <div class="subelement argument">
-<h4>$depth</h4>
-<code>integer</code>
-</div>
+<h4>$depth</h4><p>integer</p></div>
 <div class="subelement argument">
-<h4>$length</h4>
-<code>integer</code>
-</div>
+<h4>$length</h4><p>integer</p></div>
 <h3>Returns</h3>
 <div class="subelement response"><code>string</code></div>
 </div></div>
@@ -617,7 +611,7 @@ Purpose:  Escape the string according to escapement type</p></div>
 <table class="table table-bordered">
 <tr>
 <th>link</th>
-<td><a href="http://smarty.php.net/manual/en/language.modifier.escape.php">escape (Smarty online manual)</a></td>
+<td><a href="http://smarty.php.net/manual/en/language.modifier.escape.php%0A">escape (Smarty online manual)</a></td>
 </tr>
 <tr>
 <th>author</th>
@@ -838,7 +832,7 @@ Counts all elements in an array, or something in an object.</h2>
 </div>
 <a id="function_smarty_modifier_string_format"></a><div class="element clickable function  function_smarty_modifier_string_format" data-toggle="collapse" data-target=".function_smarty_modifier_string_format .collapse">
 <h2>Smarty string_format modifier plugin</h2>
-<pre>smarty_modifier_string_format(string $string, string $format) : string</pre>
+<pre>smarty_modifier_string_format($string, $format) : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"><p>Type:     modifier<br>
@@ -847,7 +841,7 @@ Purpose:  format strings via sprintf</p></div>
 <table class="table table-bordered">
 <tr>
 <th>link</th>
-<td><a href="http://smarty.php.net/manual/en/language.modifier.string.format.php">string_format (Smarty online manual)</a></td>
+<td><a href="http://smarty.php.net/manual/en/language.modifier.string.format.php%0A">string_format (Smarty online manual)</a></td>
 </tr>
 <tr>
 <th>author</th>
@@ -868,13 +862,9 @@ Purpose:  format strings via sprintf</p></div>
 </table>
 <h3>Parameters</h3>
 <div class="subelement argument">
-<h4>$string</h4>
-<code>string</code>
-</div>
+<h4>$string</h4><p>string</p></div>
 <div class="subelement argument">
-<h4>$format</h4>
-<code>string</code>
-</div>
+<h4>$format</h4><p>string</p></div>
 <h3>Returns</h3>
 <div class="subelement response"><code>string</code></div>
 </div></div>
@@ -975,6 +965,13 @@ Multicasting given string to int</h2>
 <div class="details collapse"></div>
 <a href="../classes/OSS_API_RoundCube.html" class="more">« More »</a>
 </div>
+<div id="OSS_API_SOGo" class="element ajax clickable class">
+<h1>OSS_API_SOGo<a href="../classes/OSS_API_SOGo.html">¶</a>
+</h1>
+<p class="short_description">A SOGo API via direct database manipulation.</p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_API_SOGo.html" class="more">« More »</a>
+</div>
 <div id="OSS_Acl" class="element ajax clickable class">
 <h1>OSS_Acl<a href="../classes/OSS_Acl.html">¶</a>
 </h1>
@@ -1059,6 +1056,13 @@ Multicasting given string to int</h2>
 <div class="details collapse"></div>
 <a href="../classes/OSS_Controller_AuthRequiredAction.html" class="more">« More »</a>
 </div>
+<div id="OSS_Controller_CliAction" class="element ajax clickable class">
+<h1>OSS_Controller_CliAction<a href="../classes/OSS_Controller_CliAction.html">¶</a>
+</h1>
+<p class="short_description">Controller: Action</p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Controller_CliAction.html" class="more">« More »</a>
+</div>
 <div id="OSS_Controller_Router_Cli" class="element ajax clickable class">
 <h1>OSS_Controller_Router_Cli<a href="../classes/OSS_Controller_Router_Cli.html">¶</a>
 </h1>
@@ -1136,6 +1140,20 @@ Multicasting given string to int</h2>
 <div class="details collapse"></div>
 <a href="../classes/OSS_Debug.html" class="more">« More »</a>
 </div>
+<div id="OSS_DiskUtils" class="element ajax clickable class">
+<h1>OSS_DiskUtils<a href="../classes/OSS_DiskUtils.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_DiskUtils.html" class="more">« More »</a>
+</div>
+<div id="OSS_Doctrine2_EntitySerializer" class="element ajax clickable class">
+<h1>OSS_Doctrine2_EntitySerializer<a href="../classes/OSS_Doctrine2_EntitySerializer.html">¶</a>
+</h1>
+<p class="short_description">A Doctrine2 Entity Serializer</p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Doctrine2_EntitySerializer.html" class="more">« More »</a>
+</div>
 <div id="OSS_Doctrine2_Exception" class="element ajax clickable class">
 <h1>OSS_Doctrine2_Exception<a href="../classes/OSS_Doctrine2_Exception.html">¶</a>
 </h1>
@@ -1205,6 +1223,13 @@ Multicasting given string to int</h2>
 <p class="short_description"></p>
 <div class="details collapse"></div>
 <a href="../classes/OSS_Exception.html" class="more">« More »</a>
+</div>
+<div id="OSS_Filter_FileSize" class="element ajax clickable class">
+<h1>OSS_Filter_FileSize<a href="../classes/OSS_Filter_FileSize.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Filter_FileSize.html" class="more">« More »</a>
 </div>
 <div id="OSS_Filter_FixAddressline" class="element ajax clickable class">
 <h1>OSS_Filter_FixAddressline<a href="../classes/OSS_Filter_FixAddressline.html">¶</a>
@@ -1289,6 +1314,20 @@ Multicasting given string to int</h2>
 <p class="short_description">Form element button-link</p>
 <div class="details collapse"></div>
 <a href="../classes/OSS_Form_Element_Buttonlink.html" class="more">« More »</a>
+</div>
+<div id="OSS_Form_Element_DatabaseDropdown" class="element ajax clickable class">
+<h1>OSS_Form_Element_DatabaseDropdown<a href="../classes/OSS_Form_Element_DatabaseDropdown.html">¶</a>
+</h1>
+<p class="short_description">Form element text field with database dropdown</p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Form_Element_DatabaseDropdown.html" class="more">« More »</a>
+</div>
+<div id="OSS_Form_Element_DateForm" class="element ajax clickable class">
+<h1>OSS_Form_Element_DateForm<a href="../classes/OSS_Form_Element_DateForm.html">¶</a>
+</h1>
+<p class="short_description">Form element Date form</p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Form_Element_DateForm.html" class="more">« More »</a>
 </div>
 <div id="OSS_Form_User" class="element ajax clickable class">
 <h1>OSS_Form_User<a href="../classes/OSS_Form_User.html">¶</a>
@@ -1387,6 +1426,20 @@ Multicasting given string to int</h2>
 <p class="short_description">OSS_Message pop up type class for displaying messages for users.</p>
 <div class="details collapse"></div>
 <a href="../classes/OSS_Message_Pop_Up.html" class="more">« More »</a>
+</div>
+<div id="OSS_Net_Exception" class="element ajax clickable class">
+<h1>OSS_Net_Exception<a href="../classes/OSS_Net_Exception.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Net_Exception.html" class="more">« More »</a>
+</div>
+<div id="OSS_Net_IPv4" class="element ajax clickable class">
+<h1>OSS_Net_IPv4<a href="../classes/OSS_Net_IPv4.html">¶</a>
+</h1>
+<p class="short_description">Utility methods for IPv4 addresses</p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_Net_IPv4.html" class="more">« More »</a>
 </div>
 <div id="OSS_PHPUnit_Extensions_SeleniumTestCase" class="element ajax clickable class">
 <h1>OSS_PHPUnit_Extensions_SeleniumTestCase<a href="../classes/OSS_PHPUnit_Extensions_SeleniumTestCase.html">¶</a>
@@ -1759,6 +1812,13 @@ Multicasting given string to int</h2>
 <div class="details collapse"></div>
 <a href="../classes/OSS_View_Helper_Buttonlink.html" class="more">« More »</a>
 </div>
+<div id="OSS_View_Helper_DatabaseDropdown" class="element ajax clickable class">
+<h1>OSS_View_Helper_DatabaseDropdown<a href="../classes/OSS_View_Helper_DatabaseDropdown.html">¶</a>
+</h1>
+<p class="short_description">Helper to render database dropdown form element</p>
+<div class="details collapse"></div>
+<a href="../classes/OSS_View_Helper_DatabaseDropdown.html" class="more">« More »</a>
+</div>
 <div id="OSS_View_Helper_DateForm" class="element ajax clickable class">
 <h1>OSS_View_Helper_DateForm<a href="../classes/OSS_View_Helper_DateForm.html">¶</a>
 </h1>
@@ -1792,8 +1852,8 @@ Multicasting given string to int</h2>
 </div>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
-            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
-            generated on 2013-02-11T11:16:47Z.<br></footer></div>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
+            generated on 2013-06-27T19:19:00+01:00.<br></footer></div>
 </div>
 </body>
 </html>

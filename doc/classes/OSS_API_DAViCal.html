@@ -31,14 +31,14 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">209</span></a></li>
+                <span class="label label-info">236</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul>
 <li>todo 
                 <span class="label label-info">2</span>
 </li>
 <li>fixme 
-                <span class="label label-info">10</span>
+                <span class="label label-info">11</span>
 </li>
 </ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
@@ -75,7 +75,9 @@ Initialize DBAL connection.</span><pre>__construct()</pre></a></li>
 <li class="method public "><a href="#method_getAllUsers" title="getAllUsers :: Get all users registered in the database as an array."><span class="description">Get all users registered in the database as an array.</span><pre>getAllUsers()</pre></a></li>
 <li class="method public "><a href="#method_getCalendarById" title="getCalendarById :: Gets calendar data by collection id"><span class="description">Gets calendar data by collection id</span><pre>getCalendarById()</pre></a></li>
 <li class="method public "><a href="#method_getCalendarsByUserId" title="getCalendarsByUserId :: Gets calendars data by user id ( user_no )"><span class="description">Gets calendars data by user id ( user_no )</span><pre>getCalendarsByUserId()</pre></a></li>
+<li class="method public "><a href="#method_getGrantedToPrincipalsIds" title="getGrantedToPrincipalsIds :: Gets principals IDs which have privileges to given users principal"><span class="description">Gets principals IDs which have privileges to given users principal</span><pre>getGrantedToPrincipalsIds()</pre></a></li>
 <li class="method public "><a href="#method_getPrincipalById" title="getPrincipalById :: Gets principal data by principal id"><span class="description">Gets principal data by principal id</span><pre>getPrincipalById()</pre></a></li>
+<li class="method public "><a href="#method_getPrincipalByUserId" title="getPrincipalByUserId :: Gets principal data by user_no"><span class="description">Gets principal data by user_no</span><pre>getPrincipalByUserId()</pre></a></li>
 <li class="method public "><a href="#method_getSharedCalendarsForUser" title="getSharedCalendarsForUser :: Gets shared calendars which can be accessed by user"><span class="description">Gets shared calendars which can be accessed by user</span><pre>getSharedCalendarsForUser()</pre></a></li>
 <li class="method public "><a href="#method_getUserById" title="getUserById :: Gets user by Id ( user_no )"><span class="description">Gets user by Id ( user_no )</span><pre>getUserById()</pre></a></li>
 <li class="method public "><a href="#method_getUserByUsername" title="getUserByUsername :: Gets user by username"><span class="description">Gets user by username</span><pre>getUserByUsername()</pre></a></li>
@@ -86,13 +88,16 @@ Initialize DBAL connection.</span><pre>__construct()</pre></a></li>
 <li class="method public "><a href="#method_removeCollection" title="removeCollection :: Removes collection"><span class="description">Removes collection</span><pre>removeCollection()</pre></a></li>
 <li class="method public "><a href="#method_removeGrantPrivileges" title="removeGrantPrivileges :: Remove grant privileges"><span class="description">Remove grant privileges</span><pre>removeGrantPrivileges()</pre></a></li>
 <li class="method public "><a href="#method_removeUser" title="removeUser :: Removes users"><span class="description">Removes users</span><pre>removeUser()</pre></a></li>
+<li class="method public "><a href="#method_setUserActiveState" title="setUserActiveState :: Sets user active state."><span class="description">Sets user active state.</span><pre>setUserActiveState()</pre></a></li>
 <li class="method public "><a href="#method_setUserPassword" title="setUserPassword :: Sets user password."><span class="description">Sets user password.</span><pre>setUserPassword()</pre></a></li>
+<li class="method public "><a href="#method_shareCalendar" title="shareCalendar :: Shares / delegates calendar"><span class="description">Shares / delegates calendar</span><pre>shareCalendar()</pre></a></li>
+<li class="method public "><a href="#method_unshareCalendar" title="unshareCalendar :: Unshare calendar."><span class="description">Unshare calendar.</span><pre>unshareCalendar()</pre></a></li>
 <li class="method public "><a href="#method_updateGrantPrivileges" title="updateGrantPrivileges :: Update grant privileges to principal or collection"><span class="description">Update grant privileges to principal or collection</span><pre>updateGrantPrivileges()</pre></a></li>
 </ul>
 </li>
 <li class="nav-header">
 <i class="icon-custom icon-property"></i> Properties
-                    <ul><li class="property public "><a href="#property_PRIVILEGES" title="$PRIVILEGES :: Names of Privieleges"><span class="description"></span><pre>$PRIVILEGES</pre></a></li></ul>
+                    <ul><li class="property public "><a href="#property_PRIVILEGES" title="$PRIVILEGES :: Names of Privieleges"><span class="description">Names of Privieleges</span><pre>$PRIVILEGES</pre></a></li></ul>
 </li>
 <li class="nav-header">
 <i class="icon-custom icon-constant"></i> Constants
@@ -105,6 +110,7 @@ Initialize DBAL connection.</span><pre>__construct()</pre></a></li>
 <li class="constant  "><a href="#constant_PRINCIPAL_TYPE_GROUP" title="PRINCIPAL_TYPE_GROUP :: "><span class="description">PRINCIPAL_TYPE_GROUP</span><pre>PRINCIPAL_TYPE_GROUP</pre></a></li>
 <li class="constant  "><a href="#constant_PRINCIPAL_TYPE_PERSON" title="PRINCIPAL_TYPE_PERSON :: Principal type IDs"><span class="description">Principal type IDs</span><pre>PRINCIPAL_TYPE_PERSON</pre></a></li>
 <li class="constant  "><a href="#constant_PRINCIPAL_TYPE_RESOURCE" title="PRINCIPAL_TYPE_RESOURCE :: "><span class="description">PRINCIPAL_TYPE_RESOURCE</span><pre>PRINCIPAL_TYPE_RESOURCE</pre></a></li>
+<li class="constant  "><a href="#constant_PRIVILEGES_BLOCK" title="PRIVILEGES_BLOCK :: "><span class="description">PRIVILEGES_BLOCK</span><pre>PRIVILEGES_BLOCK</pre></a></li>
 <li class="constant  "><a href="#constant_PRIVILEGES_NONE" title="PRIVILEGES_NONE :: "><span class="description">PRIVILEGES_NONE</span><pre>PRIVILEGES_NONE</pre></a></li>
 <li class="constant  "><a href="#constant_PRIVILEGES_RO" title="PRIVILEGES_RO :: "><span class="description">PRIVILEGES_RO</span><pre>PRIVILEGES_RO</pre></a></li>
 <li class="constant  "><a href="#constant_PRIVILEGES_RW" title="PRIVILEGES_RW :: Privileges constants which refelects DAViCal database scheme"><span class="description">Privileges constants which refelects DAViCal database scheme</span><pre>PRIVILEGES_RW</pre></a></li>
@@ -166,10 +172,12 @@ Initialize DBAL connection.</h2>
 <pre>createCalendar(array $user, string $name, string | null $privileges, bool $public_events_only, bool $publicly_readable, int | null $timezone, string $description) </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>Returns same array structure as createCollection</p></div>
+<div class="long_description"><p>Returns same array structure as createCollection</p>
+
+<p>If principal has delegated principals, function iterates all of them and blocks access to new calendar.</p></div>
 <table class="table table-bordered"><tr>
 <th>see</th>
-<td><a href="">\createCollection()</a></td>
+<td><a href="">\global\createCollection()</a></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -210,15 +218,15 @@ Returns an array wich contains user, principal and calendar collection data.
 <table class="table table-bordered">
 <tr>
 <th>see</th>
-<td><a href="">\createUser()</a></td>
+<td><a href="">\global\createUser()</a></td>
 </tr>
 <tr>
 <th>see</th>
-<td><a href="">\createPrincipal()</a></td>
+<td><a href="">\global\createPrincipal()</a></td>
 </tr>
 <tr>
 <th>see</th>
-<td><a href="">\createCalendar()</a></td>
+<td><a href="">\global\createCalendar()</a></td>
 </tr>
 </table>
 <h3>Parameters</h3>
@@ -332,11 +340,11 @@ Returns an array wich contains user, principal and calendar collection data.
 <table class="table table-bordered">
 <tr>
 <th>see</th>
-<td><a href="">\createUser()</a></td>
+<td><a href="">\global\createUser()</a></td>
 </tr>
 <tr>
 <th>see</th>
-<td><a href="">\createPrincipal()</a></td>
+<td><a href="">\global\createPrincipal()</a></td>
 </tr>
 </table>
 <h3>Parameters</h3>
@@ -490,6 +498,26 @@ Returns an array wich contains user, principal and calendar collection data.
 <div class="subelement response"><code>array</code></div>
 </div></div>
 </div>
+<a id="method_getGrantedToPrincipalsIds"></a><div class="element clickable method public method_getGrantedToPrincipalsIds" data-toggle="collapse" data-target=".method_getGrantedToPrincipalsIds .collapse">
+<h2>Gets principals IDs which have privileges to given users principal</h2>
+<pre>getGrantedToPrincipalsIds(int $user_id) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Return:
+ array ( size = n )
+     0 => ['to_principal' => int 1084 ]
+     1 => ['to_principal' => int 1084 ]
+     .............
+     N => array ...</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$user_id</h4>
+<code>int</code><p>User id ( user_no )</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
+</div></div>
+</div>
 <a id="method_getPrincipalById"></a><div class="element clickable method public method_getPrincipalById" data-toggle="collapse" data-target=".method_getPrincipalById .collapse">
 <h2>Gets principal data by principal id</h2>
 <pre>getPrincipalById(int $principal_id) : array</pre>
@@ -510,12 +538,34 @@ Returns an array wich contains user, principal and calendar collection data.
 <div class="subelement response"><code>array</code></div>
 </div></div>
 </div>
+<a id="method_getPrincipalByUserId"></a><div class="element clickable method public method_getPrincipalByUserId" data-toggle="collapse" data-target=".method_getPrincipalByUserId .collapse">
+<h2>Gets principal data by user_no</h2>
+<pre>getPrincipalByUserId(int $user_no) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Returns:
+     array (size=5)
+         'principal_id' => int 1
+         'type_id' => int 1
+         'user_no' => int 1
+         'displayname' => string 'DAViCal Administrator' (length=21)
+         'default_privileges' => string '000000000000000000000000' (length=24)</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$user_no</h4>
+<code>int</code><p>User id</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
+</div></div>
+</div>
 <a id="method_getSharedCalendarsForUser"></a><div class="element clickable method public method_getSharedCalendarsForUser" data-toggle="collapse" data-target=".method_getSharedCalendarsForUser .collapse">
 <h2>Gets shared calendars which can be accessed by user</h2>
 <pre>getSharedCalendarsForUser(int $user_id) : array</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>Return:
+<div class="long_description"><p>Calendars with PRIVILEGES_BLOCK are ignored.</p>
+
+<p>Return:
  array ( size = n )
      0 => array (size=25)
          'by_principal' => int 1100
@@ -615,7 +665,9 @@ Returns an array wich contains user, principal and calendar collection data.
 <pre>getUsersForSharedCalendar(int $collection_id) : array</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>Return:
+<div class="long_description"><p>Users with PRIVILEGES_BLOCK are ignored.</p>
+
+<p>Return:
  array ( size = n )
      0 => array (size=22)
          'by_principal' => int 1094
@@ -715,7 +767,7 @@ Users IDs should be passed, principal IDs will be loaded from database.</p>
 <div class="long_description"><p>Calls removeCollection() method</p></div>
 <table class="table table-bordered"><tr>
 <th>see</th>
-<td><a href="">\removeCollection()</a></td>
+<td><a href="">\global\removeCollection()</a></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -783,6 +835,25 @@ Users IDs should be passed, principal IDs will be loaded from database.</p>
 <code>bool</code>true if removed.</div>
 </div></div>
 </div>
+<a id="method_setUserActiveState"></a><div class="element clickable method public method_setUserActiveState" data-toggle="collapse" data-target=".method_setUserActiveState .collapse">
+<h2>Sets user active state.</h2>
+<pre>setUserActiveState(int $user_id, bool $active) : bool</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$user_id</h4>
+<code>int</code><p>User id ( user_no )</p>
+</div>
+<div class="subelement argument">
+<h4>$active</h4>
+<code>bool</code><p>Active state true for active, false for inactive.</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>bool</code>ture if success</div>
+</div></div>
+</div>
 <a id="method_setUserPassword"></a><div class="element clickable method public method_setUserPassword" data-toggle="collapse" data-target=".method_setUserPassword .collapse">
 <h2>Sets user password.</h2>
 <pre>setUserPassword(int $user_id, string $hashed_password) : bool</pre>
@@ -800,6 +871,36 @@ Users IDs should be passed, principal IDs will be loaded from database.</p>
 <h3>Returns</h3>
 <div class="subelement response">
 <code>bool</code>ture if success</div>
+</div></div>
+</div>
+<a id="method_shareCalendar"></a><div class="element clickable method public method_shareCalendar" data-toggle="collapse" data-target=".method_shareCalendar .collapse">
+<h2>Shares / delegates calendar</h2>
+<pre>shareCalendar($user_no, $collection_id, $privileges) : bool</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Then sharing calendar then function iterate all users delegate principals if new calendar's owner
+is already in list then it just update privileges. Otherwise it grants principal privileges to read only
+then iterate to all calendars and block the access for them, and finally set correct privileges to given
+calendar.</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$user_no</h4></div>
+<div class="subelement argument"><h4>$collection_id</h4></div>
+<div class="subelement argument"><h4>$privileges</h4></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>bool</code></div>
+</div></div>
+</div>
+<a id="method_unshareCalendar"></a><div class="element clickable method public method_unshareCalendar" data-toggle="collapse" data-target=".method_unshareCalendar .collapse">
+<h2>Unshare calendar.</h2>
+<pre>unshareCalendar($user_no, $collection_id) : bool</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Sets existent privileges to PRIVILEGES_BLOCK.</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$user_no</h4></div>
+<div class="subelement argument"><h4>$collection_id</h4></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>bool</code></div>
 </div></div>
 </div>
 <a id="method_updateGrantPrivileges"></a><div class="element clickable method public method_updateGrantPrivileges" data-toggle="collapse" data-target=".method_updateGrantPrivileges .collapse">
@@ -836,7 +937,7 @@ Users IDs should be passed, principal IDs will be loaded from database.</p>
 <h3>
 <i class="icon-custom icon-property"></i> Properties</h3>
 <a id="property_PRIVILEGES"> </a><div class="element clickable property public property_PRIVILEGES" data-toggle="collapse" data-target=".property_PRIVILEGES .collapse">
-<h2></h2>
+<h2>Names of Privieleges</h2>
 <pre>$PRIVILEGES </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
@@ -891,6 +992,12 @@ Users IDs should be passed, principal IDs will be loaded from database.</p>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
+<a id="constant_PRIVILEGES_BLOCK"> </a><div class="element clickable constant  constant_PRIVILEGES_BLOCK" data-toggle="collapse" data-target=".constant_PRIVILEGES_BLOCK .collapse">
+<h2>PRIVILEGES_BLOCK</h2>
+<pre>PRIVILEGES_BLOCK </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
 <a id="constant_PRIVILEGES_NONE"> </a><div class="element clickable constant  constant_PRIVILEGES_NONE" data-toggle="collapse" data-target=".constant_PRIVILEGES_NONE .collapse">
 <h2>PRIVILEGES_NONE</h2>
 <pre>PRIVILEGES_NONE </pre>
@@ -915,8 +1022,8 @@ Users IDs should be passed, principal IDs will be loaded from database.</p>
 </div>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
-            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
-            generated on 2013-02-11T11:16:48Z.<br></footer></div>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
+            generated on 2013-06-27T19:19:01+01:00.<br></footer></div>
 </div>
 </body>
 </html>
