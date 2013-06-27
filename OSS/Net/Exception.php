@@ -28,7 +28,7 @@
  * to info@opensolutions.ie so we can send you a copy immediately.
  *
  * @category   OSS
- * @package    OSS_Form
+ * @package    OSS_Exception
  * @copyright  Copyright (c) 2007 - 2013, Open Source Solutions Limited, Dublin, Ireland
  * @license    http://www.opensolutions.ie/licenses/new-bsd New BSD License
  * @link       http://www.opensolutions.ie/ Open Source Solutions Limited
@@ -36,39 +36,15 @@
  * @author     The Skilled Team of PHP Developers at Open Solutions <info@opensolutions.ie>
  */
 
-
 /**
- * Utility methods for IPv4 addresses
- *
- * @author     Barry O'Donovan <barry@opensolutions.ie>
- * @author     The Skilled Team of PHP Developers at Open Solutions <info@opensolutions.ie>
  * @category   OSS
- * @package    OSS_Form
+ * @package    OSS_Exception
  * @copyright  Copyright (c) 2007 - 2013, Open Source Solutions Limited, Dublin, Ireland
  * @license    http://www.opensolutions.ie/licenses/new-bsd New BSD License
  */
-class OSS_Net_IPv4
+class OSS_Net_Exception extends OSS_Exception 
 {
-   
-    /**
-     * Converts IPv4 address to its in-addr.arpa format
-     *
-     * E.g. IPv4 address like `1.2.3.4` will be converted
-     * to `4.3.2.1.in-addr.arpa`. 
-     *
-     * @param string $ip IPv4 address to convert
-     * @return string The in-addr.arpa version of the IPv4 address
-     * @throws OSS_Net_Execption On lose checking of IPv4 address format (four octets)
-     */
-    public static function ipv4ToARPA( $ip )
-    {
-        $parts = explode( '.', $ip );
-        
-        if( count( $parts ) != 4 )
-            throw new OSS_Net_Exception( 'Invalid IPv4 address - ' . $ip );
-        
-        return sprintf( '%d.%d.%d.%d.in-addr.arpa', $parts[3], $parts[2], $parts[1], $parts[0] );
-    }
-    
-    
+
 }
+
+
