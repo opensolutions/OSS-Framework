@@ -31,14 +31,14 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">209</span></a></li>
+                <span class="label label-info">236</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul>
 <li>todo 
                 <span class="label label-info">2</span>
 </li>
 <li>fixme 
-                <span class="label label-info">10</span>
+                <span class="label label-info">11</span>
 </li>
 </ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
@@ -66,8 +66,11 @@
 <li class="method public "><a href="#method_exportCert" title="exportCert :: Exports self signed certificate as string."><span class="description">Exports self signed certificate as string.</span><pre>exportCert()</pre></a></li>
 <li class="method public "><a href="#method_exportKeyPair" title="exportKeyPair :: Exports key pair."><span class="description">Exports key pair.</span><pre>exportKeyPair()</pre></a></li>
 <li class="method public "><a href="#method_exportPublicKey" title="exportPublicKey :: Exports public."><span class="description">Exports public.</span><pre>exportPublicKey()</pre></a></li>
+<li class="method public "><a href="#method_genCertificate" title="genCertificate :: Generates sertificate for given information"><span class="description">Generates sertificate for given information</span><pre>genCertificate()</pre></a></li>
 <li class="method public "><a href="#method_genKeyPair" title="genKeyPair :: Generates key pair."><span class="description">Generates key pair.</span><pre>genKeyPair()</pre></a></li>
-<li class="method public "><a href="#method_genSelfSignedCert" title="genSelfSignedCert :: Generates self signed certificate."><span class="description">Generates self signed certificate.</span><pre>genSelfSignedCert()</pre></a></li>
+<li class="method public "><a href="#method_genSelfSignedCert" title="genSelfSignedCert :: Generates self signed certificate and returns it."><span class="description">Generates self signed certificate and returns it.</span><pre>genSelfSignedCert()</pre></a></li>
+<li class="method public "><a href="#method_genSignedCert" title="genSignedCert :: Generates self signed certificate and returns it."><span class="description">Generates self signed certificate and returns it.</span><pre>genSignedCert()</pre></a></li>
+<li class="method public "><a href="#method_parseCertificate" title="parseCertificate :: Parses encrypted certificate"><span class="description">Parses encrypted certificate</span><pre>parseCertificate()</pre></a></li>
 <li class="method public "><a href="#method_setKeyPair" title="setKeyPair :: Sets key pair."><span class="description">Sets key pair.</span><pre>setKeyPair()</pre></a></li>
 <li class="method public "><a href="#method_setPassphrase" title="setPassphrase :: Sets passphrase."><span class="description">Sets passphrase.</span><pre>setPassphrase()</pre></a></li>
 </ul>
@@ -78,9 +81,9 @@
 </li>
 <li class="nav-header private">» Private
                     <ul>
-<li class="property private "><a href="#property__cert" title="$_cert :: A variable to hold a certificate resource"><span class="description"></span><pre>$_cert</pre></a></li>
-<li class="property private "><a href="#property__keypair" title="$_keypair :: A variable to hold a key pair resource"><span class="description"></span><pre>$_keypair</pre></a></li>
-<li class="property private "><a href="#property__passphrase" title="$_passphrase :: A variable to store a Passphrase to encrypt / decrypt the key pair"><span class="description"></span><pre>$_passphrase</pre></a></li>
+<li class="property private "><a href="#property__cert" title="$_cert :: A variable to hold a certificate resource"><span class="description">A variable to hold a certificate resource</span><pre>$_cert</pre></a></li>
+<li class="property private "><a href="#property__keypair" title="$_keypair :: A variable to hold a key pair resource"><span class="description">A variable to hold a key pair resource</span><pre>$_keypair</pre></a></li>
+<li class="property private "><a href="#property__passphrase" title="$_passphrase :: A variable to store a Passphrase to encrypt / decrypt the key pair"><span class="description">A variable to store a Passphrase to encrypt / decrypt the key pair</span><pre>$_passphrase</pre></a></li>
 </ul>
 </li>
 </ul>
@@ -181,6 +184,25 @@ else it will return the actual key without encryption. By default $encrypt is tr
 <code>resource</code>of public key</div>
 </div></div>
 </div>
+<a id="method_genCertificate"></a><div class="element clickable method public method_genCertificate" data-toggle="collapse" data-target=".method_genCertificate .collapse">
+<h2>Generates sertificate for given information</h2>
+<pre>genCertificate(array $dn, $options) : resource</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>oaram</th>
+<td>array|null $options Options for creating certificate</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$dn</h4>
+<code>array</code><p>Certificate information</p></div>
+<div class="subelement argument"><h4>$options</h4></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>resource</code></div>
+</div></div>
+</div>
 <a id="method_genKeyPair"></a><div class="element clickable method public method_genKeyPair" data-toggle="collapse" data-target=".method_genKeyPair .collapse">
 <h2>Generates key pair.</h2>
 <pre>genKeyPair(array $options) : resource</pre>
@@ -197,17 +219,71 @@ else it will return the actual key without encryption. By default $encrypt is tr
 </div></div>
 </div>
 <a id="method_genSelfSignedCert"></a><div class="element clickable method public method_genSelfSignedCert" data-toggle="collapse" data-target=".method_genSelfSignedCert .collapse">
-<h2>Generates self signed certificate.</h2>
-<pre>genSelfSignedCert($dn, $days) : resource</pre>
+<h2>Generates self signed certificate and returns it.</h2>
+<pre>genSelfSignedCert(array $dn, int $days, array | null $options, int $serial) : resource</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>Generates self signed certificate and returns it.</p></div>
+<div class="long_description"></div>
 <h3>Parameters</h3>
-<div class="subelement argument"><h4>$dn</h4></div>
-<div class="subelement argument"><h4>$days</h4></div>
+<div class="subelement argument">
+<h4>$dn</h4>
+<code>array</code><p>Certificate information</p></div>
+<div class="subelement argument">
+<h4>$days</h4>
+<code>int</code><p>Days until certificate expires</p></div>
+<div class="subelement argument">
+<h4>$options</h4>
+<code>array</code><code>null</code><p>Options for creating certificate</p></div>
+<div class="subelement argument">
+<h4>$serial</h4>
+<code>int</code><p>Serial number by default is 0</p></div>
 <h3>Returns</h3>
 <div class="subelement response">
 <code>resource</code>of certificate.</div>
+</div></div>
+</div>
+<a id="method_genSignedCert"></a><div class="element clickable method public method_genSignedCert" data-toggle="collapse" data-target=".method_genSignedCert .collapse">
+<h2>Generates self signed certificate and returns it.</h2>
+<pre>genSignedCert(array $dn, int $days, string $cacert, string $cakey, array | null $options, int $serial) : resource</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$dn</h4>
+<code>array</code><p>Certificate information</p></div>
+<div class="subelement argument">
+<h4>$days</h4>
+<code>int</code><p>Days until certificate expires</p></div>
+<div class="subelement argument">
+<h4>$cacert</h4>
+<code>string</code><p>Encrypted issuer certifcate</p></div>
+<div class="subelement argument">
+<h4>$cakey</h4>
+<code>string</code><p>Encrypted issuer private key</p></div>
+<div class="subelement argument">
+<h4>$options</h4>
+<code>array</code><code>null</code><p>Options for creating certificate</p></div>
+<div class="subelement argument">
+<h4>$serial</h4>
+<code>int</code><p>Serial number by default is 0</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>resource</code>of certificate.</div>
+</div></div>
+</div>
+<a id="method_parseCertificate"></a><div class="element clickable method public method_parseCertificate" data-toggle="collapse" data-target=".method_parseCertificate .collapse">
+<h2>Parses encrypted certificate</h2>
+<pre>parseCertificate(string $cert) : array</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$cert</h4>
+<code>string</code><p>Encrypted certificate</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
 </div></div>
 </div>
 <a id="method_setKeyPair"></a><div class="element clickable method public method_setKeyPair" data-toggle="collapse" data-target=".method_setKeyPair .collapse">
@@ -240,19 +316,19 @@ else it will return the actual key without encryption. By default $encrypt is tr
 <h3>
 <i class="icon-custom icon-property"></i> Properties</h3>
 <a id="property__cert"> </a><div class="element clickable property private property__cert" data-toggle="collapse" data-target=".property__cert .collapse">
-<h2></h2>
+<h2>A variable to hold a certificate resource</h2>
 <pre>$_cert : resource</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <a id="property__keypair"> </a><div class="element clickable property private property__keypair" data-toggle="collapse" data-target=".property__keypair .collapse">
-<h2></h2>
+<h2>A variable to hold a key pair resource</h2>
 <pre>$_keypair : resource</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <a id="property__passphrase"> </a><div class="element clickable property private property__passphrase" data-toggle="collapse" data-target=".property__passphrase .collapse">
-<h2></h2>
+<h2>A variable to store a Passphrase to encrypt / decrypt the key pair</h2>
 <pre>$_passphrase : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
@@ -263,8 +339,8 @@ else it will return the actual key without encryption. By default $encrypt is tr
 </div>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
-            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
-            generated on 2013-02-11T11:16:49Z.<br></footer></div>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
+            generated on 2013-06-27T19:19:03+01:00.<br></footer></div>
 </div>
 </body>
 </html>
