@@ -83,7 +83,7 @@ class OSS_Net_IPv6
             if( $part == "" )
             {
                 $diff = 8 - count( $parts );
-                for( $i = $ix; $i <= $ix+$diff; $i++ )
+                for( $i = $ix; $i <= $ix + $diff; $i++ )
                     $parts[$i] = '0';
             }
             else
@@ -123,6 +123,32 @@ class OSS_Net_IPv6
         $ip = self::formatAddress( $ip, self::TYPE_LONG_FULL );
         $ip = strrev( str_replace( ':', '', $ip ) );
         return implode( '.', str_split( $ip ) ) . '.ip6.arpa';
+    }
+
+    /**
+     * Converts ARPA name to IPv6 address.
+     *
+     * E.g. IPv6 address like 7.4.1.0.0.0.0.0.0.0.0.0.0.0.0.0.2.0.0.0.8.1.0.0.8.f.7.0.1.0.0.2.ip6.arpa
+     *  will be converted to 2001:7f8:18:2::147, 
+     *
+     * @param string $ip   IP address to convert
+     * @param int    $type Type to convert. One of OSS_Net_Ipv6::TYPE_
+     * @return string
+     */
+    public static function arpaNameToIpv6( $ip, $type = self::TYPE_SHORT )
+    {
+        $ip = substr( strrev( $ip ), 9 );
+        $ip = explode( ".", $ip );
+        $tmp = "" ;
+        for( $i = 0; $i < count( $ip ) / 4; $i++ )
+        {
+            $tmp .= $ip[ 0 + $i * 4 ] . $ip[ 1 + $i * 4 ];
+            $tmp .= $ip[ 2 + $i * 4 ] . $ip[ 3 + $i * 4 ];
+            if( $i + 1 != count( $ip ) / 4 )
+                $tmp .= ':';
+        }
+        
+        return self::formatAddress( $tmp, $type );
     }
 
     /**
