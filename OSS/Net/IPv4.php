@@ -69,6 +69,4 @@ class OSS_Net_IPv4
         $parts = explode( '.', $ip );
         return sprintf( '%s.%s.%s.%s.in-addr.arpa', $parts[3], $parts[2], $parts[1], $parts[0] );
     }
-    
-    
 }
