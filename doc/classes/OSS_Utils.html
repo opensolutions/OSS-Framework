@@ -31,14 +31,14 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">209</span></a></li>
+                <span class="label label-info">236</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul>
 <li>todo 
                 <span class="label label-info">2</span>
 </li>
 <li>fixme 
-                <span class="label label-info">10</span>
+                <span class="label label-info">11</span>
 </li>
 </ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
@@ -137,8 +137,18 @@ CSS, images, etc, while the htmldoc 1.9.x is still in "developer snapshot" state
 <pre>genUrl(string | bool $controller, string | bool $action, string | bool $module, array $params, string $host) : string</pre>
 <div class="labels"><span class="label">Static</span></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>This is a useful function as no knowledge of the application's path is required.
-Uses Zend_Controller_Front.</p></div>
+<div class="long_description"><p>This is a useful function as no knowledge of the application's path is required.</p>
+
+<p>It is also configurable (via Zend_Application config and assuming 'options' is
+available in Zend_Registry as it would be from OSS_Controller_Action).</p>
+
+<p>You can configure the hostname by setting config: utils.genurl.host_mode</p>
+
+<ul>
+<li>Default (no config / invalid config): ''$_SERVER['HTTP_HOST']''</li>
+<li>''HTTP_X_FORWARDED_HOST'': Use ''$_SERVER['HTTP_X_FORWARDED_HOST']''</li>
+<li>''REPLEACE'': set with value from utils.genurl.host_replace</li>
+</ul></div>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$controller</h4>
@@ -290,8 +300,8 @@ characters as defined in length.</p>
 </div>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
-            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
-            generated on 2013-02-11T11:16:48Z.<br></footer></div>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
+            generated on 2013-06-27T19:19:02+01:00.<br></footer></div>
 </div>
 </body>
 </html>

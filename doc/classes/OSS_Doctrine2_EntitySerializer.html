@@ -1,0 +1,284 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>OSS » \OSS_Doctrine2_EntitySerializer</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">OSS</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Packages</a></li>
+<li><a href="../packages/OSS.html"><i class="icon-folder-open"></i> OSS</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">236</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul>
+<li>todo 
+                <span class="label label-info">2</span>
+</li>
+<li>fixme 
+                <span class="label label-info">11</span>
+</li>
+</ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods
+                    <ul>
+<li class="method public "><a href="#method___construct" title="__construct :: "><span class="description">__construct()
+        </span><pre>__construct()</pre></a></li>
+<li class="method public "><a href="#method_getEntityManager" title="getEntityManager :: "><span class="description">getEntityManager()
+        </span><pre>getEntityManager()</pre></a></li>
+<li class="method public "><a href="#method_getMaxRecursionDepth" title="getMaxRecursionDepth :: Get the maximum recursion depth"><span class="description">Get the maximum recursion depth</span><pre>getMaxRecursionDepth()</pre></a></li>
+<li class="method public "><a href="#method_setEntityManager" title="setEntityManager :: "><span class="description">setEntityManager()
+        </span><pre>setEntityManager()</pre></a></li>
+<li class="method public "><a href="#method_setMaxRecursionDepth" title="setMaxRecursionDepth :: Set the maximum recursion depth"><span class="description">Set the maximum recursion depth</span><pre>setMaxRecursionDepth()</pre></a></li>
+<li class="method public "><a href="#method_toArray" title="toArray :: Serialize an entity to an array"><span class="description">Serialize an entity to an array</span><pre>toArray()</pre></a></li>
+<li class="method public "><a href="#method_toJson" title="toJson :: Convert an entity to a JSON object"><span class="description">Convert an entity to a JSON object</span><pre>toJson()</pre></a></li>
+<li class="method public "><a href="#method_toXml" title="toXml :: Convert an entity to XML representation"><span class="description">Convert an entity to XML representation</span><pre>toXml()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header protected">» Protected
+                    <ul><li class="method protected "><a href="#method__serializeEntity" title="_serializeEntity :: "><span class="description">_serializeEntity()
+        </span><pre>_serializeEntity()</pre></a></li></ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties
+                    <ul></ul>
+</li>
+<li class="nav-header protected">» Protected
+                    <ul>
+<li class="property protected "><a href="#property__em" title="$_em :: "><span class="description">$_em</span><pre>$_em</pre></a></li>
+<li class="property protected "><a href="#property__maxRecursionDepth" title="$_maxRecursionDepth :: "><span class="description">$_maxRecursionDepth</span><pre>$_maxRecursionDepth</pre></a></li>
+<li class="property protected "><a href="#property__recursionDepth" title="$_recursionDepth :: "><span class="description">$_recursionDepth</span><pre>$_recursionDepth</pre></a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="span8">
+<a id="\OSS_Doctrine2_EntitySerializer"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/global.html">global</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/OSS_Doctrine2_EntitySerializer.html">OSS_Doctrine2_EntitySerializer</a>
+</li>
+</ul>
+<div class="element class">
+<p class="short_description">A Doctrine2 Entity Serializer</p>
+<div class="details">
+<div class="long_description"><p>Based on:</p></div>
+<table class="table table-bordered">
+<tr>
+<th>link</th>
+<td><a href="https://github.com/borisguery/bgylibrary/blob/master/library/Bgy/Doctrine/EntitySerializer.php%0Awhich">is licensed under http://sam.zoy.org/wtfpl/COPYING. This is turn was based
+on the Gist:</a></td>
+</tr>
+<tr>
+<th>link</th>
+<td><a href="https://gist.github.com/1034079#file_serializable_entity.php">https://gist.github.com/1034079#file_serializable_entity.php</a></td>
+</tr>
+<tr>
+<th>category</th>
+<td>OSS</td>
+</tr>
+<tr>
+<th>package</th>
+<td><a href="../packages/OSS.Doctrine2.html">OSS_Doctrine2</a></td>
+</tr>
+<tr>
+<th>copyright</th>
+<td>Copyright (c) 2007 - 2013, Open Source Solutions Limited, Dublin, Ireland</td>
+</tr>
+<tr>
+<th>license</th>
+<td><a href="http://www.opensolutions.ie/licenses/new-bsd">New BSD License</a></td>
+</tr>
+</table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a id="method___construct"></a><div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
+<h2>__construct()
+        </h2>
+<pre>__construct($em) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$em</h4></div>
+</div></div>
+</div>
+<a id="method_getEntityManager"></a><div class="element clickable method public method_getEntityManager" data-toggle="collapse" data-target=".method_getEntityManager .collapse">
+<h2>getEntityManager()
+        </h2>
+<pre>getEntityManager() : \Doctrine\ORM\EntityManager</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>\Doctrine\ORM\EntityManager</code></div>
+</div></div>
+</div>
+<a id="method_getMaxRecursionDepth"></a><div class="element clickable method public method_getMaxRecursionDepth" data-toggle="collapse" data-target=".method_getMaxRecursionDepth .collapse">
+<h2>Get the maximum recursion depth</h2>
+<pre>getMaxRecursionDepth() : int</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>int</code></div>
+</div></div>
+</div>
+<a id="method_setEntityManager"></a><div class="element clickable method public method_setEntityManager" data-toggle="collapse" data-target=".method_setEntityManager .collapse">
+<h2>setEntityManager()
+        </h2>
+<pre>setEntityManager(\Doctrine\ORM\EntityManager $em) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$em</h4></div>
+</div></div>
+</div>
+<a id="method_setMaxRecursionDepth"></a><div class="element clickable method public method_setMaxRecursionDepth" data-toggle="collapse" data-target=".method_setMaxRecursionDepth .collapse">
+<h2>Set the maximum recursion depth</h2>
+<pre>setMaxRecursionDepth(int $maxRecursionDepth) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$maxRecursionDepth</h4>
+<code>int</code>
+</div>
+</div></div>
+</div>
+<a id="method_toArray"></a><div class="element clickable method public method_toArray" data-toggle="collapse" data-target=".method_toArray .collapse">
+<h2>Serialize an entity to an array</h2>
+<pre>toArray(\The $entity) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$entity</h4>
+<code>\The</code><p>entity $entity</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
+</div></div>
+</div>
+<a id="method_toJson"></a><div class="element clickable method public method_toJson" data-toggle="collapse" data-target=".method_toJson .collapse">
+<h2>Convert an entity to a JSON object</h2>
+<pre>toJson(\The $entity) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$entity</h4>
+<code>\The</code><p>entity $entity</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_toXml"></a><div class="element clickable method public method_toXml" data-toggle="collapse" data-target=".method_toXml .collapse">
+<h2>Convert an entity to XML representation</h2>
+<pre>toXml(\The $entity) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$entity</h4>
+<code>\The</code><p>entity $entity</p>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/OSS_Doctrine2_Exception.html">\OSS_Doctrine2_Exception</a></code></th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="method__serializeEntity"></a><div class="element clickable method protected method__serializeEntity" data-toggle="collapse" data-target=".method__serializeEntity .collapse">
+<h2>_serializeEntity()
+        </h2>
+<pre>_serializeEntity($entity) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$entity</h4></div>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a id="property__em"> </a><div class="element clickable property protected property__em" data-toggle="collapse" data-target=".property__em .collapse">
+<h2>$_em</h2>
+<pre>$_em : \Doctrine\ORM\EntityManager</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property__maxRecursionDepth"> </a><div class="element clickable property protected property__maxRecursionDepth" data-toggle="collapse" data-target=".property__maxRecursionDepth .collapse">
+<h2>$_maxRecursionDepth</h2>
+<pre>$_maxRecursionDepth : int</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property__recursionDepth"> </a><div class="element clickable property protected property__recursionDepth" data-toggle="collapse" data-target=".property__recursionDepth .collapse">
+<h2>$_recursionDepth</h2>
+<pre>$_recursionDepth : int</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
+            generated on 2013-06-27T19:19:02+01:00.<br></footer></div>
+</div>
+</body>
+</html>

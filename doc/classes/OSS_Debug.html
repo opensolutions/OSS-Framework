@@ -31,14 +31,14 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">209</span></a></li>
+                <span class="label label-info">236</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul>
 <li>todo 
                 <span class="label label-info">2</span>
 </li>
 <li>fixme 
-                <span class="label label-info">10</span>
+                <span class="label label-info">11</span>
 </li>
 </ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
@@ -63,11 +63,14 @@
 <i class="icon-custom icon-method"></i> Methods
                     <ul>
 <li class="method public "><a href="#method_compact_debug_backtrace" title="compact_debug_backtrace :: Returns with a simplified, easier-to-read version of the result of debug_backtrace() as an associative array."><span class="description">Returns with a simplified, easier-to-read version of the result of debug_backtrace() as an associative array.</span><pre>compact_debug_backtrace()</pre></a></li>
-<li class="method public "><a href="#method_dd" title="dd :: This function will 'dump and die' - it will (if HTML) surround the
-output with &lt;pre&gt; tags."><span class="description">This function will 'dump and die' - it will (if HTML) surround the
+<li class="method public "><a href="#method_dd" title="dd :: This function will 'var_dump and die' - it will (if HTML) surround the
+output with &lt;pre&gt; tags."><span class="description">This function will 'var_dump and die' - it will (if HTML) surround the
 output with &lt;pre&gt; tags.</span><pre>dd()</pre></a></li>
 <li class="method public "><a href="#method_getInheritanceTree" title="getInheritanceTree :: Returns with the inheritance tree of $pClassOrObject, which can be a class name or an object."><span class="description">Returns with the inheritance tree of $pClassOrObject, which can be a class name or an object.</span><pre>getInheritanceTree()</pre></a></li>
 <li class="method public "><a href="#method_log" title="log :: Putting message to log file."><span class="description">Putting message to log file.</span><pre>log()</pre></a></li>
+<li class="method public "><a href="#method_pd" title="pd :: This function will 'print_r() and die' - it will (if HTML) surround the
+output with &lt;pre&gt; tags."><span class="description">This function will 'print_r() and die' - it will (if HTML) surround the
+output with &lt;pre&gt; tags.</span><pre>pd()</pre></a></li>
 <li class="method public "><a href="#method_prr" title="prr :: A wrapper and extension for print_r()."><span class="description">A wrapper and extension for print_r().</span><pre>prr()</pre></a></li>
 </ul>
 </li></ul>
@@ -117,7 +120,7 @@ output with &lt;pre&gt; tags.</span><pre>dd()</pre></a></li>
 </div></div>
 </div>
 <a id="method_dd"></a><div class="element clickable method public method_dd" data-toggle="collapse" data-target=".method_dd .collapse">
-<h2>This function will 'dump and die' - it will (if HTML) surround the
+<h2>This function will 'var_dump and die' - it will (if HTML) surround the
 output with &lt;pre&gt; tags.</h2>
 <pre>dd(object $object, bool $html) : void</pre>
 <div class="labels"><span class="label">Static</span></div>
@@ -170,6 +173,27 @@ is not a string or an object, then it returns with NULL.</p></div>
 </div>
 </div></div>
 </div>
+<a id="method_pd"></a><div class="element clickable method public method_pd" data-toggle="collapse" data-target=".method_pd .collapse">
+<h2>This function will 'print_r() and die' - it will (if HTML) surround the
+output with &lt;pre&gt; tags.</h2>
+<pre>pd(array $array, bool $html) : void</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$array</h4>
+<code>array</code><p>The array to dump</p></div>
+<div class="subelement argument">
+<h4>$html</h4>
+<code>bool</code><p>If true (default) surround the output with</p>
+
+<p><</p>
+
+<p>pre> tags</p>
+</div>
+</div></div>
+</div>
 <a id="method_prr"></a><div class="element clickable method public method_prr" data-toggle="collapse" data-target=".method_prr .collapse">
 <h2>A wrapper and extension for print_r().</h2>
 <pre>prr(mixed $data, mixed $var_name, boolean $return, boolean $addPre, boolean $addDollarSign) : void | string</pre>
@@ -212,8 +236,8 @@ text output of print_r() into HTML (XHTML).</p></div>
 </div>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
-            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
-            generated on 2013-02-11T11:16:48Z.<br></footer></div>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
+            generated on 2013-06-27T19:19:02+01:00.<br></footer></div>
 </div>
 </body>
 </html>
