@@ -5,7 +5,7 @@
  * This file is part of the "OSS Framework" - a library of tools, utilities and
  * extensions to the Zend Framework V1.x used for PHP application development.
  *
- * Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland
+ * Copyright (c) 2007 - 2013, Open Source Solutions Limited, Dublin, Ireland
  * All rights reserved.
  *
  * Open Source Solutions Limited is a company registered in Dublin,
@@ -29,7 +29,7 @@
  *
  * @category   OSS
  * @package    OSS_Form
- * @copyright  Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland
+ * @copyright  Copyright (c) 2007 - 2013, Open Source Solutions Limited, Dublin, Ireland
  * @license    http://www.opensolutions.ie/licenses/new-bsd New BSD License
  * @link       http://www.opensolutions.ie/ Open Source Solutions Limited
  * @author     Barry O'Donovan <barry@opensolutions.ie>
@@ -38,13 +38,13 @@
 
 
 /**
- * Utility methods to IPv6 addresses
+ * Utility methods for IPv6 addresses
  *
  * @author     Barry O'Donovan <barry@opensolutions.ie>
  * @author     The Skilled Team of PHP Developers at Open Solutions <info@opensolutions.ie>
  * @category   OSS
  * @package    OSS_Form
- * @copyright  Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland
+ * @copyright  Copyright (c) 2007 - 2013, Open Source Solutions Limited, Dublin, Ireland
  * @license    http://www.opensolutions.ie/licenses/new-bsd New BSD License
  */
 class OSS_Net_IPv6
@@ -67,14 +67,14 @@ class OSS_Net_IPv6
      * @param string $address IPv6 address to change format
      * @param int    $type    Type to convert. One of OSS_Net_Ipv6::TYPE_
      * @return string
-     * @throws OSS_Exception Bad IPv6 format
+     * @throws OSS_Net_Exception Bad IPv6 format
      */
     static function formatAddress( $address, $type = self::TYPE_SHORT )
     {
         $address = strtolower( $address );
         $parts = explode( ":", $address );
         if( count( $parts ) > 8 && count( $parts ) < 4 )
-            throw new OSS_Exception( "Bad IPv6 format" );
+            throw new OSS_Net_Exception( "Bad IPv6 format" );
 
         $tmp = $parts;
         $diff = 0;
@@ -94,7 +94,7 @@ class OSS_Net_IPv6
         foreach( $parts as $ix => $part )
         {
             if( ( $part != "" && !ctype_xdigit( $part ) ) || count( $part ) > 4 ) 
-                throw new OSS_Exception( "Bad IPv6 format" );
+                throw new OSS_Net_Exception( "Bad IPv6 format" );
 
             $part = self::formatPart( $part, $type, $rm );
             $parts[$ix] = $part;
@@ -132,7 +132,7 @@ class OSS_Net_IPv6
      * @param int    $type   Type to convert. One of OSS_Net_Ipv6::TYPE_
      * @param bool   $remove If remove returns false.
      * @return string|bool
-     * @throws OSS_Exception Unknown type given
+     * @throws OSS_Net_Exception Unknown type given
      */
     private static function formatPart( $part, $type, $remove )
     {
@@ -170,7 +170,7 @@ class OSS_Net_IPv6
                 break;
 
             default:
-                throw new OSS_Exception( "Unknown type given." );
+                throw new OSS_Net_Exception( "Unknown type given." );
         };
 
         return $ret;
