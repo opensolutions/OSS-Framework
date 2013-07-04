@@ -234,6 +234,9 @@ trait OSS_Controller_Action_Trait_Doctrine2Frontend
         $this->preView( $object );
         
         $this->view->object = $object;
+        
+        // some of our stock templates also use $row instead of $object (especially SCRIPT types)
+        $this->view->row = $object;
     }
     
     /**
