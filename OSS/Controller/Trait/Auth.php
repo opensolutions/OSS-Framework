@@ -50,6 +50,13 @@
  */
 trait OSS_Controller_Trait_Auth
 {
+    /**
+     * Template path
+     *
+     *@var string $TEMPLATE_PATH 
+     */
+    private static $TEMPLATE_PATH = "auth/email";
+
     public function preDispatch()
     {
         // is this action enabled?
@@ -318,7 +325,7 @@ trait OSS_Controller_Trait_Auth
                 $mailer->setFrom( $this->getOptions()['identity']['mailer']['email'], $this->getOptions()['identity']['mailer']['name'] );
                 $mailer->addTo( $user->getEmail(), $user->getFormattedName() );
                 $mailer->setSubject( $this->getOptions()['identity']['sitename'] . ' - Password Reset Information' );
-                $mailer->setBodyHtml( $this->view->render( 'auth/email/html/lost-password.phtml' ) );
+                $this->resolveTemplate( $mailer, 'lost-password' );
                 $mailer->send();
 
                 $this->addMessage(
@@ -385,7 +392,7 @@ trait OSS_Controller_Trait_Auth
                     $mailer->setFrom( $this->_options['identity']['mailer']['email'], $this->_options['identity']['mailer']['name'] );
                     $mailer->addTo( $user->getEmail(), $user->getFormattedName() );
                     $mailer->setSubject( $this->_options['identity']['sitename'] . ' - Your Password Has Been Reset' );
-                    $mailer->setBodyHtml( $this->view->render( 'auth/email/html/reset-password.phtml' ) );
+                    $this->resolveTemplate( $mailer, 'reset-password' );
                     $mailer->send();
 
                     $this->addMessage(
@@ -465,7 +472,7 @@ trait OSS_Controller_Trait_Auth
                     $mailer->setFrom( $this->_options['identity']['mailer']['email'], $this->_options['identity']['mailer']['name'] );
                     $mailer->addTo( $form->getValue( 'email' ) );
                     $mailer->setSubject( $this->_options['identity']['sitename'] . ' - Your Accounts' );
-                    $mailer->setBodyHtml( $this->view->render( 'auth/email/html/lost-username.phtml' ) );
+                    $this->resolveTemplate( $mailer, 'lost-username' );
                     $mailer->send();
                 }
                             
@@ -1170,4 +1177,62 @@ trait OSS_Controller_Trait_Auth
         return true;
     }
 
+    /**
+     * Resolves auth email body
+     *
+     * Email type can be defined in application.ini by setting option resources.auth.oss.email_format. 
+     * Valid email formats:
+     *   both - this is default format it will look for both html and plaintext to build email wich contains html and
+     *          plain text body. It will create email only if one of them can be rendered as set as body, if nor html
+     *          nor plaintext template was unable to render it will thorw OSS_Exception.
+     *   html - this email format will try to render html tamplate and set html body to mailer.
+     *   plaintext - this email format will try to render plaintext tamplate and set text body to mailer.
+     *
+     * Template location in 'application/views/auth/email' html directory is for html templates and template files must
+     * end with phtml. And plaintext direcotry is for text templates files exstension must by txt. Also skins functionality
+     * is also working.
+     *
+     * @param Zend_Mail $mailer   Mailer object to set reolved end rendered body template.
+     * @param string    $template Template name to resolve and render
+     * @return void
+     * @throws OSS_Exception Can not render '$template' email body
+     */
+    protected function resolveTemplate( $mailer, $template )
+    {
+        $format = isset( $this->_options['resources']['auth']['oss']['email_format'] ) ? $this->_options['resources']['auth']['oss']['email_format'] : "both";
+        $html = sprintf( "%s/html/%s.phtml", self::$TEMPLATE_PATH, $template );
+        $text = sprintf( "%s/plaintext/%s.txt", self::$TEMPLATE_PATH, $template );
+        
+        switch( $format )
+        {
+            case 'html':
+                $mailer->setBodyHtml( $this->view->render( $html ) );
+                break;
+
+            case 'plaintext':
+                $mailer->setBodyText( $this->view->render( $text ) );
+                break;
+
+            case 'both':
+                $havefile = false;
+                try{
+                    $mailer->setBodyHtml( $this->view->render( $html ) );
+                    $havefile = true;
+                }
+                catch( Exception $e )
+                {
+                }
+                
+                try{
+                    $mailer->setBodyText( $this->view->render( $text ) );
+                    $havefile = true;
+                }
+                catch( Exception $e )
+                {
+                }
+
+                if( !$havefile )
+                    throw new OSS_Exception( "Can not render '$template' email body" );
+        }
+    }
 }
