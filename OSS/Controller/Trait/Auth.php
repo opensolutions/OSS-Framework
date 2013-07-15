@@ -1178,19 +1178,28 @@ trait OSS_Controller_Trait_Auth
     }
 
     /**
-     * Resolves auth email body
+     * Adds a plaintext / HTML / both email body to a OSS_Mail object as appropriate
      *
-     * Email type can be defined in application.ini by setting option resources.auth.oss.email_format. 
+     * Email type can be defined in application.ini by setting option `resources.auth.oss.email_format`. 
+     * 
      * Valid email formats:
-     *   both - this is default format it will look for both html and plaintext to build email wich contains html and
-     *          plain text body. It will create email only if one of them can be rendered as set as body, if nor html
-     *          nor plaintext template was unable to render it will thorw OSS_Exception.
+     * * `both` - **this is the default**. It will look for both a html and plaintext version of `$template` 
+     *            to build an email wich contains whichever was found or both if available. If neither html
+     *            nor plaintext templates are unable to render, it will thorw `OSS_Exception`.
      *   html - this email format will try to render html tamplate and set html body to mailer.
      *   plaintext - this email format will try to render plaintext tamplate and set text body to mailer.
      *
-     * Template location in 'application/views/auth/email' html directory is for html templates and template files must
-     * end with phtml. And plaintext direcotry is for text templates files exstension must by txt. Also skins functionality
-     * is also working.
+     * Template location is `application/views/$TEMPLATE_PATH`/{html,plaintext} directory is for html 
+     * templates and template files must end with phtml. And plaintext direcotry is for text templates 
+     * files and the extension must be `.txt`. 
+     * 
+     * **NB:** skin functionality works - just place the files in `_skins/auth/email/...`.
+     * 
+     * Available templates are:
+     * 
+     * * `lost-password`
+     * * `reset-password`
+     * * `lost-username`
      *
      * @param Zend_Mail $mailer   Mailer object to set reolved end rendered body template.
      * @param string    $template Template name to resolve and render
@@ -1200,7 +1209,8 @@ trait OSS_Controller_Trait_Auth
     protected function resolveTemplate( $mailer, $template )
     {
         $format = isset( $this->_options['resources']['auth']['oss']['email_format'] ) ? $this->_options['resources']['auth']['oss']['email_format'] : "both";
-        $html = sprintf( "%s/html/%s.phtml", self::$TEMPLATE_PATH, $template );
+
+        $html = sprintf( "%s/html/%s.phtml",    self::$TEMPLATE_PATH, $template );
         $text = sprintf( "%s/plaintext/%s.txt", self::$TEMPLATE_PATH, $template );
         
         switch( $format )
@@ -1215,24 +1225,21 @@ trait OSS_Controller_Trait_Auth
 
             case 'both':
                 $havefile = false;
-                try{
+
+                try {
                     $mailer->setBodyHtml( $this->view->render( $html ) );
                     $havefile = true;
                 }
-                catch( Exception $e )
-                {
-                }
+                catch( Exception $e ){}
                 
-                try{
+                try {
                     $mailer->setBodyText( $this->view->render( $text ) );
                     $havefile = true;
                 }
-                catch( Exception $e )
-                {
-                }
+                catch( Exception $e ){}
 
                 if( !$havefile )
-                    throw new OSS_Exception( "Can not render '$template' email body" );
+                    throw new OSS_Exception( "Can not render '$template' email body - neither '$html' nor '$text' found" );
         }
     }
 }
