@@ -58,7 +58,8 @@ class OSS_Controller_CliAction extends OSS_Controller_Action
     use OSS_Controller_Action_Trait_Mailer;
     use OSS_Controller_Action_Trait_Logger;
     use OSS_Controller_Action_Trait_Cli;
-
+    use OSS_Controller_Action_Trait_Smarty;
+    
     /**
      * Override the Zend_Controller_Action's constructor (which is called
      * at the very beginning of this function anyway).
