@@ -376,7 +376,7 @@ class OSS_View_Smarty extends Zend_View_Abstract
      * @param string $name The name of the template to use
      * @return string The resolved template name
      */
-    protected function resolveTemplate( $name )
+    public function resolveTemplate( $name )
     {
         // if we're using a skin see if a skin file exists.
         // if so, use it, otherwise use the default skin files
