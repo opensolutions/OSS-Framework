@@ -121,17 +121,36 @@ trait OSS_Controller_Action_Trait_Cli
     }
     
     /**
-    * If running in debug mode, echoes the request msg
-    *
-    * @param string $msg The message
-    * @param bool $implicitNewline Set to false to prevent a newline from being echoed
-    */
+     * If running in debug mode, echoes the request msg
+     *
+     * @param string $msg The message
+     * @param bool $implicitNewline Set to false to prevent a newline from being echoed
+     */
     public function debug( $msg, $implicitNewline = true )
     {
         if( $this->_debug )
             echo "{$msg}" . ( $implicitNewline ? "\n" : "" );
     }
     
+    
+    /**
+     * Write text from a variable (e.g. configuration data) to a file in an atomic way.
+     *
+     * I.e. write to temporary file first (`$filename . '$$'`) and then move to the
+     * intended file name.
+     *
+     *  @param string $filename The full path and filename of the target
+     *  @param string $config The text / configuration data
+     *  @return bool Success flag
+     */
+    public function writeConfig( $filename, $config )
+    {
+        if( @file_put_contents( $filename . '.$$', $config, LOCK_EX ) !== false )
+            if( @rename( $filename . '.$$', $filename ) !== false )
+                return true;
+
+        return false;
+    }
         
 }
 
