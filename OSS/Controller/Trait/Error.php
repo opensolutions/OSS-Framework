@@ -92,27 +92,28 @@ trait OSS_Controller_Trait_Error
 
         if( isset( $this->view ) )
         {
-            $errors = $this->_getParam( 'error_handler' );
-
-            $this->getResponse()->clearBody();
-
-            switch( $errors->type )
+            if( $errors = $this->_getParam( 'error_handler', false ) )
             {
-                case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_CONTROLLER:
-                case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION:
-                    // 404 error -- controller or action not found
-                    $this->getResponse()
-                         ->setRawHeader( 'HTTP/1.1 404 Not Found' );
+                $this->getResponse()->clearBody();
 
-                    Zend_Controller_Action_HelperBroker::removeHelper( 'viewRenderer' );
-                    $this->view->display( 'error/error-404.phtml' );
-                    $this->getLogger()->debug( $log );
-                    break;
+                switch( $errors->type )
+                {
+                    case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_CONTROLLER:
+                    case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION:
+                        // 404 error -- controller or action not found
+                        $this->getResponse()
+                             ->setRawHeader( 'HTTP/1.1 404 Not Found' );
+ 
+                        Zend_Controller_Action_HelperBroker::removeHelper( 'viewRenderer' );
+                        $this->view->display( 'error/error-404.phtml' );
+                        $this->getLogger()->debug( $log );
+                        break;
 
-                default:
+                    default:
                 	$this->getLogger()->err( $log );
-                    $this->view->exceptions = $exceptions;
-                    break;
+                        $this->view->exceptions = $exceptions;
+                        break;
+                }
             }
         }
 
