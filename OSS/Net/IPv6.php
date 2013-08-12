@@ -28,7 +28,7 @@
  * to info@opensolutions.ie so we can send you a copy immediately.
  *
  * @category   OSS
- * @package    OSS_Form
+ * @package    OSS_Net
  * @copyright  Copyright (c) 2007 - 2013, Open Source Solutions Limited, Dublin, Ireland
  * @license    http://www.opensolutions.ie/licenses/new-bsd New BSD License
  * @link       http://www.opensolutions.ie/ Open Source Solutions Limited
@@ -43,7 +43,7 @@
  * @author     Barry O'Donovan <barry@opensolutions.ie>
  * @author     The Skilled Team of PHP Developers at Open Solutions <info@opensolutions.ie>
  * @category   OSS
- * @package    OSS_Form
+ * @package    OSS_Net
  * @copyright  Copyright (c) 2007 - 2013, Open Source Solutions Limited, Dublin, Ireland
  * @license    http://www.opensolutions.ie/licenses/new-bsd New BSD License
  */
