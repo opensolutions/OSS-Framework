@@ -1,5 +1,4 @@
 <?php
-
 /**
  * OSS Framework
  *
@@ -28,8 +27,9 @@
  * obtain it through the world-wide-web, please send an email
  * to info@opensolutions.ie so we can send you a copy immediately.
  *
- * @category   OSS_Tests
- * @package    OSS_Tests_Filter
+ * @category   OSS
+ * @package    OSS_Filter
+ * @subpackage DNS
  * @copyright  Copyright (c) 2007 - 2013, Open Source Solutions Limited, Dublin, Ireland
  * @license    http://www.opensolutions.ie/licenses/new-bsd New BSD License
  * @link       http://www.opensolutions.ie/ Open Source Solutions Limited
@@ -37,25 +37,61 @@
  * @author     The Skilled Team of PHP Developers at Open Solutions <info@opensolutions.ie>
  */
 
-
-require_once( dirname( __FILE__ ) . '/../../bootstrap.php' );
-
-require 'FileSizeTest.php';
-require 'IPv4Test.php';
-require 'IPv6Test.php';
-
-class OSS_Filter_AllTests
+/**
+ * @category   OSS
+ * @subpackage DNS
+ * @package    OSS_Filter
+ * @copyright  Copyright (c) 2007 - 2013, Open Source Solutions Limited, Dublin, Ireland
+ * @license    http://www.opensolutions.ie/licenses/new-bsd New BSD License
+ */
+class OSS_Filter_IPv6 implements Zend_Filter_Interface
 {
-    public static function suite()
+    /**
+     * @var int $_type Type of the IPv6 address we want to get
+     * @see OSS_Net_IPv6
+     */
+    protected $_type = OSS_Net_IPv6::TYPE_SHORT;
+
+    /**
+     * Set type
+     *
+     * @param int $type Set new type of the IPv6 address we want to get
+     * @see OSS_Net_IPv6  
+     */
+    public function setType( $type )
     {
-        $suite = new PHPUnit_Framework_TestSuite( 'OSS_Filter' );
+        $this->_type = $type;
+    }
 
-        $suite->addTestSuite( 'OSS_Filter_FileSizeTest' );
-        $suite->addTestSuite( 'OSS_Filter_IPv4Test' );
-        $suite->addTestSuite( 'OSS_Filter_IPv6Test' );
+    /**
+     * Get type
+     *
+     * @return int
+     * @see OSS_Net_IPv6  
+     */
+    public function getType()
+    {
+        return $this->_type;
+    }
 
-        return $suite;
+    /**
+     * Filtes IPv6 address.
+     * 
+     * 2001:07f8:0018:0002:0000:0000:0000:0147 filters to 2001:7f8:18:2::147
+     * 2A01:7F8:18:0:0:0:0:0147 filters to 2a01:7f8:18::147
+     *
+     * @param string $value String to parse size in bytes
+     * @return string
+     */
+    public function filter( $value )
+    {
+        try{
+            $value = OSS_Net_IPv6::formatAddress( $value, $this->_type );
+        }
+        catch( Exception $e )
+        {
+        }
+        return $value;
     }
 
 }
-

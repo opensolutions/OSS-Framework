@@ -1,12 +1,11 @@
 <?php
-
 /**
  * OSS Framework
  *
  * This file is part of the "OSS Framework" - a library of tools, utilities and
  * extensions to the Zend Framework V1.x used for PHP application development.
  *
- * Copyright (c) 2007 - 2013, Open Source Solutions Limited, Dublin, Ireland
+ * Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland
  * All rights reserved.
  *
  * Open Source Solutions Limited is a company registered in Dublin,
@@ -28,34 +27,52 @@
  * obtain it through the world-wide-web, please send an email
  * to info@opensolutions.ie so we can send you a copy immediately.
  *
- * @category   OSS_Tests
- * @package    OSS_Tests_Filter
- * @copyright  Copyright (c) 2007 - 2013, Open Source Solutions Limited, Dublin, Ireland
+ * @category   OSS
+ * @package    OSS_Validate
+ * @copyright  Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland
  * @license    http://www.opensolutions.ie/licenses/new-bsd New BSD License
  * @link       http://www.opensolutions.ie/ Open Source Solutions Limited
  * @author     Barry O'Donovan <barry@opensolutions.ie>
  * @author     The Skilled Team of PHP Developers at Open Solutions <info@opensolutions.ie>
  */
 
+/**
+ * @category   OSS
+ * @package    OSS_Validate
+ * @copyright  Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland
+ * @license    http://www.opensolutions.ie/licenses/new-bsd New BSD License
+ */
 
-require_once( dirname( __FILE__ ) . '/../../bootstrap.php' );
-
-require 'FileSizeTest.php';
-require 'IPv4Test.php';
-require 'IPv6Test.php';
-
-class OSS_Filter_AllTests
+class OSS_Validate_OSSIPv4 extends Zend_Validate_Abstract
 {
-    public static function suite()
+
+    const INVALID_REC = 'invalidRec';
+
+    /**
+     * Possible error messages
+     *
+     * @var array
+     */
+    protected $_messages = array(
+        self::INVALID_REC => 'Invalid IPv4 address'
+    );
+
+    /**
+     * It will return true if given value is valid A record (IPv4 address)
+     *
+     * @param strig $value Date string
+     * @param null|mixed $context
+     * @return bool
+     */
+    public function isValid( $value, $context = null )
     {
-        $suite = new PHPUnit_Framework_TestSuite( 'OSS_Filter' );
+        $ip2long = ip2long( $value );
+        if( $ip2long === false )
+        {
+            return false;
+        }
 
-        $suite->addTestSuite( 'OSS_Filter_FileSizeTest' );
-        $suite->addTestSuite( 'OSS_Filter_IPv4Test' );
-        $suite->addTestSuite( 'OSS_Filter_IPv6Test' );
-
-        return $suite;
+        return $value == long2ip( $ip2long );
     }
 
 }
-
