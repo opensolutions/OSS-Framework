@@ -49,6 +49,8 @@
  * @author     The Skilled Team of PHP Developers at Open Solutions <info@opensolutions.ie>
  */
 
+require_once( dirname( __FILE__ ) . '/../../bootstrap.php' );
+
 class OSS_Validate_DomainNameTest extends PHPUnit_Framework_TestCase
 {
     private $_validator;
@@ -65,10 +67,19 @@ class OSS_Validate_DomainNameTest extends PHPUnit_Framework_TestCase
         $this->assertTrue( $this->_validator->isValid( 'new.domain.tested.on.tst' ) );
         $this->assertTrue( $this->_validator->isValid( '78on.tst' ) );
         $this->assertTrue( $this->_validator->isValid( '78.on.tst' ) );
+        $this->assertTrue( $this->_validator->isValid( '78.on.tst' ) );
+        $this->assertTrue( $this->_validator->isValid( 'example-domain.ts' ) );
+        $this->assertTrue( $this->_validator->isValid( 'example-domain.tester' ) );
     }
 
     public function testInvalidDomainName()
     {
+        $this->assertFalse( $this->_validator->isValid( '-example.com' ) );
+        $this->assertFalse( $this->_validator->isValid( '-example-.com' ) );
+        $this->assertFalse( $this->_validator->isValid( 'example-.com' ) );
+        $this->assertFalse( $this->_validator->isValid( 'example.c' ) );
+        $this->assertFalse( $this->_validator->isValid( 'example.c-' ) );
+        $this->assertFalse( $this->_validator->isValid( 'example.comcomc' ) );
         $this->assertFalse( $this->_validator->isValid( '.example.com' ) );
         $this->assertFalse( $this->_validator->isValid( '$%.example.com' ) );
         $this->assertFalse( $this->_validator->isValid( '78_on.tst' ) );

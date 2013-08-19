@@ -49,6 +49,8 @@
  * @author     The Skilled Team of PHP Developers at Open Solutions <info@opensolutions.ie>
  */
 
+require_once( dirname( __FILE__ ) . '/../../bootstrap.php' );
+
 class OSS_Validate_DnsRecordTest extends PHPUnit_Framework_TestCase
 {
     private $_validator;

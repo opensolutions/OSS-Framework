@@ -67,10 +67,9 @@ class OSS_Validate_OSSIPv4 extends Zend_Validate_Abstract
     public function isValid( $value, $context = null )
     {
         $ip2long = ip2long( $value );
+        
         if( $ip2long === false )
-        {
             return false;
-        }
 
         return $value == long2ip( $ip2long );
     }

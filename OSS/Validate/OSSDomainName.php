@@ -69,7 +69,7 @@ class OSS_Validate_OSSDomainNAme extends Zend_Validate_Abstract
      */
     public function isValid( $value, $context = null )
     {
-        $parts = explode( '.', $value );
+        $parts = explode( '.', strtolower( $value ) );
         
         if( count( $parts ) < 2 )
             return false;
@@ -78,9 +78,17 @@ class OSS_Validate_OSSDomainNAme extends Zend_Validate_Abstract
         {
             if( strlen( $part ) < 1 )
                 return false;
-            else if( $ix == count( $parts ) - 1  && ( !preg_match( '/^[a-z]+$/', $part ) || strlen( $part ) > 5 || strlen( $part ) < 2 ) )
+                
+            if( $ix == count( $parts ) - 1 )
+            {
+                if( !preg_match( '/^[a-z]+$/', $part ) || strlen( $part ) > 6 || strlen( $part ) < 2 )
+                    return false;
+            }
+            
+            if( !preg_match( '/^[a-z0-9\-]+$/', $part ) )
                 return false;
-            else if( !preg_match( '/^[a-z0-9]+$/', $part ) )
+                
+            if( substr( $part, 0, 1 ) == '-' || substr( $part, -1, 1 ) == '-' )
                 return false;
         }
     

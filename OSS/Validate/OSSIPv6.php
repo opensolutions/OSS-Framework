@@ -67,38 +67,30 @@ class OSS_Validate_OSSIPv6 extends Zend_Validate_Abstract
     public function isValid( $value, $context = null )
     {
         if( strlen( $value ) < 3 )
-        {
             return $value == '::';
-        }
 
         if( strpos( $value, '.' ) )
         {
             $lastcolon = strrpos( $value, ':' );
+            
             $validator = new OSS_Validate_OSSIPv4();
+            
             if( !( $lastcolon && $validator->isValid( substr( $value, $lastcolon + 1 ) ) ) )
-            {
                 return false;
-            }
 
             $value = substr( $value, 0, $lastcolon ) . ':0:0';
         }
 
         if( strpos( $value, '::' ) === false )
-        {
             return preg_match( '/\A(?:[a-f0-9]{1,4}:){7}[a-f0-9]{1,4}\z/i', $value ) == 1;
-        }
 
         $colonCount = substr_count( $value, ':' );
         if( $colonCount < 8 )
-        {
             return preg_match( '/\A(?::|(?:[a-f0-9]{1,4}:)+):(?:(?:[a-f0-9]{1,4}:)*[a-f0-9]{1,4})?\z/i', $value ) == 1;
-        }
 
         // special case with ending or starting double colon
         if( $colonCount == 8 )
-        {
             return preg_match( '/\A(?:::)?(?:[a-f0-9]{1,4}:){6}[a-f0-9]{1,4}(?:::)?\z/i', $value ) == 1;
-        }
 
         return false;
     }
