@@ -36,9 +36,15 @@
  * @author     The Skilled Team of PHP Developers at Open Solutions <info@opensolutions.ie>
  */
 
+/**
+ * Requires pear package Net_DNS2.
+ * 
+ * @see http://pear.php.net/package/Net_DNS2/docs/1.3.0/
+ */
+require_once 'Net/DNS2.php';
 
 /**
- * Utility methods for IPv4 addresses
+ * Utility methods for NET_DNS2
  *
  * @author     Barry O'Donovan <barry@opensolutions.ie>
  * @author     The Skilled Team of PHP Developers at Open Solutions <info@opensolutions.ie>
@@ -47,26 +53,34 @@
  * @copyright  Copyright (c) 2007 - 2013, Open Source Solutions Limited, Dublin, Ireland
  * @license    http://www.opensolutions.ie/licenses/new-bsd New BSD License
  */
-class OSS_Net_IPv4
+class OSS_Net_DNS2
 {
-   
     /**
-     * Converts IPv4 address to its in-addr.arpa format
+     * Gets records form name server for given dns zone
      *
-     * E.g. IPv4 address like `1.2.3.4` will be converted
-     * to `4.3.2.1.in-addr.arpa`. 
-     *
-     * @param string $ip IPv4 address to convert
-     * @return string The in-addr.arpa version of the IPv4 address
-     * @throws OSS_Net_Execption On lose checking of IPv4 address format (four octets)
+     * @param string $zone DNS zone to look for e.g. example.com
+     * @param string $ns   Name server ip
+     * @param string $type Record type
+     * @return array
      */
-    public static function ipv4ToARPA( $ip )
+    public static function getRecords( $zone, $ns, $type )
     {
-        $parts = explode( '.', $ip );
-        
-        if( count( $parts ) != 4 )
-            throw new OSS_Net_Exception( 'Invalid IPv4 address - ' . $ip );
-        
-        return sprintf( '%d.%d.%d.%d.in-addr.arpa', $parts[3], $parts[2], $parts[1], $parts[0] );
+        $r = new Net_DNS2_Resolver( [ 'nameservers' => [ gethostbyname( $ns ) ] ] );
+
+        try
+        {
+            $records = $r->query( $zone, $type )->answer;
+        }
+        catch( Net_DNS2_Exception $e )
+        {
+            if( $e->getCode() == Net_DNS2_Lookups::RCODE_NXDOMAIN )
+                return [];
+            else if( $e->getCode() == Net_DNS2_Lookups::RCODE_NOTAUTH )
+                return false;
+            else
+                return $e->getMessage() . " {$ns} quered by query( {$zone}, {$type} )";
+        }
+
+        return $records;
     }
 }
