@@ -40,19 +40,21 @@
 
 require_once( dirname( __FILE__ ) . '/../../bootstrap.php' );
 
-require 'FileSizeTest.php';
 require 'IPv4Test.php';
 require 'IPv6Test.php';
+require 'DomainNameTest.php';
+require 'DnsRecordTest.php';
 
-class OSS_Filter_AllTests
+class OSS_Validator_AllTests
 {
     public static function suite()
     {
-        $suite = new PHPUnit_Framework_TestSuite( 'OSS_Filter' );
+        $suite = new PHPUnit_Framework_TestSuite( 'OSS_Validate' );
 
-        $suite->addTestSuite( 'OSS_Filter_FileSizeTest' );
-        $suite->addTestSuite( 'OSS_Filter_IPv4Test' );
-        $suite->addTestSuite( 'OSS_Filter_IPv6Test' );
+        $suite->addTestSuite( 'OSS_Validate_IPv4Test' );
+        $suite->addTestSuite( 'OSS_Validate_IPv6Test' );
+        $suite->addTestSuite( 'OSS_Validate_DomainNameTest' );
+        $suite->addTestSuite( 'OSS_Validate_DnsRecordTest' );
 
         return $suite;
     }

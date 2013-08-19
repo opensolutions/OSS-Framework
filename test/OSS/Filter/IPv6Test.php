@@ -38,24 +38,32 @@
  */
 
 
-require_once( dirname( __FILE__ ) . '/../../bootstrap.php' );
+/**
+ * Filter IPv6 tests.
+ *
+ * @category   OSS_Tests
+ * @package    OSS_Tests_Filter
+ * @copyright  Copyright (c) 2007 - 2013, Open Source Solutions Limited, Dublin, Ireland
+ * @license    http://www.opensolutions.ie/licenses/new-bsd New BSD License
+ * @author     Barry O'Donovan <barry@opensolutions.ie>
+ * @author     The Skilled Team of PHP Developers at Open Solutions <info@opensolutions.ie>
+ */
 
-require 'FileSizeTest.php';
-require 'IPv4Test.php';
-require 'IPv6Test.php';
-
-class OSS_Filter_AllTests
+class OSS_Filter_IPv6Test extends PHPUnit_Framework_TestCase
 {
-    public static function suite()
+    private $_filter;
+
+    public function setUp()
     {
-        $suite = new PHPUnit_Framework_TestSuite( 'OSS_Filter' );
-
-        $suite->addTestSuite( 'OSS_Filter_FileSizeTest' );
-        $suite->addTestSuite( 'OSS_Filter_IPv4Test' );
-        $suite->addTestSuite( 'OSS_Filter_IPv6Test' );
-
-        return $suite;
+        $this->_filter = new OSS_Filter_IPv6();
     }
 
+    public function testFilterAAAARecords()
+    {
+        $this->assertEquals( '2001:7f8:18:2::147', $this->_filter->filter( '2001:07f8:0018:0002:0000:0000:0000:0147' ) );
+        $this->assertEquals( '2a01:7fb::147', $this->_filter->filter( '2A01:07FB:0000:0000:0000:0000:0000:0147' ) );
+        $this->assertEquals( '2a01:7fb::147', $this->_filter->filter( '2A01:7FB:0:0:0:0:0:0147' ) );
+        $this->assertEquals( '2001:7f8:18:2::147', $this->_filter->filter( '2001:07f8:0018:0002::0147' ) );
+    }
 }
 

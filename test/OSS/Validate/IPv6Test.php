@@ -38,24 +38,41 @@
  */
 
 
-require_once( dirname( __FILE__ ) . '/../../bootstrap.php' );
+/**
+ * Validate IPv6 tests.
+ *
+ * @category   OSS_Tests
+ * @package    OSS_Tests_Filter
+ * @copyright  Copyright (c) 2007 - 2013, Open Source Solutions Limited, Dublin, Ireland
+ * @license    http://www.opensolutions.ie/licenses/new-bsd New BSD License
+ * @author     Barry O'Donovan <barry@opensolutions.ie>
+ * @author     The Skilled Team of PHP Developers at Open Solutions <info@opensolutions.ie>
+ */
 
-require 'FileSizeTest.php';
-require 'IPv4Test.php';
-require 'IPv6Test.php';
-
-class OSS_Filter_AllTests
+class OSS_Validate_IPv6Test extends PHPUnit_Framework_TestCase
 {
-    public static function suite()
+    private $_validator;
+
+    public function setUp()
     {
-        $suite = new PHPUnit_Framework_TestSuite( 'OSS_Filter' );
-
-        $suite->addTestSuite( 'OSS_Filter_FileSizeTest' );
-        $suite->addTestSuite( 'OSS_Filter_IPv4Test' );
-        $suite->addTestSuite( 'OSS_Filter_IPv6Test' );
-
-        return $suite;
+        $this->_validator = new OSS_Validate_OSSIPv6();
     }
 
+    public function testValidAddress()
+    {
+        $this->assertTrue( $this->_validator->isValid( '2001:db8:2::97' ) );
+        $this->assertTrue( $this->_validator->isValid( '2001:0db8:0002::0097' ) );
+        $this->assertTrue( $this->_validator->isValid( '2001:0db8:0002:0000:0000:0000:0000:0097' ) );
+        $this->assertTrue( $this->_validator->isValid( '2001:DB8:2:0:0:0:0:97' ) );
+        $this->assertTrue( $this->_validator->isValid( '2001:db8:2::127.5.68.45' ) );
+    }
+
+    public function testInvalidAddress()
+    {
+        $this->assertFalse( $this->_validator->isValid( '2001:db8:2::z97' ) );
+        $this->assertFalse( $this->_validator->isValid( '2001:0db8:0002::000097' ) );
+        $this->assertFalse( $this->_validator->isValid( '2001:0db8:0002:0000:0000:0000:0000:0000:0097' ) );
+        $this->assertFalse( $this->_validator->isValid( '2001:DB8:2::0:0::97' ) );
+    }
 }
 

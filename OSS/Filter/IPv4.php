@@ -1,5 +1,4 @@
 <?php
-
 /**
  * OSS Framework
  *
@@ -28,8 +27,9 @@
  * obtain it through the world-wide-web, please send an email
  * to info@opensolutions.ie so we can send you a copy immediately.
  *
- * @category   OSS_Tests
- * @package    OSS_Tests_Filter
+ * @category   OSS
+ * @package    OSS_Filter
+ * @subpackage DNS
  * @copyright  Copyright (c) 2007 - 2013, Open Source Solutions Limited, Dublin, Ireland
  * @license    http://www.opensolutions.ie/licenses/new-bsd New BSD License
  * @link       http://www.opensolutions.ie/ Open Source Solutions Limited
@@ -37,25 +37,35 @@
  * @author     The Skilled Team of PHP Developers at Open Solutions <info@opensolutions.ie>
  */
 
-
-require_once( dirname( __FILE__ ) . '/../../bootstrap.php' );
-
-require 'FileSizeTest.php';
-require 'IPv4Test.php';
-require 'IPv6Test.php';
-
-class OSS_Filter_AllTests
+/**
+ * @category   OSS
+ * @subpackage DNS
+ * @package    OSS_Filter
+ * @copyright  Copyright (c) 2007 - 2013, Open Source Solutions Limited, Dublin, Ireland
+ * @license    http://www.opensolutions.ie/licenses/new-bsd New BSD License
+ */
+class OSS_Filter_IPv4 implements Zend_Filter_Interface
 {
-    public static function suite()
+    /**
+     * Filtes IPv4 address.
+     * 
+     * 192.168.002.016 filters to 192.168.2.16
+     * 192.168.000.016 filters to 192.168.0.16
+     *
+     * @param string $value String to parse size in bytes
+     * @return string
+     */
+    public function filter( $value )
     {
-        $suite = new PHPUnit_Framework_TestSuite( 'OSS_Filter' );
+        $parts = explode( ".", $value );
 
-        $suite->addTestSuite( 'OSS_Filter_FileSizeTest' );
-        $suite->addTestSuite( 'OSS_Filter_IPv4Test' );
-        $suite->addTestSuite( 'OSS_Filter_IPv6Test' );
+        foreach( $parts as $ix => $part )
+        {
+            $part = trim( $part, "0" );
+            $parts[$ix] = $part ? $part : "0";
+        }
 
-        return $suite;
+        return implode( ".", $parts );
     }
 
 }
-

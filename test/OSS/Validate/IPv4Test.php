@@ -38,24 +38,41 @@
  */
 
 
+/**
+ * Validate IPv4 test.
+ *
+ * @category   OSS_Tests
+ * @package    OSS_Tests_Filter
+ * @copyright  Copyright (c) 2007 - 2013, Open Source Solutions Limited, Dublin, Ireland
+ * @license    http://www.opensolutions.ie/licenses/new-bsd New BSD License
+ * @author     Barry O'Donovan <barry@opensolutions.ie>
+ * @author     The Skilled Team of PHP Developers at Open Solutions <info@opensolutions.ie>
+ */
+
 require_once( dirname( __FILE__ ) . '/../../bootstrap.php' );
 
-require 'FileSizeTest.php';
-require 'IPv4Test.php';
-require 'IPv6Test.php';
-
-class OSS_Filter_AllTests
+class OSS_Validate_IPv4Test extends PHPUnit_Framework_TestCase
 {
-    public static function suite()
+    private $_validator;
+
+    public function setUp()
     {
-        $suite = new PHPUnit_Framework_TestSuite( 'OSS_Filter' );
-
-        $suite->addTestSuite( 'OSS_Filter_FileSizeTest' );
-        $suite->addTestSuite( 'OSS_Filter_IPv4Test' );
-        $suite->addTestSuite( 'OSS_Filter_IPv6Test' );
-
-        return $suite;
+        $this->_validator = new OSS_Validate_OSSIPv4();
     }
 
+    public function testValidAddress()
+    {
+        $this->assertTrue( $this->_validator->isValid( '127.0.0.1' ) );
+        $this->assertTrue( $this->_validator->isValid( '192.168.1.18' ) );
+        $this->assertTrue( $this->_validator->isValid( '35.110.254.1' ) );
+    }
+
+    public function testInvalidAddress()
+    {
+        $this->assertFalse( $this->_validator->isValid( '1270.0.0.1' ) );
+        $this->assertFalse( $this->_validator->isValid( '192.168.1' ) );
+        $this->assertFalse( $this->_validator->isValid( '350.110.254.1' ) );
+        $this->assertFalse( $this->_validator->isValid( '192.168.1.2.3' ) );
+    }
 }
 
