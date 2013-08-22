@@ -61,7 +61,7 @@ class OSS_Filter_IPv4 implements Zend_Filter_Interface
 
         foreach( $parts as $ix => $part )
         {
-            $part = trim( $part, "0" );
+            $part = ltrim( $part, "0" );
             $parts[$ix] = $part ? $part : "0";
         }
 
