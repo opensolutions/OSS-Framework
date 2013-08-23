@@ -42,10 +42,9 @@
  * @copyright  Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland
  * @license    http://www.opensolutions.ie/licenses/new-bsd New BSD License
  */
-class OSS_PaymentProcessor_Realex extends OSS_PaymentProcessor_BaseProcessor
+class OSS_PaymentProcessor_Stripe extends OSS_PaymentProcessor_BaseProcessor
 {
     const CARD_TYPE_VISA         = 'visa';
-    const CARD_TYPE_LASER        = 'laser';
     const CARD_TYPE_MASTERCARD   = 'mastercard';
 
     /**
@@ -54,43 +53,23 @@ class OSS_PaymentProcessor_Realex extends OSS_PaymentProcessor_BaseProcessor
     */
     public static $CARD_TYPES = [
         self::CARD_TYPE_VISA => 'visa',
-        Self::CARD_TYPE_LASER => 'laser',
         self::CARD_TYPE_MASTERCARD => 'mc'
     ];
 
-    /**
-     * An error code to indicate if the response hash is invalid
-     *
-     * @var integer An error code to indicate if the response hash is invalid
-     */
-    const ERR_RESPONSE_INVALID_HASH = 905;
-
-    /**
-     * An array of error strings for the ERR_RESPONSE... codes
-     * @var array Array of error strings for the ERR_RESPONSE... codes
-     */
-    public static $ERR_TEXT = array(
-        self::ERR_RESPONSE_INVALID_HASH => 'Response security hash invalid'
-    );
 
     /**
      * An array of the mandatory application.ini parameters.
      *
      * @var array The mandatory application.ini parameters
      */
-    public static $REQUIRED_PARAMS = [
-        'cgi_url', 'user_agent', 'merchant_id', 'merchant_secret', 'account', 'refund_password'
-    ];
+    public static $REQUIRED_PARAMS = [ 'ak_secret', 'currency'  ];
 
     /**
      * An array of the optional application.ini parameters (defaults set with their definitions).
      *
      * @var array The optional application.ini parameters
-     * @see $_cgi_timeout
-     * @see $_fake_transactions
-     * @see $_keep_request_xml
      */
-    public static $OPTIONAL_PARAMS = [ 'fake_transactions', 'cgi_timeout', 'keep_request_data' ];
+    public static $OPTIONAL_PARAMS = [ 'fake_transactions', 'ak_public', 'keep_request_data', 'account' ];
 
     /**
      * The Doctrine2 entity manager
@@ -99,45 +78,33 @@ class OSS_PaymentProcessor_Realex extends OSS_PaymentProcessor_BaseProcessor
     private $_d2em = null;
 
     /**
-     * The CGI Url
-     * @var string The CGI Url
+     * The Stripe API secret key
+     * @var string The Stripe API secret key
      */
-    private $_cgi_url;
+    private $_ak_secret;
 
     /**
-     * @var string The user agent to report to the CGI
+     * The Stripe API public key
+     * @var string The Stripe API public key
      */
-    private $_user_agent;
+    private $_ak_public;
 
     /**
-     * @var string Our assigned merchant ID
-     * @see getMerchantId()
+     * The currency then charging payer ( only 3 characters )
+     * @var string The currency then charging payer
      */
-    private $_merchant_id;
+    private $_currency;
 
     /**
-     * @var string Our assigned shared secret
+     * The currency then charging payer ( only 3 characters )
+     * @var string The currency then charging payer
      */
-    private $_merchant_secret;
+    private $_account = '';
 
-    /**
-     * @var string Our assigned refund password
-     */
-    private $_refund_password;
-
-    /**
-     * @var string The account to use for receipt-in / receipt-out
-     */
-    private $_account;
-
-    /**
-     * @var int The maximum number of seconds for the cURL operation
-     */
-    private $_cgi_timeout = 10;
 
     /**
      * For security reasons, we clear the request data from the database after a sucessful
-     * Realex API/CGI call.
+     * Stripe API/CGI call.
      *
      * Some transactions require non-stored data (e.g. credit card number) to replay a failed
      * transaction (such as createCreditCard()) which we will store and delete when we
@@ -151,10 +118,10 @@ class OSS_PaymentProcessor_Realex extends OSS_PaymentProcessor_BaseProcessor
 
     /**
      * Fake transactions allows all operations to appear to succeed including
-     * updates to local database tables but it never contacts Realex and fakes
+     * updates to local database tables but it never contacts Stripe and fakes
      * all operations.
      *
-     * @var bool Fake all transactions and never contact Realex
+     * @var bool Fake all transactions and never contact Stripe
      * @see _completeFakeTransaction()
      */
     private $_fake_transactions = false;
@@ -168,14 +135,17 @@ class OSS_PaymentProcessor_Realex extends OSS_PaymentProcessor_BaseProcessor
 
 
     /**
-     * Realex Payment gateway processor
+     * Stripe Payment gateway processor
      *
-     * @param array $config An associated array of realex.* parameters from application.ini
+     * @param array $config An associated array of stripe.* parameters from application.ini
      * @param OSS_Log $logger An optional instance of an OSS_Log object if you want logging
      * @throws OSS_PaymentProcessor_Realex_Exception
      */
     public function __construct( array $config, OSS_Log $logger = null )
     {
+        if( !class_exists( 'Stripe' ) )
+                require_once( 'Stripe.php' );
+
         // check for required parameters and set member variables accordingly
         foreach( self::$REQUIRED_PARAMS as $param )
         {
@@ -202,6 +172,7 @@ class OSS_PaymentProcessor_Realex extends OSS_PaymentProcessor_BaseProcessor
         }
 
         $this->_logger = $logger;
+        Stripe::setApiKey( $this->_ak_secret );
     }
 
     /**
@@ -218,45 +189,8 @@ class OSS_PaymentProcessor_Realex extends OSS_PaymentProcessor_BaseProcessor
         return $this->_d2em;
     }
 
-
     /**
-     * Access method for the merchant ID
-     *
-     * @return string The merchant ID
-     * @see $_merchant_id
-     */
-    protected function getMerchantId()
-    {
-        return $this->_merchant_id;
-    }
-
-
-    /**
-     * Access method for the merchant secret
-     *
-     * @return string The merchant secret
-     * @see $_merchant_secret
-     */
-    protected function getMerchantSecret()
-    {
-        return $this->_merchant_secret;
-    }
-
-
-    /**
-     * Access method for the refund password
-     *
-     * @return string The refund password
-     * @see $_refund_password
-     */
-    protected function getRefundPassword()
-    {
-        return $this->_refund_password;
-    }
-
-
-    /**
-     * Returns with a YYYYmmddhhmmss format timestamp used in Realex transactions.
+     * Returns with a YYYYmmddhhmmss format timestamp used in Stripe transactions.
      *
      * @return string YYYYmmddhhmmss formated timestamp
      */
@@ -279,29 +213,7 @@ class OSS_PaymentProcessor_Realex extends OSS_PaymentProcessor_BaseProcessor
     }
 
     /**
-     * Create a unique Realex order id.
-     *
-     * Every Realex transaction must have a unique order id. We use the integer primary
-     * key of the \Entities\RealexTransaction table (which records all Realex transactions)
-     * for this.
-     *
-     * @param \Entities\RealexTrasaction $rtrans An instance of a save()'d object
-     * @return string The unique transaction ID
-     * @see \Entities\RealexTransaction
-     * @throws OSS_PaymentProcessor_Realex_Exception
-     */
-    static public function createOrderId( $rtrans )
-    {
-        if( !( $rtrans instanceof \Entities\RealexTransaction ) )
-            throw new OSS_PaymentProcessor_Realex_Exception( OSS_PaymentProcessor_Realex_Exception::ERR_BAD_OBJECT_FOR_REF );
-
-        // Realex has a limitation of a maximum of 40 characters. I don't think this'll be an issue...
-        return 'O_' . $rtrans->getId();
-    }
-
-
-    /**
-     * Creates a unique Realex payer reference ID
+     * Creates a unique Stripe payer reference ID which will be replaced after adding it to Stripe system
      *
      * All payers that we create must be identifiable by us with a unique ID. For this we
      * use the integer primary key from the \Etnities\Customer object.
@@ -322,13 +234,13 @@ class OSS_PaymentProcessor_Realex extends OSS_PaymentProcessor_BaseProcessor
 
 
     /**
-     * Created a unique Relaex credit card reference ID
+     * Created a unique Stripe credit card reference ID which will be replaced after adding it to Stripe system
      *
-     * All cards added to the Realex store (linked to a payer) must be
+     * All cards added to the Stripe store (linked to a payer) must be
      * uniquely identifiable with a unique key. We use the integer primary
      * key from the \Entities\RealexCard table.
      *
-     * These cards are added to payers in the Realex system.
+     * These cards are added to payers in the Stripe system.
      *
      * @param \Entities\RealexCard $card The instance of the \Entities\RelaexCard object
      * @return string The unqiue card ID
@@ -343,158 +255,11 @@ class OSS_PaymentProcessor_Realex extends OSS_PaymentProcessor_BaseProcessor
         return 'C_' . $card->getId();
     }
 
-
-    /**
-     * Sends an XML formatted request to Realex using cURL
-     *
-     * This function does the heavy lifting for sending a request to
-     * Realex and parsing and processing the reponse. Specifically:
-     *
-     *  - creates the cURL object (and throws an exception if it cannot)
-     *  - sends the request to Realex
-     *
-     *  If the request fails:
-     *   - updates the $rtrans object as STATE_FAILED or STATE_TIMEOUT
-     *   - returns false
-     *
-     *  If the request succeeds:
-     *   - parses and processes the response (@see _parseResponse())
-     *   - returns true
-     *
-     * @param \Entities\RealexTransaction $rtrans The instance of \Entities\RealexTransaction to send to Realex
-     * @param string $reqXML The XML request package to send to Realex
-     * @return bool True if the API/CGI request succeeded (IT DOES NOT MEAN THE REALEX TRANSACTION SUCCEEDED!)
-     * @throws OSS_PaymentProcessor_Realex_Exception
-     */
-    private function _sendRequest( $rtrans, $reqXML )
-    {
-        $curl = @curl_init();
-
-        if( $curl === false )
-            throw new OSS_PaymentProcessor_Realex_Exception( OSS_PaymentProcessor_Realex_Exception::ERR_CURL_INSTANTIATION_FAILED );
-
-        $this->_log( "[RTRANS: {$rtrans->getId()}] Realex::_sendRequest() - cURL initialised" );
-
-        @curl_setopt( $curl, CURLOPT_URL,            $this->_cgi_url     );
-        @curl_setopt( $curl, CURLOPT_POST,           1                   );
-        @curl_setopt( $curl, CURLOPT_USERAGENT,      $this->_user_agent  );
-        @curl_setopt( $curl, CURLOPT_RETURNTRANSFER, 1                   );
-        @curl_setopt( $curl, CURLOPT_POSTFIELDS,     $reqXML             );
-        @curl_setopt( $curl, CURLOPT_TIMEOUT,        $this->_cgi_timeout );
-
-        $respXML = @curl_exec( $curl );
-
-        if( $respXML === false )
-        {
-            if( @curl_getinfo( $curl, CURLINFO_TOTAL_TIME ) >= $this->_cgi_timeout )
-            {
-                $this->_log( "[RTRANS: {$rtrans->getId()}] Realex::_sendRequest() - cURL request timeout.", OSS_Log::ALERT );
-                $rtrans->setState( \Entities\RealexTransaction::STATE_TIMEOUT );
-            }
-            else
-            {
-                $this->_log( "[RTRANS: {$rtrans->getId()}] Realex::_sendRequest() - cURL request failed.", OSS_Log::ALERT );
-                $rtrans->setState( \Entities\RealexTransaction::STATE_FAILED );
-            }
-
-            $rtrans->setUpdated( new \DateTime() );
-            $this->getD2EM()->flush();
-
-            @curl_close( $curl );
-            return false;
-        }
-
-        $this->_log( "[RTRANS: {$rtrans->getId()}] Realex::_sendRequest() - cURL request executed. Response:\n\n{$respXML}\n\n" );
-        @curl_close( $curl );
-
-        $this->_parseResponse( $respXML, $rtrans );
-
-        return true;
-    }
-
-
-    /**
-     * Parse the XML response from Realex and update the transaction object
-     *
-     * This function:
-     *
-     *  - transforms the XML response to an array
-     *  - validates the response hash
-     *  - updates the authcode, pasref, state and response fields of the \Entities\RealexTransaction object
-     *
-     * @param string $xml The XML response from Realex for processing
-     * @param \Entities\RealexTransaction $rtrans An instance of the \Entities\RealexTransaciton object
-     * @return \Entities\ReleaxTransaction The updated $rtrans object for fluent interface
-     * @throws OSS_PaymentProcessor_Realex_Receipt_Exception
-     */
-    private function _parseResponse( $xml, $rtrans )
-    {
-        $resp = OSS_Array::objectToArray( OSS_Utils::parseXML( $xml ) );
-
-        $rtrans->setResult( $this->_checkResponse( $resp ) );
-
-        if( isset( $resp['authcode'] ) )
-            $rtrans->setAuthcode( $resp['authcode'] );
-
-        //if( isset( $resp['pasref'] ) )
-           // $rtrans['pasref'] = $resp['pasref'];
-
-        $rtrans->setState( \Entities\RealexTransaction::STATE_COMPLETE );
-
-        $this->_log( "[RTRANS: {$rtrans->getId()}] Realex::_parseResponse() - Realex result: {$rtrans->getResult()}" );
-
-        //FIXME: Barry
-        if( $rtrans->isSuccessful() && !$this->_keep_request_data )
-            $rtrans->setRequest( '' );
-
-        $rtrans->setUpdated( new \DateTime() );
-        $this->getD2EM()->flush();
-
-        //FIXME Transaction stats.
-        //if( !CreditcardTransactionStatsTable::update( $cctrans['request_type'], $cctrans['result'], $cctrans['amount'] ) )
-            //$this->_log( "CreditcardTrasactionStatTable::update() failed for [CCTRANS: {$cctrans['id']}].", OSS_Log::ALERT );
-
-         if( in_array( $rtrans->getRequestType(), array( 'receipt-in', 'payment-out' ) ) && !$rtrans->isSuccessful() )
-            throw new OSS_PaymentProcessor_Realex_Receipt_Exception( $rtrans, $resp['message'] );
-
-        return $rtrans;
-    }
-
-
-    /**
-     * Takes a Realex response and returns with its response code after additional checks
-     *
-     * Outside of the possible checks that Realex performs, we need to allow for one more: an invalid
-     * hash of the received XML response indicated a bad transmission / man in the middle attack.
-     *
-     * @param string $resp The parsed Realex XML response as an array
-     * @param string The response code (NB: STRING)
-     */
-    private function _checkResponse( $resp )
-    {
-        /* WARNING: This part of the Realex response is kind of messy, because the 'sha1hash' field is either present or not, so
-        we cannot depend on it's existence. If the code below ( most likely in OSS_PaymentProcessor_Realex_Hash::response() ) still
-        fails, then use this instead:
-
-        if( $resp['result'] != '00' )
-            return $resp['result'];
-
-        if( OSS_PaymentProcessor_Realex_Hash::response( $resp, $this->_merchant_secret ) != $resp['sha1hash'] )
-            return self::ERR_RESPONSE_INVALID_HASH; // Response Authentication Failed
-        */
-
-        if( isset( $resp['sha1hash'] ) && ( OSS_PaymentProcessor_Realex_Hash::response( $resp, $this->_merchant_secret ) != $resp['sha1hash'] ) )
-            return self::ERR_RESPONSE_INVALID_HASH; // Response Authentication Failed
-
-        return $resp['result'];
-    }
-
-
     /**
      * Set fake CreditcardTransactions entries for a complete fake transaction
      *
      * If <var>$this->_fake_transactions</var> is set to true, the system will
-     * not perform any Realex requests but <em>fake</em> the transactions in
+     * not perform any Stripe requests but <em>fake</em> the transactions in
      * the database meaning we:
      *
      *  - set <var>is_fake</var> to true
@@ -527,16 +292,46 @@ class OSS_PaymentProcessor_Realex extends OSS_PaymentProcessor_BaseProcessor
     }
 
     /**
-     * Creates a new "payer" in Realex's systems.
+     * Stripe Exception handler
      *
-     * Sends a 'payer-new' request to Realex which creates a new payer at Realex
-     * which later can be used by RealEFT for recurring payments ('receipt-in').
+     * Function will check the exception is instance of Stripe_ERROR. If it is instance of Stripe_ERROR then
+     * function will chek the type. If type is card_error then it sets result to 80 and saves the message to rtrans
+     * reference. otherwise it sets to 85 other stripe issue. If exception is not stripe one set result to 90. 
+     * 
+     * @param Exception $e        Exception object
+     * @param string    $function function name to complete the logs.
+     * @return void
+     */
+    private function exceptionHendler( $e, $rtrans, $function )
+    {
+        $error = $e->getJsonBody()['error'];
+        if(  $e instanceof Stripe_Error)
+        {
+            if( $error['type'] == 'card_error' )
+            {
+                $rtrans->setResult( '80' );
+                $rtrans->setReference( $error['message'] );    
+            }
+            else
+                $rtrans->setResult( '85' );
+        }
+        else
+            $rtrans->setResult( '90' );
+
+        $this->_log( "[RTRANS: {$rtrans->getId()}] Stripe::{$function}() - result: exception: " . print_r( $error, true ) );
+    }
+
+    /**
+     * Creates a new "payer" in Stripe's systems.
+     *
+     * Sends a 'payer-new' request to Stripe which creates a new payer at Stripe
+     * which later can be used by Stripe for recurring payments ('receipt-in').
      *
      * This also logs the transaction into the \Entities\RealexTransaction table,
      * and returns that object which can be queried for the request and transaction
      * state.
      *
-     * If $this->_fake_transactions is true then it skips the Realex request and returns with
+     * If $this->_fake_transactions is true then it skips the Stripe request and returns with
      * success after performing all normal database operations as if the request was sent.
      * @see $_fake_transactions
      *
@@ -552,12 +347,12 @@ class OSS_PaymentProcessor_Realex extends OSS_PaymentProcessor_BaseProcessor
      *     ...
      *     $rtrans = $this->getPaygate()->newPayer( $payer );
      *
-     *     // if we're interested in the Realex result then:
+     *     // if we're interested in the Stripe result then:
      *     if( $rtrans->isSuccessful() )
      *         // do something
      * </code>
      *
-     * @param \Entities\Realex $payer The payer who will be associated as payer in Realex
+     * @param \Entities\RealexPayer $payer The payer who will be associated as payer in Stripe
      * @return \Entities\RealexTransaction The resultant \Entities\RealexTransaction object
      * @throws OSS_PaymentProcessor_Exception
      */
@@ -579,45 +374,49 @@ class OSS_PaymentProcessor_Realex extends OSS_PaymentProcessor_BaseProcessor
         $this->getD2EM()->persist( $rtrans );
         $this->getD2EM()->flush();
 
-        $this->_log( "[RTRANS: {$rtrans->getId()}] Realex::newPayer() - transaction set to STATE_INIT" );
+        $this->_log( "[RTRANS: {$rtrans->getId()}] Stripe::newPayer() - transaction set to STATE_INIT" );
 
         // we're about to create a Realex payer which means the paygate state should be none
         if( $payer->getState() != \Entities\RealexPayer::STATE_NONE )
             throw new OSS_PaymentProcessor_Exception( OSS_PaymentProcessor_Exception::ERR_INCONSISTANT_PAYGATE_STATE );
 
-        $orderId  = self::createOrderId( $rtrans );
-        $payerRef = $payer->getPayerref();
-        $hash     = OSS_PaymentProcessor_Realex_Hash::payer( $timestamp, $this->getMerchantId(), $orderId, $payerRef, $this->getMerchantSecret() );
-
-        $reqXML =  "<request type='payer-new' timestamp='{$timestamp}'>
-                        <merchantid>{$this->getMerchantId()}</merchantid>
-                        <orderid>{$orderId}</orderid>
-                        <payer type='subscriber' ref='{$payerRef}'>
-                            <firstname>{$payer->getFirstname()}</firstname>
-                            <surname>{$payer->getLastname()}</surname>
-                        </payer>
-                        <sha1hash>{$hash}</sha1hash>
-                    </request>";
-
-                    //FIXME: payer first name and last name
+        $reqData = [
+            'description' => "{{$payer->getCustomer()->getName()}, cid {$payer->getId()}}"
+        ];
 
         $rtrans->setState( \Entities\RealexTransaction::STATE_PRESEND );
-        $this->_log( "[RTRANS: {$rtrans->getId()}] Realex::newPayer() - transaction set to STATE_PRESEND\n\n{$reqXML}\n\n" );
+        $this->_log( "[RTRANS: {$rtrans->getId()}] Stripe::newPayer() - transaction set to STATE_PRESEND\n\n" . print_r( $reqData, true ) . "\n\n" );
         $rtrans->setUpdated( new \DateTime() );
         $this->getD2EM()->flush();
 
         if( $this->_fake_transactions )
         {
-            $this->_log( "[RTRANS: {$rtrans->getId()}] Realex::newPayer() - faking transaction" );
+            $this->_log( "[RTRANS: {$rtrans->getId()}] Stripe::newPayer() - faking transaction" );
             $payer->setState( \Entities\RealexPayer::STATE_INSYNC );
             return $this->_completeFakeTransation( $rtrans );
         }
         
-        $this->_sendRequest( $rtrans, $reqXML );
+        try{ 
+            $res = Stripe_Customer::create( $reqData );
+            $rtrans->setResult( '00' );
+
+            $payer->setPayerref( $res->id );
+            $this->_log( "[RTRANS: {$rtrans->getId()}] Stripe::newPayer() - Stripe result: " . print_r( $res, true ) );
+        }
+        catch( Exception $e )
+        {
+            $this->exceptionHendler( $e, $rtrans, "newPayer" );
+        }
+        
+        $rtrans->setState( \Entities\RealexTransaction::STATE_COMPLETE );
+        
+        $rtrans->setUpdated( new \DateTime() );
+        $this->getD2EM()->flush();
 
         if( $rtrans->isSuccessful() )
         {
             $payer->setState( \Entities\RealexPayer::STATE_INSYNC );
+            $payer->setUpdated( new \DateTime() );
             $this->getD2EM()->flush();
         }
 
@@ -626,16 +425,16 @@ class OSS_PaymentProcessor_Realex extends OSS_PaymentProcessor_BaseProcessor
 
 
     /**
-     * Creates a new "credit card" in Realex's systems.
+     * Creates a new "credit card" in Stripe's systems.
      *
-     * Sends a 'card-new' request to Realex which creates a new credit card at Realex
+     * Sends a 'card-new' request to Stripe which creates a new credit card at Stripe
      * which later can be used by RealEFT for recurring payments ('receipt-in').
      *
      * This also logs the transaction into the \Entities\RealexTransaction table,
      * and returns that object which can be queried for the request and transaction
      * state.
      *
-     * If $this->_fake_transactions is true then it skips the Realex request and returns with
+     * If $this->_fake_transactions is true then it skips the Stripe request and returns with
      * success after performing all normal database operations as if the request was sent.
      * @see $_fake_transactions
      *
@@ -644,7 +443,7 @@ class OSS_PaymentProcessor_Realex extends OSS_PaymentProcessor_BaseProcessor
      * unsuccessful 'card-new' in offline processing. Any serious / critical issues
      * will have thrown an exception.
      *
-     * @param \Entities\RealexCard $card The credit card object to add to Realex
+     * @param \Entities\RealexCard $card The credit card object to add to Stripe
      * @param string $cardNumber the credit card number, any non digit character is removed from it in the method
      * @return \Entities\RealexTransaction The resultant \Entities\RealexTransaction object
      * @throws OSS_PaymentProcessor_Exception
@@ -670,61 +469,63 @@ class OSS_PaymentProcessor_Realex extends OSS_PaymentProcessor_BaseProcessor
         $this->getD2EM()->persist( $rtrans );
         $this->getD2EM()->flush();
 
-        $this->_log( "[RTRANS: {$rtrans->getId()}] Realex::newCard() - transaction set to STATE_INIT" );
+        $this->_log( "[RTRANS: {$rtrans->getId()}] Stripe::newCard() - transaction set to STATE_INIT" );
 
         // we're about to create a Realex credit card which means the paygate state should be none
         if( $card->getState() != \Entities\RealexCard::STATE_NONE )
             throw new OSS_PaymentProcessor_Exception( OSS_PaymentProcessor_Exception::ERR_INCONSISTANT_PAYGATE_STATE );
 
-        $rqOrderId  = self::createOrderId( $rtrans );
-        $cardRef    = $card->getCardref();
-        $payerRef   = $card->getPayer()->getPayerref();
-        $expiryDate = $card->getValidTo()->format( "my");
-        $cardType   = $this->getCardType( $card->getType() );
-        $rqHash     = OSS_PaymentProcessor_Realex_Hash::creditCard(
-            $rqTimeStamp,
-            $this->getMerchantId(),
-            $rqOrderId,
-            $payerRef,
-            $card->getHolder(),
-            $card->getNumber(),
-            $this->getMerchantSecret()
-        );
-
-        $reqXML = "<request type='card-new' timestamp='{$rqTimeStamp}'>
-                       <merchantid>{$this->getMerchantId()}</merchantid>
-                       <orderid>{$rqOrderId}</orderid>
-                       <card>
-                           <ref>{$cardRef}</ref>
-                           <payerref>{$payerRef}</payerref>
-                           <number>{$card->getNumber()}</number>
-                           <expdate>{$expiryDate}</expdate>
-                           <chname>{$card->getHolder()}</chname>
-                           <type>{$cardType}</type>
-                           </card>
-                       <sha1hash>{$rqHash}</sha1hash>
-                   </request>";
+        $reqData = [ 
+            'card' => [
+                'number'    => $card->getNumber(),
+                'exp_month' => $card->getValidTo()->format( "m" ),
+                'exp_year'  => $card->getValidTo()->format( "y" ),
+                'cvc'       => $card->getCvv(),
+                'name'      => $card->getHolder()
+            ]
+        ];
 
         $rtrans->setState( \Entities\RealexTransaction::STATE_PRESEND );
         $rtrans->setRequest( $card->getNumber() );
         $rtrans->setUpdated( new \DateTime() );
         $this->getD2EM()->flush();
 
-        $this->_log( "[RTRANS: {$rtrans->getId()}] Realex::newCard() - transaction set to STATE_PRESEND\n\n{$reqXML}\n\n" );
+        $this->_log( "[RTRANS: {$rtrans->getId()}] Stripe::newCard() - transaction set to STATE_PRESEND\n\n" . print_r( $reqData, true ) . "\n\n" );
 
         if( $this->_fake_transactions )
         {
-            $this->_log( "[RTRANS: {$rtrans->getId()}] Realex::newCard() - faking transaction" );
+            $this->_log( "[RTRANS: {$rtrans->getId()}] Stripe::newCard() - faking transaction" );
             $card->setState( \Entities\RealexCard::STATE_INSYNC );
             return $this->_completeFakeTransation( $rtrans );
         }
 
-        $this->_sendRequest( $rtrans, $reqXML );
+        try{ 
+            $cu = Stripe_Customer::retrieve( $card->getPayer()->getPayerref() );
+            $res = $cu->cards->create( $reqData );
+            $rtrans->setResult( '00' );
+
+            $card->setCardref( $res->id );
+            $this->_log( "[RTRANS: {$rtrans->getId()}] Stripe::newCard() - Stripe result: " . print_r( $res, true ) );
+        }
+        catch( Exception $e )
+        { 
+            $this->exceptionHendler( $e, $rtrans, "newCard" );
+        } 
+        
+        $rtrans->setState( \Entities\RealexTransaction::STATE_COMPLETE );
+
+        //FIXME: Barry
+        if( $rtrans->isSuccessful() && !$this->_keep_request_data )
+            $rtrans->setRequest( '' );
+
+        $rtrans->setUpdated( new \DateTime() );
+        $this->getD2EM()->flush();
 
         if( $rtrans->isSuccessful() )
         {
-            $card->setState( \Entities\RealexCard::State_INSYNC );
-            $card->setNumber( substr( $card->getNumber(), 0, 4 ) . '...' . substr( $card->getNumber(), -3 ) );
+            $card->setState( \Entities\RealexCard::STATE_INSYNC );
+            $card->setNumber( substr( $card->getNumber(), 0, 4 ) . '...' . substr( $card->getNumber(), -4 ) );
+            $card->setUpdated( new \DateTime() );
             $this->getD2EM()->flush();
         }
 
@@ -732,25 +533,26 @@ class OSS_PaymentProcessor_Realex extends OSS_PaymentProcessor_BaseProcessor
     }
 
     /**
-     * Creates a new "payment" in Realex's systems.
+     * Creates a new "payment" in Stripe's systems.
      *
-     * Sends a 'receipt-in' request to Realex which creates a new payment at Realex.
+     * Sends a 'receipt-in' request to Stripe which creates a new payment at Stripe.
      *
      * This also logs the transaction into the \Entities\RealexTransaction table,
      * and returns that object which can be queried for the request and transaction
      * state.
      *
-     * If $this->_fake_transactions is true then it skips the Realex request and returns with
+     * If $this->_fake_transactions is true then it skips the Stripe request and returns with
      * success after performing all normal database operations as if the request was sent.
      * @see $_fake_transactions
      *
      * @param \Entities\RealexCard $card
      * @param int|float $amount the amount to be withdrawn from the card, in the biggest unit of the currency,
      *    e.g. in euro or dollar and not in cent, then conversion is made inside the method
+     * @param string $description Payment description. e.g. For services of period from 08/13 unti 09/13
      * @return \Entities\RealexTransaction The resultant \Entities\RealexTransaction object
      * @throws OSS_PaymentProcessor_Exception
      */
-    public function receiptIn( $card, $amount )
+    public function receiptIn( $card, $amount, $description = "" )
     {
         $rqTimeStamp = $this->getTimeStamp();
 
@@ -775,7 +577,7 @@ class OSS_PaymentProcessor_Realex extends OSS_PaymentProcessor_BaseProcessor
         $this->getD2EM()->persist( $rtrans );
         $this->getD2EM()->flush();
 
-        $this->_log( "[RTRANS: {$rtrans->getId()}] Realex::receiptIn() - transaction set to STATE_INIT" );
+        $this->_log( "[RTRANS: {$rtrans->getId()}] Stripe::receiptIn() - transaction set to STATE_INIT" );
 
         // we're about to perform payment which means that the cerdit card paygate state should be insync
         if( $card->getState() != \Entities\RealexCard::STATE_INSYNC )
@@ -784,45 +586,47 @@ class OSS_PaymentProcessor_Realex extends OSS_PaymentProcessor_BaseProcessor
             throw new OSS_PaymentProcessor_Realex_Receipt_Exception( $rtrans, OSS_PaymentProcessor_Exception::ERR_INCONSISTANT_PAYGATE_STATE );
         }
 
-        $amount    = (int) ( $amount * 100 );
-        $rqOrderId = self::createOrderId( $rtrans );
-        $payerRef  = $card->getPayer()->getPayerref();
-        $cardRef   = $card->getCardref();
-        $rqHash    = OSS_PaymentProcessor_Realex_Hash::payment(
-                        $rqTimeStamp,
-                        $this->getMerchantId(),
-                        $rqOrderId,
-                        $amount,
-                        'EUR',
-                        $payerRef,
-                        $this->getMerchantSecret()
-                    );
-
-        $reqXML = "<request type='receipt-in' timestamp='{$rqTimeStamp}'>
-                      <merchantid>{$this->getMerchantId()}</merchantid>
-                      <account>{$this->_account}</account>
-                      <orderid>{$rqOrderId}</orderid>
-                      <amount currency='EUR'>{$amount}</amount>
-                      <payerref>{$payerRef}</payerref>
-                      <paymentmethod>{$cardRef}</paymentmethod>
-                      <autosettle flag=\"1\" />
-                      <sha1hash>{$rqHash}</sha1hash>
-                  </request>";
+        $reqData = [
+            'amount' => (int) ( $amount * 100 ),
+            'currency' => strtolower( $this->_currency ),
+            'card' => $card->getCardref(),
+            'customer' => $card->getPayer()->getPayerref(),
+            'capture' => true,
+            'description' => $description
+        ];
 
         $rtrans->setRequest( $amount );
         $rtrans->setState( \Entities\RealexTransaction::STATE_PRESEND );
         $rtrans->setUpdated( new \DateTime() );
         $this->getD2EM()->flush();
 
-        $this->_log( "[RTRANS: {$rtrans->getId()}] Realex::receiptIn() - transaction set to STATE_PRESEND\n\n{$reqXML}\n\n" );
+        $this->_log( "[RTRANS: {$rtrans->getId()}] Stripe::receiptIn() - transaction set to STATE_PRESEND\n\n" . print_r( $reqData, true ) . "\n\n" );
 
         if( $this->_fake_transactions )
         {
-            $this->_log( "[RTRANS: {$rtrans->getId()}] Realex::receiptIn() - faking transaction" );
+            $this->_log( "[RTRANS: {$rtrans->getId()}] Stripe::receiptIn() - faking transaction" );
             return $this->_completeFakeTransation( $rtrans );
         }
 
-        $this->_sendRequest( $rtrans, $reqXML ); // can throw OSS_PaymentProcessor_Realex_Receipt_Exception()
+        try{ 
+            $res = Stripe_Charge::create( $reqData );
+            $rtrans->setResult( '00' );
+            $rtrans->setReference( $res['id'] );
+            $this->_log( "[RTRANS: {$rtrans->getId()}] Stripe::receiptIn() - Stripe result: " . print_r( $res, true ) );
+        }
+        catch( Exception $e )
+        { 
+            $this->exceptionHendler( $e, $rtrans, "receiptIn" );
+        } 
+
+        $rtrans->setState( \Entities\RealexTransaction::STATE_COMPLETE );
+
+        //FIXME: Barry
+        if( $rtrans->isSuccessful() && !$this->_keep_request_data )
+            $rtrans->setRequest( '' );
+
+        $rtrans->setUpdated( new \DateTime() );
+        $this->getD2EM()->flush();
 
         return $rtrans;
     }
@@ -849,7 +653,7 @@ class OSS_PaymentProcessor_Realex extends OSS_PaymentProcessor_BaseProcessor
      */
     public function paymentOut( $card, $amount )
     {
-        $rqTimeStamp = $this->getTimeStamp();
+        /*$rqTimeStamp = $this->getTimeStamp();
 
         // we're about to perform payment which means that the cerdit card should exist
         if( !( $card instanceof Creditcard ) )
@@ -913,17 +717,17 @@ class OSS_PaymentProcessor_Realex extends OSS_PaymentProcessor_BaseProcessor
         $rtrans->setUpdated( new \DateTime() );
         $this->getD2EM()->flush();
 
-        $this->_log( "[RTRANS: {$rtrans->getId()}] Realex::paymentOut() - transaction set to STATE_PRESEND\n\n{$reqXML}\n\n" );
+        $this->_log( "[RTRANS: {$rtrans->getId()}] Stripe::paymentOut() - transaction set to STATE_PRESEND\n\n{$reqXML}\n\n" );
 
         if( $this->_fake_transactions )
         {
-            $this->_log( "[RTRANS: {$rtrans->getId()}] Realex::paymentOut() - faking transaction" );
+            $this->_log( "[RTRANS: {$rtrans->getId()}] Stripe::paymentOut() - faking transaction" );
             return $this->_completeFakeTransation( $rtrans );
         }
 
         $this->_sendRequest( $rtrans, $reqXML ); // can throw OSS_PaymentProcessor_Realex_Receipt_Exception()
 
-        return $rtrans;
+        return $rtrans;*/
     }
 
     /**
@@ -963,45 +767,54 @@ class OSS_PaymentProcessor_Realex extends OSS_PaymentProcessor_BaseProcessor
         $this->getD2EM()->persist( $rtrans );
         $this->getD2EM()->flush();
 
-        $this->_log( "[RTRANS: {$rtrans->getId()}] Realex::editPayer() - transaction set to STATE_INIT" );
+        $this->_log( "[RTRANS: {$rtrans->getId()}] Stripe::editPayer() - transaction set to STATE_INIT" );
 
         // we're about to update a Realex payer which means the paygate state should be dirty
         if( $payer->getState() != \Entities\RealexPayer::STATE_DIRTY )
             throw new OSS_PaymentProcessor_Exception( OSS_PaymentProcessor_Exception::ERR_INCONSISTANT_PAYGATE_STATE );
 
-        $payerRef  = $payer->getPayerref();
-        $rqOrderId = self::createOrderId( $rtrans );
-        $rqHash    = OSS_PaymentProcessor_Realex_Hash::payer( $rqTimeStamp, $this->getMerchantId(), $rqOrderId, $payerRef, $this->getMerchantSecret() );
+         $reqData = [
+            'description' => "{$payer->getName()}, cid {$payer->getId()}}"
+        ];
 
-        $reqXML = "<request type='payer-edit' timestamp='{$rqTimeStamp}'>
-                        <merchantid>{$this->getMerchantId()}</merchantid>
-                        <orderid>{$rqOrderId}</orderid>
-                        <payer type='subscriber' ref='{$payerRef}'>
-                            <firstname>{$payer->getFirstname()}</firstname>
-                            <surname>{$payer->getLastname()}</surname>
-                        </payer>
-                        <sha1hash>{$rqHash}</sha1hash>
-                    </request>";
-                //FIXME: Firstname Lastname
 
         $rtrans->setState( \Entities\RealexTransaction::STATE_PRESEND );
         $rtrans->setUpdated( new \DateTime() );
         $this->getD2EM()->flush();
 
-        $this->_log( "[RTRANS: {$rtrans->getId()}] Realex::editPayer() - transaction set to STATE_PRESEND\n\n{$reqXML}\n\n" );
+        $this->_log( "[RTRANS: {$rtrans->getId()}] Stripe::editPayer() - transaction set to STATE_PRESEND\n\n" . print_r( $reqData, true ) ."\n\n" );
 
         if( $this->_fake_transactions )
         {
-            $this->_log( "[RTRANS: {$rtrans->getId()}] Realex::editPayer() - faking transaction" );
+            $this->_log( "[RTRANS: {$rtrans->getId()}] Stripe::editPayer() - faking transaction" );
             $payer->SetState( \Entities\RealexPayer::STATE_INSYNC );
             return $this->_completeFakeTransation( $rtrans );
         }
 
-        $this->_sendRequest( $rtrans, $reqXML );
+        try{ 
+            $cu = Stripe_Customer::retrieve( $card->getPayer()->getPayerref() );
+         
+            foreach( $reqData as $name => $value )
+                $cu->$name = $value;
+         
+            $cu->save();
+            $rtrans->setResult( '00' );
+            $this->_log( "[RTRANS: {$rtrans->getId()}] Stripe::editPayer() - Stripe result: " . print_r( $res, true ) );
+        }
+        catch( Exception $e )
+        {
+            $this->exceptionHendler( $e, $rtrans, "editPayer" );
+        }
+
+        $rtrans->setState( \Entities\RealexTransaction::STATE_COMPLETE );
+
+        $rtrans->setUpdated( new \DateTime() );
+        $this->getD2EM()->flush();
 
         if( $rtrans->isSuccessful() )
         {
             $payer->setState( \Entities\RealexPayer::STATE_INSYNC );
+            $payer->setUpdated( new \DateTime() );
             $this->getD2EM()->flush();
         }
 
@@ -1046,55 +859,56 @@ class OSS_PaymentProcessor_Realex extends OSS_PaymentProcessor_BaseProcessor
         $this->getD2EM()->persist( $rtrans );
         $this->getD2EM()->flush();
 
-        $this->_log( "[RTRANS: {$rtrans->getId()}] Realex::updateCard() - transaction set to STATE_INIT" );
+        $this->_log( "[RTRANS: {$rtrans->getId()}] Stripe::updateCard() - transaction set to STATE_INIT" );
 
         // we're about to update a Realex credit card which means the paygate state should be dirty
         if( $card->getState() != \Entities\RealexCard::STATE_DIRTY )
             throw new OSS_PaymentProcessor_Exception( OSS_PaymentProcessor_Exception::ERR_INCONSISTANT_PAYGATE_STATE );
 
-        $expiryDate = $expiryDate = $card->getValidTo()->format( "my" );
-        $cardRef    = $card->getCardref();
-        $payerRef   = $card->getPayer()->getPayerref();
-        $cardType   = $this->getCardType( $card->getType() );
-        $rqHash     = OSS_PaymentProcessor_Realex_Hash::updateCreditCard(
-                            $rqTimeStamp,
-                            $this->getMerchantId(),
-                            $payerRef,
-                            $cardRef,
-                            $expiryDate,
-                            $this->getMerchantSecret()
-        );
-
-        $reqXML = "<request type='card-update-card' timestamp='{$rqTimeStamp}'>
-                       <merchantid>{$this->getMerchantId()}</merchantid>
-                       <card>
-                           <ref>{$cardRef}</ref>
-                           <payerref>{$payerRef}</payerref>
-                           <chname>{$card->getHolder()}</chname>
-                           <expdate>{$expiryDate}</expdate>
-                           <type>{$cardType}</type>
-                       </card>
-                       <sha1hash>{$rqHash}</sha1hash>
-                   </request>";
+        $reqData = [ 
+            'exp_month' => $card->getValidTo()->format( "m" ),
+            'exp_year'  => $card->getValidTo()->format( "Y" ),
+            'name'      => $card->getHolder(),
+        ];
 
         $rtrans->setState( \Entities\RealexTransaction::STATE_PRESEND );
         $rtrans->setUpdated( new \DateTime() );
         $this->getD2EM()->flush();
 
-        $this->_log( "[RTRANS: {$rtrans->getId()}] Realex::updateCard() - transaction set to STATE_PRESEND\n\n{$reqXML}\n\n" );
+        $this->_log( "[RTRANS: {$rtrans->getId()}] Stripe::updateCard() - transaction set to STATE_PRESEND\n\n" . print_r( $reqData, true ) ."\n\n" );
 
         if( $this->_fake_transactions )
         {
-            $this->_log( "[RTRANS: {$rtrans->getId()}] Realex::updateCard() - faking transaction" );
+            $this->_log( "[RTRANS: {$rtrans->getId()}] Stripe::updateCard() - faking transaction" );
             $card->setState( \Entities\RealexCard::STATE_INSYNC );
             return $this->_completeFakeTransation( $rtrans );
         }
 
-        $this->_sendRequest( $rtrans, $reqXML );
+        try{ 
+            $cu = Stripe_Customer::retrieve( $card->getPayer()->getPayerref() );
+            $crd = $cu->cards->retrieve( $card->getCardref() ); 
+         
+            foreach( $reqData as $name => $value )
+                $crd->$name = $value;
+         
+            $res = $crd->save();
+            $rtrans->setResult( '00' );
+            $this->_log( "[RTRANS: {$rtrans->getId()}] Stripe::updateCard() - Stripe result: " . print_r( $res, true ) );
+        }
+        catch( Exception $e )
+        {
+            $this->exceptionHendler( $e, $rtrans, "updateCard" );
+        }
+        
+        $rtrans->setState( \Entities\RealexTransaction::STATE_COMPLETE );
+
+        $rtrans->setUpdated( new \DateTime() );
+        $this->getD2EM()->flush();
 
         if( $rtrans->isSuccessful() )
         {
-            $card->stateState( \Entitites\RealexCard::STATE_INSYNC );
+            $card->setState( \Entities\RealexCard::STATE_INSYNC );
+            $card->setUpdated( new \DateTime() );
             $this->getD2EM()->flush();
         }
 
@@ -1103,15 +917,15 @@ class OSS_PaymentProcessor_Realex extends OSS_PaymentProcessor_BaseProcessor
     }
 
     /**
-     * Removes a "card" from Realex's systems.
+     * Removes a "card" from Stripe's systems.
      *
-     * Sends a 'card-cancel-card' request to Realex which remove credit card from Realex.
+     * Sends a 'card-cancel-card' request to Stripe which remove credit card from Stripe.
      *
      * This also logs the transaction into the \Entities\RealexTransaction table,
      * and returns that object which can be queried for the request and transaction
      * state.
      *
-     * If $this->_fake_transactions is true then it skips the Realex request and returns with
+     * If $this->_fake_transactions is true then it skips the Stripe request and returns with
      * success after performing all normal database operations as if the request was sent.
      * @see $_fake_transactions
      *
@@ -1144,40 +958,48 @@ class OSS_PaymentProcessor_Realex extends OSS_PaymentProcessor_BaseProcessor
         $this->getD2EM()->persist( $rtrans );
         $this->getD2EM()->flush();
 
-        $this->_log( "[RTRANS: {$rtrans->getId()}] Realex::cancelCard() - transaction set to STATE_INIT" );
-
-        $cardRef  = $card->getCardref();
-        $payerRef = $card->getPayer()->getPayerref();
-        $rqHash   = OSS_PaymentProcessor_Realex_Hash::removeCreditCard( $rqTimeStamp, $this->getMerchantId(), $payerRef, $cardRef, $this->getMerchantSecret() );
-
-        $reqXML = "<request type='card-cancel-card' timestamp='{$rqTimeStamp}'>
-                       <merchantid>{$this->getMerchantId()}</merchantid>
-                           <card>
-                           <ref>{$cardRef}</ref>
-                           <payerref>{$payerRef}</payerref>
-                           <chname>{$card->getHolder()}</chname>
-                       </card>
-                       <sha1hash>{$rqHash}</sha1hash>
-                   </request>";
+        $this->_log( "[RTRANS: {$rtrans->getId()}] Stripe::cancelCard() - transaction set to STATE_INIT" );
 
         $rtrans->getState( \Entities\RealexTransaction::STATE_PRESEND );
         $rtrans->setUpdated( new \DateTime() );
         $this->getD2EM()->flush();
 
-        $this->_log( "[RTRANS: {$rtrans->getId()}] Realex::cancelCard() - transaction set to STATE_PRESEND\n\n{$reqXML}\n\n" );
+        $this->_log( 
+            sprintf( "[RTRANS: %s] Stripe::cancelCard() - transaction set to STATE_PRESEND\n\n [ customer => '%s', card => '%s' ] \n\n",
+                $rtrans->getId(),
+                $card->getPayer()->getPayerref(),
+                $card->getCardref()
+            )
+        );
 
         if( $this->_fake_transactions )
         {
-            $this->_log( "[RTRANS: {$rtrans->getId()}] Realex::cancelCard() - faking transaction" );
+            $this->_log( "[RTRANS: {$rtrans->getId()}] Stripe::cancelCard() - faking transaction" );
             $card->setState( \Entities\RealexCard::STATE_NONE );
             return $this->_completeFakeTransation( $rtrans );
         }
 
-        $this->_sendRequest( $rtrans, $reqXML );
+        try{ 
+            $cu = Stripe_Customer::retrieve( $card->getPayer()->getPayerref() );
+            $res = $cu->cards->retrieve( $card->getCardref() )->delete(); 
+            $rtrans->setResult( '00' );
+    
+            $this->_log( "[RTRANS: {$rtrans->getId()}] Stripe::cancelCard() - Stripe result: " . print_r( $res, true ) );
+        }
+        catch( Exception $e )
+        {
+            $this->exceptionHendler( $e, $rtrans, "cancelCard" );
+        }
+        
+        $rtrans->setState( \Entities\RealexTransaction::STATE_COMPLETE );
+        
+        $rtrans->setUpdated( new \DateTime() );
+        $this->getD2EM()->flush();
 
         if( $rtrans->isSuccessful() )
         {
             $card->setState( \Entities\RealexCard::STATE_NONE );
+            $card->setUpdated();
             $this->getD2EM()->flush();
         }
 
