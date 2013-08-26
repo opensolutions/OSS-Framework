@@ -201,4 +201,31 @@ class OSS_Net_IPv6
 
         return $ret;
     }
+
+    /**
+     * Converts IPv6 address to numerical expresnion.
+     *
+     * This function is usefull then need to sort IPv6 addresses.
+     * Function will takes IPv6 address converts it to long full type then removes ':'
+     * and it becomes heximal number. Then function converts it to decimal.
+     *
+     * e.g. 2a01:8f80:5::9  => 55835678645609170133392336604536766473
+     *      2a01:8f80:5::10 => 55835678645609170133392336604536766480
+     *
+     * @param string $ip IPv6 address to convert to numerical expresnion
+     * @return string
+     */
+    public static function ip2numeric( $ip )
+    {
+        $ip = self::formatAddress( $ip, self::TYPE_LONG_FULL );
+        $hex = str_replace( ":", "", $ip );
+
+        $len = strlen($hex);
+        $dec = "";
+
+        for( $i = 1; $i <= $len; $i++ )
+            $dec = bcadd( $dec, bcmul( strval( hexdec( $hex[$i - 1] ) ), bcpow( '16', strval( $len - $i ) ) ) );
+    
+        return $dec;
+    }
 }
