@@ -93,46 +93,17 @@ class OSS_PaymentProcessor_Realex_Receipt_Exception extends Zend_Exception
         return $this->_logLevel;
     }
 
-['
     private function setParams( $code )
     {
         switch( $code )
         {
+            case '80':
             case '101':
-                $this->_msg      = self::ERR_PAYMENT_DECLINE;
-                $this->_type     = OSS_Message::ALERT;
-                $this->_logLevel = OSS_Log::INFO;
-                break;
-
             case '102':
-                $this->_msg      = self::ERR_PAYMENT_DECLINE;
-                $this->_type     = OSS_Message::ALERT;
-                $this->_logLevel = OSS_Log::INFO;
-                break;
-
             case '103':
-                $this->_msg      = self::ERR_PAYMENT_DECLINE;
-                $this->_type     = OSS_Message::ALERT;
-                $this->_logLevel = OSS_Log::INFO;
-                break;
-
             case '106':
-                $this->_msg      = self::ERR_PAYMENT_DECLINE;
-                $this->_type     = OSS_Message::ALERT;
-                $this->_logLevel = OSS_Log::INFO;
-                break;
-
             case '107':
-                $this->_msg      = self::ERR_PAYMENT_DECLINE;
-                $this->_type     = OSS_Message::ALERT;
-                $this->_logLevel = OSS_Log::INFO;
-                break;
-
             case '108':
-                $this->_msg      = self::ERR_PAYMENT_DECLINE;
-                $this->_type     = OSS_Message::ALERT;
-                break;
-
             case '109':
                 $this->_msg      = self::ERR_PAYMENT_DECLINE;
                 $this->_type     = OSS_Message::ALERT;
@@ -140,29 +111,11 @@ class OSS_PaymentProcessor_Realex_Receipt_Exception extends Zend_Exception
                 break;
 
             case '200':
-                $this->_logLevel = OSS_Log::NOTICE;
-                break;
-
             case '202':
-                $this->_logLevel = OSS_Log::NOTICE;
-                break;
-
             case '205':
-                $this->_logLevel = OSS_Log::NOTICE;
-                break;
-
             case '301':
-                $this->_logLevel = OSS_Log::NOTICE;
-                break;
-
             case '302':
-                $this->_logLevel = OSS_Log::NOTICE;
-                break;
-
             case '304':
-                $this->_logLevel = OSS_Log::INFO;
-                break;
-
             case '305':
                 $this->_logLevel = OSS_Log::INFO;
                 break;
