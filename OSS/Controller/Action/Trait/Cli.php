@@ -105,7 +105,7 @@ trait OSS_Controller_Action_Trait_Cli
      * @param string $msg The message
      * @param bool $implicitNewline Set to false to prevent a newline from being echoed
      */
-    public function verbose( $msg, $implicitNewline = true )
+    public function verbose( $msg = "", $implicitNewline = true )
     {
         if( $this->_verbose )
             echo "{$msg}" . ( $implicitNewline ? "\n" : "" );
@@ -126,7 +126,7 @@ trait OSS_Controller_Action_Trait_Cli
      * @param string $msg The message
      * @param bool $implicitNewline Set to false to prevent a newline from being echoed
      */
-    public function debug( $msg, $implicitNewline = true )
+    public function debug( $msg = "", $implicitNewline = true )
     {
         if( $this->_debug )
             echo "{$msg}" . ( $implicitNewline ? "\n" : "" );
