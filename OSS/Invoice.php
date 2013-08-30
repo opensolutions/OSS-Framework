@@ -72,7 +72,7 @@ class OSS_Invoice
         $qb = self::getStaticD2EM()->createQueryBuilder()
             ->select( 'sum( i.total ) as sum_total, sum( i.received ) as sum_received, count( i.id ) as howmany' )
             ->from( '\\Entities\\Invoice', "i" )
-            ->where( 'i.total < i.received' )
+            ->where( 'i.total > i.received' )
             ->orWhere( 'i.received IS NULL' );
 
         if( $customer )
