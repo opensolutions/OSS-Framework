@@ -78,7 +78,7 @@ class OSS_Resource_Paygate extends Zend_Application_Resource_ResourceAbstract
             // Get Doctrine configuration options from the application.ini file
             $configs = $this->getOptions();
 
-            $paygate = OSS_PaymentProcessor_ . $configs["name"];
+            $paygate = 'OSS_PaymentProcessor_' . $configs["name"];
            
             $options = Zend_Registry::get('options')[ strtolower( $configs["name"] ) ];
            
