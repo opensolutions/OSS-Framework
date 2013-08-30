@@ -57,7 +57,8 @@ class OSS_Filter_FixCompanyname implements Zend_Filter_Interface
             return $value;
 
         foreach( preg_split( "/[ \-]/", mb_strtolower( $value ) ) as $vOneValue )
-            $value = OSS_String::mb_str_replace( $vOneValue, OSS_String::mb_ucfirst( $vOneValue ), $value );
+            if( $vOneValue )
+                $value = OSS_String::mb_str_replace( $vOneValue, OSS_String::mb_ucfirst( $vOneValue ), $value );
 
         return $value;
     }
