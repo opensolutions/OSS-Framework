@@ -57,7 +57,13 @@ class OSS_Log extends Zend_Log
      */
     public function alert( $message )
     {
-        $return = $message . "
+        if ( php_sapi_name() == 'cli' )
+        {
+            $return = $message;
+        }
+        else
+        {
+            $return = $message . "
 
            host : {$_SERVER['HTTP_HOST']}
      user agent : {$_SERVER['HTTP_USER_AGENT']}
@@ -67,6 +73,7 @@ script filename : {$_SERVER['SCRIPT_FILENAME']}
    query string : {$_SERVER['QUERY_STRING']}
     request uri : {$_SERVER['REQUEST_URI']}
 ";
+        }
 
         try
         {
