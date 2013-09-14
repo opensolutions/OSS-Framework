@@ -41,7 +41,9 @@
 require_once( dirname( __FILE__ ) . '/../../bootstrap.php' );
 
 require 'IPv4Test.php';
+require 'IPv4CidrTest.php';
 require 'IPv6Test.php';
+require 'IPv6CidrTest.php';
 require 'DomainNameTest.php';
 require 'DnsRecordTest.php';
 
@@ -52,7 +54,9 @@ class OSS_Validator_AllTests
         $suite = new PHPUnit_Framework_TestSuite( 'OSS_Validate' );
 
         $suite->addTestSuite( 'OSS_Validate_IPv4Test' );
+        $suite->addTestSuite( 'OSS_Validate_IPv4CidrTest' );
         $suite->addTestSuite( 'OSS_Validate_IPv6Test' );
+        $suite->addTestSuite( 'OSS_Validate_IPv6CidrTest' );
         $suite->addTestSuite( 'OSS_Validate_DomainNameTest' );
         $suite->addTestSuite( 'OSS_Validate_DnsRecordTest' );
 
