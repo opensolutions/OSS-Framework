@@ -134,6 +134,29 @@ trait OSS_Controller_Action_Trait_Cli
     
     
     /**
+     * Utility function to verify that a file passed via --config exists and is readable.
+     *
+     * No attempt is made to parse / use the file as calling functions may use this for Smarty,
+     * Zend, or other configuration file types.
+     *
+     * @throws Zend_Validate_Exception If no file is specified or if the file cannot be read
+     * @return string The specified verified (as existing and reabable) config file
+     */
+    public function loadConfig()
+    {
+        $cfile = $this->getFrontController()->getParam( 'config', false );
+        if( $cfile )
+        {
+            if( file_exists( $cfile ) && is_readable( $cfile ) )
+                return $cfile;
+            
+            throw new Zend_Validate_Exception( 'Cannot open / read specificed configuration file' );
+        }
+        
+        throw new Zend_Validate_Exception( 'No configuration file specificed - please use --config=/path/to/file' );
+    }
+    
+    /**
      * Write text from a variable (e.g. configuration data) to a file in an atomic way.
      *
      * I.e. write to temporary file first (`$filename . '$$'`) and then move to the
