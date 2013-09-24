@@ -446,5 +446,17 @@ class OSS_View_Smarty extends Zend_View_Abstract
     {
         return $this->_skin;
     }
+    
+    /**
+     * Load a config file, optionally load just selected sections
+     *
+     * @param string $cfile       filename
+     * @param mixed  $sections    array of section names, single section or null
+     * @return Smarty_Internal_Data current Smarty_Internal_Data (or Smarty or Smarty_Internal_Template) instance for chaining
+     */
+    public function configLoad( $cfile, $sections = null )
+    {
+        return $this->_smarty->configLoad( $cfile, $sections );
+    }
 
 }
