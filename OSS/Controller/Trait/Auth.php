@@ -53,7 +53,7 @@ trait OSS_Controller_Trait_Auth
     /**
      * Template path
      *
-     *@var string $TEMPLATE_PATH 
+     *@var string $TEMPLATE_PATH
      */
     private static $TEMPLATE_PATH = "auth/email";
 
@@ -386,6 +386,8 @@ trait OSS_Controller_Trait_Auth
                     if( $this->resetPasswordPreFlush( $user, $form ) )
                         $this->getD2EM()->flush();
                     
+                    $this->clearUserFromCache();
+                                        
                     $this->view->user = $user;
 
                     $mailer = $this->getMailer();
@@ -1180,23 +1182,23 @@ trait OSS_Controller_Trait_Auth
     /**
      * Adds a plaintext / HTML / both email body to a OSS_Mail object as appropriate
      *
-     * Email type can be defined in application.ini by setting option `resources.auth.oss.email_format`. 
-     * 
+     * Email type can be defined in application.ini by setting option `resources.auth.oss.email_format`.
+     *
      * Valid email formats:
-     * * `both` - **this is the default**. It will look for both a html and plaintext version of `$template` 
+     * * `both` - **this is the default**. It will look for both a html and plaintext version of `$template`
      *            to build an email wich contains whichever was found or both if available. If neither html
      *            nor plaintext templates are unable to render, it will thorw `OSS_Exception`.
      *   html - this email format will try to render html tamplate and set html body to mailer.
      *   plaintext - this email format will try to render plaintext tamplate and set text body to mailer.
      *
-     * Template location is `application/views/$TEMPLATE_PATH`/{html,plaintext} directory is for html 
-     * templates and template files must end with phtml. And plaintext direcotry is for text templates 
-     * files and the extension must be `.txt`. 
-     * 
+     * Template location is `application/views/$TEMPLATE_PATH`/{html,plaintext} directory is for html
+     * templates and template files must end with phtml. And plaintext direcotry is for text templates
+     * files and the extension must be `.txt`.
+     *
      * **NB:** skin functionality works - just place the files in `_skins/auth/email/...`.
-     * 
+     *
      * Available templates are:
-     * 
+     *
      * * `lost-password`
      * * `reset-password`
      * * `lost-username`
