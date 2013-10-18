@@ -385,8 +385,8 @@ trait OSS_Controller_Trait_Auth
                     if( $this->resetPasswordPreFlush( $user, $form ) )
                         $this->getD2EM()->flush();
                     
-                    $this->clearUserFromCache();
-                    
+                    $this->clearUserFromCache( $user->getId() );
+
                     $this->view->user = $user;
 
                     $mailer = $this->getMailer();

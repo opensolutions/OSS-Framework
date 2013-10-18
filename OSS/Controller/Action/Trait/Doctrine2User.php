@@ -121,12 +121,9 @@ trait OSS_Controller_Action_Trait_Doctrine2User
      */
     protected function clearUserFromCache( $id = null )
     {
-        if( $id === null && $ident = $this->getIdentity() && isset( $ident['id'] ) )
+        if( $id === null )
             $id = $this->getUser()->getId();
 
-        if( $id === null )
-            return true;     // no cached user anyway!
-            
         $this->getD2Cache()->delete( 'oss_d2u_user_' . $id );
     }
     
