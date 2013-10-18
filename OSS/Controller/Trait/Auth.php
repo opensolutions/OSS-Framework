@@ -351,10 +351,9 @@ trait OSS_Controller_Trait_Auth
 
         if( $this->getRequest()->isPost() && $form->isValid( $_POST ) )
         {
-            $user = $this->getD2EM()->getRepository(
-                            $this->getOptions()['resources']['auth']['oss']['entity'] )
-                    ->findOneByUsername( $form->getValue( 'username') );
-            
+            $user = $this->getD2EM()->getRepository( $this->getOptions()['resources']['auth']['oss']['entity'] )
+                ->findOneByUsername( $form->getValue( 'username') );
+
             if( !$user )
             {
                 $this->addMessage(
@@ -387,7 +386,7 @@ trait OSS_Controller_Trait_Auth
                         $this->getD2EM()->flush();
                     
                     $this->clearUserFromCache();
-                                        
+                    
                     $this->view->user = $user;
 
                     $mailer = $this->getMailer();
