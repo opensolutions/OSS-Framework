@@ -74,6 +74,9 @@ trait OSS_Controller_Action_Trait_Smarty
         $this->view->action     = $this->getRequest()->getActionName();
         $this->view->basepath = Zend_Controller_Front::getInstance()->getBaseUrl();
 
+        
+        $this->view->getEngine()->loadFilter( "pre", 'whitespace_control' );
+        
         if( substr( $request->getActionName(), 0, 4 ) == 'ajax' || substr( $request->getActionName(), 0, 3 ) == 'cli' )
         {
             Zend_Controller_Action_HelperBroker::removeHelper( 'viewRenderer' );
