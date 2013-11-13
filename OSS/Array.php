@@ -45,6 +45,45 @@
  */
 class OSS_Array
 {
+    /**
+     * Reindex an array of objects by a member of that object. 
+     * 
+     * Typically used for Doctrine2 collections.
+     * 
+     * @param array $objects Array of objects to reindex
+     * @param string $indexFn The method of the object that will return the new index. Must be a unique key.
+     * @return array
+     */
+    public static function reindexObjects( $objects, $indexFn )
+    {
+        $new = [];
+        
+        foreach( $objects as $o )
+            $new[ $o->$indexFn() ] = $o;
+        
+        return $new;
+    }
+
+    /**
+     * Reorder an array of objects by a member of that object. 
+     * 
+     * Typically used for Doctrine2 collections.
+     * 
+     * @param array $objects Array of objects to reindex
+     * @param string $indexFn The method of the object that will return the new ordering index (should be unique!).
+     * @return array
+     */
+    public static function reorderObjects( $objects, $orderFn, $orderParam = SORT_REGULAR )
+    {
+        $new = [];
+        
+        foreach( $objects as $o )
+            $new[ $o->$orderFn() ] = $o;
+        
+        ksort( $new, $orderParam );
+        
+        return $new;
+    }
 
     /**
      * Removes array elements where the value is empty().
@@ -250,7 +289,7 @@ class OSS_Array
     */
     public static function changeValues( array &$array, array $fromToArray)
     {
-        if( ( is_array( $array ) == true ) && ( sizeof( $array ) > 0 ) )
+        if( ( is_array( $array ) == true ) && ( sizeof( $array ) >��0 ) )
             array_walk_recursive( $array, array( 'OSS_Array', 'cavCallback' ), $fromToArray );
     }
 
