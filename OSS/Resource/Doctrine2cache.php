@@ -105,7 +105,7 @@ class OSS_Resource_Doctrine2cache extends Zend_Application_Resource_ResourceAbst
                     $server = $config['memcache']['servers'][$cnt];
                 
                     $memcache->addServer(
-                        $server['host'],
+                        isset( $server['host'] )         ? $server['host']         : '127.0.0.1',
                         isset( $server['port'] )         ? $server['port']         : 11211,
                         isset( $server['persistent'] )   ? $server['persistent']   : false,
                         isset( $server['weight'] )       ? $server['weight']       : 1,
