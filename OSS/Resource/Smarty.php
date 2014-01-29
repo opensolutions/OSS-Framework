@@ -103,7 +103,7 @@ class OSS_Resource_Smarty extends Zend_Application_Resource_ResourceAbstract
                     ) 
                 );
 
-                if( isset( $options['skin'] ) )
+                if( isset( $options['skin'] ) && strlen( $options['skin'] ) )
                     $view->setSkin( $options['skin'] );
 
                 $view->getEngine()->debugging = $options['debugging'];
