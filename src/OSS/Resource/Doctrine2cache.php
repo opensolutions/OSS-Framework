@@ -88,7 +88,10 @@ class OSS_Resource_Doctrine2cache extends Zend_Application_Resource_ResourceAbst
                     require_once( $config['path'] . '/Tools/Setup.php' ); // FIXME
                     Doctrine\ORM\Tools\Setup::registerAutoloadDirectory();
                     break;
-                    
+
+                case 'composer':
+                    break;
+                                        
                 default:
                     require_once( $config['path'] . '/lib/Doctrine/ORM/Tools/Setup.php' );
                     Doctrine\ORM\Tools\Setup::registerAutoloadGit( $config['path'] );
