@@ -5,7 +5,7 @@
 	"license": "BSD New License",
 	"autoload": {
 		"psr-0": {
-			"OSS_": "src/",
+			"OSS_": "src/"
 		}
 	}
 }
