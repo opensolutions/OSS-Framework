@@ -13,6 +13,7 @@ See:
 
 * PHPdoc at http://opensolutions.github.com/OSS-Framework/
 * Documentation at https://github.com/opensolutions/OSS-Framework/wiki
+* Packagist: https://packagist.org/packages/opensolutions/oss-framework
 
 ## Disclaimers and Warnings
 
