@@ -10,5 +10,6 @@
 		"psr-0": {
 			"OSS_": "src/"
 		}
-	}
+	},
+	"minimum-stability": "dev"
 }
