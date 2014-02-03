@@ -1,0 +1,11 @@
+{
+	"name": "opensolutions/oss-framework",
+	"description": "Open Solutions' extension to Zend Framework 1.",
+	"keywords": ["oss", "opensolutions"],
+	"license": "BSD New License",
+	"autoload": {
+		"psr-0": {
+			"OSS_": "src/",
+		}
+	}
+}
