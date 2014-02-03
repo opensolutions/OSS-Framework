@@ -3,6 +3,9 @@
 	"description": "Open Solutions' extension to Zend Framework 1.",
 	"keywords": ["oss", "opensolutions"],
 	"license": "BSD New License",
+        "require": {
+                "zendframework/zendframework1": "~1.12"
+	}
 	"autoload": {
 		"psr-0": {
 			"OSS_": "src/"
