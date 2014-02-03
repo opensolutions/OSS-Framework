@@ -2,7 +2,7 @@
 	"name": "opensolutions/oss-framework",
 	"description": "Open Solutions' extension to Zend Framework 1.",
 	"keywords": ["oss", "opensolutions"],
-	"license": "BSD New License",
+	"license": "BSD-3-Clause",
         "require": {
                 "zendframework/zendframework1": "~1.12"
 	},
