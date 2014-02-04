@@ -69,8 +69,8 @@ class OSS_Form_Auth
          
         $un->setRequired( true )
             ->addValidator( 'NotEmpty', true )
-            ->addFilter( new OSS_Filter_HtmlEntitiesDecode )
-            ->addFilter( new OSS_Filter_StripSlashes )
+            ->addFilter( 'HtmlEntitiesDecode' )
+            ->addFilter( 'StripSlashes' )
             ->addFilter( 'StringToLower' )
             ->addFilter( 'StringTrim' );
 
