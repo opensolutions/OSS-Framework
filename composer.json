@@ -9,7 +9,10 @@
 	"autoload": {
 		"psr-0": {
 			"OSS_": "src/"
-		}
+		},
+	        "classmap": [
+        		"src/OSS/View/Helper/Buttonlink.php"
+		]
 	},
 	"minimum-stability": "dev"
 }
