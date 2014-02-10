@@ -63,10 +63,15 @@ class OSS_Captcha_Image extends Zend_Captcha_Image
         if( !file_exists( $captchaDir ) )
             mkdir( $captchaDir, 0777, true );
 
+        if( strpos( dirname( __FILE__ ), 'src/' ) === false )
+            $font = dirname( __FILE__ ) . '/../../data/font/freeserif.ttf';
+        else
+            $font = dirname( __FILE__ ) . '/../../../data/font/freeserif.ttf';
+
         $this->setTimeout( $timeout )
              ->setWordLen( $wordLen )
              ->setHeight( 80 )
-             ->setFont( dirname( __FILE__ ) . '/../../data/font/freeserif.ttf' )
+             ->setFont( $font )
              ->setFontSize( 40 )
              ->setImgDir( $captchaDir )
              ->setDotNoiseLevel( $dotNoise )
