@@ -96,29 +96,25 @@ class OSS_Auth_Password
             switch( $hash )
             {
                 case 'crypt:md5':
-                    $salt_len = 8;
-                    $indicator = '$1$';
+                    $salt = '$1$' . OSS_String::randomPassword( 12 ) . '$';
                     break;
 
                 case 'crypt:blowfish':
-                    $salt_len = 22;
-                    $indicator = '$2a$';
+                    $salt = '$2a$12$' . OSS_String::randomPassword( 22 ) . '$';
                     break;
 
                 case 'crypt:sha256':
-                    $salt_len = 16;
-                    $indicator = '$5$';
+                    $salt = '$5$' . OSS_String::randomPassword( 16 ) . '$';
                     break;
 
                 case 'crypt:sha512':
-                    $salt_len = 16;
-                    $indicator = '$6$';
+                    $salt = '$6$' . OSS_String::randomPassword( 12 ) . '$';
                     break;
 
                 default:
                     throw new OSS_Exception( 'Unknown crypt password hashing method' );
             }
-            return crypt( $pw, $indicator . OSS_String::random( $salt_len ) );
+            return crypt( $pw, $salt ); 
         }
         else
         {
@@ -175,7 +171,7 @@ class OSS_Auth_Password
     public static function verify( $pwplain, $pwhash, $config )
     {
         $hash = self::HASH_UNKNOWN;
-        
+
         if( is_array( $config ) )
         {
             if( !isset( $config['pwhash'] ) )
@@ -196,6 +192,10 @@ class OSS_Auth_Password
                 return $bcrypt->verify( $pwplain, $pwhash );
                 break;
         }
+
+        if( substr( $hash, 0, 6) == 'crypt:' )
+            return crypt( $pwplain, $pwhash ) == $pwhash;
+
 
         return $pwhash == self::hash( $pwplain, $config );
     }
