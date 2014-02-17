@@ -4,6 +4,7 @@
 	"keywords": ["oss", "opensolutions"],
 	"license": "BSD-3-Clause",
         "require": {
+        	"php": ">=5.4.0",
                 "zendframework/zendframework1": "~1.12"
 	},
 	"autoload": {
