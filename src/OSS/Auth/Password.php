@@ -196,6 +196,9 @@ class OSS_Auth_Password
         if( substr( $hash, 0, 6) == 'crypt:' )
             return crypt( $pwplain, $pwhash ) == $pwhash;
 
+        if( substr( $hash, 0, 8 ) == 'dovecot:' )
+            return ViMbAdmin_Dovecot::passwordVerify( substr( $hash, 8 ), $pwhash, $pwplain, $config['username'] );
+
 
         return $pwhash == self::hash( $pwplain, $config );
     }
