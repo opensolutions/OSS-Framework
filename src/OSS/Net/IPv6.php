@@ -94,7 +94,7 @@ class OSS_Net_IPv6
         foreach( $parts as $ix => $part )
         {
             if( ( $part != "" && !ctype_xdigit( $part ) ) || count( $part ) > 4 ) 
-                throw new OSS_Net_Exception( "Bad IPv6 format" );
+                throw new OSS_Net_Exception( "Bad IPv6 format: {$address}" );
 
             $part = self::formatPart( $part, $type, $rm );
             $parts[$ix] = $part;
