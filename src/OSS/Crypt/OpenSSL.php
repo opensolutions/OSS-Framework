@@ -39,6 +39,9 @@
 
 /**
  * OpenSSL public/private key generation tools.
+ * 
+ * NB: I keep getting bit by: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=586202
+ * 
  *
  * @author     Barry O'Donovan <barry@opensolutions.ie>
  * @author     The Skilled Team of PHP Developers at Open Solutions <info@opensolutions.ie>
