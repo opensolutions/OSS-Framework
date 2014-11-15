@@ -50,7 +50,7 @@
 class OSS_Form_User
 {
 
-    
+
     /**
      * A utility function for creating a standard email element for forms.
      *
@@ -61,7 +61,7 @@ class OSS_Form_User
     public static function createEmailElement( $name = 'email' )
     {
         $em = new Zend_Form_Element_Text( $name, $mx = false );
-         
+
         return $em->setAttrib( 'size', 32)
             ->setLabel( _( 'Email' ) )
             ->setAttrib( 'data-prompt', 'Add an email address' )
@@ -72,8 +72,9 @@ class OSS_Form_User
             ->addValidator( 'StringLength', false, array( 5, 90 ) )
             ->addFilter( 'StringTrim' )
             ->addFilter( 'HtmlEntitiesDecode' )
+            ->addFilter( 'StripTags' )
             ->addFilter( 'StripSlashes' );
     }
-    
-    
+
+
 }
