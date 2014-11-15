@@ -52,7 +52,7 @@ class OSS_Form_Auth
     const USERNAME_TYPE_EMAIL    = 0;
     const USERNAME_TYPE_NONEMAIL = 1;
 
-    
+
     /**
      * A utility function for creating a standard username element for login forms.
      *
@@ -66,11 +66,12 @@ class OSS_Form_Auth
     public static function createUsernameElement( $type = self::USERNAME_TYPE_NONEMAIL, $name = 'username' )
     {
         $un = new Zend_Form_Element_Text( $name );
-         
+
         $un->setRequired( true )
             ->addValidator( 'NotEmpty', true )
             ->addFilter( 'HtmlEntitiesDecode' )
             ->addFilter( 'StripSlashes' )
+            ->addFilter( 'StripTags' )
             ->addFilter( 'StringToLower' )
             ->addFilter( 'StringTrim' );
 
@@ -83,23 +84,23 @@ class OSS_Form_Auth
                    ->setLabel( _( 'Email' ) )
                    ->setAttrib( 'title', _( 'Email' ) );
                break;
-               
+
             case self::USERNAME_TYPE_NONEMAIL:
                 $un->setLabel( _( 'Username' ) )
                    ->setAttrib( 'title', _( 'Username' ) )
                    ->setAttrib( 'class', 'span3 required' );
                 break;
-                
+
             default:
                 die( 'Unknown username element type in OSS_Form_Auth_Login::getUsernameElement' );
         }
-        
+
         $un->getValidator( 'NotEmpty' )->setMessage( _( 'You must enter your username' ), Zend_Validate_NotEmpty::IS_EMPTY );
 
         return $un;
     }
-    
-    
+
+
     /**
      * A utility function for creating a standard password element for login forms.
      *
@@ -108,9 +109,9 @@ class OSS_Form_Auth
      */
     public static function createPasswordElement( $name = 'password' )
     {
-    
+
         $pw = new Zend_Form_Element_Password( $name );
-        
+
         return $pw->setLabel( _( 'Password' ) )
             ->setAttrib( 'title', _( 'Password' ) )
             ->setAttrib( 'size', 30 )
@@ -122,7 +123,7 @@ class OSS_Form_Auth
             ->addFilter( 'StripSlashes' )
             ->addFilter( 'StringTrim' );
     }
-    
+
     /**
      * A utility function for creating a standard password confirmation element
      *
@@ -134,7 +135,7 @@ class OSS_Form_Auth
      */
     public static function createPasswordConfirmElement( $name = 'confirm_password', $pwname = 'password' )
     {
-    
+
         $pwc = new Zend_Form_Element_Password( $name );
 
         $pwc->setLabel( _( 'Confirm Password' ) )
@@ -145,13 +146,13 @@ class OSS_Form_Auth
             ->addValidator( 'NotEmpty', true )
             ->addValidator( 'OSSIdenticalField', true, array( 'fieldName' => $pwname, 'fieldTitle' => _( 'the password' ) ) )
             ->addFilter( 'StripSlashes' );
-        
+
         $pwc->getValidator( 'NotEmpty' )->setMessage( _( 'The confirmation password is required and must match the password' ), Zend_Validate_NotEmpty::IS_EMPTY );
-        
+
         return $pwc;
     }
-    
-    
+
+
     /**
      * A utility function for creating a standard password reset token element
      *
@@ -160,7 +161,7 @@ class OSS_Form_Auth
      */
     public static function createPasswordResetTokenElement( $name = 'token' )
     {
-    
+
         $token = new Zend_Form_Element_Text( $name );
 
         return $token->setLabel( _( 'Token' ) )
@@ -173,8 +174,8 @@ class OSS_Form_Auth
             ->addFilter( 'StringTrim' )
             ->addFilter( 'StripSlashes' );
     }
-    
-    
+
+
     /**
      * A utility function for creating a standard 'remember me' element for login forms.
      *
@@ -184,13 +185,13 @@ class OSS_Form_Auth
     public static function createRememberMeElement( $name = 'rememberme' )
     {
         $rm = new Zend_Form_Element_Checkbox( $name );
-        
+
         return $rm->setLabel( _( 'Remember me on this computer' ) )
             ->setRequired( false )
             ->addFilter( 'Int' );
     }
 
-    
+
     /**
      * A utility function for creating a standard 'lost password' button link.
      *
