@@ -50,6 +50,9 @@
  */
 trait OSS_Controller_Trait_Auth
 {
+
+    use OSS_Controller_Action_Trait_RememberMe;
+
     /**
      * Template path
      *
@@ -68,13 +71,13 @@ trait OSS_Controller_Trait_Auth
             $this->redirectAndEnsureDie( '/auth/login' );
         }
     }
-    
+
     public function indexAction()
     {
         $this->_forward( 'login' );
     }
-    
-    
+
+
     /**
      * A pre-login function allow and pre-login processing / checks.
      *
@@ -82,7 +85,7 @@ trait OSS_Controller_Trait_Auth
      */
     protected function _preLogin()
     {}
-    
+
     /**
      * Tries to log the user in.
      */
@@ -94,9 +97,9 @@ trait OSS_Controller_Trait_Auth
 
         // allow for a possible pre-login hook
         $this->_preLogin();
-        
+
         $this->view->form = $form = $this->_getFormLogin();
-        
+
         // Are remember me cookies enabled and do we have a valid remember me cookie?
         $haveCookie = false;
         if( $this->_rememberMeEnabled() && $user = $this->_processRememberMeCookies() )
@@ -109,17 +112,17 @@ trait OSS_Controller_Trait_Auth
             $this->getLogger()->debug( _( "{$user->getUsername()} presented a valid cookie for logging in" ) );
             $this->getSessionNamespace()->logged_in_via = "cookie";
         }
-        
+
         if( $haveCookie || ( $this->getRequest()->isPost() && $form->isValid( $_POST ) ) )
         {
             $auth = Zend_Auth::getInstance();
             $authAdapter = $this->_getAuthAdapter( $form->getValue( 'username' ), $form->getValue( 'password' ) );
-    
+
             if( $haveCookie )
                 $authAdapter->haveCookie( true );
-            
+
             $result = $auth->authenticate( $authAdapter );
-            
+
             switch( $result->getCode() )
             {
                 case Zend_Auth_Result::FAILURE_IDENTITY_NOT_FOUND:
@@ -128,11 +131,11 @@ trait OSS_Controller_Trait_Auth
                     $this->getLogger()->notice( sprintf( _( "Authentication failure for %s" ), $form->getValue( 'username' ) ) );
                     return false;
                     break;
-    
+
                 case Zend_Auth_Result::SUCCESS:
                     $identity = $auth->getIdentity();
                     $user = $identity['user'];
-                    
+
                     $message = null;
                     if( !$this->_postLoginChecks( $auth, $user, $message, $form ) )
                     {
@@ -143,13 +146,13 @@ trait OSS_Controller_Trait_Auth
                         if( $message != null ) $this->addMessage( $message, OSS_Message::ERROR );
                         $this->redirectAndEnsureDie( 'auth/login' );
                     }
-    
+
                     if( !$haveCookie && $form->getValue( 'rememberme' ) && $this->_rememberMeEnabled() )
                         $this->_setRememberMeCookie( $user );
-                    
+
                     if( !$haveCookie )
                         $this->getSessionNamespace()->logged_in_via = "auth";
-                    
+
                     // record the last login IP address
                     $this->getSessionNamespace()->last_login_from = '';
                     if( method_exists( $user, 'hasPreference' ) )
@@ -172,27 +175,27 @@ trait OSS_Controller_Trait_Auth
                         $log->setUser( $user );
                         $this->getD2EM()->persist( $log );
                     }
-    
+
                     // set the timeout
                     $this->getSessionNamespace()->timeOfLastAction = mktime();
 
                     $this->getLogger()->info( sprintf( _( "%s logged in" ), $user->getUsername() ) );
-                    
+
                     $this->getD2EM()->flush();
-                    
+
                     if( isset( $this->getSessionNamespace()->postAuthRedirect ) )
                         $this->_redirect( $this->getSessionNamespace()->postAuthRedirect );
                     else
                         $this->_redirect( '' );
                     break;
-    
+
                 default:
                     throw new OSS_Exception( 'Unknown auth response - ' . $result->getCode() );
                     break;
             }
         }
     }
-    
+
     /**
      * Overridable fucntion to perform custom post (successful) login checks (allowing
      * the login to be cancelled).
@@ -209,7 +212,7 @@ trait OSS_Controller_Trait_Auth
     {
         return true;
     }
-    
+
     /**
      * A pre-logout function allow and pre-logout processing / checks.
      *
@@ -217,7 +220,7 @@ trait OSS_Controller_Trait_Auth
      */
     protected function _preLogout()
     {}
-    
+
     /**
      * Logs the user out, clears the identity and the session.
      */
@@ -225,25 +228,25 @@ trait OSS_Controller_Trait_Auth
     {
         // $this->view->clearVars();
         // $this->view->config = $this->config;
-        
+
         if( !$this->getAuth()->hasIdentity() )
             $this->_redirect( '' );
-            
+
         // allow for a possible pre-logout hook
         $this->_preLogout();
 
         if( $this->_rememberMeEnabled() )
             $this->_deleteRememberMeCookie( $this->getUser() );
-        
+
         $this->getAuth()->clearIdentity();
         $this->getSessionNamespace()->unsetAll();
-        
+
         $this->getLogger()->info( "{$this->getUser()->getUsername()} logged out" );
         $this->addMessage( '<strong>' . _( 'You have been logged out.' ) . '</strong>', OSS_Message::SUCCESS );
         $this->_redirect( '' );
     }
-    
-    
+
+
 
     /**
      * Asks for the email and a CAPTCHA text, then sends a validation code (link) to the email address,
@@ -263,7 +266,7 @@ trait OSS_Controller_Trait_Auth
             $captcha = new OSS_Captcha_Image( 0, 0 );
             $this->view->captchaId = $captcha->generate();
         }
-        
+
         if( $this->getRequest()->isPost() )
         {
             if( $useCaptcha && $this->_getParam( 'requestnewimage', 0 ) )
@@ -300,9 +303,9 @@ trait OSS_Controller_Trait_Auth
                 // start by removing expired preferences
                 if( $user->cleanExpiredPreferences() )
                     $this->getEntityManager()->flush();
-                
+
                 $pwdResetToken = OSS_String::random( 40 );
-                
+
                 try
                 {
                     $user->addIndexedPreference( 'tokens.password_reset', $pwdResetToken, '=', time() + 2*60*60, 5 );
@@ -315,7 +318,7 @@ trait OSS_Controller_Trait_Auth
                     );
                     $this->redirectAndEnsureDie( 'auth/lost-password' );
                 }
-                
+
                 $this->getEntityManager()->flush();
 
                 $this->view->user  = $user;
@@ -332,9 +335,9 @@ trait OSS_Controller_Trait_Auth
                     'If your username was correct, then an email with a key to allow you to change your password below has been sent to you.',
                     OSS_Message::SUCCESS
                 );
-                
+
                 $this->getLogger()->info( sprintf( _( "%s requested a reset password token" ), $user->getUsername() ) );
-                
+
                 $this->_redirect( 'auth/reset-password/username/' . urlencode( $form->getValue( 'username' ) ) );
             }
         }
@@ -378,13 +381,15 @@ trait OSS_Controller_Trait_Auth
                 {
                     $user->setPassword( OSS_Auth_Password::hash( $form->getValue( 'password' ), $this->_options['resources']['auth']['oss'] ) );
                     $user->deletePreference( 'tokens.password_reset' );
-                    
+
                     if( method_exists( $user, 'setFailedLogins' ) )
                         $user->setFailedLogins( 0 );
-                    
+
+                    $this->_deleteRememberMeCookie( $user );
+
                     if( $this->resetPasswordPreFlush( $user, $form ) )
                         $this->getD2EM()->flush();
-                    
+
                     $this->clearUserFromCache( $user->getId() );
 
                     $this->view->user = $user;
@@ -402,7 +407,7 @@ trait OSS_Controller_Trait_Auth
                     );
 
                     $this->getLogger()->info( sprintf( _( "%s has completed a password reset" ), $user->getUsername() ) );
-                    
+
                     $this->_redirect( 'auth/login' );
                 }
             }
@@ -413,7 +418,7 @@ trait OSS_Controller_Trait_Auth
             $form->getElement( 'token'    )->setValue( $this->_getParam( 'token',       '' ) );
         }
     }
-    
+
     /**
      * This is reset password before flush hook.
      *
@@ -429,11 +434,11 @@ trait OSS_Controller_Trait_Auth
         return true;
     }
 
-    
+
     public function lostUsernameAction()
     {
         $this->view->form = $form = $this->_getFormLostUsername();
-        
+
         $this->view->useCaptcha = $useCaptcha = isset( $this->_options['resources']['auth']['oss']['lost_username']['use_captcha'] ) && $this->_options['resources']['auth']['oss']['lost_username']['use_captcha'];
 
         if( $useCaptcha )
@@ -442,7 +447,7 @@ trait OSS_Controller_Trait_Auth
             $captcha = new OSS_Captcha_Image( 0, 0 );
             $this->view->captchaId = $captcha->generate();
         }
-        
+
         if( $this->getRequest()->isPost() )
         {
             if( $useCaptcha && $this->_getParam( 'requestnewimage', 0 ) )
@@ -452,7 +457,7 @@ trait OSS_Controller_Trait_Auth
                 $form->getElement( 'captchatext' )->setValue( "" );
                 return;
             }
-            
+
             if( $form->isValid( $_POST ) )
             {
                 if( $useCaptcha && !OSS_Captcha_Image::_isValid( $this->_getParam( 'captchaid' ), $this->_getParam( 'captchatext', '__' ) ) )
@@ -462,11 +467,11 @@ trait OSS_Controller_Trait_Auth
                     ->addError( 'The entered text does not match that of the image' );
                     return;
                 }
-            
+
                 $this->view->users = $users = $this->getD2EM()->getRepository(
                                 $this->getOptions()['resources']['auth']['oss']['entity'] )
                         ->findByEmail( $form->getValue( 'email' ) );
-    
+
                 if( count( $users ) )
                 {
                     $mailer = $this->getMailer();
@@ -476,21 +481,21 @@ trait OSS_Controller_Trait_Auth
                     $this->resolveTemplate( $mailer, 'lost-username' );
                     $mailer->send();
                 }
-                            
+
                 $this->addMessage(
                     'If your email matches user(s) on the system, then an email listing those users has been sent to you.',
                     OSS_Message::SUCCESS
                 );
 
                 $this->getLogger()->info( sprintf( _( "%s requested lost usernames by email" ), $form->getValue( 'email' ) ) );
-                
+
                 $this->_redirect( 'auth/login' );
             }
         }
     }
-    
-    
-    
+
+
+
     /**
      * Takes an id as a parameter, and prints the matching CAPTCHA image as a binary raw string to the output,
      * or prints nothing if no matching CAPTCHA found.
@@ -499,7 +504,7 @@ trait OSS_Controller_Trait_Auth
     {
         $captchaId = preg_replace( "/[^0-9a-z]+/u", '', strtolower( basename( $this->_getParam( 'id' ) ) ) );
         $captchaFile = OSS_Utils::getTempDir() . "/captchas/{$captchaId}.png";
-        
+
         if( @file_exists( $captchaFile ) )
         {
             Zend_Controller_Action_HelperBroker::removeHelper( 'viewRenderer' );
@@ -510,9 +515,9 @@ trait OSS_Controller_Trait_Auth
         else
             $this->_forward( 'error-404', 'error' );
     }
-    
-    
-    
+
+
+
     /**
      * Switch the logged in user to another.
      *
@@ -522,7 +527,7 @@ trait OSS_Controller_Trait_Auth
     {
         if( !$this->getAuth()->hasIdentity() )
             $this->_redirect( 'auth/login' );
-        
+
         if( isset( $this->getSessionNamespace()->switched_user_from ) && $this->getSessionNamespace()->switched_user_from )
         {
             $this->addMessage(
@@ -531,15 +536,15 @@ trait OSS_Controller_Trait_Auth
             );
             $this->redirectAndEnsureDie( '' );
         }
-        
+
         if( !$this->_switchUserPreCheck() )
             $this->redirectAndEnsureDie( '' );
-    
+
         // does the requested user exist
         $nuser = $this->getD2EM()->getRepository(
                 $this->getOptions()['resources']['auth']['oss']['entity']
             )->find( $this->_getParam( 'id', 0 ) );
-        
+
         if( !$nuser )
         {
             $this->addMessage(
@@ -548,23 +553,23 @@ trait OSS_Controller_Trait_Auth
             );
             $this->redirectAndEnsureDie( 'user/list' );
         }
-        
+
         if( !$this->_switchUserCheck( $nuser ) )
             $this->redirectAndEnsureDie( '' );
-        
+
         // store the fact that we're switching in the session
         $this->getSessionNamespace()->switched_user_from = $this->getUser()->getId();
-    
+
         // easiest way to switch users is to just re-autenticate as the new one
         // This maintains consistancy with Zend_Auth and future changes
         $result = $this->_reauthenticate( $nuser );
-    
+
         if( $result->getCode() == Zend_Auth_Result::SUCCESS )
         {
             $this->getLogger()->info( 'User ' . $this->getUser()->getUsername() . ' has switched to user '
                 . $nuser->getUsername()
             );
-    
+
             $this->addMessage(
                 "You are now logged in as {$nuser->getUsername()} of {$nuser->getCustomer()->getName()}.",
                 OSS_Message::SUCCESS
@@ -575,10 +580,10 @@ trait OSS_Controller_Trait_Auth
             $this->getLogger()->notice( 'User ' . $this->getUser()->getUsername() . ' has failed to switch to user ' . $nuser->getUsername() );
             $this->forward( 'logout' ); die();
         }
-    
+
         $this->_redirect( '' );
     }
-    
+
     /**
      * Switch back to the original user when switched to another.
      *
@@ -588,7 +593,7 @@ trait OSS_Controller_Trait_Auth
     {
         if( !$this->getAuth()->hasIdentity() )
             $this->_redirect( 'auth/login' );
-        
+
         // are we really operating as another?
         if( !isset( $this->getSessionNamespace()->switched_user_from ) or !$this->getSessionNamespace()->switched_user_from )
         {
@@ -598,24 +603,24 @@ trait OSS_Controller_Trait_Auth
             );
             $this->redirectAndEnsureDie( '' );
         }
-    
+
         // does the original user exist
         $ouser = $this->getD2EM()->getRepository(
                 $this->getOptions()['resources']['auth']['oss']['entity']
             )->find( $this->getSessionNamespace()->switched_user_from );
-        
+
         if( !$ouser )
         {
             $this->forward( 'logout' ); die();
         }
-        
+
         if( !( $params = $this->_switchUserBackCheck( $this->getUser(), $ouser ) ) )
             $this->redirectAndEnsureDie();
 
         // easiest way to switch users is to just re-autenticate as the new one
         // This maintains consistancy with Zend_Auth and future changes
         $result = $this->_reauthenticate( $ouser );
-    
+
         if( $result->getCode() == Zend_Auth_Result::SUCCESS )
         {
             $this->getLogger()->info( 'User ' . $ouser->getUsername() . ' has switched back from user ' . $this->getUser()->getUsername() );
@@ -623,12 +628,12 @@ trait OSS_Controller_Trait_Auth
         }
         else
             throw new OSS_Exception( "Error for user {$ouser->getUsername()} switching back from user {$this->getUser()->getUsername()}" );
-            
+
         $this->getSessionNamespace()->switched_user_from = 0;
-        
+
         $this->_redirect( isset( $params['url'] ) ? $params['url'] : '' );
     }
-            
+
     /**
      * A simple function to reauthenticate to a given user **Ignores password**.
      *
@@ -639,14 +644,14 @@ trait OSS_Controller_Trait_Auth
     {
         $auth = Zend_Auth::getInstance();
         $authAdapter = $this->_getAuthAdapter( $nuser->getUsername(), $nuser->getPassword() );
-        
+
         // trick the adapter into ignoring the password
         $authAdapter->haveCookie( true );
-        
+
         return $auth->authenticate( $authAdapter );
     }
-    
-    
+
+
     /**
      * Instantiate the appropriate Zend Auth Adapter
      *
@@ -661,21 +666,21 @@ trait OSS_Controller_Trait_Auth
             case 'OSS_Auth_DoctrineAdapter':
                 $authAdapter = new OSS_Auth_DoctrineAdapter( $un, $pw );
                 break;
-        
+
             case 'OSS_Auth_Doctrine2Adapter':
                 $authAdapter = new OSS_Auth_Doctrine2Adapter(
                     $un, $pw, $this->getOptions()['resources']['auth']['oss']['entity'],
                     $this->getD2EM(), $this->getOptions()['resources']['auth']['oss']
                 );
                 break;
-        
+
             default:
                 throw new OSS_Exception( 'No such authentication adapter - ' . $this->getOptions()['resources']['auth']['oss']['adapter'] );
         }
 
         return $authAdapter;
     }
-    
+
     /**
      * This function is called just before `switchUserAction()` processes anything.
      * By default it will stop `switchUserAction()` and redirect with an error (that
@@ -694,12 +699,12 @@ trait OSS_Controller_Trait_Auth
         $this->getLogger()->notice( 'User ' . $this->getUser()->getUsername() . ' illegally tried to switch to user with ID '
             . $this->_getParam( 'id', '[unknown]' )
         );
-        
+
         $this->addMessage(
             'You are not allowed to switch users! This attempt has been logged and the administrators notified.',
             OSS_Message::ERROR
         );
-        
+
         $this->redirectAndEnsureDie( '' );
     }
 
@@ -719,7 +724,7 @@ trait OSS_Controller_Trait_Auth
     {
         return false;
     }
-    
+
     /**
      * This function is called just before `switchUserBackAction()` actually switches
      * the user back.
@@ -741,147 +746,8 @@ trait OSS_Controller_Trait_Auth
     {
         return false;
     }
-    
-    /**
-     * Check if remember me cookies are enabled and correctly configured in `application.ini`
-     *
-     * @return bool True if everything is configured correctly and enabled
-     */
-    protected function _rememberMeEnabled()
-    {
-        if( isset( $this->_options['resources']['auth']['oss']['rememberme'] ) )
-        {
-            $conf = $this->_options['resources']['auth']['oss']['rememberme'];
-            
-            if( isset( $conf['enabled'] ) && $conf['enabled'] )
-            {
-                if( !isset( $conf['timeout'] ) || !$conf['timeout'] )
-                {
-                    $this->getLogger()->err( 'Remember Me cookies enabled but misconfigured: timeout not defined' );
-                    return false;
-                }
-                
-                if( !isset( $conf['salt'] ) || !strlen( $conf['salt'] ) )
-                {
-                    $this->getLogger()->err( 'Remember Me cookies enabled but misconfigured: salt not defined' );
-                    return false;
-                }
-                
-                if( !isset( $conf['secure'] ) )
-                {
-                    $this->getLogger()->err( 'Remember Me cookies enabled but misconfigured: secure not defined' );
-                    return false;
-                }
-                
-                return true;
-            }
-        }
-            
-        return false;
-    }
-    
-    
-    /**
-     * Process the user's cookies, if any, for valid 'remember me' authentication
-     *
-     * This will also update the user's cookie key to ensure it changes everytime it's used
-     *
-     * @return \Entities\User A user object if we have a valid cookie (otherwise false)
-     */
-    protected function _processRememberMeCookies()
-    {
-        if( !isset( $_COOKIE['aval'] ) || !isset( $_COOKIE['bval'] ) || !$_COOKIE['aval'] || !$_COOKIE['bval'] )
-            return false;
-    
-        $cookie = $this->getD2EM()->getRepository( '\\Entities\\RememberMe' )->load( $_COOKIE['aval'], $_COOKIE['bval'] );
-    
-        if( !$cookie )
-            return false;
-    
-        $user = $cookie->getUser();
-    
-        if( $cookie->getExpires() < new DateTime() )
-        {
-            $user->getRememberMes()->removeElement( $cookie );
-            $this->getEntityManager()->remove( $cookie );
-            $this->getEntityManager()->flush();
-            return false;
-        }
-    
-        // we have a valid combination. Update the user's cookies
-        $this->_setRememberMeCookie( $user, $cookie );
-    
-        return $user;
-    }
-    
-    
-    
-    /**
-     * Set cookies for Remember Me functionality
-     *
-     * The username is stored as a salted SHA1 hashed value to protect the user's username
-     * The key is a random 40 charater string
-     *
-     * @param \Entitues\User $user The user enitiy
-     * @param \Entities\RememberMe $rememberme The remember me entity with cookie details (or null to create one)
-     */
-    protected function _setRememberMeCookie( $user, $rememberme = null )
-    {
-        if( $rememberme == null )
-        {
-            $rememberme = new \Entities\RememberMe();
-            $rememberme->setUser( $user );
-            $rememberme->setCreated( new DateTime() );
-            $rememberme->setOriginalIp( $_SERVER['REMOTE_ADDR'] );
-            $rememberme->setUserhash( $this->_generateCookieUserhash( $user ) );
-            $this->getD2EM()->persist( $rememberme );
-        }
-    
-        $expire = time() + $this->_options['resources']['auth']['oss']['rememberme']['timeout'];
-    
-        $rememberme->setExpires( new DateTime( "@{$expire}" ) );
-        
-        $rememberme->setLastUsed( new DateTime() );
-        $rememberme->setCkey( OSS_String::random( 40, true, true, true, '', '' ) );
-    
-        $this->getD2EM()->flush();
-    
-        setcookie( 'aval', $rememberme->getUserhash(),  $expire, '/', '', $this->_options['resources']['auth']['oss']['rememberme']['secure'], true );
-        setcookie( 'bval', $rememberme->getCkey(),      $expire, '/', '', $this->_options['resources']['auth']['oss']['rememberme']['secure'], true );
-    }
-    
-    
-    /**
-     * Generate the user hash in a secure format for storage in a client side 'remember cookie' cookie
-     *
-     * @param \Entities\User $user The user entitiy to generate the hash for
-     * @return string The `sha1()` hash
-     */
-    protected function _generateCookieUserhash( $user )
-    {
-        return sha1( $user->getId() . '+' . $user->getUsername() . '/' . $this->_options['resources']['auth']['oss']['rememberme']['salt'] );
-    }
-    
-    
-    
-    /**
-     * Delete all stored RememberMe cookies for a user (server and client side)
-     *
-     * @param \Entities\User $user The user entity
-     * @return int The number of remember mes deleted from the DB (or 0 if none). Can be safely ignored.
-     */
-    protected function _deleteRememberMeCookie( $user )
-    {
-        setcookie( 'aval', '', time() - 100000, '/', '', $this->_options['resources']['auth']['oss']['rememberme']['secure'], true );
-        setcookie( 'bval', '', time() - 100000, '/', '', $this->_options['resources']['auth']['oss']['rememberme']['secure'], true );
-        
-        return $this->getD2EM()->createQuery( "DELETE \\Entities\\RememberMe me WHERE me.User = ?1" )
-                    ->setParameter( 1, $user )
-                    ->execute();
-    }
-    
-    
-    
+
+
     /**
      * It is the main login action, but if the user is using One Time Code or Yubikey to log in, then it is just the first step.
      * If the user is using One Time Code, then redirects to auth/send-one-time-code
@@ -953,38 +819,38 @@ trait OSS_Controller_Trait_Auth
         {
             $this->_auth->clearIdentity();
             if( $this->_session ) $this->getSessionNamespace()->unsetAll();
-            
+
             $this->addMessage(  'Due to an excessive amount of failed logins, '
                 . 'your account has been locked for your own security. '
                 . 'To unlock you account, please follow the <em>Lost Password</em> '
                 . 'procedure below which will guide you through setting a new password '
                 . 'and unlocking your account.', OSS_Message::ERROR
             );
-            
+
             $this->redirectAndEnsureDie( "auth/lost-password/email/" . urlencode( $username ) );
         }
         else if( ( !$success || !isset( $_POST['captchatext'] ) ) && $count >= $this->_options['login_security']['failed_logins']['captcha_after'] )
         {
             $this->_auth->clearIdentity();
             if( $this->_session ) $this->getSessionNamespace()->unsetAll();
-            
+
             $this->addMessage( 'While the password you provided may have been correct, due '
                 . 'to an excessive number of previous failed login attempts on your account, '
                 . 'we require you to login in using the form below.', OSS_Message::ERROR
             );
-            
+
             $this->redirectAndEnsureDie( "auth/login-secure/email/" . urlencode( $username ) );
         }
         else if( !$success )
         {
             $this->_auth->clearIdentity();
             if( $this->_session ) $this->getSessionNamespace()->unsetAll();
-            
+
             $this->addMessage( '<strong>Login failed!</strong> Invalid username / password combination', OSS_Message::ERROR );
-            
+
             $this->redirectAndEnsureDie( "auth/login/email/" . urlencode( $username ) );
         }
-        
+
         return true;
     }
 
@@ -1029,7 +895,7 @@ trait OSS_Controller_Trait_Auth
     {
         $buser =  $this->getEntityManager()->getRepository( '\Entities\FailedLoginsByUsername' )
                     ->findOneBy( array( 'username' => $username ) );
-            
+
         if( !$buser )
         {
             $buser = new \Entities\FailedLoginsByUsername();
@@ -1050,7 +916,7 @@ trait OSS_Controller_Trait_Auth
             else
                 $buser->setCount( $buser->getCount() + 1 );
         }
-        
+
         $this->getEntityManager()->flush();
 
         return $buser;
@@ -1152,7 +1018,7 @@ trait OSS_Controller_Trait_Auth
             $ipcheck->setLastseen( new \DateTime() );
             $ipcheck->setClearCount( 0 );
             $ipcheck->setLastCleared( new \DateTime() );
-            
+
             $this->getEntityManager()->persist( $ipcheck );
         }
         else
@@ -1173,7 +1039,7 @@ trait OSS_Controller_Trait_Auth
                 $ipcheck->setLastseen( new \DateTime() );
             }
         }
-        
+
         $this->getEntityManager()->flush();
         return true;
     }
@@ -1213,7 +1079,7 @@ trait OSS_Controller_Trait_Auth
 
         $html = sprintf( "%s/html/%s.phtml",    self::$TEMPLATE_PATH, $template );
         $text = sprintf( "%s/plaintext/%s.txt", self::$TEMPLATE_PATH, $template );
-        
+
         switch( $format )
         {
             case 'html':
@@ -1232,7 +1098,7 @@ trait OSS_Controller_Trait_Auth
                     $havefile = true;
                 }
                 catch( Exception $e ){}
-                
+
                 try {
                     $mailer->setBodyText( $this->view->render( $text ) );
                     $havefile = true;

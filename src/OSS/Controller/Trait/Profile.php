@@ -50,7 +50,8 @@
  */
 trait OSS_Controller_Trait_Profile
 {
-    
+    use OSS_Controller_Action_Trait_RememberMe;
+
     /**
      * Return the appropriate change password form for your application
      */
@@ -58,7 +59,7 @@ trait OSS_Controller_Trait_Profile
     {
         throw new OSS_Exception( 'You must override this function to return a Zend_Form for password changing' );
     }
-    
+
     /**
      * Action to allow a user to change their password
      *
@@ -66,7 +67,7 @@ trait OSS_Controller_Trait_Profile
     public function changePasswordAction()
     {
         $this->view->passwordForm = $form = $this->_getFormChangePassword();
-        
+
         if( $this->getRequest()->isPost() && $form->isValid( $_POST ) )
         {
             if( !OSS_Auth_Password::verify( $form->getValue( 'current_password' ), $this->getUser()->getPassword(), $this->_options['resources']['auth']['oss'] ) )
@@ -76,26 +77,30 @@ trait OSS_Controller_Trait_Profile
                 );
                 return $this->forward( 'index' );
             }
-    
+
             // update the users password
             $this->getUser()->setPassword( OSS_Auth_Password::hash( $form->getValue( 'new_password' ), $this->_options['resources']['auth']['oss'] ) );
             $this->getD2EM()->flush();
+
+            if( $this->_rememberMeEnabled() )
+                $this->_deleteRememberMeCookie( $this->getUser() );
+
             $this->changePasswordPostFlush();
             $form->reset();
-    
+
             $this->getLogger()->info( "User {$this->getUser()->getUsername()} changed password" );
             $this->addMessage( _( 'Your password has been changed.' ), OSS_Message::SUCCESS );
             $this->redirect( 'profile/index' );
         }
-    
+
         $this->forward( 'index' );
     }
-    
+
     /**
      * Hook that can be overridden to perform application specific actions after a password is
      * saved to the database (e.g. delete cached object)
      */
     protected function changePasswordPostFlush()
     {}
-    
+
 }
