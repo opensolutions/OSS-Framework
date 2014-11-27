@@ -179,6 +179,9 @@ trait OSS_Controller_Action_Trait_RememberMe
      */
     protected function _deleteRememberMeCookie( $user )
     {
+        if( !$this->_rememberMeEnabled() )
+            return;
+            
         setcookie( 'aval', '', time() - 100000, '/', '', $this->_options['resources']['auth']['oss']['rememberme']['secure'], true );
         setcookie( 'bval', '', time() - 100000, '/', '', $this->_options['resources']['auth']['oss']['rememberme']['secure'], true );
 
