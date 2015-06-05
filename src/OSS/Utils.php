@@ -240,12 +240,18 @@ class OSS_Utils
         
         if( strpos( $url, 'http' ) !== 0 )
         {
-            $tmp = 'http';
+            $protocol = 'http';
 
             if( isset( $_SERVER['HTTPS'] ) && ( $_SERVER['HTTPS'] == 'on' ) )
-                $tmp .= 's';
+            {
+                $protocol = 'https';
+            }
+            elseif( isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) )
+            {
+                $protocol = $_SERVER['HTTP_X_FORWARDED_PROTO'];
+            }
 
-            $url = "{$tmp}://{$url}";
+            $url = "{$protocol}://{$url}";
         }
 
         if( $module )
