@@ -370,7 +370,7 @@ trait OSS_Controller_Trait_Auth
                 if( $user->cleanExpiredPreferences() )
                     $this->getD2EM()->flush();
 
-                if( !in_array( $form->getValue( 'token' ), $user->getIndexedPreference( 'tokens.password_reset' ) ) )
+                if( !is_array( $user->getIndexedPreference( 'tokens.password_reset' ) ) || !in_array( $form->getValue( 'token' ), $user->getIndexedPreference( 'tokens.password_reset' ) ) )
                 {
                     $this->addMessage(
                         'Invalid username / token combination. Please check your details and try again.',
