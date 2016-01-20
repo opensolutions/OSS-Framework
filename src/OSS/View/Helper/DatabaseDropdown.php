@@ -91,7 +91,7 @@ class OSS_View_Helper_DatabaseDropdown extends Zend_View_Helper_FormElement
                     )
                 );
         if( count( $options ) && ( !isset( $attribs['disabled'] ) || $attribs['disabled'] = false ) && ( !isset( $attribs['class'] ) || strpos( $attribs['class'], "disable" ) === false ) )
-        { 
+        {
             $html .= '
             <div id="' . $elId . '_tmp">
                 <script type="text/javascript" id="' . $elId . '_script">
@@ -112,10 +112,10 @@ class OSS_View_Helper_DatabaseDropdown extends Zend_View_Helper_FormElement
                         $( "#' . $elId . '" ).width( $( "#' . $elId . '" ).width() - 20 );
                         $( "#' . $elId . '_osschzn" ).width( $( "#' . $elId . '" ).parent().width() ).chosen();
                         $( "#' . $elId . '_osschzn_chzn" ).css( "position", "absolute" ).css( "top", pos.top ).hide();
-                        
-                        $( "#' . $elId . '_open" ).on( "click", 
+
+                        $( "#' . $elId . '_open" ).on( "click",
                             function(){
-                                $( "#' . $elId . '_osschzn" ).val( "" ).trigger( "liszt:updated" );
+                                $( "#' . $elId . '_osschzn" ).val( "" ).trigger( "liszt:updated" ).trigger( "chosen:updated" );
                                 $( "#' . $elId . '_osschzn_chzn" ).show( "fast", function(){
                                     $( "#' . $elId . '_osschzn_chzn" ).trigger( "mousedown" );
                                     $( "#' . $elId . '_append" ).hide();
@@ -132,10 +132,19 @@ class OSS_View_Helper_DatabaseDropdown extends Zend_View_Helper_FormElement
                             $( "#' . $elId . '_append" ).show();
                         });
 
+                        $( "#' . $elId . '_osschzn" ).on( "chosen:hiding_dropdown", function( event ){
+                            $( "#' . $elId . '_osschzn_chzn" ).hide();
+                            $( "#' . $elId . '_append" ).show();
+                        });
+
                         $( "#' . $elId . '_osschzn" ).on( "liszt:showing_dropdown", function( event ){
                             $( "#' . $elId . '_osschzn_chzn" ).show();
                         });
-                    
+
+                        $( "#' . $elId . '_osschzn" ).on( "chosen:showing_dropdown", function( event ){
+                            $( "#' . $elId . '_osschzn_chzn" ).show();
+                        });
+
                         $( window ).resize(function() {
                             if( $( "#' . $elId . '_osschzn_chzn" ).width() == 0 ) {
                                 $( "#' . $elId . '_osschzn_chzn" ).width( $( "#' . $elId . '" ).parent().width() );
