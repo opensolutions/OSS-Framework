@@ -111,9 +111,9 @@ class OSS_View_Helper_DatabaseDropdown extends Zend_View_Helper_FormElement
                         var pos = $( "#' . $elId . '" ).position();
                         $( "#' . $elId . '" ).width( $( "#' . $elId . '" ).width() - 20 );
 
-                        var chosen_id = $( "#' . $elId . '_osschzn_chzn" ).length() ? "#' . $elId . '_osschzn_chzn" : "#' . $elId . '_osschzn_chosen";
-
                         $( "#' . $elId . '_osschzn" ).width( $( "#' . $elId . '" ).parent().width() ).chosen();
+
+                        var chosen_id = $( "#' . $elId . '_osschzn_chzn" ).length ? "#' . $elId . '_osschzn_chzn" : "#' . $elId . '_osschzn_chosen";
                         $( chosen_id ).css( "position", "absolute" ).css( "top", pos.top ).hide();
 
                         $( "#' . $elId . '_open" ).on( "click",
