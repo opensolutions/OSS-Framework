@@ -113,14 +113,14 @@ class OSS_View_Helper_DatabaseDropdown extends Zend_View_Helper_FormElement
 
                         $( "#' . $elId . '_osschzn" ).width( $( "#' . $elId . '" ).parent().width() ).chosen();
 
-                        var chosen_id = $( "#' . $elId . '_osschzn_chzn" ).length ? "#' . $elId . '_osschzn_chzn" : "#' . $elId . '_osschzn_chosen";
-                        $( chosen_id ).css( "position", "absolute" ).css( "top", pos.top ).hide();
+                        var ' . $elName . '_chosen_id = $( "#' . $elId . '_osschzn_chzn" ).length ? "#' . $elId . '_osschzn_chzn" : "#' . $elId . '_osschzn_chosen";
+                        $( ' . $elName . '_chosen_id ).css( "position", "absolute" ).css( "top", pos.top ).hide();
 
                         $( "#' . $elId . '_open" ).on( "click",
                             function(){
                                 $( "#' . $elId . '_osschzn" ).val( "" ).trigger( "liszt:updated" ).trigger( "chosen:updated" );
-                                $( chosen_id ).show( "fast", function(){
-                                    $( chosen_id ).trigger( "mousedown" );
+                                $( ' . $elName . '_chosen_id ).show( "fast", function(){
+                                    $( ' . $elName . '_chosen_id ).trigger( "mousedown" );
                                     $( "#' . $elId . '_append" ).hide();
                                 });
                                 return;
@@ -131,31 +131,31 @@ class OSS_View_Helper_DatabaseDropdown extends Zend_View_Helper_FormElement
                         });
 
                         $( "#' . $elId . '_osschzn" ).on( "liszt:hiding_dropdown", function( event ){
-                            $( chosen_id ).hide();
+                            $( ' . $elName . '_chosen_id ).hide();
                             $( "#' . $elId . '_append" ).show();
                         });
 
                         $( "#' . $elId . '_osschzn" ).on( "chosen:hiding_dropdown", function( event ){
-                            $( chosen_id ).hide();
+                            $( ' . $elName . '_chosen_id ).hide();
                             $( "#' . $elId . '_append" ).show();
                         });
 
                         $( "#' . $elId . '_osschzn" ).on( "liszt:showing_dropdown", function( event ){
-                            $( chosen_id ).show();
+                            $( ' . $elName . '_chosen_id ).show();
                         });
 
                         $( "#' . $elId . '_osschzn" ).on( "chosen:showing_dropdown", function( event ){
-                            $( chosen_id ).show();
+                            $( ' . $elName . '_chosen_id ).show();
                         });
 
                         $( window ).resize(function() {
-                            if( $( chosen_id ).width() == 0 ) {
-                                $( chosen_id ).width( $( "#' . $elId . '" ).parent().width() );
+                            if( $( ' . $elName . '_chosen_id ).width() == 0 ) {
+                                $( ' . $elName . '_chosen_id ).width( $( "#' . $elId . '" ).parent().width() );
                             }
-                            $( chosen_id ).hide();
+                            $( ' . $elName . '_chosen_id ).hide();
                             $( "#' . $elId . '_append" ).show();
                             pos = $( "#' . $elId . '" ).position();
-                            $( chosen_id ).css( "top", pos.top );
+                            $( ' . $elName . '_chosen_id ).css( "top", pos.top );
                         });
 
                         var height = $(this).height();
@@ -163,10 +163,10 @@ class OSS_View_Helper_DatabaseDropdown extends Zend_View_Helper_FormElement
                         $(document).bind( "DOMSubtreeModified", function() {
                             if($(this).height() != height ) {
                                 height = $(this).height();
-                                $( chosen_id ).hide();
+                                $( ' . $elName . '_chosen_id ).hide();
                                 $( "#' . $elId . '_append" ).show();
                                 pos = $( "#' . $elId . '" ).position();
-                                $( chosen_id ).css( "top", pos.top );
+                                $( ' . $elName . '_chosen_id ).css( "top", pos.top );
                             }
                         });
                     }
