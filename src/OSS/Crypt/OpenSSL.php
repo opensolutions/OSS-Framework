@@ -130,7 +130,8 @@ class OSS_Crypt_OpenSSL
     public function exportKeyPair( $encrypt = true )
     {
         if( !$this->_keypair )
-            throw new OSS_Crypt_Exception( 'To export key pair, you need to generate it first.' );
+            throw new OSS_Crypt_Exception( 'To export key pair, you need to generate it first.' 
+                . "\n\nDid you comment out multiple instances of subjectAltName in openssl.conf?" );
         
         if( $encrypt )
         {
