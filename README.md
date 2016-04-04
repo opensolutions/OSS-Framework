@@ -1,6 +1,8 @@
 
 # OSS-Framework
 
+**Note that this is not an active project and is only currently maintained for bug/security fixes for pre-existing projects that rely on it.**
+
 OSS Framework is a library developed in house by Open Source Solutions Limited 
 t/a [Open Solutions](http://www.opensolutions.ie/) as useful library of 
 extensions on top of / extending the [Zend Framework (V1.x)](http://framework.zend.com/).
