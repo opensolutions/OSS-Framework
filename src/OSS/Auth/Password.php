@@ -46,24 +46,31 @@
  */
 class OSS_Auth_Password
 {
-    const HASH_PLAINTEXT   = 'plaintext';
-    const HASH_PLAIN       = 'plain';
-    const HASH_BCRYPT      = 'bcrypt';
-    const HASH_MD5         = 'md5';
-    const HASH_MD5_SALTED  = 'md5.salted';
-    const HASH_SHA1        = 'sha1';
-    const HASH_SHA1_SALTED = 'sha1.salted';
-    const HASH_DOVECOT     = 'dovecot:';
-    const HASH_CRYPT       = 'crypt:';
-    const HASH_UNKNOWN     = '*unknown*';
-    
-    
+    const HASH_PLAINTEXT    = 'plaintext';
+    const HASH_PLAIN        = 'plain';
+    const HASH_BCRYPT       = 'bcrypt';
+    const HASH_MD5          = 'md5';
+    const HASH_MD5_SALTED   = 'md5-salted';
+    const HASH_SHA1         = 'sha1';
+    const HASH_SHA1_SALTED  = 'sha1-salted';
+    const HASH_DOVECOT      = 'dovecot:';
+    const HASH_CRYPT        = 'crypt:';
+    const HASH_UNKNOWN      = '*unknown*';
+
+    // Bad salts - in April 2016 it was pointed out that a typo in the code below meant that
+    // md5.salted and sha1.salted didn't actually use the requested salt string but a fixed
+    // salt of "md5.salted" and "sha1.salted" respectivily.
+    // These constants are for backwards compatibility for anyone that used those:
+    const HASH_MD5_BADSALT  = 'md5.salted';
+    const HASH_SHA1_BADSALT = 'sha1.salted';
+
     /**
      * A generic password hashing method using a given configuration array
      *
      * The parameters expected in `$config` are:
      *
      * * `pwhash`      - a hashing method from the `HASH_` constants in this class
+     * * `pwsalt`      - a hashing salt for HASH_SHA1_SALTED and HASH_MD5_SALTED
      * * `hash_cost`   - a *cost* parameter for certain hashing functions - e.g. bcrypt (defaults to 9)
      *
      * @param string $pw The plaintext password to hash
@@ -74,17 +81,17 @@ class OSS_Auth_Password
     public static function hash( $pw, $config )
     {
         $hash = self::HASH_UNKNOWN;
-        
+
         if( is_array( $config ) )
         {
             if( !isset( $config['pwhash'] ) )
                 throw new OSS_Exception( 'Cannot hash password without a hash method' );
-            
+
             $hash = $config['pwhash'];
         }
         else
             $hash = $config;
-        
+
         if( substr( $hash, 0, 8 ) == 'dovecot:' )
         {
             return ViMbAdmin_Dovecot::password( substr( $hash, 8 ), $pw, $config['username'] );
@@ -114,7 +121,7 @@ class OSS_Auth_Password
                 default:
                     throw new OSS_Exception( 'Unknown crypt password hashing method' );
             }
-            return crypt( $pw, $salt ); 
+            return crypt( $pw, $salt );
         }
         else
         {
@@ -124,11 +131,11 @@ class OSS_Auth_Password
                 case self::HASH_PLAIN:
                     return $pw;
                     break;
-                    
+
                 case self::HASH_BCRYPT:
                     if( !isset( $config['hash_cost'] ) )
                         $config['hash_cost'] = 9;
-                    
+
                     $bcrypt = new OSS_Crypt_Bcrypt( $config['hash_cost'] );
                     return $bcrypt->hash( $pw );
                     break;
@@ -138,7 +145,7 @@ class OSS_Auth_Password
                     break;
 
                 case self::HASH_MD5_SALTED:
-                    return md5( $pw . $config['pwhash'] );
+                    return md5( $pw . $config['pwsalt'] );
                     break;
 
                 case self::HASH_SHA1:
@@ -146,11 +153,21 @@ class OSS_Auth_Password
                     break;
 
                 case self::HASH_SHA1_SALTED:
+                    return sha1( $pw . $config['pwsalt'] );
+                    break;
+
+
+
+                case self::HASH_MD5_BADSALT:
+                    return md5( $pw . $config['pwhash'] );
+                    break;
+
+                case self::HASH_SHA1_BADSALT:
                     return sha1( $pw . $config['pwhash'] );
                     break;
 
                 // UPDATE PHPDOC ABOVE WHEN ADDING NEW METHODS!
-                    
+
                 default:
                     throw new OSS_Exception( 'Unknown password hashing method' );
             }
@@ -176,18 +193,18 @@ class OSS_Auth_Password
         {
             if( !isset( $config['pwhash'] ) )
                 throw new OSS_Exception( 'Cannot verify password without a hash method' );
-            
+
             $hash = $config['pwhash'];
         }
         else
             $hash = $config;
-        
+
         switch( $config['pwhash'] )
         {
             case self::HASH_BCRYPT:
                 if( !isset( $config['hash_cost'] ) )
                     $config['hash_cost'] = 9;
-                
+
                 $bcrypt = new OSS_Crypt_Bcrypt( $config['hash_cost'] );
                 return $bcrypt->verify( $pwplain, $pwhash );
                 break;
