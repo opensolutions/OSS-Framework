@@ -60,19 +60,19 @@ class OSS_License_MD5Test extends PHPUnit_Framework_TestCase
     private function _genLicense( $expires )
     {
         $l = new OSS_License_MD5();
-        
+
         for( $i = 0; $i < 10; $i++ )
             $l->setParam( "P{$i}", OSS_String::random( 20 ) );
-            
+
         $l->setParam( "Expires", $expires );
-        
+
         return new OSS_License_MD5( parse_ini_string( $l->generate() ) );
     }
-                                            
+
     public function testsLicenseValidates()
     {
         $company = 'Open Source Solutions Limited';
-        
+
         $l = new OSS_License_MD5();
         $l->setParam( 'Company', $company );
         $l->setParam( 'IssuedTo', 'barry@opensolutions.ie' );
@@ -81,13 +81,13 @@ class OSS_License_MD5Test extends PHPUnit_Framework_TestCase
         $this->assertTrue( $l->verify() );
         $this->assertTrue( $l->getParam( 'Company' ) === $company );
     }
-    
+
     public function testsLicenseExpiresFuture()
     {
         $l = $this->_genLicense( '2999-01-01' );
         $this->assertTrue( $l->verify() );
     }
-    
+
     /**
      * @expectedException OSS_License_ExpiredException
      */
@@ -96,7 +96,7 @@ class OSS_License_MD5Test extends PHPUnit_Framework_TestCase
         $l = $this->_genLicense( '2012-01-01' );
         $this->assertTrue( $l->verify() );
     }
-    
+
     public function testsLicenseExpiresToday()
     {
         $l = $this->_genLicense( date( 'Y-m-d' ) );
@@ -107,7 +107,7 @@ class OSS_License_MD5Test extends PHPUnit_Framework_TestCase
     public function testsLicenseReallyValidates()
     {
         $company = 'Telcom Limited';
-        
+
         $l = new OSS_License_MD5();
         $l->setParam( 'Company', $company );
         $l->setParam( 'IssuedTo', 'leightonbrennan@telcom.ie' );
@@ -115,8 +115,7 @@ class OSS_License_MD5Test extends PHPUnit_Framework_TestCase
         $l->setParam( 'Issued', '2012-12-01' );
         $l->setParam( 'PrimaryModule', 'Call-Recorder' );
 
-        die( $l->generate() );
+        //die( $l->generate() );
     }
-  
-}
 
+}

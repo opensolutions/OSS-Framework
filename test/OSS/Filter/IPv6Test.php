@@ -64,6 +64,6 @@ class OSS_Filter_IPv6Test extends PHPUnit_Framework_TestCase
         $this->assertEquals( '2a01:7fb::147', $this->_filter->filter( '2A01:07FB:0000:0000:0000:0000:0000:0147' ) );
         $this->assertEquals( '2a01:7fb::147', $this->_filter->filter( '2A01:7FB:0:0:0:0:0:0147' ) );
         $this->assertEquals( '2001:7f8:18:2::147', $this->_filter->filter( '2001:07f8:0018:0002::0147' ) );
+        $this->assertEquals( '2a03:8900:0:100::8', $this->_filter->filter( '2a03:8900:0:100::8' ) );
     }
 }
-

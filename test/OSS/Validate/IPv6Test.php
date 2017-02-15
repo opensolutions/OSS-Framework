@@ -65,6 +65,7 @@ class OSS_Validate_IPv6Test extends PHPUnit_Framework_TestCase
         $this->assertTrue( $this->_validator->isValid( '2001:0db8:0002:0000:0000:0000:0000:0097' ) );
         $this->assertTrue( $this->_validator->isValid( '2001:DB8:2:0:0:0:0:97' ) );
         $this->assertTrue( $this->_validator->isValid( '2001:db8:2::127.5.68.45' ) );
+        $this->assertTrue( $this->_validator->isValid( '2a03:8900:0:100::8' ) );
     }
 
     public function testInvalidAddress()
@@ -75,4 +76,3 @@ class OSS_Validate_IPv6Test extends PHPUnit_Framework_TestCase
         $this->assertFalse( $this->_validator->isValid( '2001:DB8:2::0:0::97' ) );
     }
 }
-
