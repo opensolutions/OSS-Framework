@@ -76,14 +76,14 @@ class OSS_Resource_Doctrine2cache extends Zend_Application_Resource_ResourceAbst
 
             if( !isset( $config['autoload_method'] ) )
                 $config['autoload_method'] = 'git';
-            
+
             switch( $config['autoload_method'] )
             {
                 case 'pear':
                     require_once( $config['path'] . '/Tools/Setup.php' );
                     Doctrine\ORM\Tools\Setup::registerAutoloadPEAR();
                     break;
-                    
+
                 case 'dir':
                     require_once( $config['path'] . '/Tools/Setup.php' ); // FIXME
                     Doctrine\ORM\Tools\Setup::registerAutoloadDirectory();
@@ -91,22 +91,22 @@ class OSS_Resource_Doctrine2cache extends Zend_Application_Resource_ResourceAbst
 
                 case 'composer':
                     break;
-                                        
+
                 default:
                     require_once( $config['path'] . '/lib/Doctrine/ORM/Tools/Setup.php' );
                     Doctrine\ORM\Tools\Setup::registerAutoloadGit( $config['path'] );
             }
-            
+
             if( $config['type'] == 'ApcCache' )
                 $cache = new \Doctrine\Common\Cache\ApcCache();
             elseif( $config['type'] == 'MemcacheCache' )
             {
                 $memcache = new Memcache();
-                
+
                 for( $cnt = 0; $cnt < count( $config['memcache']['servers'] ); $cnt++ )
                 {
                     $server = $config['memcache']['servers'][$cnt];
-                
+
                     $memcache->addServer(
                         isset( $server['host'] )         ? $server['host']         : '127.0.0.1',
                         isset( $server['port'] )         ? $server['port']         : 11211,
@@ -116,16 +116,19 @@ class OSS_Resource_Doctrine2cache extends Zend_Application_Resource_ResourceAbst
                         isset( $server['retry_int'] )    ? $server['retry_int']    : 15
                     );
                 }
-                
+
                 $cache = new \Doctrine\Common\Cache\MemcacheCache();
                 $cache->setMemcache( $memcache );
             }
-            else
+            elseif( $config['type'] == 'ArrayCache' ) {
                 $cache = new \Doctrine\Common\Cache\ArrayCache();
-            
-            if( isset( $config['namespace'] ) )
+            } else {
+                $cache = false;
+            }
+
+            if( $cache && isset( $config['namespace'] ) )
                 $cache->setNamespace( $config['namespace'] );
-            
+
             
             // stick the cache in the registry
             Zend_Registry::set( 'd2cache', $cache );

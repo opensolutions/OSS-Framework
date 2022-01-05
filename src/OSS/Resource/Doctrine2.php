@@ -76,6 +76,8 @@ class OSS_Resource_Doctrine2 extends Zend_Application_Resource_ResourceAbstract
             // Get Doctrine configuration options from the application.ini file
             $dconfig = $this->getOptions();
 
+            $cache = false;
+
             if( $db != 'default' )
                 $dconfig = $dconfig[ $db ];
 
@@ -87,12 +89,11 @@ class OSS_Resource_Doctrine2 extends Zend_Application_Resource_ResourceAbstract
                 {
                     $d2cacheOptions = $this->getBootstrap()->getApplication()->getOptions()['resources']['doctrine2cache'];
 
-                    if( !$d2cacheOptions || !isset( $d2cacheOptions['type'] ) )
-                        throw new Zend_Exception( 'force err' );
-
-                    $plugin = new OSS_Resource_Doctrine2cache( $d2cacheOptions );
-                    $this->getBootstrap()->registerPluginResource( $plugin );
-                    $cache = $plugin->getDoctrine2cache();
+                    if( $d2cacheOptions && isset( $d2cacheOptions['type'] ) ) {
+                        $plugin = new OSS_Resource_Doctrine2cache( $d2cacheOptions );
+                        $this->getBootstrap()->registerPluginResource( $plugin );
+                        $cache = $plugin->getDoctrine2cache();
+                    }
                 }
             }
             catch( Zend_Exception $e )
@@ -101,15 +102,21 @@ class OSS_Resource_Doctrine2 extends Zend_Application_Resource_ResourceAbstract
             }
 
             $config = new Doctrine\ORM\Configuration();
-            $config->setMetadataCacheImpl( $cache );
+
+            if( $cache ) {
+                $config->setMetadataCacheImpl( $cache );
+            }
 
             $driver = new \Doctrine\ORM\Mapping\Driver\XmlDriver(
                 array( $dconfig['xml_schema_path'] )
             );
             $config->setMetadataDriverImpl( $driver );
 
-            $config->setQueryCacheImpl( $cache );
-            $config->setResultCacheImpl( $cache );
+            if( $cache ) {
+                $config->setQueryCacheImpl( $cache );
+                $config->setResultCacheImpl( $cache );
+            }
+
             $config->setProxyDir( $dconfig['proxies_path'] );
             $config->setProxyNamespace( $dconfig['proxies_namespace'] );
             $config->setAutoGenerateProxyClasses( $dconfig['autogen_proxies'] );
