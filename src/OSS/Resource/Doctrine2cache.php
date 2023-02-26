@@ -97,7 +97,9 @@ class OSS_Resource_Doctrine2cache extends Zend_Application_Resource_ResourceAbst
                     Doctrine\ORM\Tools\Setup::registerAutoloadGit( $config['path'] );
             }
 
-            if( $config['type'] == 'ApcCache' )
+            if( !isset($config['type']) ) {
+                $cache = false;
+            } else if( $config['type'] == 'ApcCache' )
                 $cache = new \Doctrine\Common\Cache\ApcCache();
             elseif( $config['type'] == 'MemcacheCache' )
             {

@@ -4,9 +4,9 @@
 	"keywords": ["oss", "opensolutions"],
 	"license": "BSD-3-Clause",
         "require": {
-        	"php": ">=5.4.0",
-                "zendframework/zendframework1": "~1.12"
-	},
+        	"php": ">=8.0",
+			"shardj/zf1-future": "~1.12"
+		},
         "require-dev": {
             "phpunit/phpunit": "~4"
         },
