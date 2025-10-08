@@ -5,7 +5,7 @@
  * This file is part of the "OSS Framework" - a library of tools, utilities and
  * extensions to the Zend Framework V1.x used for PHP application development.
  *
- * Copyright (c) 2007 - 2012, Open Source Solutions Limited, Dublin, Ireland
+ * Copyright (c) 2007 - 2025, Open Source Solutions Limited, Dublin, Ireland
  * All rights reserved.
  *
  * Open Source Solutions Limited is a company registered in Dublin,
@@ -60,7 +60,7 @@ class OSS_Validate_OSSDomainNAme extends Zend_Validate_Abstract
     /**
      * It will return true if given value is valid domain
      *
-     * e.g. Valid names: exmaple.com, 02exmaple.com, test.example.ie
+     * e.g. Valid names: exmaple.com, 02exmaple.com, test.example.ie, example.solutions
      *      Invalid names ex$ample.ie, example.ie23, test.example, test..ie
      *
      * @param strig $value Date string
@@ -81,7 +81,7 @@ class OSS_Validate_OSSDomainNAme extends Zend_Validate_Abstract
                 
             if( $ix == count( $parts ) - 1 )
             {
-                if( !preg_match( '/^[a-z]+$/', $part ) || strlen( $part ) > 6 || strlen( $part ) < 2 )
+                if( !preg_match( '/^[a-z]+$/', $part ) || strlen( $part ) > 20 || strlen( $part ) < 2 )
                     return false;
             }
             
