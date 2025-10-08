@@ -6,7 +6,7 @@
  * This file is part of the "OSS Framework" - a library of tools, utilities and
  * extensions to the Zend Framework V1.x used for PHP application development.
  *
- * Copyright (c) 2007 - 2013, Open Source Solutions Limited, Dublin, Ireland
+ * Copyright (c) 2007 - 2025, Open Source Solutions Limited, Dublin, Ireland
  * All rights reserved.
  *
  * Open Source Solutions Limited is a company registered in Dublin,
@@ -70,6 +70,9 @@ class OSS_Validate_DomainNameTest extends PHPUnit_Framework_TestCase
         $this->assertTrue( $this->_validator->isValid( '78.on.tst' ) );
         $this->assertTrue( $this->_validator->isValid( 'example-domain.ts' ) );
         $this->assertTrue( $this->_validator->isValid( 'example-domain.tester' ) );
+        $this->assertTrue( $this->_validator->isValid( 'example.solutions' ) );
+        $this->assertTrue( $this->_validator->isValid( 'example.test.solutions' ) );
+        $this->assertTrue( $this->_validator->isValid( 'example.construction' ) );
     }
 
     public function testInvalidDomainName()
@@ -85,6 +88,7 @@ class OSS_Validate_DomainNameTest extends PHPUnit_Framework_TestCase
         $this->assertFalse( $this->_validator->isValid( '78_on.tst' ) );
         $this->assertFalse( $this->_validator->isValid( 'test.lt/nothing' ) );
         $this->assertFalse( $this->_validator->isValid( 'ačiū.dėkui.lt' ) );
+        $this->assertFalse( $this->_validator->isValid( 'example.solutionssolutions' ) );
     }
 }
 
